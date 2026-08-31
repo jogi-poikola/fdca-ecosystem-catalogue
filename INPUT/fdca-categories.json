@@ -1,0 +1,153 @@
+{
+  "version": "2.2",
+  "updated": "2026-08-30",
+  "categories": [
+    {
+      "slug": "data_center_operators",
+      "en": "Data Center Operators",
+      "fi": "Datakeskusoperaattorit",
+      "subcategories": []
+    },
+    {
+      "slug": "connectivity",
+      "en": "Connectivity",
+      "fi": "Tietoliikenneyhteydet",
+      "subcategories": []
+    },
+    {
+      "slug": "municipalities",
+      "en": "Municipalities",
+      "fi": "Kunnat ja kehitysyhtiöt",
+      "subcategories": []
+    },
+    {
+      "slug": "design_engineering",
+      "en": "Design Engineering",
+      "fi": "Tekninen suunnittelu",
+      "subcategories": []
+    },
+    {
+      "slug": "site_developers",
+      "en": "Site Developers",
+      "fi": "Datakeskuskehittäjät",
+      "subcategories": []
+    },
+    {
+      "slug": "services",
+      "en": "Services",
+      "fi": "Palvelut",
+      "subcategories": [
+        {
+          "slug": "legal",
+          "en": "Legal",
+          "fi": "Lakipalvelut"
+        },
+        {
+          "slug": "real_estate_advisory",
+          "en": "Real Estate Advisory",
+          "fi": "Kiinteistöneuvonta"
+        },
+        {
+          "slug": "public_affairs",
+          "en": "Public Affairs",
+          "fi": "Yhteiskuntasuhteet"
+        },
+        {
+          "slug": "facility_management",
+          "en": "Facility Management",
+          "fi": "Kiinteistöpalvelut"
+        },
+        {
+          "slug": "security_services",
+          "en": "Security Services",
+          "fi": "Turvallisuuspalvelut"
+        },
+        {
+          "slug": "staffing",
+          "en": "Staffing",
+          "fi": "Henkilöstöpalvelut"
+        },
+        {
+          "slug": "temporary_housing",
+          "en": "Temporary Housing",
+          "fi": "Tilapäismajoitus"
+        },
+        {
+          "slug": "it_equipment_services",
+          "en": "IT Equipment Services",
+          "fi": "IT-laitepalvelut"
+        },
+        {
+          "slug": "education_standards_certification",
+          "en": "Education, Standards, Certification",
+          "fi": "Koulutus ja sertifiointi"
+        },
+        {
+          "slug": "logistics",
+          "en": "Logistics",
+          "fi": "Logistiikka"
+        },
+        {
+          "slug": "investment",
+          "en": "Investment",
+          "fi": "Sijoittaminen"
+        }
+      ]
+    },
+    {
+      "slug": "construction",
+      "en": "Construction",
+      "fi": "Rakentaminen",
+      "subcategories": [
+        {
+          "slug": "general_contractors",
+          "en": "General Contractors",
+          "fi": "Pääurakoitsijat"
+        },
+        {
+          "slug": "specialized_contractors",
+          "en": "Specialized Contractors",
+          "fi": "Erikoisurakoitsijat"
+        }
+      ]
+    },
+    {
+      "slug": "technology_vendors",
+      "en": "Technology Vendors",
+      "fi": "Teknologiatoimittajat",
+      "subcategories": [
+        {
+          "slug": "power_systems",
+          "en": "Power Systems",
+          "fi": "Teho- ja sähköjärjestelmät"
+        },
+        {
+          "slug": "cooling_and_heat_recovery",
+          "en": "Cooling and Heat Recovery",
+          "fi": "Jäähdytys ja lämmöntalteenotto"
+        },
+        {
+          "slug": "it_infrastructure",
+          "en": "IT Infrastructure",
+          "fi": "IT-infrastruktuuri"
+        },
+        {
+          "slug": "automation_and_safety",
+          "en": "Automation and Safety",
+          "fi": "Automaatio ja turvallisuus"
+        },
+        {
+          "slug": "building_materials",
+          "en": "Building Materials",
+          "fi": "Rakennusmateriaalit"
+        }
+      ]
+    },
+    {
+      "slug": "renewable_energy",
+      "en": "Renewable Energy",
+      "fi": "Uusiutuva energia",
+      "subcategories": []
+    }
+  ]
+}
