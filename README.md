@@ -15,6 +15,7 @@ development/
   README.md
   INPUT/
     DESIGN.md
+    categorisation-update-prompt.md
     fdca-categories.json
     fdca-member-list-2026-08-31.txt
     fdca-member-registry.json
@@ -28,14 +29,15 @@ development/
       probe_missing.py
       scrape_blog_posts.py
   OUTPUT/
-    fdca-member-dashboard.html
+    index.html
     category-proposals.json
 ```
 
 `INPUT/` is tracked source material. `OUTPUT/` is for generated artifacts.
-There is intentionally no folder-local `.gitignore`: the member registry is
-the current operational dataset and should be visible to git like the other
-inputs.
+The member registry is the current operational dataset and is tracked like
+the other inputs. The folder-local `.gitignore` excludes only local build
+junk (`.DS_Store`, `__pycache__/`, `*.pyc`) — it does not exclude any
+project data.
 
 ## Current Data State
 
@@ -90,7 +92,13 @@ python3 SKILL/scripts/apply_taxonomy.py --check
 python3 SKILL/scripts/build_dashboard.py
 ```
 
-The dashboard build writes `OUTPUT/fdca-member-dashboard.html`.
+The dashboard build writes `OUTPUT/index.html`, a single self-contained file
+with two views over the same five-family taxonomy: a pannable, zoomable Map
+(family-colored blocks sized and packed by an in-browser treemap layout,
+the default) and a sectioned List. Family color and the treemap packer
+itself are documented in `INPUT/DESIGN.md`; the five families
+(`data_center_operators`, `technology_vendors`, `construction`, `services`,
+`planning`) and their `hue`/`chromaK` live in `INPUT/fdca-categories.json`.
 
 ## Inputs
 
@@ -98,14 +106,15 @@ The dashboard build writes `OUTPUT/fdca-member-dashboard.html`.
 |---|---|
 | `INPUT/fdca-member-registry.json` | Current local catalogue dataset: roster status, names, category, website, logo, intro-post link, article text, and public description. |
 | `INPUT/fdca-member-list-2026-08-31.txt` | FDCA's dated member roster source. It owns official membership names. |
-| `INPUT/fdca-categories.json` | Category taxonomy copied from the FDCA website repository so this folder can validate itself. |
-| `INPUT/DESIGN.md` | Design tokens used by the dashboard builder. |
+| `INPUT/fdca-categories.json` | Category taxonomy, normally copied from the FDCA website repository. As of 2026-09-11 it holds the five-family taxonomy from `categorisation-update-prompt.md` (applied here first); the FDCA website repository has not been updated to match yet — forward that prompt to whoever maintains it. |
+| `INPUT/categorisation-update-prompt.md` | The five-family taxonomy spec, written so it can be handed to another repo without this folder's context. Already applied to `fdca-categories.json` and the registry here. |
+| `INPUT/DESIGN.md` | Palette, typography, and the treemap-packer/zoom-tier design notes for the dashboard's Map and List views. Per-family `hue`/`chromaK` live in `fdca-categories.json`, not here — the dashboard's own JS reads them directly, not through a CSS class. |
 
 ## Outputs
 
 | File | Role |
 |---|---|
-| `OUTPUT/fdca-member-dashboard.html` | Generated single-file dashboard. Rebuild it with `build_dashboard.py`; do not hand-edit. |
+| `OUTPUT/index.html` | Generated single-file dashboard (pan/zoom Map + sectioned List views). Rebuild it with `build_dashboard.py`; do not hand-edit. |
 | `OUTPUT/category-proposals.json` | Optional generated classification queue from `enrich_members.py --propose`. |
 
 ## Maintenance Commands

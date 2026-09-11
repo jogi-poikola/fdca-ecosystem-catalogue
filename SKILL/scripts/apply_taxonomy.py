@@ -62,12 +62,12 @@ REMAP = {
     "Peltitarvike Oy": ("technology_vendors", "building_materials"),  # manufactures construction metal products
     # No sanctioned subcategory fits, so it is cleared rather than invented.
     "BeMaPro Oy": ("services", ""),  # construction project management
-    "DECI Ltd": ("design_engineering", ""),  # commissioning and engineering management
+    "DECI Ltd": ("planning", "design_engineering"),  # commissioning and engineering management
     "Finess Energy": ("services", ""),  # turnkey energy-efficiency projects
-    "Rejlers": ("design_engineering", ""),  # engineering consultancy — the category already says it
-    "Valorem Energies Finland Oy": ("renewable_energy", ""),
-    "Windelligence": ("renewable_energy", ""),
-    "Oomi Oy": ("renewable_energy", ""),  # website-only entry, missed by the first pass
+    "Rejlers": ("planning", "design_engineering"),  # engineering consultancy — the category already says it
+    "Valorem Energies Finland Oy": ("services", "renewable_energy"),
+    "Windelligence": ("services", "renewable_energy"),
+    "Oomi Oy": ("services", "renewable_energy"),  # website-only entry, missed by the first pass
 }
 
 

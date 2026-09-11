@@ -1,195 +1,167 @@
 ---
-version: "alpha"
+version: "beta"
 name: "FDCA Member Dashboard"
-description: "Design tokens reverse-engineered from build_dashboard.py's HTML_TEMPLATE — the single-file, self-contained member directory dashboard generated from fdca-member-registry.json and fdca-categories.json."
+description: "Design tokens for build_dashboard.py's generated dashboard — a self-contained pan/zoom Map view and a sectioned List view over the same five-family taxonomy."
 colors:
-  blue: "#003DA6"              # Primary FDCA brand blue — active filter state, links, disclaimer emphasis, card hover border
-  blueDark: "#020381"          # Darkest brand blue — gradient start (hero header)
-  blueMid: "#2874FC"           # Mid brand blue — gradient end, hover accents, active subfilter chip background
-  charcoal: "#32373C"          # Primary text color for headings/labels on light surfaces (card name, subfilter text)
-  black: "#000000"             # Base body text color
-  white: "#FFFFFF"             # Card/filter-bar surface color, text-on-dark (hero header, active chips)
-  grayUi: "#ABB8C3"            # Declared in :root but not yet consumed by any rule — reserved for future UI-chrome use
-  grayMid: "#949494"           # Secondary/muted text — inactive filter labels, card descriptions, disclaimer body
-  grayBg: "#F0F0F0"            # Page background, chip/card borders, subfilter chip resting background
+  blue: "#003DA6"          # Links, "All categories" chrome, detail-panel category tag
+  blueDark: "#020381"      # Masthead ink/wordmark, detail-panel company name
+  blueMid: "#2874FC"       # Link hover
+  charcoal: "#32373C"      # Base text ink
+  white: "#FFFFFF"         # Card, panel, and tile surfaces
+  canvasBg: "#F4F5F7"      # Page / map canvas background
+  panelBorder: "#E4E7EC"   # Card, block, and detail-panel borders
+  sectionBorder: "#EDEFF2" # List-view sticky section header border, divider rules
+  pillBg: "#F0F1F4"        # Resting background for the Map/List pill toggle and jump-sheet rows
+  muted: "#7A828C"         # Secondary chrome text (jump-sheet counts, search icon)
+  secondaryText: "#6B7280" # Tile/row description text
+  warn: "#B0663C"          # Website-only / pending-membership notice in the detail panel
 typography:
-  h1:
+  wordmark:
     fontFamily: "'Barlow Condensed', sans-serif"
-    fontSize: "38px"           # base/max size — actual CSS is fluid: clamp(26px, 6vw, 38px), see Typography section
     fontWeight: 800
-    letterSpacing: "0.04em"
-    # textTransform: uppercase (applied via CSS text-transform, outside the strict token schema)
-  subtitle:
-    fontFamily: "'Barlow', -apple-system, sans-serif"
-    fontSize: "16px"           # base/max size — actual CSS is fluid: clamp(13px, 3.5vw, 16px), see Typography section
-    fontWeight: 400
-  chipLabel:
-    fontFamily: "'Barlow', sans-serif"
-    fontSize: "13px"
-    fontWeight: 500
-  chipLabelActive:
-    fontFamily: "'Barlow', sans-serif"
-    fontSize: "13px"
-    fontWeight: 600
-  subchipLabel:
-    fontFamily: "'Barlow', sans-serif"
-    fontSize: "12px"
-    fontWeight: 500
-  subchipLabelActive:
-    fontFamily: "'Barlow', sans-serif"
-    fontSize: "12px"
-    fontWeight: 600
-  cardName:
-    fontFamily: "'Barlow', -apple-system, sans-serif"
-    fontSize: "13px"
-    fontWeight: 600
-    lineHeight: "1.3"
+  blockHeader:
+    fontFamily: "'Barlow Condensed', sans-serif"
+    fontWeight: 800
+  subLabel:
+    fontFamily: "'Barlow Condensed', sans-serif"
+    fontWeight: 700
   body:
     fontFamily: "'Barlow', -apple-system, sans-serif"
-    fontSize: "11px"
     fontWeight: 400
-    lineHeight: "1.4"
-  disclaimer:
-    fontFamily: "'Barlow', -apple-system, sans-serif"
-    fontSize: "12px"
-    fontWeight: 400
-rounded:
-  sm: "6px"     # disclaimer box
-  md: "8px"     # member card
-  lg: "16px"    # subfilter pill
-  xl: "20px"    # main filter pill
-  badge: "10px" # count badge inside chips
-spacing:
-  xs: "4px"
-  sm: "8px"
-  md: "12px"
-  lg: "16px"
-  xl: "20px"
-  2xl: "24px"
-  3xl: "32px"
-  4xl: "48px"
-  5xl: "80px"
-components:
-  hero-header:
-    backgroundColor: "linear-gradient(135deg, {colors.blueDark} 0%, {colors.blueMid} 100%)"
-    textColor: "{colors.white}"
-    typography: "{typography.h1}"
-    padding: "48px 20px 40px"
-  filter-chip:
-    backgroundColor: "{colors.white}"
-    textColor: "{colors.grayMid}"
-    typography: "{typography.chipLabel}"
-    rounded: "{rounded.xl}"
-    padding: "8px 14px"
-  filter-chip-active:
-    backgroundColor: "{colors.blue}"
-    textColor: "{colors.white}"
-    typography: "{typography.chipLabelActive}"
-    rounded: "{rounded.xl}"
-    padding: "8px 14px"
-  subfilter-chip:
-    backgroundColor: "{colors.grayBg}"
-    textColor: "{colors.charcoal}"
-    typography: "{typography.subchipLabel}"
-    rounded: "{rounded.lg}"
-    padding: "5px 12px"
-  subfilter-chip-active:
-    backgroundColor: "{colors.blueMid}"
-    textColor: "{colors.white}"
-    typography: "{typography.subchipLabelActive}"
-    rounded: "{rounded.lg}"
-    padding: "5px 12px"
-  member-card:
-    backgroundColor: "{colors.white}"
-    textColor: "{colors.charcoal}"
-    typography: "{typography.cardName}"
-    rounded: "{rounded.md}"
-    padding: "20px 16px"
-  disclaimer-box:
-    backgroundColor: "rgba(0,61,166,.06)"
-    textColor: "{colors.grayMid}"
-    typography: "{typography.disclaimer}"
-    rounded: "{rounded.sm}"
-    padding: "10px 16px"
+  label:
+    fontFamily: "'Barlow', sans-serif"
+    fontWeight: 600
 ---
 
 ## Overview
 
-The FDCA Member Dashboard is a single self-contained HTML file — generated by `build_dashboard.py` from `fdca-member-registry.json` and `fdca-categories.json` — that lists Finnish Data Center Association member companies as a filterable, logo-first card grid. It has no build step and no external dependencies beyond Google Fonts; anyone can open the output file directly in a browser.
+The FDCA Member Dashboard is a single self-contained HTML file — generated
+by `build_dashboard.py` from `fdca-member-registry.json` and
+`fdca-categories.json` — with two views of the same 323 categorised members:
+a pannable, zoomable **Map** (the default) and a sectioned **List**. It has
+no build step and no external dependency beyond Google Fonts; open the
+output file directly in a browser, no server needed.
 
-The visual language leans on the FDCA brand palette (deep blue-to-blue gradient, charcoal text, neutral grays) and a two-tier type system: condensed, uppercase, extra-bold Barlow Condensed for the one hero heading, and regular-weight Barlow for everything functional (filters, card copy, disclaimers). Structurally the page is flat and card-forward — pill-shaped filter chips up top, a responsive grid of member cards below — favoring a flat, browsable feel over deep visual hierarchy: there is exactly one large heading on the whole page, and everything else uses restrained, small-scale type.
+Unlike the flat 9-category card grid this replaced, almost none of the
+dashboard's layout is expressed as CSS rules. The Map view's block and tile
+positions are the output of an integer-cell treemap packer that runs in the
+browser at load time and on resize — every family block, subcategory
+sub-box, and member tile gets an explicit computed `x/y/w/h` in pixels, not
+a CSS Grid or flexbox arrangement. Font sizes inside a block are solved the
+same way: the builder tries decreasing sizes until the label or paragraph
+fits the block's actual height. This is why the strict `components:` token
+schema used by the previous single-view dashboard doesn't fit here — colors
+below are read directly by the packer's JS, not applied through CSS classes.
 
-## Colors
+## Family color
 
-- **`colors.blue` (`#003DA6`)** — the primary FDCA brand color. Used for the active state of top-level filter chips, hover states (card border, filter text/border), and to emphasize the "Note:" label in the disclaimer.
-- **`colors.blueDark` (`#020381`)** and **`colors.blueMid` (`#2874FC`)** — the two stops of the hero header's diagonal gradient (`linear-gradient(135deg, {colors.blueDark} 0%, {colors.blueMid} 100%)`, set directly on `components.hero-header.backgroundColor` since the token schema's `colors` section only accepts flat CSS colors, not gradients). `blueMid` also doubles as the active-state background for subfilter chips and as the hover-border accent color, giving the subfilter tier a visually lighter, secondary weight relative to the primary filter tier's `blue`.
-- **`colors.charcoal` (`#32373C`)** — the working text color for content that sits on white/light-gray surfaces: card names and resting subfilter-chip labels. Softer than pure black, keeps body copy from feeling harsh next to the saturated brand blues.
-- **`colors.black` (`#000000`)** — the page's base text color (`body { color: }`), rarely visible directly since most text is styled with a more specific token.
-- **`colors.white` (`#FFFFFF`)** — surface color for the filter bar and member cards, and the text color for anything sitting on a blue background (hero header copy, active chips).
-- **`colors.grayMid` (`#949494`)** — muted/secondary text: resting (non-active) filter-chip labels, card descriptions, disclaimer body copy, and the empty-state message.
-- **`colors.grayBg` (`#F0F0F0`)** — the page background, and the default border color for filter chips and cards; also the resting background of subfilter chips. Functions as the neutral "canvas" gray the brand blues sit on top of.
-- **`colors.grayUi` (`#ABB8C3`)** — declared as a CSS custom property but not currently consumed by any rule in the shipped template. Kept as a token since it's part of the shipping `:root` palette; treat it as reserved rather than dead, pending confirmation it's genuinely unused.
+Each of the five top-level families in `fdca-categories.json` carries a
+`hue` (an OKLCH hue angle) and a `chromaK` (0–1, how far that hue's blocks
+and tiles are pushed toward its own sRGB gamut ceiling — a raw chroma value
+that reads vivid at one hue reads muddy or clips out of gamut at another, so
+each hue needs its own ceiling, not one shared number). Both are read
+straight from that file; nothing here duplicates them.
 
-Known limitation, carried over as-is from the shipped CSS rather than silently corrected here: `colors.grayMid` on `colors.white` (resting filter-chip text, 3.03:1), `colors.white` on `colors.blueMid` (active subfilter-chip text, 4.21:1), and `colors.grayMid` on the disclaimer tint (3.12:1) all fall short of the WCAG AA 4.5:1 text-contrast minimum. Flagging for the team, not fixing unilaterally — these are real shipped values, not invented ones.
+`build_dashboard.py`'s JS derives every family-colored surface from a single
+`{h, k}` pair through six fixed OKLCH roles — `surface`/`group` (block and
+sub-box fill), `border`/`groupBorder`, `ink` (label text), and `mark` (dot
+tint at the lowest zoom tier) — each a fixed `[lightness, chroma-fraction]`
+pair scaled by that family's `k` and gamut-clamped per hue. A seventh and
+eighth role, `chip`/`chipOn`, color the "Jump to" sheet's category rows the
+same way. No family needs a hand-picked hex anywhere; adding a family means
+adding one `{slug, hue, chromaK}` entry to the taxonomy.
+
+The five shipped hues, ≥30° apart so no two families read as the same
+color: `data_center_operators` 170 (teal, k 0.72), `technology_vendors` 300
+(violet, k 0.94), `construction` 15 (red-orange, k 0.95), `services` 100
+(olive, k 0.62), `planning` 232 (blue, k 0.98). `colors.blue` itself is
+reserved for chrome (links, the pill toggle, the "All categories" jump-sheet
+row) and is never used as a family hue.
 
 ## Typography
 
-Two font families do all the work, loaded from Google Fonts (`Barlow Condensed:wght@400;700;800` and `Barlow:wght@400;500;600`):
+Two font families, loaded from Google Fonts
+(`Barlow Condensed:wght@600;700;800` and `Barlow:wght@400;500;600`):
 
-- **`typography.h1`** — Barlow Condensed, weight 800, uppercase, `clamp(26px, 6vw, 38px)` fluid size, `0.04em` letter-spacing. The single hero heading ("Member Companies"); condensed + uppercase + extra-bold is the one deliberately loud typographic gesture on the page.
-- **`typography.subtitle`** — Barlow, weight 400, `clamp(13px, 3.5vw, 16px)`. The descriptive line under the hero heading (member/sector counts), rendered at 75% white opacity.
-- **`typography.chipLabel`** / **`typography.chipLabelActive`** — Barlow, 13px, weight 500 resting / 600 active. Top-level category filter chip text.
-- **`typography.subchipLabel`** / **`typography.subchipLabelActive`** — Barlow, 12px, weight 500 resting / 600 active. One step down in size from the main chips, reinforcing that subfilters are a secondary, nested tier.
-- **`typography.cardName`** — Barlow, 13px, weight 600, 1.3 line-height. Member company name on each card — the only always-visible text on a card.
-- **`typography.body`** — Barlow, 11px, weight 400, 1.4 line-height. Card description text, revealed on hover only.
-- **`typography.disclaimer`** — Barlow, 12px, weight 400. The "descriptions are sourced from public content" notice.
+- **`typography.wordmark`** — Barlow Condensed 800. The "FDCA" mark in the
+  masthead block, sized to roughly a fifth of that block's own height so it
+  scales with the treemap rather than sitting at a fixed pixel size.
+- **`typography.blockHeader`** — Barlow Condensed 800, uppercase. Each
+  family block's header (name + member count), solved down from the block's
+  available width until the longest word fits without wrapping past the
+  block's header row.
+- **`typography.subLabel`** — Barlow Condensed 700, uppercase, 70% opacity
+  ink. A subcategory sub-box's label, floored at 70% of the largest sibling
+  label's size on the same canvas so no narrow sub-box shrinks its label
+  into a smudge.
+- **`typography.body`** — Barlow 400. Tile/row descriptions and the
+  masthead paragraph, both solved the same way as the headers: decreasing
+  size until the text fits the room actually available.
+- **`typography.label`** — Barlow 600. Tile and row company names, the
+  detail panel's field labels, and the jump-sheet's category rows.
 
-Font sizing is intentionally small throughout (11–13px for anything below the hero) — this is a dense, scannable directory of many companies, not a content-reading surface.
+Font sizing is entirely a function of the block or tile's own computed
+pixel size, never a fixed breakpoint — this is deliberate: the same "family
+of a dozen sizes, all solved the same way" rule applies whether the canvas
+is 2000px wide on a desktop or 500px wide on a phone.
 
-## Layout
+## Layout: the treemap packer
 
-The page is a single centered column, `max-width: 1400px`, with three stacked regions: hero header, sticky filter bar, and content grid.
+`layout()` builds one integer-cell grid per canvas: it lays out five
+family blocks (plus a masthead block sized to match the Data Center
+Operators block beside it) using a recursive area-proportional split
+(`tileInt`), sized so each block's cell count matches its member count
+(plus room for its own sub-box packing, `packCat`), then repeats block
+sizing for a few passes so a family that needed more room than its first
+guess settles into its real shape. Operators is pinned top-left; the
+masthead sits beside it at a fixed width fraction of the canvas; everything
+else packs largest-to-smallest into the remaining band. A member tile is a
+fixed `168×190px` cell (`CELL_W`/`CELL_H`) plus a `14px` gap and `7px`
+inset (`GAP`/`TIN`) — the packer places whole cells, never a fractional
+tile, so nothing can straddle the grid.
 
-The filter bar (`.l1-filter-inner` / `.l1-subfilter-inner`) uses `display: flex; flex-wrap: wrap;` with an `8px`/`6px` gap — **this is a deliberate mobile-usability fix, not a default flex layout.** An earlier version (or a naive implementation) could reach for `overflow-x: auto` to let a long chip row scroll horizontally; this template explicitly wraps chips onto new lines instead, so on narrow viewports every filter stays visible and tappable without a horizontal-scroll gesture that's easy to miss on mobile. See Do's and Don'ts.
+## Zoom tiers
 
-The member grid uses CSS Grid: `grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))` with a `16px` (`spacing.lg`) gap — cards reflow automatically to fill available width at any viewport size, no explicit breakpoints needed.
+The Map view is pannable and zoomable (pointer drag, wheel, pinch), and a
+tile's own detail is a function of the current zoom level, not a separate
+setting: `dot` (zoomed out — a colored dot per member, no logos) below
+`0.2`, `logo` (logo only) below `0.5`, `name` (logo + company name) below
+`0.95`, and `card` (logo + name + description + host, the full row-card
+detail) above that. This keeps ~320 members legible at every zoom level
+without a separate "detail" toggle.
 
-Spacing follows a loose scale from `spacing.xs` (4px, unused directly but rounds the smallest observed gaps of 5–6px) up to `spacing.5xl` (80px, bottom content padding). Notable concrete values: hero header padding `48px 20px 40px`; filter bar padding `12px 20px`; card padding `20px 16px`; disclaimer padding `10px 16px`. A few odd values (subfilter chip padding `5px 12px`, main chip padding `8px 14px`) don't land exactly on the token scale — they're shipped as literal CSS values in the component definitions above rather than forced onto a token that doesn't quite fit.
+## List view
 
-## Elevation & Depth
+The List view groups the same data into sticky-headed family sections and,
+within each, subcategory groups — a member whose subcategory is blank falls
+into that family's synthesized "Other services"/"Other construction"/"Other
+technology" group. Below `700px` viewport width the grid becomes a single
+column of taller row-cards with a visible description; at or above it, a
+denser multi-column grid of compact square cards.
 
-The design is largely flat — no persistent shadows on chips, cards, or the header. The only elevation cues are interactive:
+## Detail panel
 
-- **Card hover**: `box-shadow: 0 4px 16px rgba(0,61,166,.12)` plus `transform: translateY(-2px)`, paired with the border switching to `colors.blue`. A soft, brand-tinted lift rather than a neutral gray shadow.
-- **Sticky filter bar**: `position: sticky; top: 0; z-index: 100`, so it's the one element that visually stacks above scrolling content, backed by a plain `2px solid grayBg` bottom border rather than a shadow.
-
-## Shapes
-
-Two distinct corner-radius families signal two different kinds of surface:
-
-- **Pills** (`rounded.xl` 20px main filter chips, `rounded.lg` 16px subfilter chips) — fully rounded, capsule-shaped controls. Pills read as flat, toggleable, browsable — closer to tags than buttons — matching the "flat browsable feel" the filter bar is going for.
-- **Rounded rectangles** (`rounded.md` 8px member cards, `rounded.sm` 6px disclaimer box) — softened corners but still clearly rectangular, appropriate for content containers rather than interactive toggles.
-
-The count badge inside each chip (`rounded.badge`, 10px) is a small pill-within-a-pill, using a semi-transparent black/white overlay rather than a solid color so it stays legible in both the chip's resting and active states.
-
-## Components
-
-- **`hero-header`** — the gradient banner at the top of the page: logo, `typography.h1` title, `typography.subtitle` byline.
-- **`filter-chip`** / **`filter-chip-active`** — top-level category toggle. Resting state is a white pill with a gray border and muted text; active state fills solid `colors.blue` with white text and a heavier weight.
-- **`subfilter-chip`** / **`subfilter-chip-active`** — second-tier toggle nested under an active category filter, only rendered when the selected category has subcategories with matching members. Resting state sits on `colors.grayBg` (no white/gray-border pairing like the main chip, since it's already inside the filter bar's white surface); active state fills `colors.blueMid`, intentionally one shade lighter than the main chip's active `colors.blue` to keep the visual hierarchy between the two chip tiers legible.
-- **`member-card`** — the repeating unit of the grid: logo (grayscale until hover), `typography.cardName`, and a hover-revealed `typography.body` description plus an optional "Read intro post" link.
-- **`disclaimer-box`** — the informational note above the grid, using a very light blue tint (`rgba(0,61,166,.06)` background, `rgba(0,61,166,.15)` border) rather than a token color, so it reads as a quiet aside rather than competing with the brand-blue chips above it.
-
-Border treatments aren't part of the strict token schema's component sub-tokens (`backgroundColor`, `textColor`, `typography`, `rounded`, `padding`, `size`/`height`/`width`), so they're recorded here instead of in the front matter: `filter-chip` is `1.5px solid {colors.grayBg}` resting, `1.5px solid {colors.blue}` active; `subfilter-chip` is `1.5px solid transparent` in both states (no visible border, the fill color alone carries the active state); `member-card` is `1.5px solid {colors.grayBg}` resting, `1.5px solid {colors.blue}` on hover; `disclaimer-box` is `1px solid rgba(0,61,166,.15)`.
+Clicking a tile or row opens a slide-in panel with the company's display
+name, official name (when they differ), category/subcategory tags, full
+description, website, and — for a `website-only` roster entry — an amber
+pending-membership notice (`colors.warn`) rather than presenting it as a
+confirmed member.
 
 ## Do's and Don'ts
 
 **Do**
-- Do keep the filter bar's `display: flex; flex-wrap: wrap;` behavior — chips should wrap onto additional lines as needed.
-- Do use `colors.blue` for the top-level active state and `colors.blueMid` for the subfilter active state, preserving the one-shade-lighter relationship between the two tiers.
-- Do keep card descriptions and the "Read intro post" link hover-only — the resting grid is meant to be scanned by logo + name alone.
+- Do keep every block/tile dimension and font size as a JS-computed pixel
+  value tied to the canvas's actual size — never hardcode a size that only
+  happens to look right at one viewport width.
+- Do add a new family by adding one `{slug, hue, chromaK}` entry to
+  `fdca-categories.json`, not by hand-picking a hex color here.
+- Do keep the zoom tiers a pure function of `this.v.k` (the current zoom
+  scale) — never a separate, independently-toggleable "detail level".
 
 **Don't**
-- **Don't reintroduce horizontal-scrolling filter bars (`overflow-x: auto`)** — the flex-wrap chip layout was a deliberate mobile-usability fix, not a stylistic choice. A single-row, scroll-to-see-more filter bar hides options on mobile in a way that's easy to miss; wrapping keeps every filter visible and tappable at any viewport width.
-- Don't mix pill radii (`rounded.lg` / `rounded.xl`) onto card-type surfaces, or the `rounded.md` / `rounded.sm` rectangle radii onto chips — the pill-vs-rectangle split is what visually distinguishes "toggle" from "content container" throughout the page.
-- Don't apply `typography.h1`'s condensed/uppercase/extra-bold treatment to more than the single hero heading — it's meant to stay a one-time visual accent, not a heading style reused down the hierarchy.
+- Don't reintroduce a CSS Grid/flexbox layout for the Map view's blocks or
+  tiles — their positions are treemap output, not CSS-expressible without
+  duplicating the packer in CSS.
+- Don't add a sixth family hue within 30° of an existing one; the OKLCH
+  gamut-clamp already pushes each hue as far as it safely can go, so two
+  close hues will read as the same color once clamped.

@@ -20,8 +20,8 @@ Scripts are in `SKILL/scripts/`. They resolve paths relative to the
 `development/` folder:
 
 - `INPUT/` holds the tracked source data and design tokens.
-- `OUTPUT/` holds regenerated artifacts such as `fdca-member-dashboard.html`
-  and `category-proposals.json`.
+- `OUTPUT/` holds regenerated artifacts such as `index.html` and
+  `category-proposals.json`.
 
 ## Normal Checks
 
@@ -36,13 +36,13 @@ python3 SKILL/scripts/build_dashboard.py
 `merge_member_list.py --check` verifies the roster reconciliation without
 writing. `apply_taxonomy.py --check` verifies every category and subcategory
 against `INPUT/fdca-categories.json`. `build_dashboard.py` writes
-`OUTPUT/fdca-member-dashboard.html`.
+`OUTPUT/index.html` (Map and List views of the same five-family taxonomy).
 
 ## Data Maintenance
 
 Use the maintenance scripts only when the relevant source changes:
 
-- `merge_member_list.py` reconciles `INPUT/fdca-member-list-2026-08-29.txt`
+- `merge_member_list.py` reconciles `INPUT/fdca-member-list-2026-08-31.txt`
   into `INPUT/fdca-member-registry.json`.
 - `apply_taxonomy.py` remaps known historical drift and refuses invalid
   taxonomy values.

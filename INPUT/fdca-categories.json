@@ -1,41 +1,74 @@
 {
-  "version": "2.2",
-  "updated": "2026-08-30",
+  "version": "3.1",
+  "updated": "2026-09-11",
   "categories": [
     {
       "slug": "data_center_operators",
       "en": "Data Center Operators",
       "fi": "Datakeskusoperaattorit",
+      "hue": 170,
+      "chromaK": 0.72,
       "subcategories": []
     },
     {
-      "slug": "connectivity",
-      "en": "Connectivity",
-      "fi": "Tietoliikenneyhteydet",
-      "subcategories": []
+      "slug": "technology_vendors",
+      "en": "Technology Vendors",
+      "fi": "Teknologiatoimittajat",
+      "hue": 300,
+      "chromaK": 0.94,
+      "subcategories": [
+        {
+          "slug": "power_systems",
+          "en": "Power Systems",
+          "fi": "Teho- ja sähköjärjestelmät"
+        },
+        {
+          "slug": "cooling_and_heat_recovery",
+          "en": "Cooling and Heat Recovery",
+          "fi": "Jäähdytys ja lämmöntalteenotto"
+        },
+        {
+          "slug": "it_infrastructure",
+          "en": "IT Infrastructure",
+          "fi": "IT-infrastruktuuri"
+        },
+        {
+          "slug": "automation_and_safety",
+          "en": "Automation and Safety",
+          "fi": "Automaatio ja turvallisuus"
+        },
+        {
+          "slug": "building_materials",
+          "en": "Building Materials",
+          "fi": "Rakennusmateriaalit"
+        }
+      ]
     },
     {
-      "slug": "municipalities",
-      "en": "Municipalities",
-      "fi": "Kunnat ja kehitysyhtiöt",
-      "subcategories": []
-    },
-    {
-      "slug": "design_engineering",
-      "en": "Design Engineering",
-      "fi": "Tekninen suunnittelu",
-      "subcategories": []
-    },
-    {
-      "slug": "site_developers",
-      "en": "Site Developers",
-      "fi": "Datakeskuskehittäjät",
-      "subcategories": []
+      "slug": "construction",
+      "en": "Construction",
+      "fi": "Rakentaminen",
+      "hue": 15,
+      "chromaK": 0.95,
+      "subcategories": [
+        {
+          "slug": "general_contractors",
+          "en": "General Contractors",
+          "fi": "Pääurakoitsijat"
+        },
+        {
+          "slug": "specialized_contractors",
+          "en": "Specialized Contractors",
+          "fi": "Erikoisurakoitsijat"
+        }
+      ]
     },
     {
       "slug": "services",
       "en": "Services",
       "fi": "Palvelut",
+      "hue": 100,
+      "chromaK": 0.62,
       "subcategories": [
         {
           "slug": "legal",
@@ -91,63 +124,42 @@
           "slug": "investment",
           "en": "Investment",
           "fi": "Sijoittaminen"
+        },
+        {
+          "slug": "renewable_energy",
+          "en": "Renewable Energy",
+          "fi": "Uusiutuva energia"
+        },
+        {
+          "slug": "connectivity",
+          "en": "Connectivity",
+          "fi": "Tietoliikenneyhteydet"
         }
       ]
     },
     {
-      "slug": "construction",
-      "en": "Construction",
-      "fi": "Rakentaminen",
+      "slug": "planning",
+      "en": "Planning",
+      "fi": "Suunnittelu",
+      "hue": 232,
+      "chromaK": 0.98,
       "subcategories": [
         {
-          "slug": "general_contractors",
-          "en": "General Contractors",
-          "fi": "Pääurakoitsijat"
+          "slug": "design_engineering",
+          "en": "Design Engineering",
+          "fi": "Tekninen suunnittelu"
         },
         {
-          "slug": "specialized_contractors",
-          "en": "Specialized Contractors",
-          "fi": "Erikoisurakoitsijat"
+          "slug": "site_developers",
+          "en": "Site Developers",
+          "fi": "Datakeskuskehittäjät"
+        },
+        {
+          "slug": "municipalities",
+          "en": "Municipalities",
+          "fi": "Kunnat ja kehitysyhtiöt"
         }
       ]
-    },
-    {
-      "slug": "technology_vendors",
-      "en": "Technology Vendors",
-      "fi": "Teknologiatoimittajat",
-      "subcategories": [
-        {
-          "slug": "power_systems",
-          "en": "Power Systems",
-          "fi": "Teho- ja sähköjärjestelmät"
-        },
-        {
-          "slug": "cooling_and_heat_recovery",
-          "en": "Cooling and Heat Recovery",
-          "fi": "Jäähdytys ja lämmöntalteenotto"
-        },
-        {
-          "slug": "it_infrastructure",
-          "en": "IT Infrastructure",
-          "fi": "IT-infrastruktuuri"
-        },
-        {
-          "slug": "automation_and_safety",
-          "en": "Automation and Safety",
-          "fi": "Automaatio ja turvallisuus"
-        },
-        {
-          "slug": "building_materials",
-          "en": "Building Materials",
-          "fi": "Rakennusmateriaalit"
-        }
-      ]
-    },
-    {
-      "slug": "renewable_energy",
-      "en": "Renewable Energy",
-      "fi": "Uusiutuva energia",
-      "subcategories": []
     }
   ]
 }
