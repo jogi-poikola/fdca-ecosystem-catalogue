@@ -21,6 +21,7 @@ atNorth Oy
 Aurora Infrastructure Oy
 Avarn Security Oy
 Avesco Oy
+Axians
 Axpo Finland Oy
 Barona
 BCC Solutions Oy
@@ -32,6 +33,7 @@ Borealis Finland Oy
 Borenius Attorneys Ltd
 Bravida Finland Oy
 Carrier OY
+Carslsson RPS Oy
 Caverion Suomi Oy
 CBRE
 Celltech Oy
@@ -40,6 +42,7 @@ CFE Finland Oy
 C-Fiber Hanko Oy / Hanko Data Parks
 CG PROFESSIONAL / Caupo Group Oy
 Chatsworth Products (CPI)
+Christian Berner Oy
 Cibes Amslift Oy
 City of Kajaani
 CommScope Solutions Finland, Oy
@@ -51,6 +54,7 @@ Convergint Finland Oy
 Convergint Finland Oy
 Cores OY
 Costiom OY
+Cronos Digital Safety Solutions Oy
 CSC - Tieteen tietotekniikan keskus Oy
 CTS Nordics Oy
 Cursor Oy
@@ -65,6 +69,7 @@ Delta Solutions (Finland) Oy
 Demirer Kablo (ZTT Group)
 Despro Engineering Oy
 Destia
+DHL Global Forwarding
 Digita Oy
 Digitalland Services FI
 DLA Piper Finland Attorneys
@@ -88,6 +93,8 @@ Enerke Oy
 Enersense International Oyj
 Enico Oy
 Enkom Active Oy
+Eolus Finland Oy
+EPC Power OY
 Equinix (Finland) Oy
 ETD Finland Oy
 Etha Oy
@@ -113,11 +120,13 @@ GagaMuller
 Gasum Oyj
 Geberit Oy
 Georg Fischer AB
+Glamox Oy
 Gleeds Suomi
 Granlund Oy
 Greensky Energy Oy
 GRID SOLUTIONS OY
 GRK Suomi Oy
+Hartela Oy
 H&MV Engineering
 H. Vesala Oy
 Hannes Snellman Attorneys Ltd
@@ -130,6 +139,7 @@ Hitachi Energy Finland Oy
 Honeywell
 Huawei Technologies Oy (Finland) Co. Ltd
 HVAC Partners Oy
+Hybeko Oy
 Hydac Oy
 Hyperco Oy
 Hytrade Oy
@@ -197,10 +207,12 @@ Neoen Renewables Finland Oy
 NIHAK
 Nimlas Finland Oy
 NKT (Sweden) AB
+NOAR Oy
 Nohewa Finland Oy
 NOKIA SOLUTIONS AND NETWORKS OY
 Nordec Oy
 Nordecon Oy
+Nordpel Oy
 NordTech Energy
 Nova Complex (Finland) Holdco Oy
 Nscale
@@ -220,6 +232,7 @@ Park Place Technologies
 PD Power Oy
 Peab Oy
 Peltitarvike Oy
+Peswin Oy
 Pneumacon Oy
 Pohjan Voima Oy
 POK Group Oy
@@ -249,6 +262,7 @@ Rudus Oy
 Ruukki Construction Oy
 Saint-Gobain
 Salboheds
+Salto Systems Oy
 sansaino
 Schneider Electric Finland Oy
 Securitas Technology Oy
@@ -282,10 +296,12 @@ Teräselementti Oy
 TKF Power Quality Oy
 TRANE POLAND SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ
 Trutec Oy
+TT-Teknologia Oy
 Tuike Finland Oy (Google)
 UPS Tech Oy
 Vaisala Oyj
 Valorem Energies Finland Oy
+Varte Oy
 Vattenfall Oy
 Vepe Security Oy
 Verne Vantaa Oy

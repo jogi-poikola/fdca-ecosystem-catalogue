@@ -16,7 +16,7 @@ development/
   INPUT/
     DESIGN.md
     fdca-categories.json
-    fdca-member-list-2026-08-29.txt
+    fdca-member-list-2026-08-31.txt
     fdca-member-registry.json
   SKILL/
     SKILL.md
@@ -39,18 +39,40 @@ inputs.
 
 ## Current Data State
 
-As of 2026-08-31, `INPUT/fdca-member-registry.json` contains 326 entries:
+As of 2026-09-07, `INPUT/fdca-member-registry.json` contains 339 entries:
 
-- 308 `on-roster` entries from FDCA's member roster.
-- 18 `website-only` entries listed on fdca.fi but not on the roster. These
+- 324 `on-roster` entries from FDCA's member roster.
+- 15 `website-only` entries listed on fdca.fi but not on the roster. These
   are not confirmed members until FDCA's office resolves them.
-- 326 entries categorised against `INPUT/fdca-categories.json`.
-- 325 entries with websites. `Stoa Technologies Oy` deliberately has none.
-- 326 entries with a usable description.
+- 323 entries categorised against `INPUT/fdca-categories.json`.
+- 322 entries with websites. `Stoa Technologies Oy` deliberately has none.
+- 323 entries with a usable description.
 - 209 FDCA introduction posts with real article text and no stored scrape
   error markers.
+- 6 entries carry a `note` field recording the office's answer for why they
+  are not (or not yet) on the roster — see the vault's
+  `50-59-members/52-member-services/ecosystem-catalogue/index.md` "Pending"
+  section for the full 2026-09-07 reconciliation.
 
-The roster file has 309 nonblank lines but 308 unique names because
+16 members approved on 2026-08-31 are roster stubs: name and `roster_status`
+only, with no website, category, description, or logo. Run
+`enrich_members.py` and `apply_taxonomy.py` to fill them, which is why the
+three counts above stop short of 339.
+
+The office resolved 9 of the 18 original `website-only` entries on
+2026-09-07: 3 were folded into an existing roster entry under a confirmed
+alias (`IQSIGHT` → `Keenfinity Sweden AB`, `Liekkiloukku` → `Fintekra Oy`,
+`Oomi Oy` → `Lumme Energia Oy`, all now in `ALIASES` /
+`DISPLAY_PRIMARY` in `merge_member_list.py`), 3 were confirmed no longer
+members (`Bergmann`, `Logiservice`, `NRT Tietoliikenne`), and 2
+(`Rentaload`, `UTU Group`) are confirmed new members still waiting on
+billing details before they can be added to the roster file. Applied by
+hand against the live file, reusing `fold()` for the three merges — never
+by a full `merge_member_list.py` rebuild, which drops `url_status` and
+loses any earlier fold's `folded_from` (see the vault's
+`member-registry-merge-is-lossy` note).
+
+The roster file has 325 nonblank lines but 324 unique names because
 `Convergint Finland Oy` appears twice. `merge_member_list.py` deduplicates
 that line by normalised name.
 
@@ -75,7 +97,7 @@ The dashboard build writes `OUTPUT/fdca-member-dashboard.html`.
 | File | Role |
 |---|---|
 | `INPUT/fdca-member-registry.json` | Current local catalogue dataset: roster status, names, category, website, logo, intro-post link, article text, and public description. |
-| `INPUT/fdca-member-list-2026-08-29.txt` | FDCA's dated member roster source. It owns official membership names. |
+| `INPUT/fdca-member-list-2026-08-31.txt` | FDCA's dated member roster source. It owns official membership names. |
 | `INPUT/fdca-categories.json` | Category taxonomy copied from the FDCA website repository so this folder can validate itself. |
 | `INPUT/DESIGN.md` | Design tokens used by the dashboard builder. |
 

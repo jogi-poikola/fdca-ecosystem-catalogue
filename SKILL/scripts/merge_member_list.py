@@ -44,8 +44,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 INPUT_DIR = ROOT / "INPUT"
 REGISTRY_PATH = INPUT_DIR / "fdca-member-registry.json"
-LIST_PATH = INPUT_DIR / "fdca-member-list-2026-08-29.txt"
-LIST_DATE = "2026-08-29"
+LIST_PATH = INPUT_DIR / "fdca-member-list-2026-08-31.txt"
+LIST_DATE = "2026-08-31"
 
 # The scraped fields a fold fills in from a secondary entry.
 SCRAPED_FIELDS = (
@@ -97,6 +97,10 @@ ALIASES = {
     "T-DRILL Industries": "Leinolat Group Oy",  # T-DRILL is one of the Leinolat Group's companies
     "Navitas Yrityspalvelut": "Navitas Kehitys Oy",  # both are Varkaus regional development bodies
     "Worker Henkilöstöratkaisut": "Worker Oulu Oy",  # the roster names only the Oulu company
+    # Confirmed by FDCA's office, 2026-09-07.
+    "IQSIGHT": "Keenfinity Sweden AB",  # IQSIGHT is Keenfinity's Bosch-branded security-camera brand
+    "Liekkiloukku": "Fintekra Oy",  # Liekkiloukku is Fintekra's fire-protection product line
+    "Oomi Oy": "Lumme Energia Oy",  # Oomi is the rebrand; billing still carries the old name
 }
 
 # roster name -> the registry entry whose name becomes the display name, for
@@ -112,10 +116,31 @@ DISPLAY_PRIMARY = {
     # The roster names the group, so the group name wins over its subsidiary's
     # brand page and the T-DRILL scrape contributes only what Leinolat lacks.
     "Leinolat Group Oy": "Leinolat Group Oy",
+    # Both "Lumme Energia Oy" and "Oomi Oy" are scraped fdca.fi pages for the
+    # same company; Oomi is the current public brand, confirmed by FDCA's
+    # office 2026-09-07, even though billing still carries the old name.
+    "Lumme Energia Oy": "Oomi Oy",
 }
 
 # Why a registry entry is not on the roster, where the reason is known.
-FORMER_NOTES = {}
+FORMER_NOTES = {
+    # Confirmed by FDCA's office, 2026-09-07.
+    "Bergmann": "Confirmed resigned; logo removed from fdca.fi.",
+    "Logiservice": "Confirmed no longer a member; logo removed from fdca.fi.",
+    "NRT Tietoliikenne": "Confirmed no longer a member; logo removed from fdca.fi.",
+    "L2 Paloturvallisuus Oy, a Jensen Hughes Company": (
+        "Asked FDCA's office whether still a member; was on a previous "
+        "roster, no resignation found. Unresolved as of 2026-09-07."
+    ),
+    "Rentaload": (
+        "Confirmed new member by email; not yet on the roster list because "
+        "billing details are still pending from FDCA's office, 2026-09-07."
+    ),
+    "UTU Group": (
+        "Confirmed new member by email; not yet on the roster list because "
+        "billing details are still pending from FDCA's office, 2026-09-07."
+    ),
+}
 
 SUFFIX = (
     r"(oy ab|oyj|oy|ab|ltd|limited|a/s|as|plc|inc|corp|corporation"

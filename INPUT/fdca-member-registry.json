@@ -326,6 +326,20 @@
     "url_status": "confirmed"
   },
   {
+    "official_name": "Axians",
+    "display_name": "Axians",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
+  },
+  {
     "official_name": "Axpo Finland Oy",
     "display_name": "Axpo Finland Oy",
     "roster_status": "on-roster",
@@ -483,6 +497,20 @@
     "url_status": "confirmed"
   },
   {
+    "official_name": "Carslsson RPS Oy",
+    "display_name": "Carslsson RPS Oy",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
+  },
+  {
     "official_name": "Caverion Suomi Oy",
     "display_name": "Caverion Suomi Oy",
     "roster_status": "on-roster",
@@ -580,6 +608,20 @@
     "logo_url": "https://www.chatsworth.com/img/cpi_logo.svg",
     "researched": "firecrawl-2026-08-30",
     "url_status": "confirmed"
+  },
+  {
+    "official_name": "Christian Berner Oy",
+    "display_name": "Christian Berner Oy",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
   },
   {
     "official_name": "Cibes Amslift Oy",
@@ -723,6 +765,20 @@
     "logo_url": "http://static1.squarespace.com/static/65292085d6374349a5da73f5/t/65588a3eb00d2b2015f62449/1700301375054/logo1.png?format=1500w",
     "researched": "firecrawl-2026-08-30",
     "url_status": "confirmed"
+  },
+  {
+    "official_name": "Cronos Digital Safety Solutions Oy",
+    "display_name": "Cronos Digital Safety Solutions Oy",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
   },
   {
     "official_name": "CSC - Tieteen tietotekniikan keskus Oy",
@@ -948,6 +1004,20 @@
     "web_search_content": "Provides construction and maintenance of roads, railways, and civil infrastructure. Also relevant for data center site access roads and utility connections.",
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2026/02/Destia-FDCA.jpg",
     "url_status": "confirmed"
+  },
+  {
+    "official_name": "DHL Global Forwarding",
+    "display_name": "DHL Global Forwarding",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
   },
   {
     "official_name": "Digita Oy",
@@ -1263,6 +1333,34 @@
     "url_status": "confirmed"
   },
   {
+    "official_name": "Eolus Finland Oy",
+    "display_name": "Eolus Finland Oy",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
+  },
+  {
+    "official_name": "EPC Power OY",
+    "display_name": "EPC Power OY",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
+  },
+  {
     "official_name": "ebm-papst Oy",
     "display_name": "Epm-papst Oy",
     "roster_status": "on-roster",
@@ -1498,16 +1596,16 @@
   },
   {
     "official_name": "Fintekra Oy",
-    "display_name": "Fintekra Oy",
+    "display_name": "Liekkiloukku",
     "roster_status": "on-roster",
-    "source": "member-list-2026-08-29",
-    "url": "http://www.fintekra.fi/",
-    "category": "design_engineering",
-    "subcategory": "",
-    "blog_link": null,
-    "blog_content": null,
-    "web_search_content": "Fintekra Oy Fintekra Oy on teollisuuden projekteihin erikoistunut täyden palvelun insinööritoimisto. Olemme tunnettu ja luotettu toimija, jonka ensiluokkainen palvelu ...",
-    "logo_url": "http://www.fintekra.fi/wp-content/themes/fintekra/images/fintekra_logo.png",
+    "source": "fdca.fi-scrape",
+    "url": "https://www.liekkiloukku.fi",
+    "category": "technology_vendors",
+    "subcategory": "automation_and_safety",
+    "blog_link": "https://www.fdca.fi/introducing-our-new-member-liekkiloukku/",
+    "blog_content": "The\nLiekkiloukku\n® provides the best possible protection against transformer fires and environmental damage.\nAffordable installation, maintenance and service costs generate savings throughout the entire life cycle. We meet fire, environmental and occupational safety requirements.",
+    "web_search_content": "Finnish fire protection product company providing specialist fire barriers and sealing solutions for cable penetrations in technical buildings.",
+    "logo_url": "https://www.fdca.fi/wp-content/uploads/2026/01/Liekkiloukku-FDCA.jpg",
     "researched": "firecrawl-2026-08-30",
     "url_status": "confirmed"
   },
@@ -1653,6 +1751,20 @@
     "url_status": "confirmed"
   },
   {
+    "official_name": "Glamox Oy",
+    "display_name": "Glamox Oy",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
+  },
+  {
     "official_name": "Gleeds Suomi",
     "display_name": "Gleeds",
     "roster_status": "on-roster",
@@ -1779,6 +1891,20 @@
     "web_search_content": "Nordic law firm providing legal services in real estate, energy, construction, and corporate matters for data center investors and operators.",
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2024/06/Hannes-Snellman-FDCA.jpg",
     "url_status": "confirmed"
+  },
+  {
+    "official_name": "Hartela Oy",
+    "display_name": "Hartela Oy",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
   },
   {
     "official_name": "Helen Oy",
@@ -1910,6 +2036,20 @@
     "web_search_content": "Finnish HVAC engineering and project management firm delivering ventilation, cooling, and heat-recovery design for demanding industrial and data center sites, from pre-planning through commissioning.",
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2026/05/HVAC-Partners-FDCA.jpg",
     "url_status": "confirmed"
+  },
+  {
+    "official_name": "Hybeko Oy",
+    "display_name": "Hybeko Oy",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
   },
   {
     "official_name": "Hydac Oy",
@@ -2224,16 +2364,16 @@
   },
   {
     "official_name": "Keenfinity Sweden AB",
-    "display_name": "Keenfinity Sweden AB",
+    "display_name": "IQSIGHT",
     "roster_status": "on-roster",
-    "source": "member-list-2026-08-29",
-    "url": "https://www.keenfinity-group.com/xc/en/",
+    "source": "fdca.fi-scrape",
+    "url": "https://www.iqsight.fi",
     "category": "technology_vendors",
     "subcategory": "automation_and_safety",
-    "blog_link": null,
-    "blog_content": null,
-    "web_search_content": "Professional Audio and Security Solutions | Keenfinity Group I Global For professional audio and security solutions, Keenfinity Group is the preferred partner. Benefit from our worldwide expertise.",
-    "logo_url": "https://www.keenfinity-group.com/media/pb/images/about_us/keenfinity-logo.jpg",
+    "blog_link": "https://www.fdca.fi/introducing-our-new-member-iqsight/",
+    "blog_content": "Introducing\nIQSIGHT\n— an intelligence-first security company built on the trusted foundation of Bosch*. Our name is new, but our commitment to quality, reliability, and performance remains unchanged.\nIQSIGHT solutions bring sight and intelligence together in real time, turning video security into understanding when it matters most.\nThe result: clearer decisions, faster response, and security you can rely on.\n*IQSIGHT is the manufacturer of Bosch branded video security cameras and solutions.",
+    "web_search_content": "Finnish technology company providing monitoring and management solutions for critical infrastructure.",
+    "logo_url": "https://www.fdca.fi/wp-content/uploads/2026/02/IQSIGHT-FDCA.jpg",
     "researched": "firecrawl-2026-08-30",
     "url_status": "confirmed"
   },
@@ -2542,16 +2682,16 @@
   },
   {
     "official_name": "Lumme Energia Oy",
-    "display_name": "Lumme Energia Oy",
+    "display_name": "Oomi Oy",
     "roster_status": "on-roster",
     "source": "fdca.fi-scrape",
-    "url": "https://www.lumme-energia.fi",
+    "url": "https://www.oomi.fi/",
     "category": "renewable_energy",
     "subcategory": "",
     "blog_link": null,
     "blog_content": null,
-    "web_search_content": "Finnish electricity retailer serving households and businesses in central Finland, including power supply services for data center operations.",
-    "logo_url": "https://www.fdca.fi/wp-content/uploads/2024/05/LummeEnergia-netti.jpg",
+    "web_search_content": "Finnish electricity retailer jointly owned by regional energy companies including Lumme Energia. Provides electricity retail services to households and businesses across Finland. Listed on FDCA members page with link to lumme-energia.fi.",
+    "logo_url": "https://www.fdca.fi/wp-content/uploads/2024/05/Oomi-FDCA.png",
     "url_status": "confirmed"
   },
   {
@@ -2812,6 +2952,20 @@
     "url_status": "confirmed"
   },
   {
+    "official_name": "NOAR Oy",
+    "display_name": "NOAR Oy",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
+  },
+  {
     "official_name": "Nohewa Finland Oy",
     "display_name": "Nohewa",
     "roster_status": "on-roster",
@@ -2867,6 +3021,20 @@
     "logo_url": "https://nordecon.fi/assets/favicons/apple-touch-icon.png",
     "researched": "firecrawl-2026-08-30",
     "url_status": "confirmed"
+  },
+  {
+    "official_name": "Nordpel Oy",
+    "display_name": "Nordpel Oy",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
   },
   {
     "official_name": "NordTech Energy",
@@ -3141,6 +3309,20 @@
     "web_search_content": "Finnish family-owned manufacturer of metal products for construction, HVAC and roofing. Known for drainage products, roof safety anchors and lifeline systems. Founded 1965.",
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2026/03/Peltitarvike-FDCA.jpg",
     "url_status": "confirmed"
+  },
+  {
+    "official_name": "Peswin Oy",
+    "display_name": "Peswin Oy",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
   },
   {
     "official_name": "Pneumacon Oy",
@@ -3554,6 +3736,20 @@
     "web_search_content": "Nordic infrastructure services company, part of the Eleda Group. Founded 2005. Strong safety culture with annual Construction Safety Day. Active in critical infrastructure across the Nordics.",
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2026/03/Salboheads-FDCA.jpg",
     "url_status": "confirmed"
+  },
+  {
+    "official_name": "Salto Systems Oy",
+    "display_name": "Salto Systems Oy",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
   },
   {
     "official_name": "sansaino",
@@ -4030,6 +4226,20 @@
     "url_status": "confirmed"
   },
   {
+    "official_name": "TT-Teknologia Oy",
+    "display_name": "TT-Teknologia Oy",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
+  },
+  {
     "official_name": "Oy U-Cont Ltd",
     "display_name": "U-Cont",
     "roster_status": "on-roster",
@@ -4084,6 +4294,20 @@
     "web_search_content": "French independent green energy developer and IPP operating in Finland. Wind, solar, energy storage, data center development. Has Matkussaari wind farm in Finland. 530+ employees across 6 countries.",
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2026/04/Valorem-FDCA.jpg",
     "url_status": "confirmed"
+  },
+  {
+    "official_name": "Varte Oy",
+    "display_name": "Varte Oy",
+    "roster_status": "on-roster",
+    "source": "member-list-2026-08-31",
+    "url": null,
+    "category": "uncategorised",
+    "subcategory": "",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": null,
+    "logo_url": null,
+    "researched": null
   },
   {
     "official_name": "Vattenfall Oy",
@@ -4440,7 +4664,8 @@
     "blog_content": null,
     "web_search_content": "Finnish company providing technical products and services for industrial facilities.",
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2021/04/Bergmann.png",
-    "url_status": "confirmed"
+    "url_status": "confirmed",
+    "note": "Confirmed resigned; logo removed from fdca.fi."
   },
   {
     "official_name": null,
@@ -4486,20 +4711,6 @@
   },
   {
     "official_name": null,
-    "display_name": "IQSIGHT",
-    "roster_status": "website-only",
-    "source": "fdca.fi-scrape",
-    "url": "https://www.iqsight.fi",
-    "category": "technology_vendors",
-    "subcategory": "automation_and_safety",
-    "blog_link": "https://www.fdca.fi/introducing-our-new-member-iqsight/",
-    "blog_content": "Introducing\nIQSIGHT\n— an intelligence-first security company built on the trusted foundation of Bosch*. Our name is new, but our commitment to quality, reliability, and performance remains unchanged.\nIQSIGHT solutions bring sight and intelligence together in real time, turning video security into understanding when it matters most.\nThe result: clearer decisions, faster response, and security you can rely on.\n*IQSIGHT is the manufacturer of Bosch branded video security cameras and solutions.",
-    "web_search_content": "Finnish technology company providing monitoring and management solutions for critical infrastructure.",
-    "logo_url": "https://www.fdca.fi/wp-content/uploads/2026/02/IQSIGHT-FDCA.jpg",
-    "url_status": "confirmed"
-  },
-  {
-    "official_name": null,
     "display_name": "KSBR",
     "roster_status": "website-only",
     "source": "fdca.fi-scrape",
@@ -4524,21 +4735,8 @@
     "blog_content": null,
     "web_search_content": "Fire protection engineering and consulting company, Finnish unit of Jensen Hughes. Provides fire safety analysis, suppression system design for critical facilities.",
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2025/01/L2-Paloturvallisuus-Oy.png",
-    "url_status": "confirmed"
-  },
-  {
-    "official_name": null,
-    "display_name": "Liekkiloukku",
-    "roster_status": "website-only",
-    "source": "fdca.fi-scrape",
-    "url": "https://www.liekkiloukku.fi",
-    "category": "technology_vendors",
-    "subcategory": "automation_and_safety",
-    "blog_link": "https://www.fdca.fi/introducing-our-new-member-liekkiloukku/",
-    "blog_content": "The\nLiekkiloukku\n® provides the best possible protection against transformer fires and environmental damage.\nAffordable installation, maintenance and service costs generate savings throughout the entire life cycle. We meet fire, environmental and occupational safety requirements.",
-    "web_search_content": "Finnish fire protection product company providing specialist fire barriers and sealing solutions for cable penetrations in technical buildings.",
-    "logo_url": "https://www.fdca.fi/wp-content/uploads/2026/01/Liekkiloukku-FDCA.jpg",
-    "url_status": "confirmed"
+    "url_status": "confirmed",
+    "note": "Asked FDCA's office whether still a member; was on a previous roster, no resignation found. Unresolved as of 2026-09-07."
   },
   {
     "official_name": null,
@@ -4552,7 +4750,8 @@
     "blog_content": null,
     "web_search_content": "Finnish facility management and maintenance services company providing technical operations support for buildings and industrial facilities.",
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2021/04/Logiservice.png",
-    "url_status": "confirmed"
+    "url_status": "confirmed",
+    "note": "Confirmed no longer a member; logo removed from fdca.fi."
   },
   {
     "official_name": null,
@@ -4566,21 +4765,8 @@
     "blog_content": null,
     "web_search_content": "Finnish telecom cabling and network infrastructure company.",
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2023/03/NRT-tietoliikenne-FDCA.jpg",
-    "url_status": "confirmed"
-  },
-  {
-    "official_name": null,
-    "display_name": "Oomi Oy",
-    "roster_status": "website-only",
-    "source": "fdca.fi-scrape",
-    "url": "https://www.oomi.fi/",
-    "category": "renewable_energy",
-    "subcategory": "",
-    "blog_link": null,
-    "blog_content": null,
-    "web_search_content": "Finnish electricity retailer jointly owned by regional energy companies including Lumme Energia. Provides electricity retail services to households and businesses across Finland. Listed on FDCA members page with link to lumme-energia.fi.",
-    "logo_url": "https://www.fdca.fi/wp-content/uploads/2024/05/Oomi-FDCA.png",
-    "url_status": "confirmed"
+    "url_status": "confirmed",
+    "note": "Confirmed no longer a member; logo removed from fdca.fi."
   },
   {
     "official_name": null,
@@ -4594,7 +4780,8 @@
     "blog_content": "Market leader in rental of load banks and data center commissioning support services. 300+ MW load bank fleet, 300+ commissioning projects per year across Europe, USA, and globally.",
     "web_search_content": "Provides load bank testing and commissioning support for data centers. Rents load banks and provides engineers to conduct power and cooling commissioning tests.",
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2025/01/Rentaload-FDCA.jpg",
-    "url_status": "confirmed"
+    "url_status": "confirmed",
+    "note": "Confirmed new member by email; not yet on the roster list because billing details are still pending from FDCA's office, 2026-09-07."
   },
   {
     "official_name": null,
@@ -4622,7 +4809,8 @@
     "blog_content": "UTU Group\noffers its customers high-quality and versatile electrical and automation products and services. We are a Nordic player in the electricity sector with the heart of a Finnish family company. We want to understand our customers’ needs and do everything we can to support their operations. We demand the best performance from ourselves, and we take on our customers’ most difficult challenges. From UTU you get the best products and expertise in the field of electricity and automation\nUTU has been electrifying the world for over 100 years. We are involved in the critical points of the electricity sector, both in the electrification of properties, electricity distribution and energy production, as well as in automation solutions. We develop our own production and actively explore future opportunities together with our international suppliers, serving our customers in the northern market area.\nUTU is a successful and growing family company in the fourth generation. Our job is to help our customers to find the best solutions in the field of electricity and automation, and deliver the parts necessary to implement them.\nUTU’s production facilities are located in Finland. We manufacture products such as electrical panels, transformers, and EV  charging stations with a focus on sustainability and responsibility.\nUTU’s suppliers are internationally known pioneers in the electrical industry. The brands we represent and import are strong and trusted industry players, such like Socomec.\nOur slogan is UTU\nCan and Will\n! With this guideline, we intend to serve our customers for the next hundred years.\nUTU by Numbers:\nRevenue 55 ME\n190 employees\n5 countries (Finland, Norway, Estonia, Latvia, Lithuania)\n23.000 products in selection\n104 years old (1919)",
     "web_search_content": "Finnish power electronics and systems integration company. Provides custom power solutions and electrical integration for demanding applications.",
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2024/01/UTU-netti.png",
-    "url_status": "confirmed"
+    "url_status": "confirmed",
+    "note": "Confirmed new member by email; not yet on the roster list because billing details are still pending from FDCA's office, 2026-09-07."
   },
   {
     "official_name": null,
