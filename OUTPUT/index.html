@@ -48,6 +48,7 @@ button { -webkit-tap-highlight-color: transparent; }
     <div id="listPane" style="position:absolute; inset:0; overflow-y:auto; overflow-x:hidden; display:none; touch-action:pan-y; background:var(--canvas-bg); padding:0 0 40px;"></div>
 
     <aside id="detailPanel" data-detail-panel="1" style="position:absolute; top:0; right:0; bottom:0; width:380px; max-width:100%; background:#FFFFFF; border-left:1.5px solid var(--panel-border); box-shadow:-12px 0 34px rgba(2,3,129,.10); z-index:60; display:none; flex-direction:column; animation:panelIn .2s cubic-bezier(.2,0,0,1) both;"></aside>
+    <aside id="categoryPanel" data-cat-panel="1" style="position:absolute; top:0; right:0; bottom:0; width:380px; max-width:100%; background:#FFFFFF; border-left:1.5px solid var(--panel-border); box-shadow:-12px 0 34px rgba(2,3,129,.10); z-index:60; display:none; flex-direction:column; animation:panelIn .2s cubic-bezier(.2,0,0,1) both;"></aside>
 
     <div id="zoomBar" style="position:absolute; left:50%; bottom:18px; transform:translateX(-50%); z-index:50; display:none; align-items:center; gap:7px; background:#FFFFFF; border:1.5px solid var(--panel-border); border-radius:26px; padding:6px; box-shadow:0 10px 30px rgba(2,3,129,.13);">
       <button id="zoomOutBtn" type="button" aria-label="Zoom out" style="border:1.5px solid var(--panel-border); background:#FFFFFF; border-radius:50%; width:32px; height:32px; font-size:16px; color:var(--charcoal); cursor:pointer; line-height:1;">&minus;</button>
@@ -127,12 +128,18 @@ function esc(s) { const d = document.createElement('div'); d.textContent = s == 
 
 class Dash {
   constructor() {
-    this.state = { q: '', sel: null, tier: 'logo', view: null, vw: 0, vh: 0, autoFormat: null, focusCat: null, focusSub: null, sheetOpen: false };
+    this.state = { q: '', sel: null, catPanel: null, tier: 'logo', view: null, vw: 0, vh: 0, autoFormat: null, focusCat: null, focusSub: null, sheetOpen: false };
     this.v = { x: 0, y: 0, k: 1 };
     this.broken = {};
     this.dragged = false;
     this._layout = null; this._layoutKey = null; this._cats = null;
     this.bound = false;
+    // Public comments — fetched once from the Netlify Function backend
+    // (netlify/functions/comments.mjs) and kept in sync locally as people
+    // post; see commentsFor()/postComment(). Empty until loadComments()
+    // resolves, so the page still renders fine standalone (e.g. a local
+    // file:// preview with no backend to fetch from).
+    this.comments = { companies: {}, categories: {} };
   }
 
   isNarrow() { return !!(this.state.vw && this.state.vw < NARROW); }
@@ -147,7 +154,54 @@ class Dash {
     return (m.name + ' ' + (m.official || '') + ' ' + (m.desc || '') + ' ' + m.cat + ' ' + (m.subcat || '')).toLowerCase().indexOf(q) >= 0;
   }
 
-  select(m) { if (this.dragged) { this.dragged = false; return; } this.setState({ sel: m }); }
+  select(m) { if (this.dragged) { this.dragged = false; return; } this.setState({ sel: m, catPanel: null }); }
+
+  loadComments() {
+    fetch('/api/comments')
+      .then(r => (r.ok ? r.json() : null))
+      .then(data => { if (data) { this.comments = data; this.render(); } })
+      .catch(() => {}); // no backend reachable (e.g. a local file:// preview) — comments just stay empty
+  }
+
+  commentsFor(target, key) {
+    const bucket = target === 'company' ? this.comments.companies : this.comments.categories;
+    return (bucket && bucket[key]) || [];
+  }
+
+  renderCommentList(list) {
+    if (!list.length) return '<div style="font-size:12.5px; color:var(--muted);">No comments yet.</div>';
+    return list.slice().reverse().map(c => {
+      const d = new Date(c.ts);
+      const when = isNaN(d) ? '' : d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+      return '<div style="padding:8px 0; border-top:1px solid var(--section-border);">'
+        + '<div style="font-size:13px; line-height:1.5; color:var(--charcoal);">' + esc(c.text) + '</div>'
+        + '<div style="font-size:10.5px; color:var(--muted); margin-top:3px;">' + when + '</div></div>';
+    }).join('');
+  }
+
+  // Posts one comment, updates the local cache from the server's response
+  // (the source of truth), then hands control back to the caller to redraw
+  // just its own comment list — never a full render(), so the panel that
+  // was just typed into doesn't get rebuilt out from under the user.
+  postComment(target, key, text, btn, onDone) {
+    const clean = text.trim();
+    if (!clean || btn.disabled) return;
+    btn.disabled = true;
+    fetch('/api/comments', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ target: target, key: key, text: clean }),
+    })
+      .then(r => r.json().then(data => ({ ok: r.ok, data: data })))
+      .then(({ ok, data }) => {
+        btn.disabled = false;
+        if (!ok) { alert(data.error || 'Could not post comment.'); return; }
+        const bucket = target === 'company' ? this.comments.companies : this.comments.categories;
+        bucket[key] = data.list;
+        onDone();
+      })
+      .catch(() => { btn.disabled = false; alert('Could not post comment — check your connection.'); });
+  }
 
   buildCats() {
     const byCat = {};
@@ -471,11 +525,16 @@ class Dash {
       else this.applyTransform();
     };
     document.addEventListener('pointerdown', e => {
-      if (!this.state.sel) return;
-      if (e.target.closest('[data-detail-panel]') || e.target.closest('button') || e.target.closest('input') || e.target.closest('a')) return;
-      this.setState({ sel: null });
+      const inChrome = e.target.closest('[data-detail-panel]') || e.target.closest('[data-cat-panel]') || e.target.closest('button') || e.target.closest('input') || e.target.closest('a');
+      if (inChrome) return;
+      if (this.state.sel) this.setState({ sel: null });
+      else if (this.state.catPanel) this.setState({ catPanel: null });
     });
-    window.addEventListener('keydown', e => { if (e.key === 'Escape' && this.state.sel) this.setState({ sel: null }); });
+    window.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      if (this.state.sel) this.setState({ sel: null });
+      else if (this.state.catPanel) this.setState({ catPanel: null });
+    });
     window.addEventListener('resize', onResize);
     onResize();
     this.fit();
@@ -573,6 +632,7 @@ class Dash {
     document.getElementById('jumpLabel').textContent = this.state.focusSub || (this.state.focusCat ? (cats.filter(c => c.slug === this.state.focusCat)[0] || {}).meta.label : 'All categories');
     this.renderSheet(cats);
     this.renderDetail();
+    this.renderCategoryPanel();
   }
 
   styleTab(btn, on) {
@@ -630,7 +690,8 @@ class Dash {
       return '<div style="position:absolute; left:' + c.x + 'px; top:' + c.y + 'px; width:' + c.w + 'px; height:' + c.h + 'px; background:' + c.bg + '; border:1.5px solid ' + c.border + '; border-radius:14px;">'
         + '<div style="position:absolute; left:' + c.headPad + 'px; top:0; right:' + c.headPad + 'px; height:' + (PITCH_Y - GAP) + 'px; display:flex; align-items:center; gap:18px; overflow:hidden;">'
         + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:800; font-size:' + c.headFont + 'px; line-height:.95; letter-spacing:.015em; text-transform:uppercase; color:' + c.ink + '; overflow-wrap:anywhere; min-width:0;">' + esc(c.label) + '</span>'
-        + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:' + Math.round(c.headFont * 0.5) + 'px; color:' + c.ink + '; opacity:.45; flex:none;">' + c.count + '</span></div>'
+        + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:' + Math.round(c.headFont * 0.5) + 'px; color:' + c.ink + '; opacity:.45; flex:none;">' + c.count + '</span>'
+        + '<button type="button" data-nodrag="1" data-catcomment="' + c.slug + '" title="Comment on ' + esc(c.label) + '" style="margin-left:auto; flex:none; border:none; background:transparent; cursor:pointer; padding:2px; font-size:' + Math.max(13, Math.round(c.headFont * 0.42)) + 'px; color:' + c.ink + '; opacity:.5; line-height:1;">&#128172;</button></div>'
         + boxes + slabels + tiles + '</div>';
     });
 
@@ -652,6 +713,8 @@ class Dash {
     if (!wrap._bound) {
       wrap._bound = true;
       wrap.addEventListener('click', e => {
+        const catBtn = e.target.closest('[data-catcomment]');
+        if (catBtn) { this.setState({ catPanel: catBtn.dataset.catcomment, sel: null }); return; }
         const el = e.target.closest('[data-midx]');
         if (!el) return;
         this.select(this._mapTileMembers[+el.dataset.midx]);
@@ -699,7 +762,8 @@ class Dash {
       return '<section data-sec="' + c.slug + '" style="margin:0 0 10px;">'
         + '<div style="position:sticky; top:0; z-index:3; display:flex; align-items:baseline; gap:10px; padding:11px 14px 9px; background:' + roleColor(T, 'surface') + '; border-bottom:1.5px solid ' + roleColor(T, 'border') + ';">'
         + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:800; font-size:21px; line-height:1; letter-spacing:.02em; text-transform:uppercase; color:' + roleColor(T, 'ink') + ';">' + esc(c.meta.label) + '</span>'
-        + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:15px; color:' + roleColor(T, 'ink') + '; opacity:.5;">' + n + '</span></div>'
+        + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:15px; color:' + roleColor(T, 'ink') + '; opacity:.5;">' + n + '</span>'
+        + '<button type="button" data-catcomment="' + c.slug + '" title="Comment on ' + esc(c.meta.label) + '" style="margin-left:auto; flex:none; border:none; background:transparent; cursor:pointer; padding:2px; font-size:15px; color:' + roleColor(T, 'ink') + '; opacity:.55; line-height:1;">&#128172;</button></div>'
         + groups.join('') + '</section>';
     }).join('');
 
@@ -716,6 +780,8 @@ class Dash {
     if (!pane._bound) {
       pane._bound = true;
       pane.addEventListener('click', e => {
+        const catBtn = e.target.closest('[data-catcomment]');
+        if (catBtn) { this.setState({ catPanel: catBtn.dataset.catcomment, sel: null }); return; }
         const el = e.target.closest('[data-midx]');
         if (!el) return;
         this.select(members[+el.dataset.midx]);
@@ -815,6 +881,7 @@ class Dash {
     const subTag = sel.subcat ? '<span style="font-size:11.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--charcoal); background:var(--pill-bg); border-radius:16px; padding:4px 11px;">' + esc(sel.subcat.replace(/_/g, ' ')) + '</span>' : '';
     const blogLine = sel.blog ? '<a href="' + esc(sel.blog) + '" target="_blank" rel="noopener" style="font-size:13px; font-weight:600;">Read the FDCA introduction post ↗</a>' : '';
     const flag = sel.rosterStatus === 'website-only' ? '<div style="font-size:11.5px; line-height:1.5; color:' + COLORS.warn + '; background:rgba(176,102,60,.07); border:1px solid rgba(176,102,60,.2); border-radius:6px; padding:9px 12px;">Listed on fdca.fi but not confirmed on the current FDCA roster. Membership pending confirmation by the FDCA office.</div>' : '';
+    const companyComments = this.commentsFor('company', sel.name);
     panel.innerHTML = '<div style="display:flex; align-items:flex-start; gap:12px; padding:20px 20px 14px; border-bottom:1px solid var(--panel-border);">'
       + logo
       + '<button type="button" id="detailClose" aria-label="Close company details" style="margin-left:auto; background:var(--pill-bg); border:none; border-radius:50%; width:32px; height:32px; font-size:16px; color:var(--muted); cursor:pointer; line-height:1; padding-bottom:2px;">&times;</button></div>'
@@ -823,11 +890,53 @@ class Dash {
       + '<div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:11.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:#FFFFFF; background:' + COLORS.blue + '; border-radius:16px; padding:4px 11px;">' + esc(catMeta.label) + '</span>' + subTag + '</div>'
       + '<p style="margin:0; font-size:13.5px; line-height:1.55; color:var(--secondary-text,#6B7280);">' + esc(sel.desc) + '</p>'
       + '<div style="display:flex; flex-direction:column; gap:8px; padding-top:4px;">' + (sel.url ? '<a href="' + esc(sel.url) + '" target="_blank" rel="noopener" style="font-size:13px; font-weight:600;">' + esc(host || 'No website on file') + ' ↗</a>' : '') + blogLine + '</div>'
-      + flag + '</div>';
+      + flag
+      + '<div style="display:flex; flex-direction:column; gap:8px; border-top:1px solid var(--panel-border); padding-top:14px;">'
+      + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase; color:var(--charcoal);">Comments — is this company in the right place?</span>'
+      + '<div id="detailCommentList">' + this.renderCommentList(companyComments) + '</div>'
+      + '<textarea id="detailCommentInput" maxlength="500" placeholder="Say something about this company…" style="resize:vertical; min-height:56px; border:1.5px solid var(--panel-border); border-radius:8px; padding:8px 10px; font-family:Barlow,sans-serif; font-size:13px; color:var(--charcoal);"></textarea>'
+      + '<button type="button" id="detailCommentPost" style="align-self:flex-start; border:none; background:' + COLORS.blue + '; color:#FFFFFF; font-size:12.5px; font-weight:600; padding:7px 16px; border-radius:16px; cursor:pointer;">Post comment</button>'
+      + '</div></div>';
     document.getElementById('detailClose').addEventListener('click', () => this.setState({ sel: null }));
+    const postBtn = document.getElementById('detailCommentPost');
+    const input = document.getElementById('detailCommentInput');
+    postBtn.addEventListener('click', () => {
+      this.postComment('company', sel.name, input.value, postBtn, () => {
+        input.value = '';
+        document.getElementById('detailCommentList').innerHTML = this.renderCommentList(this.commentsFor('company', sel.name));
+      });
+    });
+  }
+
+  renderCategoryPanel() {
+    const panel = document.getElementById('categoryPanel');
+    const slug = this.state.catPanel;
+    if (!slug) { panel.style.display = 'none'; panel.innerHTML = ''; return; }
+    panel.style.display = 'flex';
+    const catMeta = categories.find(c => c.slug === slug) || { label: slug };
+    const list = this.commentsFor('category', slug);
+    panel.innerHTML = '<div style="display:flex; align-items:center; gap:12px; padding:20px 20px 14px; border-bottom:1px solid var(--panel-border);">'
+      + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:800; font-size:20px; letter-spacing:.02em; text-transform:uppercase; color:' + COLORS.blueDark + ';">' + esc(catMeta.label) + '</span>'
+      + '<button type="button" id="catPanelClose" aria-label="Close category comments" style="margin-left:auto; background:var(--pill-bg); border:none; border-radius:50%; width:32px; height:32px; font-size:16px; color:var(--muted); cursor:pointer; line-height:1; padding-bottom:2px;">&times;</button></div>'
+      + '<div style="padding:18px 20px 30px; overflow-y:auto; display:flex; flex-direction:column; gap:8px; animation:panelBody .24s cubic-bezier(.2,0,0,1) .1s both;">'
+      + '<span style="font-size:12.5px; color:var(--secondary-text,#6B7280);">Comments about the ' + esc(catMeta.label) + ' category as a whole — a company in the wrong subcategory, a missing one, anything about how this group is organised.</span>'
+      + '<div id="catCommentList">' + this.renderCommentList(list) + '</div>'
+      + '<textarea id="catCommentInput" maxlength="500" placeholder="Comment on this category…" style="resize:vertical; min-height:56px; border:1.5px solid var(--panel-border); border-radius:8px; padding:8px 10px; font-family:Barlow,sans-serif; font-size:13px; color:var(--charcoal);"></textarea>'
+      + '<button type="button" id="catCommentPost" style="align-self:flex-start; border:none; background:' + COLORS.blue + '; color:#FFFFFF; font-size:12.5px; font-weight:600; padding:7px 16px; border-radius:16px; cursor:pointer;">Post comment</button>'
+      + '</div>';
+    document.getElementById('catPanelClose').addEventListener('click', () => this.setState({ catPanel: null }));
+    const postBtn = document.getElementById('catCommentPost');
+    const input = document.getElementById('catCommentInput');
+    postBtn.addEventListener('click', () => {
+      this.postComment('category', slug, input.value, postBtn, () => {
+        input.value = '';
+        document.getElementById('catCommentList').innerHTML = this.renderCommentList(this.commentsFor('category', slug));
+      });
+    });
   }
 
   mount() {
+    this.loadComments();
     document.getElementById('mapTab').addEventListener('click', () => this.setView('map'));
     document.getElementById('listTab').addEventListener('click', () => this.setView('list'));
     document.getElementById('jumpBtn').addEventListener('click', () => this.setState({ sheetOpen: true }));

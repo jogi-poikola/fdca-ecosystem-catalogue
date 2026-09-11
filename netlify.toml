@@ -1,2 +1,10 @@
 [build]
   publish = "OUTPUT"
+
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/api/comments"
+  to = "/.netlify/functions/comments"
+  status = 200

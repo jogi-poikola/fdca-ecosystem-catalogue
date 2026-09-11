@@ -1,0 +1,8 @@
+{
+  "name": "fdca-ecosystem-catalogue",
+  "private": true,
+  "description": "Netlify Functions dependencies for the FDCA dashboard's public comments feature. The dashboard itself is a generated static file (OUTPUT/index.html); this package.json exists only so Netlify's function bundler can install @netlify/blobs.",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

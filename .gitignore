@@ -5,3 +5,10 @@ node_modules/
 dist/
 .env
 .env.*
+
+# Local Netlify folder
+.netlify
+
+# Deno lockfile written by `netlify dev`'s local edge-functions bootstrap —
+# not something this project's functions depend on or need reproducible.
+deno.lock
