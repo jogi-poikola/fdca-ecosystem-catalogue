@@ -131,6 +131,7 @@ def load_members(index):
             "official": m.get("official_name") or m["display_name"],
             "cat": family,
             "subcat": "" if category == family else category,
+            "categorySlug": category,
             "categoryLabel": category_meta["en"],
             "categoryDescription": category_meta["description_en"],
             "url": m["url"],
@@ -574,17 +575,6 @@ class Dash {
           headFont: 0, headPad: 0, boxes: [], slabels: [], tiles: []
         };
       }
-      const nameLen = Math.max(7, cat.meta.label.length);
-      const headRowH = PITCH_Y - GAP;
-      const availW = Math.max(120, wpx - TIN * 2 - Math.min(150, wpx * 0.2));
-      const roomH = headRowH - 14;
-      const headLongest = Math.max.apply(null, cat.meta.label.split(/\s+/).map(w => w.length));
-      const headWordCap = (availW - 8) / (0.5 * Math.max(3, headLongest));
-      let headFont = 34;
-      for (let fs = Math.floor(Math.min(CELL_H * 0.98, headWordCap)); fs >= 34; fs -= 1) {
-        const lines = Math.max(1, Math.ceil((0.5 * nameLen * fs) / availW));
-        if (lines * fs <= roomH) { headFont = fs; break; }
-      }
       const boxes = [], slabels = [], tiles = [];
       r.p.leaves.forEach(sub => {
         const sx = (L.x + sub.x) * PITCH_X, sy = (L.y + sub.y) * PITCH_Y;
@@ -598,7 +588,7 @@ class Dash {
         const longest = lbl ? Math.max.apply(null, lbl.split(/\s+/).map(w => w.length)) : 1;
         const wordCap = rowW / (0.58 * Math.max(3, longest));
         let lf = 0;
-        for (let fs = Math.floor(Math.min(headFont * 0.5, wordCap, CELL_H * 0.8)); fs >= 18; fs -= 1) {
+        for (let fs = Math.floor(Math.min(wordCap, CELL_H * 0.8)); fs >= 18; fs -= 1) {
           const lines = Math.max(1, Math.ceil((0.58 * Math.max(5, lbl.length) * fs) / rowW));
           if (lines * fs * 1.02 <= rowH) { lf = fs; break; }
         }
@@ -616,7 +606,7 @@ class Dash {
       return {
         slug: cat.slug, label: cat.meta.label, count: cat.list.length,
         x: px, y: py, w: wpx, h: L.h * PITCH_Y - GAP,
-        headFont: headFont, headPad: TIN + 4,
+        headFont: 0, headPad: 0,
         markFont: 0, bodyFont: 0, titlePad: 0, titleGap: 0, body: '', isTitle: false, fieldH: 0, fieldFont: 0,
         boxes: boxes, slabels: slabels, tiles: tiles,
         bg: roleColor(T, 'surface'), border: roleColor(T, 'border'),
@@ -866,7 +856,7 @@ class Dash {
         }
         if (nameDisp) inner += '<div style="width:100%; margin-top:6px; font-size:12px; font-weight:600; line-height:1.25; text-align:' + (cardDisp ? 'left' : 'center') + '; color:var(--charcoal); overflow:hidden; flex:none;">' + esc(m.name) + '</div>';
         if (cardDisp) {
-          const metaLine = [c.label, m.categoryLabel].filter(Boolean).join(' · ');
+          const metaLine = m.categoryLabel || '';
           inner += '<div style="width:100%; margin-top:2px; font-size:8.6px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:' + c.ink + '; opacity:.72; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; flex:none;">' + esc(metaLine) + '</div>'
             + '<div style="width:100%; margin-top:6px; overflow:hidden; min-height:0; flex:1 1 auto;"><div style="font-size:9.4px; line-height:1.42; color:var(--secondary-text,#6B7280); overflow:hidden; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical;">' + esc(clipTo(m.desc, 132)) + '</div></div>'
             + '<div style="width:100%; margin-top:5px; padding-top:4px; border-top:1px solid var(--section-border); font-size:9px; font-weight:600; color:' + COLORS.blue + '; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; flex:none;">' + esc(hostOf(m.url)) + '</div>';
@@ -874,10 +864,6 @@ class Dash {
         return '<button type="button" data-midx="' + idx + '" style="position:absolute; left:' + t.x + 'px; top:' + t.y + 'px; width:' + t.w + 'px; height:' + t.h + 'px; background:' + (dotDisp ? 'transparent' : '#FFFFFF') + '; border:' + (dotDisp ? 0 : 1.5) + 'px solid ' + border + '; border-radius:7px; cursor:pointer; opacity:' + op + '; display:flex; flex-direction:column; align-items:center; justify-content:' + (cardDisp ? 'flex-start' : 'center') + '; padding:9px; overflow:hidden; font:inherit; text-align:' + (cardDisp ? 'left' : 'center') + ';">' + inner + '</button>';
       }).join('');
       return '<div style="position:absolute; left:' + c.x + 'px; top:' + c.y + 'px; width:' + c.w + 'px; height:' + c.h + 'px; background:' + c.bg + '; border:1.5px solid ' + c.border + '; border-radius:14px;">'
-        + '<div style="position:absolute; left:' + c.headPad + 'px; top:0; right:' + c.headPad + 'px; height:' + (PITCH_Y - GAP) + 'px; display:flex; align-items:center; gap:18px; overflow:hidden;">'
-        + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:800; font-size:' + c.headFont + 'px; line-height:.95; letter-spacing:.015em; text-transform:uppercase; color:' + c.ink + '; overflow-wrap:anywhere; min-width:0;">' + esc(c.label) + '</span>'
-        + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:' + Math.round(c.headFont * 0.5) + 'px; color:' + c.ink + '; opacity:.45; flex:none;">' + c.count + '</span>'
-        + '<button type="button" data-nodrag="1" data-catcomment="' + c.slug + '" title="Comment on ' + esc(c.label) + '" style="margin-left:auto; flex:none; border:none; background:transparent; cursor:pointer; padding:2px; font-size:' + Math.max(13, Math.round(c.headFont * 0.42)) + 'px; color:' + c.ink + '; opacity:.5; line-height:1;">&#128172;</button></div>'
         + boxes + slabels + tiles + '</div>';
     });
 
@@ -1068,7 +1054,7 @@ class Dash {
       ? '<img src="' + esc(sel.logo) + '" alt="" style="width:74px; height:44px; object-fit:contain; object-position:left center;">'
       : '<div style="width:74px; height:44px; display:flex; align-items:center; justify-content:flex-start; font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:28px; color:' + COLORS.blueMid + ';">' + esc(initialsOf(sel.name)) + '</div>';
     const officialLine = sel.official && sel.official !== sel.name ? '<span style="font-size:12px; color:var(--muted);">' + esc(sel.official) + '</span>' : '';
-    const subTag = sel.categoryLabel && sel.categoryLabel !== catMeta.label ? '<button type="button" data-detail-category="' + esc(sel.subcat || sel.cat) + '" title="' + esc(sel.categoryDescription || '') + '" style="border:none; cursor:pointer; font-size:11.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--charcoal); background:var(--pill-bg); border-radius:16px; padding:4px 11px;">' + esc(sel.categoryLabel) + '</button>' : '';
+    const categoryTag = '<button type="button" data-detail-category="' + esc(sel.subcat || sel.cat) + '" title="' + esc(sel.categoryDescription || '') + '" style="border:none; cursor:pointer; font-size:11.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:#FFFFFF; background:' + COLORS.blue + '; border-radius:16px; padding:4px 11px;">' + esc(sel.categoryLabel || catMeta.label) + '</button>';
     const blogLine = sel.blog ? '<a href="' + esc(sel.blog) + '" target="_blank" rel="noopener" style="font-size:13px; font-weight:600;">Read the FDCA introduction post ↗</a>' : '';
     const flag = sel.rosterStatus === 'website-only' ? '<div style="font-size:11.5px; line-height:1.5; color:' + COLORS.warn + '; background:rgba(176,102,60,.07); border:1px solid rgba(176,102,60,.2); border-radius:6px; padding:9px 12px;">Listed on fdca.fi but not confirmed on the current FDCA roster. Membership pending confirmation by the FDCA office.</div>' : '';
     const companyComments = this.commentsFor('company', sel.name);
@@ -1077,7 +1063,7 @@ class Dash {
       + '<button type="button" id="detailClose" aria-label="Close company details" style="margin-left:auto; background:var(--pill-bg); border:none; border-radius:50%; width:32px; height:32px; font-size:16px; color:var(--muted); cursor:pointer; line-height:1; padding-bottom:2px;">&times;</button></div>'
       + '<div style="padding:18px 20px 30px; overflow-y:auto; display:flex; flex-direction:column; gap:16px; animation:panelBody .24s cubic-bezier(.2,0,0,1) .1s both;">'
       + '<div style="display:flex; flex-direction:column; gap:4px;"><span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:27px; line-height:1.05; letter-spacing:.02em; text-transform:uppercase; color:' + COLORS.blueDark + ';">' + esc(sel.name) + '</span>' + officialLine + '</div>'
-      + '<div style="display:flex; flex-wrap:wrap; gap:6px;"><span style="font-size:11.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:#FFFFFF; background:' + COLORS.blue + '; border-radius:16px; padding:4px 11px;">' + esc(catMeta.label) + '</span>' + subTag + '</div>'
+      + '<div style="display:flex; flex-wrap:wrap; gap:6px;">' + categoryTag + '</div>'
       + '<p style="margin:0; font-size:13.5px; line-height:1.55; color:var(--secondary-text,#6B7280);">' + esc(sel.desc) + '</p>'
       + '<div style="display:flex; flex-direction:column; gap:8px; padding-top:4px;">' + (sel.url ? '<a href="' + esc(sel.url) + '" target="_blank" rel="noopener" style="font-size:13px; font-weight:600;">' + esc(host || 'No website on file') + ' ↗</a>' : '') + blogLine + '</div>'
       + flag
@@ -1105,28 +1091,77 @@ class Dash {
     const slug = this.state.catPanel;
     if (!slug) { panel.style.display = 'none'; panel.innerHTML = ''; return; }
     panel.style.display = 'flex';
-    let catMeta = categories.find(c => c.slug === slug);
-    if (!catMeta) {
-      categories.some(family => {
-        const found = (family.subcats || []).find(category => category.slug === slug);
-        if (!found) return false;
+    let catMeta = null;
+    let familyMeta = null;
+    for (const fam of categories) {
+      if (fam.slug === slug) {
+        catMeta = fam;
+        familyMeta = fam;
+        break;
+      }
+      const found = (fam.subcats || []).find(c => c.slug === slug);
+      if (found) {
         catMeta = found;
-        return true;
-      });
+        familyMeta = fam;
+        break;
+      }
     }
-    catMeta = catMeta || { label: slug, description: '' };
+    if (!catMeta) {
+      catMeta = { slug: slug, label: slug, description: '' };
+      familyMeta = { slug: slug, label: slug };
+    }
+    const T = toneOf(familyMeta.slug);
+    panel.style.background = roleColor(T, 'surface');
+    panel.style.borderLeft = '1.5px solid ' + roleColor(T, 'border');
+
+    const catMembers = members.filter(m => (m.categorySlug || m.subcat || m.cat) === slug || m.categoryLabel === catMeta.label);
     const list = this.commentsFor('category', slug);
-    panel.innerHTML = '<div style="display:flex; align-items:center; gap:12px; padding:20px 20px 14px; border-bottom:1px solid var(--panel-border);">'
-      + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:800; font-size:20px; letter-spacing:.02em; text-transform:uppercase; color:' + COLORS.blueDark + ';">' + esc(catMeta.label) + '</span>'
-      + '<button type="button" id="catPanelClose" aria-label="Close category comments" style="margin-left:auto; background:var(--pill-bg); border:none; border-radius:50%; width:32px; height:32px; font-size:16px; color:var(--muted); cursor:pointer; line-height:1; padding-bottom:2px;">&times;</button></div>'
-      + '<div style="padding:18px 20px 30px; overflow-y:auto; display:flex; flex-direction:column; gap:8px; animation:panelBody .24s cubic-bezier(.2,0,0,1) .1s both;">'
-      + '<p style="margin:0 0 6px; font-size:14px; line-height:1.5; color:var(--charcoal);">' + esc(catMeta.description || '') + '</p>'
-      + '<span style="font-size:12.5px; color:var(--secondary-text,#6B7280);">Comments about this category — a company in the wrong category, a missing category, or another improvement.</span>'
+
+    const memberCards = catMembers.map(m => {
+      const idx = members.indexOf(m);
+      const logo = (m.logo && !this.broken[m.logo])
+        ? '<img data-fallback="1" src="' + esc(m.logo) + '" alt="" loading="lazy" style="max-width:100%; max-height:100%; object-fit:contain; filter:grayscale(1); opacity:.9;">'
+        : '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:20px; letter-spacing:.04em; color:' + roleColor(T, 'mark') + ';">' + esc(initialsOf(m.name)) + '</span>';
+      return '<button type="button" data-cat-midx="' + idx + '" style="display:flex; flex-direction:row; align-items:center; gap:13px; width:100%; min-height:72px; padding:11px 13px; background:#FFFFFF; border:1.5px solid var(--section-border); border-radius:10px; cursor:pointer; font:inherit; text-align:left; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.03);">'
+        + '<div style="display:flex; align-items:center; justify-content:flex-start; width:62px; height:42px; flex:none;">' + logo + '</div>'
+        + '<div style="display:flex; flex-direction:column; gap:2px; min-width:0; flex:1 1 auto;">'
+        + '<span style="font-size:14px; font-weight:600; line-height:1.25; color:var(--charcoal);">' + esc(m.name) + '</span>'
+        + '<span style="font-size:12px; line-height:1.4; color:var(--secondary-text,#6B7280); overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;">' + esc(clipTo(m.desc, 160)) + '</span></div></button>';
+    }).join('');
+
+    const familyEyebrow = familyMeta && familyMeta.label && familyMeta.label !== catMeta.label
+      ? '<span style="font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:' + roleColor(T, 'ink') + '; opacity:.6;">' + esc(familyMeta.label) + '</span>'
+      : '';
+
+    panel.innerHTML = '<div style="display:flex; align-items:flex-start; gap:10px; padding:18px 20px 14px; border-bottom:1.5px solid ' + roleColor(T, 'border') + '; background:' + roleColor(T, 'surface') + '; flex:none;">'
+      + '<div style="display:flex; flex-direction:column; gap:2px; min-width:0; flex:1 1 auto;">'
+      + familyEyebrow
+      + '<div style="display:flex; align-items:baseline; gap:8px;">'
+      + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:800; font-size:22px; line-height:1.1; letter-spacing:.02em; text-transform:uppercase; color:' + roleColor(T, 'ink') + ';">' + esc(catMeta.label) + '</span>'
+      + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:15px; color:' + roleColor(T, 'ink') + '; opacity:.5; flex:none;">' + catMembers.length + '</span>'
+      + '</div></div>'
+      + '<button type="button" id="catPanelClose" aria-label="Close category details" style="margin-left:auto; background:rgba(0,0,0,.06); border:none; border-radius:50%; width:32px; height:32px; font-size:16px; color:' + roleColor(T, 'ink') + '; cursor:pointer; line-height:1; padding-bottom:2px; flex:none;">&times;</button></div>'
+      + '<div style="padding:16px 20px 30px; overflow-y:auto; display:flex; flex-direction:column; gap:14px; animation:panelBody .24s cubic-bezier(.2,0,0,1) .1s both; flex:1 1 auto;">'
+      + (catMeta.description ? '<p style="margin:0; font-size:13.5px; line-height:1.5; color:var(--charcoal);">' + esc(catMeta.description) + '</p>' : '')
+      + '<div style="display:flex; flex-direction:column; gap:8px;">' + (memberCards || '<div style="padding:24px; text-align:center; color:var(--muted); font-size:13px;">No companies in this category.</div>') + '</div>'
+      + '<div style="display:flex; flex-direction:column; gap:8px; border-top:1.5px solid ' + roleColor(T, 'border') + '; padding-top:16px; margin-top:4px;">'
+      + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase; color:' + roleColor(T, 'ink') + ';">Category feedback</span>'
+      + '<span style="font-size:12px; color:var(--secondary-text,#6B7280);">Is a company in the wrong category, or does this category need refinement?</span>'
       + '<div id="catCommentList">' + this.renderCommentList(list) + '</div>'
-      + '<textarea id="catCommentInput" maxlength="500" placeholder="Comment on this category…" style="resize:vertical; min-height:56px; border:1.5px solid var(--panel-border); border-radius:8px; padding:8px 10px; font-family:Barlow,sans-serif; font-size:13px; color:var(--charcoal);"></textarea>'
+      + '<textarea id="catCommentInput" maxlength="500" placeholder="Comment on this category…" style="resize:vertical; min-height:56px; border:1.5px solid var(--panel-border); border-radius:8px; padding:8px 10px; font-family:Barlow,sans-serif; font-size:13px; color:var(--charcoal); background:#FFFFFF;"></textarea>'
       + '<button type="button" id="catCommentPost" style="align-self:flex-start; border:none; background:' + COLORS.blue + '; color:#FFFFFF; font-size:12.5px; font-weight:600; padding:7px 16px; border-radius:16px; cursor:pointer;">Post comment</button>'
-      + '</div>';
+      + '</div></div>';
+
     document.getElementById('catPanelClose').addEventListener('click', () => this.setState({ catPanel: null }));
+    panel.querySelectorAll('[data-cat-midx]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const m = members[+btn.dataset.catMidx];
+        if (m) this.select(m);
+      });
+    });
+    panel.querySelectorAll('img[data-fallback]').forEach(img => {
+      img.addEventListener('error', () => { this.broken[img.getAttribute('src')] = true; this.render(); }, { once: true });
+    });
     const postBtn = document.getElementById('catCommentPost');
     const input = document.getElementById('catCommentInput');
     postBtn.addEventListener('click', () => {
