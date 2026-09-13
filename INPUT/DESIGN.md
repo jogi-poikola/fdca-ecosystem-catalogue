@@ -31,13 +31,19 @@ typography:
   label:
     fontFamily: "'Barlow', sans-serif"
     fontWeight: 600
+familyColors:
+  data_center_operators: { hue: 170, chromaK: 0.72 }
+  technology_vendors: { hue: 300, chromaK: 0.94 }
+  construction: { hue: 15, chromaK: 0.95 }
+  services: { hue: 100, chromaK: 0.62 }
+  planning: { hue: 232, chromaK: 0.98 }
 ---
 
 ## Overview
 
 The FDCA Member Dashboard is a single self-contained HTML file — generated
 by `build_dashboard.py` from `fdca-member-registry.json` and
-`fdca-categories.json` — with two views of the same 323 categorised members:
+`fdca-categories.json` — with two views of the same 338 categorised companies:
 a pannable, zoomable **Map** (the default) and a sectioned **List**. It has
 no build step and no external dependency beyond Google Fonts; open the
 output file directly in a browser, no server needed.
@@ -45,7 +51,7 @@ output file directly in a browser, no server needed.
 Unlike the flat 9-category card grid this replaced, almost none of the
 dashboard's layout is expressed as CSS rules. The Map view's block and tile
 positions are the output of an integer-cell treemap packer that runs in the
-browser at load time and on resize — every family block, subcategory
+browser at load time and on resize — every family block, primary-category
 sub-box, and member tile gets an explicit computed `x/y/w/h` in pixels, not
 a CSS Grid or flexbox arrangement. Font sizes inside a block are solved the
 same way: the builder tries decreasing sizes until the label or paragraph
@@ -55,12 +61,14 @@ below are read directly by the packer's JS, not applied through CSS classes.
 
 ## Family color
 
-Each of the five top-level families in `fdca-categories.json` carries a
-`hue` (an OKLCH hue angle) and a `chromaK` (0–1, how far that hue's blocks
+Each of the five top-level families has a `familyColors` entry in this
+file's frontmatter. It carries a `hue` (an OKLCH hue angle) and a `chromaK`
+(0–1, how far that hue's blocks
 and tiles are pushed toward its own sRGB gamut ceiling — a raw chroma value
 that reads vivid at one hue reads muddy or clips out of gamut at another, so
 each hue needs its own ceiling, not one shared number). Both are read
-straight from that file; nothing here duplicates them.
+straight from this design file. The taxonomy contains meaning and labels,
+not presentation values.
 
 `build_dashboard.py`'s JS derives every family-colored surface from a single
 `{h, k}` pair through six fixed OKLCH roles — `surface`/`group` (block and
@@ -69,7 +77,7 @@ tint at the lowest zoom tier) — each a fixed `[lightness, chroma-fraction]`
 pair scaled by that family's `k` and gamut-clamped per hue. A seventh and
 eighth role, `chip`/`chipOn`, color the "Jump to" sheet's category rows the
 same way. No family needs a hand-picked hex anywhere; adding a family means
-adding one `{slug, hue, chromaK}` entry to the taxonomy.
+adding one family to the taxonomy and one matching `familyColors` entry here.
 
 The five shipped hues, ≥30° apart so no two families read as the same
 color: `data_center_operators` 170 (teal, k 0.72), `technology_vendors` 300
@@ -91,7 +99,7 @@ Two font families, loaded from Google Fonts
   available width until the longest word fits without wrapping past the
   block's header row.
 - **`typography.subLabel`** — Barlow Condensed 700, uppercase, 70% opacity
-  ink. A subcategory sub-box's label, floored at 70% of the largest sibling
+  ink. A primary-category sub-box's label, floored at 70% of the largest sibling
   label's size on the same canvas so no narrow sub-box shrinks its label
   into a smudge.
 - **`typography.body`** — Barlow 400. Tile/row descriptions and the
@@ -133,16 +141,16 @@ without a separate "detail" toggle.
 ## List view
 
 The List view groups the same data into sticky-headed family sections and,
-within each, subcategory groups — a member whose subcategory is blank falls
-into that family's synthesized "Other services"/"Other construction"/"Other
-technology" group. Below `700px` viewport width the grid becomes a single
+within each, primary-category groups. Explicit `Other Services`, `Other
+Construction`, and `Other Technology` categories are ordinary taxonomy
+entries, never synthesized from missing data. Below `700px` viewport width the grid becomes a single
 column of taller row-cards with a visible description; at or above it, a
 denser multi-column grid of compact square cards.
 
 ## Detail panel
 
 Clicking a tile or row opens a slide-in panel with the company's display
-name, official name (when they differ), category/subcategory tags, full
+name, official name (when they differ), family and primary-category labels, full
 description, website, and — for a `website-only` roster entry — an amber
 pending-membership notice (`colors.warn`) rather than presenting it as a
 confirmed member.
@@ -153,8 +161,8 @@ confirmed member.
 - Do keep every block/tile dimension and font size as a JS-computed pixel
   value tied to the canvas's actual size — never hardcode a size that only
   happens to look right at one viewport width.
-- Do add a new family by adding one `{slug, hue, chromaK}` entry to
-  `fdca-categories.json`, not by hand-picking a hex color here.
+- Do add a new family colour through `familyColors` in this file, keyed by
+  the taxonomy's stable family slug.
 - Do keep the zoom tiers a pure function of `this.v.k` (the current zoom
   scale) — never a separate, independently-toggleable "detail level".
 

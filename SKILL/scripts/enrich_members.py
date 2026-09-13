@@ -16,11 +16,11 @@ and a human or an agent does the judging.
     --confirm    apply those verdicts. `ok` confirms, `wrong` clears the url
                  and remembers it so no later run proposes it again, `none`
                  records that the company has no website.
-    --propose    write OUTPUT/category-proposals.json: one row per
-                 uncategorised member, carrying the evidence gathered above
-                 and an empty category for someone to fill in.
-    --apply      read that file back, check every value against
-                 INPUT/fdca-categories.json, and write it into the registry.
+    --propose    write a versioned classification queue for every temporary
+                 uncategorised record. The queue points to the live taxonomy
+                 and decision rules and carries the evidence gathered above.
+    --apply      read that file back, reject stale or invalid decisions, and
+                 write one primary category into the registry.
 
 Nothing here is trusted because a machine produced it. A guessed url is
 `unverified` until an agent says otherwise, and a confirmed or human-set value
@@ -53,15 +53,21 @@ import subprocess
 import time
 from pathlib import Path
 
+from catalogue_config import (
+    RULES_PATH,
+    TAXONOMY_PATH,
+    UNCLASSIFIED,
+    load_rules,
+    load_taxonomy as load_taxonomy_data,
+    taxonomy_index,
+)
+
 ROOT = Path(__file__).resolve().parents[2]
 INPUT_DIR = ROOT / "INPUT"
 OUTPUT_DIR = ROOT / "OUTPUT"
 REGISTRY_PATH = INPUT_DIR / "fdca-member-registry.json"
-TAXONOMY_PATH = INPUT_DIR / "fdca-categories.json"
 PROPOSALS_PATH = OUTPUT_DIR / "category-proposals.json"
 REVIEW_PATH = OUTPUT_DIR / "website-review.json"
-
-UNCLASSIFIED = "uncategorised"
 
 # Firecrawl throttles a fast loop. These were tuned against a real run that
 # hit HTTP 429 on its last 49 members.
@@ -148,11 +154,6 @@ def save_registry(members: list) -> None:
     REGISTRY_PATH.write_text(
         json.dumps(members, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
-
-
-def load_taxonomy() -> dict:
-    data = json.loads(TAXONOMY_PATH.read_text(encoding="utf-8"))
-    return {c["slug"]: {s["slug"] for s in c["subcategories"]} for c in data["categories"]}
 
 
 def search(query: str) -> tuple:
@@ -423,6 +424,8 @@ def research(members: list, limit: int) -> None:
 
 def propose(members: list) -> None:
     """Write the queue of members still needing a category, with the evidence."""
+    taxonomy = load_taxonomy_data()
+    rules = load_rules()
     rows = [
         {
             "official_name": m["official_name"],
@@ -430,20 +433,28 @@ def propose(members: list) -> None:
             "url": m.get("url"),
             "evidence": (m.get("web_search_content") or m.get("blog_content") or "")[:400],
             "category": "",
-            "subcategory": "",
+            "decision_path": [],
+            "rationale": "",
+            "confidence": "",
+            "human_reviewed": False,
         }
         for m in members
         if m.get("category") == UNCLASSIFIED
     ]
     rows.sort(key=lambda r: r["display_name"].lower())
     OUTPUT_DIR.mkdir(exist_ok=True)
-    PROPOSALS_PATH.write_text(
-        json.dumps(rows, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
-    )
+    payload = {
+        "taxonomy_version": taxonomy["version"],
+        "rules_version": rules["version"],
+        "taxonomy_path": str(TAXONOMY_PATH.relative_to(ROOT)),
+        "classification_rules_path": str(RULES_PATH.relative_to(ROOT)),
+        "proposals": rows,
+    }
+    PROPOSALS_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     without = sum(1 for r in rows if not r["evidence"])
     print(f"wrote {PROPOSALS_PATH.name} — {len(rows)} members to classify")
     print(f"{without} of them still have no evidence; run --research first")
-    print("\nFill in `category` (and `subcategory` where the taxonomy has one),")
+    print("\nApply the referenced decision sequence and fill one primary `category`,")
     print("then run: python3 SKILL/scripts/enrich_members.py --apply")
 
 
@@ -451,14 +462,20 @@ def apply(members: list, check: bool) -> None:
     """Read the filled proposals back, validate, and write them in."""
     if not PROPOSALS_PATH.exists():
         raise SystemExit(f"{PROPOSALS_PATH.name} not found — run --propose first")
-    allowed = load_taxonomy()
-    rows = json.loads(PROPOSALS_PATH.read_text(encoding="utf-8"))
+    taxonomy = load_taxonomy_data()
+    rules = load_rules()
+    allowed = taxonomy_index(taxonomy)["category_slugs"]
+    payload = json.loads(PROPOSALS_PATH.read_text(encoding="utf-8"))
+    if payload.get("taxonomy_version") != taxonomy["version"]:
+        raise SystemExit("classification queue uses a stale taxonomy version; regenerate it")
+    if payload.get("rules_version") != rules["version"]:
+        raise SystemExit("classification queue uses stale decision rules; regenerate it")
+    rows = payload.get("proposals", [])
     by_official = {m["official_name"]: m for m in members}
 
     applied, skipped, bad = [], 0, []
     for row in rows:
         category = (row.get("category") or "").strip()
-        subcategory = (row.get("subcategory") or "").strip()
         if not category:
             skipped += 1
             continue
@@ -467,21 +484,21 @@ def apply(members: list, check: bool) -> None:
             bad.append((row["official_name"], "no member with this official_name"))
         elif category not in allowed:
             bad.append((row["official_name"], f"category {category!r} not in the taxonomy"))
-        elif subcategory and subcategory not in allowed[category]:
-            bad.append((row["official_name"], f"subcategory {subcategory!r} not under {category}"))
+        elif row.get("confidence") == "low" and not row.get("human_reviewed"):
+            bad.append((row["official_name"], "low-confidence decision needs human_reviewed: true"))
         else:
-            applied.append((member, category, subcategory))
+            applied.append((member, category))
 
     print(f"{len(applied)} ready, {skipped} still blank, {len(bad)} rejected")
     for name, why in bad:
         print(f"  REJECTED {name}: {why}")
     if bad:
         raise SystemExit("\nfix the rejected rows; nothing written")
-    for member, category, subcategory in applied:
-        member["category"], member["subcategory"] = category, subcategory
-    for member, category, subcategory in applied:
-        label = f"{category}/{subcategory}" if subcategory else category
-        print(f"  {member['display_name']:34s} -> {label}")
+    for member, category in applied:
+        member["category"] = category
+        member.pop("subcategory", None)
+    for member, category in applied:
+        print(f"  {member['display_name']:34s} -> {category}")
 
     if check:
         print("\n--check: nothing written")

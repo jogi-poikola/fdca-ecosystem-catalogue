@@ -1,46 +1,78 @@
 {
-  "version": "3.1",
-  "updated": "2026-09-11",
-  "categories": [
+  "version": "4.0",
+  "updated": "2026-09-13",
+  "families": [
     {
       "slug": "data_center_operators",
       "en": "Data Center Operators",
       "fi": "Datakeskusoperaattorit",
-      "hue": 170,
-      "chromaK": 0.72,
-      "subcategories": []
+      "description_en": "Companies that own or operate data-center facilities and computing campuses.",
+      "description_fi": "Yritykset, jotka omistavat tai operoivat datakeskuksia ja laskentakampuksia.",
+      "categories": [
+        {
+          "slug": "data_center_operators",
+          "en": "Data Center Operators",
+          "fi": "Datakeskusoperaattorit",
+          "description_en": "Companies that own or operate data-center facilities and computing campuses.",
+          "description_fi": "Yritykset, jotka omistavat tai operoivat datakeskuksia ja laskentakampuksia."
+        }
+      ]
     },
     {
       "slug": "technology_vendors",
       "en": "Technology Vendors",
       "fi": "Teknologiatoimittajat",
-      "hue": 300,
-      "chromaK": 0.94,
-      "subcategories": [
+      "description_en": "Manufacturers and suppliers of equipment, products and software used in facilities.",
+      "description_fi": "Datakeskuksissa käytettävien laitteiden, tuotteiden ja ohjelmistojen valmistajat ja toimittajat.",
+      "categories": [
         {
-          "slug": "power_systems",
-          "en": "Power Systems",
-          "fi": "Teho- ja sähköjärjestelmät"
+          "slug": "power_equipment",
+          "en": "Power Equipment",
+          "fi": "Sähkölaitteet",
+          "description_en": "Equipment for power generation, storage, conversion, backup, distribution and monitoring.",
+          "description_fi": "Sähkön tuotannon, varastoinnin, muuntamisen, varmistamisen, jakelun ja valvonnan laitteet."
         },
         {
-          "slug": "cooling_and_heat_recovery",
+          "slug": "cooling_heat_recovery",
           "en": "Cooling and Heat Recovery",
-          "fi": "Jäähdytys ja lämmöntalteenotto"
+          "fi": "Jäähdytys ja lämmöntalteenotto",
+          "description_en": "Equipment for cooling, ventilation, liquid handling and recovering waste heat.",
+          "description_fi": "Jäähdytyksen, ilmanvaihdon, nesteenkäsittelyn ja hukkalämmön talteenoton laitteet."
         },
         {
-          "slug": "it_infrastructure",
-          "en": "IT Infrastructure",
-          "fi": "IT-infrastruktuuri"
+          "slug": "computing_network_equipment",
+          "en": "Computing and Network Equipment",
+          "fi": "Laskenta- ja verkkolaitteet",
+          "description_en": "Servers, storage, racks, cabling and equipment for internal data networks.",
+          "description_fi": "Palvelimet, tallennus, laitekaapit, kaapelointi ja sisäisten tietoverkkojen laitteet."
         },
         {
-          "slug": "automation_and_safety",
-          "en": "Automation and Safety",
-          "fi": "Automaatio ja turvallisuus"
+          "slug": "automation_software",
+          "en": "Automation and Software",
+          "fi": "Automaatio ja ohjelmistot",
+          "description_en": "Monitoring, control, sensing and software for facility and equipment operation.",
+          "description_fi": "Tilojen ja laitteiden käytön valvonta-, ohjaus-, anturi- ja ohjelmistoratkaisut."
         },
         {
-          "slug": "building_materials",
-          "en": "Building Materials",
-          "fi": "Rakennusmateriaalit"
+          "slug": "security_technology",
+          "en": "Security Technology",
+          "fi": "Turvallisuusteknologia",
+          "description_en": "Physical and digital security products, access control, locks and surveillance systems.",
+          "description_fi": "Fyysisen ja digitaalisen turvallisuuden tuotteet, kulunvalvonta, lukitus ja valvontajärjestelmät."
+        },
+        {
+          "slug": "building_products",
+          "en": "Building Products",
+          "fi": "Rakennustuotteet",
+          "description_en": "Materials, components and prefabricated products incorporated into facility buildings.",
+          "description_fi": "Datakeskusrakennuksiin asennettavat materiaalit, komponentit ja esivalmistetut tuotteet."
+        },
+        {
+          "slug": "other_technology",
+          "en": "Other Technology",
+          "fi": "Muu teknologia",
+          "description_en": "Technology products that do not fit another technology category.",
+          "description_fi": "Teknologiatuotteet, jotka eivät sovi muuhun teknologiakategoriaan."
         }
       ]
     },
@@ -48,92 +80,64 @@
       "slug": "construction",
       "en": "Construction",
       "fi": "Rakentaminen",
-      "hue": 15,
-      "chromaK": 0.95,
-      "subcategories": [
+      "description_en": "Companies that construct facilities, infrastructure and installed technical systems.",
+      "description_fi": "Yritykset, jotka rakentavat tiloja, infrastruktuuria ja kiinteitä teknisiä järjestelmiä.",
+      "categories": [
         {
-          "slug": "general_contractors",
-          "en": "General Contractors",
-          "fi": "Pääurakoitsijat"
+          "slug": "main_contractors",
+          "en": "Main Contractors",
+          "fi": "Pääurakoitsijat",
+          "description_en": "Companies with confirmed overall responsibility for delivering complete Finnish facility projects.",
+          "description_fi": "Yritykset, joilla on vahvistettu kokonaisvastuu datakeskushankkeen toteutuksesta Suomessa."
         },
         {
-          "slug": "specialized_contractors",
-          "en": "Specialized Contractors",
-          "fi": "Erikoisurakoitsijat"
-        }
-      ]
-    },
-    {
-      "slug": "services",
-      "en": "Services",
-      "fi": "Palvelut",
-      "hue": 100,
-      "chromaK": 0.62,
-      "subcategories": [
-        {
-          "slug": "legal",
-          "en": "Legal",
-          "fi": "Lakipalvelut"
+          "slug": "industrial_construction",
+          "en": "Industrial Construction",
+          "fi": "Teollisuusrakentaminen",
+          "description_en": "Industrial builders delivering structures or packages without confirmed overall facility responsibility.",
+          "description_fi": "Teollisten rakenteiden tai kokonaisuuksien toteuttajat ilman vahvistettua hankkeen kokonaisvastuuta."
         },
         {
-          "slug": "real_estate_advisory",
-          "en": "Real Estate Advisory",
-          "fi": "Kiinteistöneuvonta"
+          "slug": "infrastructure_construction",
+          "en": "Infrastructure Construction",
+          "fi": "Infrarakentaminen",
+          "description_en": "Earthworks, rock works, foundations, roads, drainage and underground site utilities.",
+          "description_fi": "Maa- ja kalliorakentaminen, perustukset, tiet, kuivatus ja maanalainen kunnallistekniikka."
         },
         {
-          "slug": "public_affairs",
-          "en": "Public Affairs",
-          "fi": "Yhteiskuntasuhteet"
+          "slug": "grid_substation_construction",
+          "en": "Grid and Substation Construction",
+          "fi": "Sähköverkko- ja sähköasemarakentaminen",
+          "description_en": "External grid connections, high-voltage systems, substations, transformers and switchyards.",
+          "description_fi": "Ulkoiset verkkoliitynnät, suurjännitejärjestelmät, sähköasemat, muuntajat ja kytkinkentät."
         },
         {
-          "slug": "facility_management",
-          "en": "Facility Management",
-          "fi": "Kiinteistöpalvelut"
+          "slug": "technical_systems_installation",
+          "en": "Technical Systems Installation",
+          "fi": "Teknisten järjestelmien asennukset",
+          "description_en": "Installation and commissioning of internal electrical, network, cooling, piping and automation systems.",
+          "description_fi": "Sisäisten sähkö-, verkko-, jäähdytys-, putkisto- ja automaatiojärjestelmien asennus ja käyttöönotto."
         },
         {
-          "slug": "security_services",
-          "en": "Security Services",
-          "fi": "Turvallisuuspalvelut"
+          "slug": "fire_safety_construction",
+          "en": "Fire Safety Construction",
+          "fi": "Paloturvallisuusurakointi",
+          "description_en": "Installation and commissioning of fire detection, suppression, smoke control and structural protection.",
+          "description_fi": "Palonilmaisu-, sammutus-, savunhallinta- ja rakenteellisen palosuojauksen asennus ja käyttöönotto."
         },
         {
-          "slug": "staffing",
-          "en": "Staffing",
-          "fi": "Henkilöstöpalvelut"
+          "slug": "roofing_building_envelope",
+          "en": "Roofing and Building Envelope",
+          "fi": "Katto- ja julkisivurakentaminen",
+          "description_en": "Installation of roofs, façades, cladding, insulation, waterproofing and weather protection.",
+          "description_fi": "Kattojen, julkisivujen, verhousten, eristeiden, vedeneristyksen ja sääsuojauksen asennus."
         },
         {
-          "slug": "temporary_housing",
-          "en": "Temporary Housing",
-          "fi": "Tilapäismajoitus"
-        },
-        {
-          "slug": "it_equipment_services",
-          "en": "IT Equipment Services",
-          "fi": "IT-laitepalvelut"
-        },
-        {
-          "slug": "education_standards_certification",
-          "en": "Education, Standards, Certification",
-          "fi": "Koulutus ja sertifiointi"
-        },
-        {
-          "slug": "logistics",
-          "en": "Logistics",
-          "fi": "Logistiikka"
-        },
-        {
-          "slug": "investment",
-          "en": "Investment",
-          "fi": "Sijoittaminen"
-        },
-        {
-          "slug": "renewable_energy",
-          "en": "Renewable Energy",
-          "fi": "Uusiutuva energia"
-        },
-        {
-          "slug": "connectivity",
-          "en": "Connectivity",
-          "fi": "Tietoliikenneyhteydet"
+          "slug": "other_construction",
+          "en": "Other Construction",
+          "fi": "Muu rakentaminen",
+          "description_en": "Construction work that does not fit another construction category.",
+          "description_fi": "Rakennustyöt, jotka eivät sovi muuhun rakentamisen kategoriaan."
         }
       ]
     },
@@ -141,23 +145,115 @@
       "slug": "planning",
       "en": "Planning",
       "fi": "Suunnittelu",
-      "hue": 232,
-      "chromaK": 0.98,
-      "subcategories": [
+      "description_en": "Companies that develop sites, design facilities or manage projects.",
+      "description_fi": "Yritykset, jotka kehittävät sijainteja, suunnittelevat tiloja tai johtavat hankkeita.",
+      "categories": [
+        {
+          "slug": "site_development",
+          "en": "Site Development",
+          "fi": "Sijaintikehitys",
+          "description_en": "Development of sites, land, power access and permits for future facilities.",
+          "description_fi": "Datakeskussijaintien, maa-alueiden, sähköliittymien ja lupien kehittäminen tulevia hankkeita varten."
+        },
+        {
+          "slug": "municipal_regional_development",
+          "en": "Municipal and Regional Development",
+          "fi": "Kunta- ja aluekehitys",
+          "description_en": "Public and regional organizations enabling investment, sites and local business development.",
+          "description_fi": "Julkiset ja alueelliset organisaatiot, jotka edistävät investointeja, sijainteja ja yritystoimintaa."
+        },
         {
           "slug": "design_engineering",
-          "en": "Design Engineering",
-          "fi": "Tekninen suunnittelu"
+          "en": "Design and Engineering",
+          "fi": "Suunnittelu ja tekninen konsultointi",
+          "description_en": "Architecture and engineering for buildings, infrastructure, power, cooling and technical systems.",
+          "description_fi": "Rakennusten, infrastruktuurin, sähkön, jäähdytyksen ja teknisten järjestelmien arkkitehti- ja insinöörisuunnittelu."
         },
         {
-          "slug": "site_developers",
-          "en": "Site Developers",
-          "fi": "Datakeskuskehittäjät"
+          "slug": "project_management",
+          "en": "Project Management",
+          "fi": "Projektinjohto",
+          "description_en": "Independent management, supervision and coordination of projects, construction, quality and safety.",
+          "description_fi": "Hankkeiden, rakentamisen, laadun ja turvallisuuden riippumaton johtaminen, valvonta ja koordinointi."
+        }
+      ]
+    },
+    {
+      "slug": "services",
+      "en": "Services",
+      "fi": "Palvelut",
+      "description_en": "Companies providing operational, commercial and professional support to the industry.",
+      "description_fi": "Yritykset, jotka tarjoavat toimialalle operatiivista, kaupallista ja asiantuntijatukea.",
+      "categories": [
+        {
+          "slug": "energy",
+          "en": "Energy",
+          "fi": "Energia",
+          "description_en": "Electricity supply, procurement, trading, distribution, fuels and energy advisory services.",
+          "description_fi": "Sähkön toimitus, hankinta, kauppa, jakelu, polttoaineet ja energianeuvonta."
         },
         {
-          "slug": "municipalities",
-          "en": "Municipalities",
-          "fi": "Kunnat ja kehitysyhtiöt"
+          "slug": "connectivity",
+          "en": "Connectivity",
+          "fi": "Tietoliikenneyhteydet",
+          "description_en": "External telecommunications, internet exchange and fibre connectivity services.",
+          "description_fi": "Ulkoiset tietoliikenne-, yhdysliikenne- ja valokuituyhteyspalvelut."
+        },
+        {
+          "slug": "commissioning_testing",
+          "en": "Commissioning and Testing",
+          "fi": "Käyttöönotto ja testaus",
+          "description_en": "Independent testing and verification that facilities and technical systems perform as intended.",
+          "description_fi": "Tilojen ja teknisten järjestelmien toiminnan riippumaton testaus ja todentaminen."
+        },
+        {
+          "slug": "facility_management",
+          "en": "Facility Management",
+          "fi": "Kiinteistöpalvelut",
+          "description_en": "Operation, monitoring, maintenance and support of complete facilities and building systems.",
+          "description_fi": "Kokonaisten tilojen ja rakennusjärjestelmien käyttö, valvonta, ylläpito ja tuki."
+        },
+        {
+          "slug": "security_services",
+          "en": "Security Services",
+          "fi": "Turvallisuuspalvelut",
+          "description_en": "Guarding, security operations, risk management and ongoing protection services.",
+          "description_fi": "Vartiointi, turvallisuusoperaatiot, riskienhallinta ja jatkuvat suojauspalvelut."
+        },
+        {
+          "slug": "equipment_maintenance",
+          "en": "Equipment Maintenance",
+          "fi": "Laitteiden ylläpito",
+          "description_en": "Repair, refurbishment, lifecycle management, relocation and responsible retirement of equipment.",
+          "description_fi": "Laitteiden korjaus, kunnostus, elinkaarenhallinta, siirrot ja vastuullinen käytöstäpoisto."
+        },
+        {
+          "slug": "logistics",
+          "en": "Logistics",
+          "fi": "Logistiikka",
+          "description_en": "Transport, forwarding, storage, handling and delivery services for projects and equipment.",
+          "description_fi": "Hankkeiden ja laitteiden kuljetus-, huolinta-, varastointi-, käsittely- ja toimituspalvelut."
+        },
+        {
+          "slug": "staffing",
+          "en": "Staffing",
+          "fi": "Henkilöstöpalvelut",
+          "description_en": "Recruitment, workforce supply and employment services for projects and operations.",
+          "description_fi": "Rekrytointi-, työvoimanvuokraus- ja työsuhdepalvelut hankkeisiin ja toimintaan."
+        },
+        {
+          "slug": "legal_business_advisory",
+          "en": "Legal and Business Advisory",
+          "fi": "Laki- ja liiketoimintaneuvonta",
+          "description_en": "Legal, financial, investment, property, insurance, communications and management advisory services.",
+          "description_fi": "Oikeudelliset, talous-, sijoitus-, kiinteistö-, vakuutus-, viestintä- ja liikkeenjohdon neuvontapalvelut."
+        },
+        {
+          "slug": "other_services",
+          "en": "Other Services",
+          "fi": "Muut palvelut",
+          "description_en": "Industry services that do not fit another service category.",
+          "description_fi": "Toimialan palvelut, jotka eivät sovi muuhun palvelukategoriaan."
         }
       ]
     }

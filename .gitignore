@@ -5,6 +5,7 @@ node_modules/
 dist/
 .env
 .env.*
+.firecrawl/
 
 # Local Netlify folder
 .netlify
@@ -12,3 +13,10 @@ dist/
 # Deno lockfile written by `netlify dev`'s local edge-functions bootstrap —
 # not something this project's functions depend on or need reproducible.
 deno.lock
+
+# Audit batch artifacts and working notes (local only)
+DCD_Londond_categories.md
+INPUT/company-categorization-audit-prompt.md
+OUTPUT/category-audit-batches/
+OUTPUT/category-review-notes.md
+OUTPUT/category-review-proposals.json

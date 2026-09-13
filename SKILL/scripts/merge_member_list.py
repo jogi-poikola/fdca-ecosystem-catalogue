@@ -51,12 +51,13 @@ LIST_DATE = "2026-08-31"
 SCRAPED_FIELDS = (
     "url",
     "category",
-    "subcategory",
     "blog_link",
     "blog_content",
     "web_search_content",
     "logo_url",
     "researched",
+    "url_status",
+    "note",
 )
 
 # registry name -> member list name. Every pair here was confirmed by reading
@@ -101,6 +102,7 @@ ALIASES = {
     "IQSIGHT": "Keenfinity Sweden AB",  # IQSIGHT is Keenfinity's Bosch-branded security-camera brand
     "Liekkiloukku": "Fintekra Oy",  # Liekkiloukku is Fintekra's fire-protection product line
     "Oomi Oy": "Lumme Energia Oy",  # Oomi is the rebrand; billing still carries the old name
+    "KSBR": "Keski-Suomen Betonirakenne Oy",  # KSBR is the roster company's public brand
 }
 
 # roster name -> the registry entry whose name becomes the display name, for
@@ -120,6 +122,7 @@ DISPLAY_PRIMARY = {
     # same company; Oomi is the current public brand, confirmed by FDCA's
     # office 2026-09-07, even though billing still carries the old name.
     "Lumme Energia Oy": "Oomi Oy",
+    "Keski-Suomen Betonirakenne Oy": "KSBR",
 }
 
 # Why a registry entry is not on the roster, where the reason is known.

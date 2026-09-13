@@ -12,9 +12,9 @@ packer that runs in the browser (ported from a hand-built reference; see
 INPUT/DESIGN.md "Layout: the treemap packer"), so block sizes always match
 each family's real member count and font sizes are solved to fit the space
 actually available, at any viewport size. DESIGN.md holds the flat color
-palette and per-family hue/chromaK lives in fdca-categories.json; neither
-is a CSS class — both are embedded as data and read directly by the page's
-own JS.
+palette and per-family hue/chromaK values; the taxonomy holds category
+semantics. Both are embedded as data and read directly by the page's own JS.
+The registry stores one primary category, and the taxonomy derives its family.
 
 Run after fdca-member-registry.json changes (e.g. after scrape_blog_posts.py
 or probe_missing.py, or a manual edit) to bring the dashboard back in sync
@@ -27,6 +27,8 @@ from pathlib import Path
 
 import yaml
 
+from catalogue_config import taxonomy_index
+
 ROOT = Path(__file__).resolve().parents[2]
 INPUT_DIR = ROOT / "INPUT"
 OUTPUT_DIR = ROOT / "OUTPUT"
@@ -36,16 +38,6 @@ DESIGN_PATH = INPUT_DIR / "DESIGN.md"
 OUTPUT_PATH = OUTPUT_DIR / "index.html"
 
 FDCA_LOGO = "https://www.fdca.fi/wp-content/uploads/2024/09/FDCA_logo_rgb-400x175.png"
-
-# Display label for the blank-subcategory bucket within a family that has
-# subcategories. Families with no subcategories (data_center_operators) or
-# whose members always carry a subcategory (planning, after the five-family
-# migration) never need one.
-OTHER_LABEL = {
-    "technology_vendors": "Other technology",
-    "construction": "Other construction",
-    "services": "Other services",
-}
 
 _TOKEN_REF_RE = re.compile(r"\{([a-zA-Z0-9_.]+)\}")
 
@@ -61,7 +53,7 @@ def load_design_tokens():
     front_matter = yaml.safe_load(match.group(1))
     return {
         key: front_matter[key]
-        for key in ("colors", "typography")
+        for key in ("colors", "typography", "familyColors")
         if key in front_matter
     }
 
@@ -94,36 +86,39 @@ button { -webkit-tap-highlight-color: transparent; }
     )
 
 
-def load_categories():
+def load_categories(family_colours):
     raw = json.loads(CATEGORIES_PATH.read_text(encoding="utf-8"))
     categories = []
-    known_slugs = set()
-    for cat in raw["categories"]:
+    index = taxonomy_index(raw)
+    for family in raw["families"]:
         subcats = [
-            {"slug": s["slug"], "label": s["en"]}
-            for s in cat.get("subcategories", [])
+            {"slug": category["slug"], "label": category["en"], "description": category["description_en"]}
+            for category in family["categories"]
+            if category["slug"] != family["slug"]
         ]
+        colour = family_colours[family["slug"]]
         categories.append({
-            "slug": cat["slug"],
-            "label": cat["en"],
-            "hue": cat.get("hue", 235),
-            "chromaK": cat.get("chromaK", 0.8),
+            "slug": family["slug"],
+            "label": family["en"],
+            "description": family["description_en"],
+            "hue": colour["hue"],
+            "chromaK": colour["chromaK"],
             "subcats": subcats,
-            "otherLabel": OTHER_LABEL.get(cat["slug"]),
         })
-        known_slugs.add(cat["slug"])
-    return categories, known_slugs
+    return categories, index
 
 
-def load_members(known_category_slugs):
+def load_members(index):
     members_raw = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
     members = []
     skipped = []
     for m in members_raw:
-        cat = m.get("category", "")
-        if cat not in known_category_slugs:
+        category = m.get("category", "")
+        if category not in index["category_slugs"]:
             skipped.append(m.get("display_name", "?"))
             continue
+        family = index["category_family"][category]
+        category_meta = index["category_by_slug"][category]
         desc = m.get("web_search_content") or ""
         if not desc:
             blog = m.get("blog_content") or ""
@@ -131,8 +126,10 @@ def load_members(known_category_slugs):
         members.append({
             "name": m["display_name"],
             "official": m.get("official_name") or m["display_name"],
-            "cat": cat,
-            "subcat": m.get("subcategory") or "",
+            "cat": family,
+            "subcat": "" if category == family else category,
+            "categoryLabel": category_meta["en"],
+            "categoryDescription": category_meta["description_en"],
             "url": m["url"],
             "blog": m.get("blog_link") or None,
             "logo": m["logo_url"],
@@ -358,12 +355,13 @@ class Dash {
       if (subSlugs.length) {
         subSlugs.forEach(s => {
           const g = list.filter(m => m.subcat === s);
-          if (g.length) groups.push({ label: (meta.subcats.find(x => x.slug === s) || {}).label, items: g });
+          const subMeta = meta.subcats.find(x => x.slug === s) || {};
+          if (g.length) groups.push({ slug: s, label: subMeta.label, description: subMeta.description, items: g });
         });
         const rest = list.filter(m => subSlugs.indexOf(m.subcat) < 0);
-        if (rest.length) groups.push({ label: meta.otherLabel || 'Other', items: rest });
+        if (rest.length) groups.push({ slug: slug, label: meta.label, description: meta.description, items: rest });
       } else {
-        groups.push({ label: meta.label, items: list });
+        groups.push({ slug: slug, label: meta.label, description: meta.description, items: list });
       }
       return { slug: slug, meta: meta, list: list, groups: groups };
     });
@@ -564,7 +562,7 @@ class Dash {
           x: (L.x + sub.x + (k % sub.w)) * PITCH_X - px + TIN,
           y: (L.y + sub.y + hr + Math.floor(k / sub.w)) * PITCH_Y - py + TIN
         });
-        if (lbl) slabels.push({ wordCap: wordCap, x: bx0 + 13, y: by0, w: bw0 - 26, h: hr * PITCH_Y - GAP, text: lbl, n: g.items.length, font: lf, countFont: Math.max(12, Math.round(lf * 0.46)) });
+        if (lbl) slabels.push({ slug: g.slug, description: g.description, wordCap: wordCap, x: bx0 + 13, y: by0, w: bw0 - 26, h: hr * PITCH_Y - GAP, text: lbl, n: g.items.length, font: lf, countFont: Math.max(12, Math.round(lf * 0.46)) });
         g.items.forEach(m => { const c = cellOf(i++); tiles.push({ m: m, x: c.x, y: c.y, w: CELL_W, h: CELL_H }); });
       });
       return {
@@ -804,9 +802,9 @@ class Dash {
           + '</div></div></div>';
       }
       const boxes = c.boxes.map(b => '<div style="position:absolute; left:' + b.x + 'px; top:' + b.y + 'px; width:' + b.w + 'px; height:' + b.h + 'px; background:' + b.bg + '; border:1.5px solid ' + b.bd + '; border-radius:10px;"></div>').join('');
-      const slabels = c.slabels.map(s => '<div style="position:absolute; left:' + s.x + 'px; top:' + s.y + 'px; width:' + s.w + 'px; height:' + s.h + 'px; display:flex; align-items:center; gap:12px; overflow:hidden;">'
+      const slabels = c.slabels.map(s => '<button type="button" data-nodrag="1" data-primarycat="' + s.slug + '" title="' + esc(s.description || '') + '" style="position:absolute; left:' + s.x + 'px; top:' + s.y + 'px; width:' + s.w + 'px; height:' + s.h + 'px; display:flex; align-items:center; gap:12px; overflow:hidden; border:none; background:transparent; padding:0; cursor:pointer; text-align:left;">'
         + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:' + s.font + 'px; line-height:.98; letter-spacing:.035em; text-transform:uppercase; color:' + c.ink + '; opacity:.78; overflow-wrap:anywhere; min-width:0;">' + esc(s.text) + '</span>'
-        + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:' + s.countFont + 'px; color:' + c.ink + '; opacity:.42; flex:none;">' + s.n + '</span></div>').join('');
+        + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:' + s.countFont + 'px; color:' + c.ink + '; opacity:.42; flex:none;">' + s.n + '</span></button>').join('');
       const tiles = c.tiles.map(t => {
         const m = t.m, idx = t.idx;
         const hit = this.matches(m, q);
@@ -822,7 +820,7 @@ class Dash {
         }
         if (nameDisp) inner += '<div style="width:100%; margin-top:6px; font-size:12px; font-weight:600; line-height:1.25; text-align:' + (cardDisp ? 'left' : 'center') + '; color:var(--charcoal); overflow:hidden; flex:none;">' + esc(m.name) + '</div>';
         if (cardDisp) {
-          const metaLine = [c.label, m.subcat ? m.subcat.replace(/_/g, ' ') : ''].filter(Boolean).join(' · ');
+          const metaLine = [c.label, m.categoryLabel].filter(Boolean).join(' · ');
           inner += '<div style="width:100%; margin-top:2px; font-size:8.6px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:' + c.ink + '; opacity:.72; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; flex:none;">' + esc(metaLine) + '</div>'
             + '<div style="width:100%; margin-top:6px; overflow:hidden; min-height:0; flex:1 1 auto;"><div style="font-size:9.4px; line-height:1.42; color:var(--secondary-text,#6B7280); overflow:hidden; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical;">' + esc(clipTo(m.desc, 132)) + '</div></div>'
             + '<div style="width:100%; margin-top:5px; padding-top:4px; border-top:1px solid var(--section-border); font-size:9px; font-weight:600; color:' + COLORS.blue + '; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; flex:none;">' + esc(hostOf(m.url)) + '</div>';
@@ -855,6 +853,8 @@ class Dash {
     if (!wrap._bound) {
       wrap._bound = true;
       wrap.addEventListener('click', e => {
+        const primaryBtn = e.target.closest('[data-primarycat]');
+        if (primaryBtn) { this.setState({ catPanel: primaryBtn.dataset.primarycat, sel: null }); return; }
         const catBtn = e.target.closest('[data-catcomment]');
         if (catBtn) { this.setState({ catPanel: catBtn.dataset.catcomment, sel: null }); return; }
         const el = e.target.closest('[data-midx]');
@@ -897,7 +897,7 @@ class Dash {
             + '<span style="font-size:12px; line-height:1.4; color:var(--secondary-text,#6B7280); overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;">' + esc(clipTo(m.desc, 160)) + '</span></div></button>';
         }).join('');
         return '<div data-sub="' + c.slug + '::' + (g.label || '') + '" style="scroll-margin-top:44px;">'
-          + (own ? '<div style="display:flex; align-items:baseline; gap:8px; padding:10px 14px 4px;"><span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:13.5px; letter-spacing:.06em; text-transform:uppercase; color:' + roleColor(T, 'ink') + '; opacity:.75;">' + esc(g.label) + '</span><span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:12px; color:' + roleColor(T, 'ink') + '; opacity:.4;">' + g.items.length + '</span></div>' : '')
+          + (own ? '<div style="display:flex; align-items:baseline; gap:8px; padding:10px 14px 4px;"><button type="button" data-primarycat="' + g.slug + '" title="' + esc(g.description || '') + '" style="border:none; background:transparent; padding:0; cursor:pointer; text-align:left; font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:13.5px; letter-spacing:.06em; text-transform:uppercase; color:' + roleColor(T, 'ink') + '; opacity:.75;">' + esc(g.label) + '</button><span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:12px; color:' + roleColor(T, 'ink') + '; opacity:.4;">' + g.items.length + '</span></div>' : '')
           + '<div style="display:grid; grid-template-columns:' + gridCols + '; gap:8px; padding:8px 12px 14px;">' + rows + '</div></div>';
       });
       const n = c.groups.reduce((s, g) => s + g.items.length, 0);
@@ -922,6 +922,8 @@ class Dash {
     if (!pane._bound) {
       pane._bound = true;
       pane.addEventListener('click', e => {
+        const primaryBtn = e.target.closest('[data-primarycat]');
+        if (primaryBtn) { this.setState({ catPanel: primaryBtn.dataset.primarycat, sel: null }); return; }
         const catBtn = e.target.closest('[data-catcomment]');
         if (catBtn) { this.setState({ catPanel: catBtn.dataset.catcomment, sel: null }); return; }
         const el = e.target.closest('[data-midx]');
@@ -1020,7 +1022,7 @@ class Dash {
       ? '<img src="' + esc(sel.logo) + '" alt="" style="width:74px; height:44px; object-fit:contain; object-position:left center;">'
       : '<div style="width:74px; height:44px; display:flex; align-items:center; justify-content:flex-start; font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:28px; color:' + COLORS.blueMid + ';">' + esc(initialsOf(sel.name)) + '</div>';
     const officialLine = sel.official && sel.official !== sel.name ? '<span style="font-size:12px; color:var(--muted);">' + esc(sel.official) + '</span>' : '';
-    const subTag = sel.subcat ? '<span style="font-size:11.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--charcoal); background:var(--pill-bg); border-radius:16px; padding:4px 11px;">' + esc(sel.subcat.replace(/_/g, ' ')) + '</span>' : '';
+    const subTag = sel.categoryLabel && sel.categoryLabel !== catMeta.label ? '<button type="button" data-detail-category="' + esc(sel.subcat || sel.cat) + '" title="' + esc(sel.categoryDescription || '') + '" style="border:none; cursor:pointer; font-size:11.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--charcoal); background:var(--pill-bg); border-radius:16px; padding:4px 11px;">' + esc(sel.categoryLabel) + '</button>' : '';
     const blogLine = sel.blog ? '<a href="' + esc(sel.blog) + '" target="_blank" rel="noopener" style="font-size:13px; font-weight:600;">Read the FDCA introduction post ↗</a>' : '';
     const flag = sel.rosterStatus === 'website-only' ? '<div style="font-size:11.5px; line-height:1.5; color:' + COLORS.warn + '; background:rgba(176,102,60,.07); border:1px solid rgba(176,102,60,.2); border-radius:6px; padding:9px 12px;">Listed on fdca.fi but not confirmed on the current FDCA roster. Membership pending confirmation by the FDCA office.</div>' : '';
     const companyComments = this.commentsFor('company', sel.name);
@@ -1040,6 +1042,8 @@ class Dash {
       + '<button type="button" id="detailCommentPost" style="align-self:flex-start; border:none; background:' + COLORS.blue + '; color:#FFFFFF; font-size:12.5px; font-weight:600; padding:7px 16px; border-radius:16px; cursor:pointer;">Post comment</button>'
       + '</div></div>';
     document.getElementById('detailClose').addEventListener('click', () => this.setState({ sel: null }));
+    const categoryBtn = panel.querySelector('[data-detail-category]');
+    if (categoryBtn) categoryBtn.addEventListener('click', () => this.setState({ catPanel: categoryBtn.dataset.detailCategory, sel: null }));
     const postBtn = document.getElementById('detailCommentPost');
     const input = document.getElementById('detailCommentInput');
     postBtn.addEventListener('click', () => {
@@ -1055,13 +1059,23 @@ class Dash {
     const slug = this.state.catPanel;
     if (!slug) { panel.style.display = 'none'; panel.innerHTML = ''; return; }
     panel.style.display = 'flex';
-    const catMeta = categories.find(c => c.slug === slug) || { label: slug };
+    let catMeta = categories.find(c => c.slug === slug);
+    if (!catMeta) {
+      categories.some(family => {
+        const found = (family.subcats || []).find(category => category.slug === slug);
+        if (!found) return false;
+        catMeta = found;
+        return true;
+      });
+    }
+    catMeta = catMeta || { label: slug, description: '' };
     const list = this.commentsFor('category', slug);
     panel.innerHTML = '<div style="display:flex; align-items:center; gap:12px; padding:20px 20px 14px; border-bottom:1px solid var(--panel-border);">'
       + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:800; font-size:20px; letter-spacing:.02em; text-transform:uppercase; color:' + COLORS.blueDark + ';">' + esc(catMeta.label) + '</span>'
       + '<button type="button" id="catPanelClose" aria-label="Close category comments" style="margin-left:auto; background:var(--pill-bg); border:none; border-radius:50%; width:32px; height:32px; font-size:16px; color:var(--muted); cursor:pointer; line-height:1; padding-bottom:2px;">&times;</button></div>'
       + '<div style="padding:18px 20px 30px; overflow-y:auto; display:flex; flex-direction:column; gap:8px; animation:panelBody .24s cubic-bezier(.2,0,0,1) .1s both;">'
-      + '<span style="font-size:12.5px; color:var(--secondary-text,#6B7280);">Comments about the ' + esc(catMeta.label) + ' category as a whole — a company in the wrong subcategory, a missing one, anything about how this group is organised.</span>'
+      + '<p style="margin:0 0 6px; font-size:14px; line-height:1.5; color:var(--charcoal);">' + esc(catMeta.description || '') + '</p>'
+      + '<span style="font-size:12.5px; color:var(--secondary-text,#6B7280);">Comments about this category — a company in the wrong category, a missing category, or another improvement.</span>'
       + '<div id="catCommentList">' + this.renderCommentList(list) + '</div>'
       + '<textarea id="catCommentInput" maxlength="500" placeholder="Comment on this category…" style="resize:vertical; min-height:56px; border:1.5px solid var(--panel-border); border-radius:8px; padding:8px 10px; font-family:Barlow,sans-serif; font-size:13px; color:var(--charcoal);"></textarea>'
       + '<button type="button" id="catCommentPost" style="align-self:flex-start; border:none; background:' + COLORS.blue + '; color:#FFFFFF; font-size:12.5px; font-weight:600; padding:7px 16px; border-radius:16px; cursor:pointer;">Post comment</button>'
@@ -1100,9 +1114,9 @@ new Dash().mount();
 
 
 def main():
-    categories, known_slugs = load_categories()
-    members, skipped = load_members(known_slugs)
     tokens = load_design_tokens()
+    categories, index = load_categories(tokens["familyColors"])
+    members, skipped = load_members(index)
     colors = tokens["colors"]
     css = generate_css(colors)
 

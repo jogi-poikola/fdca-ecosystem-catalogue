@@ -1,0 +1,258 @@
+{
+  "version": "1.0",
+  "taxonomy_version": "4.0",
+  "updated": "2026-09-13",
+  "principle": "Assign one primary category according to the dominant actual delivery role, not every advertised capability.",
+  "publication_requirements": [
+    "Every published company must have exactly one valid primary category.",
+    "Uncategorised is a temporary intake state and is not publishable.",
+    "Use verified data-center evidence when available.",
+    "When specific data-center evidence is unavailable, classify the company's verified general offering.",
+    "Escalate for human review only when two plausible categories remain tied."
+  ],
+  "evidence_priority": [
+    "Confirmed responsibility in a Finnish data-center project",
+    "Official company description of its data-center offering",
+    "FDCA introduction or catalogue description",
+    "Reliable project announcement or customer reference",
+    "Official description of the company's general offering"
+  ],
+  "family_sequence": [
+    {
+      "family_slug": "data_center_operators",
+      "question": "Does the company own or operate data-center facilities or computing campuses?"
+    },
+    {
+      "family_slug": "construction",
+      "question": "Is the dominant role constructing facilities, infrastructure or permanently installed technical systems?"
+    },
+    {
+      "family_slug": "planning",
+      "question": "Is the dominant role site development, independent design, engineering or project management?"
+    },
+    {
+      "family_slug": "technology_vendors",
+      "question": "Is the dominant role manufacturing or supplying equipment, products or software?"
+    },
+    {
+      "family_slug": "services",
+      "question": "Is the dominant role operational, commercial or professional support?"
+    }
+  ],
+  "tie_breakers": [
+    "Overall project responsibility takes priority over technical specialization.",
+    "External grid and substation construction takes priority over general electrical installation.",
+    "Civil and site work takes priority over industrial construction when it is the dominant activity.",
+    "A clearly dominant specialist trade takes priority over multidisciplinary technical installation.",
+    "Manufacturing or supplying a product takes priority over installation when the product is the dominant offering.",
+    "Independent advice, design or verification takes priority over construction when the company does not execute the work.",
+    "Use an Other category only after testing every specific category in that family."
+  ],
+  "families": [
+    {
+      "family_slug": "data_center_operators",
+      "rules": [
+        {
+          "category_slug": "data_center_operators",
+          "question": "Does the company own or operate facilities providing data-center or dedicated computing capacity?",
+          "includes": ["Commercial operators", "Public computing centres", "Owner-operated computing campuses"],
+          "excludes": ["Site developers without operating facilities", "Facility management suppliers"]
+        }
+      ]
+    },
+    {
+      "family_slug": "technology_vendors",
+      "rules": [
+        {
+          "category_slug": "power_equipment",
+          "question": "Is power equipment the company's dominant supplied product?",
+          "includes": ["Generation equipment", "Batteries", "Backup power", "Switchgear", "Power distribution equipment", "Transformers"],
+          "excludes": ["External grid construction", "Internal electrical installation", "Electricity supply"]
+        },
+        {
+          "category_slug": "cooling_heat_recovery",
+          "question": "Is cooling, ventilation, liquid handling or heat-recovery equipment the dominant supplied product?",
+          "includes": ["Cooling units", "Fans", "Pumps", "Valves", "Heat exchangers", "Water-treatment equipment"],
+          "excludes": ["Cooling-system installation", "Ongoing facility operation"]
+        },
+        {
+          "category_slug": "computing_network_equipment",
+          "question": "Is computing, storage, rack, cabling or internal network equipment the dominant supplied product?",
+          "includes": ["Servers", "Storage", "Racks", "Internal cabling", "Network hardware"],
+          "excludes": ["External connectivity services", "Equipment maintenance"]
+        },
+        {
+          "category_slug": "automation_software",
+          "question": "Is monitoring, control, sensing or operational software the dominant supplied product?",
+          "includes": ["Building controls", "Power monitoring", "Environmental sensors", "Operational software"],
+          "excludes": ["Security products", "Automation installation"]
+        },
+        {
+          "category_slug": "security_technology",
+          "question": "Are physical or digital security products the dominant supplied offering?",
+          "includes": ["Access control", "Locks", "Surveillance equipment", "Security software", "Perimeter products"],
+          "excludes": ["Guarding", "Ongoing security operations", "Fire-protection installation"]
+        },
+        {
+          "category_slug": "building_products",
+          "question": "Are building materials, components or prefabricated products the dominant supplied offering?",
+          "includes": ["Concrete", "Steel structures", "Panels", "Insulation", "Cable supports", "Seals"],
+          "excludes": ["On-site construction as the dominant role"]
+        },
+        {
+          "category_slug": "other_technology",
+          "question": "Is the company primarily a technology supplier not covered by another technology category?",
+          "includes": ["Lighting", "Lifts", "Material handling", "General integrated technology portfolios"],
+          "excludes": ["Services without a supplied product"]
+        }
+      ]
+    },
+    {
+      "family_slug": "construction",
+      "rules": [
+        {
+          "category_slug": "main_contractors",
+          "question": "Does verified evidence confirm overall responsibility for a complete Finnish data-center building or major construction phase?",
+          "includes": ["Complete building delivery", "Confirmed design-and-build responsibility", "Confirmed main-contractor responsibility"],
+          "excludes": ["Marketing capability without a confirmed Finnish project", "Specialist packages"]
+        },
+        {
+          "category_slug": "industrial_construction",
+          "question": "Does the company construct industrial facilities or structural packages without confirmed overall data-center responsibility?",
+          "includes": ["Industrial buildings", "Structural works", "Technical rooms", "Process facilities", "Large specialist building packages"],
+          "excludes": ["Dominant earthworks", "External power infrastructure", "Technical building-system installation"]
+        },
+        {
+          "category_slug": "infrastructure_construction",
+          "question": "Are earthworks, rock works, foundations, roads, drainage or underground site utilities dominant?",
+          "includes": ["Excavation", "Rock works", "Ground improvement", "Foundations", "Roads", "Drainage", "Site utilities"],
+          "excludes": ["External electrical grid work", "Complete building responsibility"]
+        },
+        {
+          "category_slug": "grid_substation_construction",
+          "question": "Is external power infrastructure construction the dominant role?",
+          "includes": ["Grid connections", "High-voltage systems", "Substations", "Transformers", "Switchyards", "External power cabling"],
+          "excludes": ["Internal facility power distribution", "Power-equipment manufacturing"]
+        },
+        {
+          "category_slug": "technical_systems_installation",
+          "question": "Does the company primarily install, integrate or commission technical systems inside or directly serving facilities?",
+          "includes": ["Internal electrical distribution", "Backup power installation", "Equipment cabling", "Internal networks", "Cooling", "Ventilation", "Plumbing", "Process piping", "Automation", "Controls"],
+          "excludes": ["External grids and substations", "General building construction", "Earthworks", "Fire-specific packages", "Roofs and façades"]
+        },
+        {
+          "category_slug": "fire_safety_construction",
+          "question": "Is fire protection clearly the company's dominant construction activity?",
+          "includes": ["Fire detection", "Fire alarms", "Suppression", "Sprinklers", "Smoke control", "Structural fire protection"],
+          "excludes": ["Fire-safety design without installation", "Security products"]
+        },
+        {
+          "category_slug": "roofing_building_envelope",
+          "question": "Are roofing, façades, cladding, insulation, waterproofing or weather protection dominant?",
+          "includes": ["Roofs", "Façades", "Cladding", "Insulation", "Waterproofing"],
+          "excludes": ["Supply of building products without installation"]
+        },
+        {
+          "category_slug": "other_construction",
+          "question": "Does the company perform construction work not covered by another construction category?",
+          "includes": ["Other verified construction roles"],
+          "excludes": ["Any role matching a more specific construction category"]
+        }
+      ]
+    },
+    {
+      "family_slug": "planning",
+      "rules": [
+        {
+          "category_slug": "site_development",
+          "question": "Is developing land, sites, power access or permits for future facilities the dominant role?",
+          "includes": ["Site ownership and development", "Land assembly", "Power-access development", "Permitting"],
+          "excludes": ["Municipal investment promotion", "Operating completed facilities"]
+        },
+        {
+          "category_slug": "municipal_regional_development",
+          "question": "Is a public or regional organization enabling investment and local business development?",
+          "includes": ["Municipalities", "Municipal development companies", "Regional development organizations"],
+          "excludes": ["Commercial site developers", "Private property advisers"]
+        },
+        {
+          "category_slug": "design_engineering",
+          "question": "Is independent architecture, engineering or technical design the dominant role?",
+          "includes": ["Architecture", "Structural design", "Electrical design", "Cooling design", "Infrastructure design", "Technical consultancy"],
+          "excludes": ["Physical installation", "Independent project management as the dominant role"]
+        },
+        {
+          "category_slug": "project_management",
+          "question": "Is independent project management, supervision, coordination, quality or safety oversight dominant?",
+          "includes": ["Owner representation", "Construction management", "Project controls", "Quality supervision", "Safety supervision"],
+          "excludes": ["Overall construction responsibility", "Design as the dominant role"]
+        }
+      ]
+    },
+    {
+      "family_slug": "services",
+      "rules": [
+        {
+          "category_slug": "energy",
+          "question": "Is electricity, fuel or energy-market service the dominant offering?",
+          "includes": ["Electricity supply", "Procurement", "Trading", "Distribution", "Fuels", "Energy advice"],
+          "excludes": ["Power equipment", "External grid construction", "Energy-site development"]
+        },
+        {
+          "category_slug": "connectivity",
+          "question": "Are external telecommunications or fibre connectivity services the dominant offering?",
+          "includes": ["Carrier services", "Internet exchange", "External fibre connections", "Interconnection"],
+          "excludes": ["Internal network equipment", "Internal cabling installation"]
+        },
+        {
+          "category_slug": "commissioning_testing",
+          "question": "Is independent commissioning, testing or performance verification the dominant offering?",
+          "includes": ["Commissioning management", "Load testing", "Acceptance testing", "Independent verification"],
+          "excludes": ["Commissioning performed only as part of installation"]
+        },
+        {
+          "category_slug": "facility_management",
+          "question": "Is operating or maintaining complete facilities and building systems the dominant offering?",
+          "includes": ["Facility operation", "Building-system maintenance", "Monitoring", "Operational support"],
+          "excludes": ["Maintenance focused on individual equipment", "Physical installation"]
+        },
+        {
+          "category_slug": "security_services",
+          "question": "Are guarding, security operations or ongoing protection services the dominant offering?",
+          "includes": ["Guarding", "Security operations", "Risk management", "Ongoing protection"],
+          "excludes": ["Security-product manufacturing", "Fire-protection installation"]
+        },
+        {
+          "category_slug": "equipment_maintenance",
+          "question": "Are equipment repair, refurbishment, relocation or retirement services dominant?",
+          "includes": ["Repair", "Refurbishment", "Lifecycle management", "Relocation", "Secure retirement", "Recycling"],
+          "excludes": ["Supplying new equipment", "Operating complete facilities"]
+        },
+        {
+          "category_slug": "logistics",
+          "question": "Are transport, forwarding, storage or equipment-delivery services dominant?",
+          "includes": ["Freight", "Forwarding", "Warehousing", "Handling", "Project delivery logistics"],
+          "excludes": ["Equipment rental without logistics responsibility"]
+        },
+        {
+          "category_slug": "staffing",
+          "question": "Are recruitment, workforce supply or employment services dominant?",
+          "includes": ["Recruitment", "Temporary labour", "Direct hiring", "Employment administration"],
+          "excludes": ["Project management consultants"]
+        },
+        {
+          "category_slug": "legal_business_advisory",
+          "question": "Is legal, financial, property, investment, communications or management advice dominant?",
+          "includes": ["Legal advice", "Investment advice", "Property advice", "Insurance", "Communications", "Management consulting"],
+          "excludes": ["Technical engineering", "Site development", "Construction project management"]
+        },
+        {
+          "category_slug": "other_services",
+          "question": "Is the company primarily a service provider not covered by another service category?",
+          "includes": ["Training", "Certification", "Associations", "Temporary accommodation", "Equipment rental", "Property leasing"],
+          "excludes": ["Any service matching a more specific category"]
+        }
+      ]
+    }
+  ]
+}
