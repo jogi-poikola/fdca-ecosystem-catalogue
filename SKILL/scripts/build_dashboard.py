@@ -92,8 +92,7 @@ def load_categories(family_colours):
     index = taxonomy_index(raw)
     for family in raw["families"]:
         subcats = [
-            {"slug": category["slug"], "label": category["en"], "labelFi": category["fi"],
-             "description": category["description_en"], "descriptionFi": category["description_fi"]}
+            {"slug": category["slug"], "label": category["en"], "description": category["description_en"]}
             for category in family["categories"]
             if category["slug"] != family["slug"]
         ]
@@ -101,9 +100,7 @@ def load_categories(family_colours):
         categories.append({
             "slug": family["slug"],
             "label": family["en"],
-            "labelFi": family["fi"],
             "description": family["description_en"],
-            "descriptionFi": family["description_fi"],
             "hue": colour["hue"],
             "chromaK": colour["chromaK"],
             "subcats": subcats,
@@ -132,9 +129,7 @@ def load_members(index):
             "cat": family,
             "subcat": "" if category == family else category,
             "categoryLabel": category_meta["en"],
-            "categoryLabelFi": category_meta["fi"],
             "categoryDescription": category_meta["description_en"],
-            "categoryDescriptionFi": category_meta["description_fi"],
             "url": m["url"],
             "blog": m.get("blog_link") or None,
             "logo": m["logo_url"],
@@ -183,7 +178,6 @@ __CSS_BLOCK__</style>
         <span id="jumpLabel" style="min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13.5px; font-weight:600; color:var(--charcoal);">All categories</span>
         <span style="flex:none; font-size:11px; color:var(--muted);">&#9662;</span>
       </button>
-      <button id="langToggle" type="button" aria-label="Switch language" style="height:30px; padding:0 13px; border:1.5px solid var(--panel-border); border-radius:15px; background:#FFFFFF; cursor:pointer; font-family:Barlow,sans-serif; font-size:12px; font-weight:700; letter-spacing:.03em; color:var(--charcoal);">FI</button>
     </div>
 
     <div id="viewport" style="position:absolute; inset:0; overflow:hidden; cursor:grab; touch-action:none; background-color:var(--canvas-bg);">
@@ -206,7 +200,7 @@ __CSS_BLOCK__</style>
       <button id="sheetDismiss" type="button" style="flex:1 1 auto; border:none; background:transparent; cursor:pointer; min-height:60px;"></button>
       <div style="flex:0 1 auto; display:flex; flex-direction:column; min-height:0; max-height:76%; background:#FFFFFF; border-radius:20px 20px 0 0; box-shadow:0 -12px 40px rgba(2,3,129,.2); animation:sheetIn .22s cubic-bezier(.2,0,0,1) both;">
         <div style="display:flex; align-items:center; gap:12px; padding:16px 18px 12px; border-bottom:1.5px solid var(--section-border); flex:none;">
-          <span id="sheetTitle" style="font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:20px; letter-spacing:.03em; text-transform:uppercase; color:var(--blue-dark); margin-right:auto;">Jump to</span>
+          <span style="font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:20px; letter-spacing:.03em; text-transform:uppercase; color:var(--blue-dark); margin-right:auto;">Jump to</span>
           <button id="sheetClose" type="button" aria-label="Close" style="border:none; background:var(--pill-bg); border-radius:50%; width:36px; height:36px; font-size:19px; line-height:1; color:var(--muted); cursor:pointer;">&times;</button>
         </div>
         <div id="sheetList" style="overflow-y:auto; padding:8px 12px 22px; display:flex; flex-direction:column; gap:2px;"></div>
@@ -221,26 +215,6 @@ const categories = __CATEGORIES_JSON__;
 const members = __MEMBERS_JSON__;
 const COLORS = __COLORS_JSON__;
 const FDCA_LOGO = "__FDCA_LOGO__";
-
-const TXT = {
-  en: {
-    allCategories: 'All categories',
-    jumpTo: 'Jump to',
-    searchPlaceholder: (n) => 'Search ' + n + ' companies \u2014 name, service, technology',
-    mastheadBody: (membersLen, ops) => 'The Finnish Data Center Association is the full ecosystem association for Finland\u2019s data center industry, representing ' + membersLen + ' member organisations: ' + ops + ' data center operators and ' + (membersLen - ops) + ' supply chain organisations.',
-    mastheadList: (total, familyCount) => 'The Finnish Data Center Association is the full ecosystem association for Finland\u2019s data center industry, representing ' + total + ' member organisations across ' + familyCount + ' families.',
-    langLabel: 'FI',
-  },
-  fi: {
-    allCategories: 'Kaikki kategoriat',
-    jumpTo: 'Siirry',
-    searchPlaceholder: (n) => 'Hae ' + n + ' yrityksest\u00e4 \u2014 nimi, palvelu, teknologia',
-    mastheadBody: (membersLen, ops) => 'Finnish Data Center Association on koko Suomen datakeskusalan ekosysteemiyhdistys, johon kuuluu ' + membersLen + ' j\u00e4senorganisaatiota: ' + ops + ' datakeskusoperaattoria ja ' + (membersLen - ops) + ' toimitusketjun organisaatiota.',
-    mastheadList: (total, familyCount) => 'Finnish Data Center Association on koko Suomen datakeskusalan ekosysteemiyhdistys, johon kuuluu ' + total + ' j\u00e4senorganisaatiota ' + familyCount + ' kategoriassa.',
-    langLabel: 'EN',
-  },
-};
-function txt(key, ...args) { const dict = TXT[this.state.lang] || TXT.en; const val = dict[key]; return typeof val === 'function' ? val(...args) : val; }
 
 document.documentElement.style.setProperty('--panel-border', COLORS.panelBorder);
 document.documentElement.style.setProperty('--section-border', COLORS.sectionBorder);
@@ -286,21 +260,7 @@ const roleColor = (T, name) => {
 
 const CELL_W = 168, CELL_H = 190, GAP = 14, TIN = 7, PITCH_X = CELL_W + GAP + TIN * 2, PITCH_Y = CELL_H + GAP + TIN * 2, CELL_RATIO = PITCH_Y / PITCH_X, PIN = 'data_center_operators';
 const NARROW = 700;
-// Minimum subcategory column width: derived from the longest category name
-// so every label fits in ≤ 2 rows at the label's solved font size.
-// Barlow Condensed 700 uppercase ≈ 0.58 × fontSize px per character.
-const MIN_LABEL_WIDTH = (() => {
-  let maxLen = 0;
-  categories.forEach(c => {
-    (c.subcats || []).forEach(s => {
-      maxLen = Math.max(maxLen, (s.label || '').length, (s.labelFi || '').length);
-    });
-  });
-  // Target ~20 px font → char width ≈ 11.6 px.
-  // Two rows → maxLen / 2 chars per row.  Floor at 2 cells.
-  const pxNeeded = Math.max(0, maxLen) * 0.5 * 11.6 + 26;
-  return Math.max(2, Math.ceil(pxNeeded / PITCH_X));
-})();
+const MIN_LABEL_WIDTH = 3;
 const initialsOf = n => n.replace(/\b(oy|ab|ltd|oyj|inc|group|finland|as|plc|corp)\b/gi, ' ').trim().split(/[\s-]+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('');
 function hostOf(u) { if (!u) return ''; try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return u.replace(/^https?:\/\//, '').replace(/\/.*$/, ''); } }
 function clipTo(s, n) { if (!s) return ''; return s.length <= n ? s : s.slice(0, n).replace(/[\s,;:.]+\S*$/, '') + '…'; }
@@ -308,7 +268,7 @@ function esc(s) { const d = document.createElement('div'); d.textContent = s == 
 
 class Dash {
   constructor() {
-    this.state = { q: '', sel: null, catPanel: null, tier: 'logo', view: null, vw: 0, vh: 0, autoFormat: null, focusCat: null, focusSub: null, sheetOpen: false, lang: 'en' };
+    this.state = { q: '', sel: null, catPanel: null, tier: 'logo', view: null, vw: 0, vh: 0, autoFormat: null, focusCat: null, focusSub: null, sheetOpen: false };
     this.v = { x: 0, y: 0, k: 1 };
     this.broken = {};
     this.dragged = false;
@@ -384,40 +344,27 @@ class Dash {
   }
 
   buildCats() {
-    const lang = this.state.lang || 'en';
-    const L = (en, fi) => lang === 'fi' ? (fi || en) : en;
     const byCat = {};
     members.forEach(m => { (byCat[m.cat] = byCat[m.cat] || []).push(m); });
     const order = categories.map(c => c.slug).filter(s => byCat[s]);
     Object.keys(byCat).forEach(s => { if (order.indexOf(s) < 0) order.push(s); });
     let cats = order.map(slug => {
-      const meta = categories.find(c => c.slug === slug) || { slug: slug, label: slug, labelFi: slug, description: '', descriptionFi: '', subcats: [] };
-      // Build a language-resolved meta so all downstream code
-      // (layout, renderMap, renderList, renderSheet, renderDetail,
-      //  renderCategoryPanel) reads the right language automatically.
-      const langMeta = Object.assign({}, meta, {
-        label: L(meta.label, meta.labelFi),
-        description: L(meta.description, meta.descriptionFi),
-        subcats: (meta.subcats || []).map(s => Object.assign({}, s, {
-          label: L(s.label, s.labelFi),
-          description: L(s.description, s.descriptionFi),
-        })),
-      });
+      const meta = categories.find(c => c.slug === slug) || { slug: slug, label: slug, subcats: [] };
       const list = byCat[slug];
-      const subSlugs = (langMeta.subcats || []).map(s => s.slug);
+      const subSlugs = (meta.subcats || []).map(s => s.slug);
       const groups = [];
       if (subSlugs.length) {
         subSlugs.forEach(s => {
           const g = list.filter(m => m.subcat === s);
-          const subMeta = langMeta.subcats.find(x => x.slug === s) || {};
+          const subMeta = meta.subcats.find(x => x.slug === s) || {};
           if (g.length) groups.push({ slug: s, label: subMeta.label, description: subMeta.description, items: g });
         });
         const rest = list.filter(m => subSlugs.indexOf(m.subcat) < 0);
-        if (rest.length) groups.push({ slug: slug, label: langMeta.label, description: langMeta.description, items: rest });
+        if (rest.length) groups.push({ slug: slug, label: meta.label, description: meta.description, items: rest });
       } else {
-        groups.push({ slug: slug, label: langMeta.label, description: langMeta.description, items: list });
+        groups.push({ slug: slug, label: meta.label, description: meta.description, items: list });
       }
-      return { slug: slug, meta: langMeta, list: list, groups: groups };
+      return { slug: slug, meta: meta, list: list, groups: groups };
     });
     cats.sort((x, y) => (x.slug === PIN ? -1 : y.slug === PIN ? 1 : y.list.length - x.list.length));
     return cats;
@@ -493,12 +440,7 @@ class Dash {
       // Reject layouts where a labeled subcategory is still too narrow —
       // the outer layout must retry with a wider category block.
       if (good.some(L => { const g = cat.groups[L.it.idx]; return g.label && L.w < MIN_LABEL_WIDTH; })) return null;
-      // Report the actual minimum height, not the treemap-allocated height,
-      // so the outer layout can shrink the block to just what is needed.
-      const usedRows = Math.max.apply(null, good.map(L => {
-        const g = cat.groups[L.it.idx], hr = hrOf(g);
-        return L.y + hr + Math.ceil(g.items.length / Math.max(1, L.w));
-      }));
+      const usedRows = Math.max.apply(null, good.map(L => L.y + L.h));
       return { leaves: good, usedRows: usedRows };
     };
 
@@ -576,7 +518,7 @@ class Dash {
       if (cat.title) {
         const hpx = L.h * PITCH_Y - GAP;
         const ops = cat.mirror.list.length;
-        const body = this.txt('mastheadBody', members.length, ops);
+        const body = 'The Finnish Data Center Association is the full ecosystem association for Finland’s data center industry, representing ' + members.length + ' member organisations: ' + ops + ' data center operators and ' + (members.length - ops) + ' supply chain organisations.';
         const pad = Math.round(Math.min(wpx, hpx) * 0.085);
         const gap = Math.round(pad * 0.4);
         const mark = Math.min(hpx * 0.21, wpx * 0.48);
@@ -614,10 +556,7 @@ class Dash {
         const g0 = cat.groups[sub.it.idx];
         const lbl = g0.label || '';
         const hr = lbl ? 1 : 0;
-        // Only render as many rows as the items actually need — never leave empty rows.
-        const neededItemRows = Math.ceil(g0.items.length / Math.max(1, sub.w));
-        const actualH = hr + neededItemRows;
-        const bx0 = sx - px, by0 = sy - py, bw0 = sub.w * PITCH_X - GAP, bh0 = actualH * PITCH_Y - GAP;
+        const bx0 = sx - px, by0 = sy - py, bw0 = sub.w * PITCH_X - GAP, bh0 = sub.h * PITCH_Y - GAP;
         const rowW = bw0 - 26, rowH = hr * PITCH_Y - GAP - 12;
         const longest = lbl ? Math.max.apply(null, lbl.split(/\s+/).map(w => w.length)) : 1;
         const wordCap = rowW / (0.58 * Math.max(3, longest));
@@ -634,7 +573,7 @@ class Dash {
           x: (L.x + sub.x + (k % sub.w)) * PITCH_X - px + TIN,
           y: (L.y + sub.y + hr + Math.floor(k / sub.w)) * PITCH_Y - py + TIN
         });
-        if (lbl) slabels.push({ slug: g.slug, description: g.description, wordCap: wordCap, x: bx0 + 13, y: by0, w: bw0 - 26, h: hr * PITCH_Y - GAP, text: lbl, font: lf });
+        if (lbl) slabels.push({ slug: g.slug, description: g.description, wordCap: wordCap, x: bx0 + 13, y: by0, w: bw0 - 26, h: hr * PITCH_Y - GAP, text: lbl, n: g.items.length, font: lf, countFont: Math.max(12, Math.round(lf * 0.46)) });
         g.items.forEach(m => { const c = cellOf(i++); tiles.push({ m: m, x: c.x, y: c.y, w: CELL_W, h: CELL_H }); });
       });
       return {
@@ -656,6 +595,7 @@ class Dash {
         const target = Math.min(floor, s.wordCap);
         if (s.font >= target) return;
         s.font = target;
+        s.countFont = Math.max(12, Math.round(target * 0.46));
       }));
     }
 
@@ -840,7 +780,7 @@ class Dash {
     if (!list) this.renderMap(tier, q);
     else this.renderList(cats, q);
 
-    document.getElementById('jumpLabel').textContent = this.state.focusSub || (this.state.focusCat ? (cats.filter(c => c.slug === this.state.focusCat)[0] || {}).meta.label : this.txt('allCategories'));
+    document.getElementById('jumpLabel').textContent = this.state.focusSub || (this.state.focusCat ? (cats.filter(c => c.slug === this.state.focusCat)[0] || {}).meta.label : 'All categories');
     this.renderSheet(cats);
     this.renderDetail();
     this.renderCategoryPanel();
@@ -869,12 +809,13 @@ class Dash {
           + '<span style="font-size:' + c.bodyFont + 'px; line-height:1.38; color:' + c.ink + '; flex:none;">' + esc(c.body) + '</span>'
           + '<div data-nodrag="1" style="display:flex; align-items:center; gap:' + c.titlePad + 'px; height:' + c.fieldH + 'px; flex:none; border:2px solid var(--panel-border); border-radius:' + c.fieldH + 'px; padding:0 ' + c.titlePad + 'px; background:#FAFBFC;">'
           + '<span style="font-size:' + c.fieldFont + 'px; color:var(--muted); flex:none;">&#8981;</span>'
-          + '<input id="searchInput" value="' + esc(this.state.q) + '" aria-label="Search member companies" placeholder="' + this.txt('searchPlaceholder', members.length) + '" style="border:none; outline:none; flex:1 1 auto; min-width:0; font-family:Barlow,sans-serif; font-size:' + c.fieldFont + 'px; color:var(--charcoal); background:transparent;">'
+          + '<input id="searchInput" value="' + esc(this.state.q) + '" aria-label="Search member companies" placeholder="Search ' + members.length + ' companies — name, service, technology" style="border:none; outline:none; flex:1 1 auto; min-width:0; font-family:Barlow,sans-serif; font-size:' + c.fieldFont + 'px; color:var(--charcoal); background:transparent;">'
           + '</div></div></div>';
       }
       const boxes = c.boxes.map(b => '<div style="position:absolute; left:' + b.x + 'px; top:' + b.y + 'px; width:' + b.w + 'px; height:' + b.h + 'px; background:' + b.bg + '; border:1.5px solid ' + b.bd + '; border-radius:10px;"></div>').join('');
-      const slabels = c.slabels.map(s => '<button type="button" data-nodrag="1" data-primarycat="' + s.slug + '" title="' + esc(s.description || '') + '" style="position:absolute; left:' + s.x + 'px; top:' + s.y + 'px; width:' + s.w + 'px; height:' + s.h + 'px; display:flex; align-items:center; overflow:hidden; border:none; background:transparent; padding:0; cursor:pointer; text-align:left;">'
-              + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:' + s.font + 'px; line-height:.98; letter-spacing:.035em; text-transform:uppercase; color:' + c.ink + '; opacity:.78; overflow-wrap:anywhere; min-width:0;">' + esc(s.text) + '</span></button>').join('');
+      const slabels = c.slabels.map(s => '<button type="button" data-nodrag="1" data-primarycat="' + s.slug + '" title="' + esc(s.description || '') + '" style="position:absolute; left:' + s.x + 'px; top:' + s.y + 'px; width:' + s.w + 'px; height:' + s.h + 'px; display:flex; align-items:center; gap:12px; overflow:hidden; border:none; background:transparent; padding:0; cursor:pointer; text-align:left;">'
+        + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:' + s.font + 'px; line-height:.98; letter-spacing:.035em; text-transform:uppercase; color:' + c.ink + '; opacity:.78; overflow-wrap:anywhere; min-width:0;">' + esc(s.text) + '</span>'
+        + '<span style="font-family:\'Barlow Condensed\',sans-serif; font-weight:700; font-size:' + s.countFont + 'px; color:' + c.ink + '; opacity:.42; flex:none;">' + s.n + '</span></button>').join('');
       const tiles = c.tiles.map(t => {
         const m = t.m, idx = t.idx;
         const hit = this.matches(m, q);
@@ -941,10 +882,10 @@ class Dash {
     const total = members.length;
     const masthead = '<div style="display:flex; flex-direction:column; gap:10px; max-width:640px; margin:20px auto 14px; padding:22px; background:#FFFFFF; border:1.5px solid var(--panel-border); border-radius:14px;">'
       + '<img src="' + FDCA_LOGO + '" alt="FDCA" style="height:32px; width:auto; object-fit:contain; object-position:left top;">'
-      + '<span style="font-size:14px; line-height:1.5; color:' + COLORS.blueDark + ';">' + this.txt('mastheadList', total, categories.length) + '</span>'
+      + '<span style="font-size:14px; line-height:1.5; color:' + COLORS.blueDark + ';">The Finnish Data Center Association is the full ecosystem association for Finland’s data center industry, representing ' + total + ' member organisations across ' + categories.length + ' families.</span>'
       + '<div data-nodrag="1" style="display:flex; align-items:center; gap:9px; height:44px; border:1.5px solid var(--panel-border); border-radius:22px; padding:0 14px; background:#FAFBFC;">'
       + '<span style="font-size:15px; color:var(--muted);">&#8981;</span>'
-      + '<input id="searchInputList" value="' + esc(this.state.q) + '" aria-label="Search member companies" placeholder="' + this.txt('searchPlaceholder', total) + '" style="border:none; outline:none; flex:1 1 auto; min-width:0; font-family:Barlow,sans-serif; font-size:14.5px; color:var(--charcoal); background:transparent;">'
+      + '<input id="searchInputList" value="' + esc(this.state.q) + '" aria-label="Search member companies" placeholder="Search ' + total + ' companies — name, service, technology" style="border:none; outline:none; flex:1 1 auto; min-width:0; font-family:Barlow,sans-serif; font-size:14.5px; color:var(--charcoal); background:transparent;">'
       + '</div></div>';
 
     // Every row is always built (never filtered out here) — search-driven
@@ -1052,10 +993,8 @@ class Dash {
     const overlay = document.getElementById('sheetOverlay');
     overlay.style.display = this.state.sheetOpen ? 'flex' : 'none';
     if (!this.state.sheetOpen) return;
-    const sheetTitle = document.getElementById('sheetTitle');
-    if (sheetTitle) sheetTitle.textContent = this.txt('jumpTo');
     const list = document.getElementById('sheetList');
-    const rows = ['<button type="button" data-jump="__all" style="display:flex; align-items:center; gap:10px; width:100%; min-height:48px; padding:0 12px; border:none; border-radius:10px; background:transparent; cursor:pointer; font:inherit; text-align:left; font-size:16px; font-weight:700; color:' + COLORS.blue + ';">' + this.txt('allCategories') + '</button>'];
+    const rows = ['<button type="button" data-jump="__all" style="display:flex; align-items:center; gap:10px; width:100%; min-height:48px; padding:0 12px; border:none; border-radius:10px; background:transparent; cursor:pointer; font:inherit; text-align:left; font-size:16px; font-weight:700; color:' + COLORS.blue + ';">All categories</button>'];
     cats.forEach(c => {
       const T = toneOf(c.slug);
       rows.push('<button type="button" data-jump="' + c.slug + '" style="display:flex; align-items:center; gap:10px; width:100%; min-height:48px; padding:0 12px; border:none; border-radius:10px; background:transparent; cursor:pointer; font:inherit; text-align:left;">'
@@ -1165,13 +1104,6 @@ class Dash {
 
   mount() {
     this.loadComments();
-    const langToggle = document.getElementById('langToggle');
-    langToggle.addEventListener('click', () => {
-      const next = this.state.lang === 'fi' ? 'en' : 'fi';
-      langToggle.textContent = TXT[next].langLabel;
-      this._layout = null; this._cats = null;
-      this.setState({ lang: next }, () => this.fit());
-    });
     document.getElementById('mapTab').addEventListener('click', () => this.setView('map'));
     document.getElementById('listTab').addEventListener('click', () => this.setView('list'));
     document.getElementById('jumpBtn').addEventListener('click', () => this.setState({ sheetOpen: true }));
