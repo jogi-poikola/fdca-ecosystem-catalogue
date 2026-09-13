@@ -28,6 +28,7 @@ from pathlib import Path
 import yaml
 
 from catalogue_config import taxonomy_index
+from layout_solver import run as solve_layout
 
 ROOT = Path(__file__).resolve().parents[2]
 INPUT_DIR = ROOT / "INPUT"
@@ -144,7 +145,7 @@ def load_members(index):
     return members, skipped
 
 
-def render_html(categories, members, css, colors):
+def render_html(categories, members, css, colors, layout_json=None):
     html = HTML_TEMPLATE
     html = html.replace("__CSS_BLOCK__", css)
     html = html.replace("__MEMBER_COUNT__", str(len(members)))
@@ -152,6 +153,7 @@ def render_html(categories, members, css, colors):
     html = html.replace("__MEMBERS_JSON__", json.dumps(members, ensure_ascii=False))
     html = html.replace("__COLORS_JSON__", json.dumps(colors, ensure_ascii=False))
     html = html.replace("__FDCA_LOGO__", FDCA_LOGO)
+    html = html.replace("__LAYOUT_JSON__", json.dumps(layout_json, ensure_ascii=False) if layout_json else "null")
     return html
 
 
@@ -220,6 +222,7 @@ const categories = __CATEGORIES_JSON__;
 const members = __MEMBERS_JSON__;
 const COLORS = __COLORS_JSON__;
 const FDCA_LOGO = "__FDCA_LOGO__";
+const LAYOUT_DATA = __LAYOUT_JSON__;
 
 const TXT = {
   en: { allCategories: 'All categories', jumpTo: 'Jump to', searchPlaceholder: (n) => 'Search ' + n + ' companies \u2014 name, service, technology', mastheadBody: (m, ops) => 'The Finnish Data Center Association is the full ecosystem association for Finland\u2019s data center industry, representing ' + m + ' member organisations: ' + ops + ' data center operators and ' + (m - ops) + ' supply chain organisations.', mastheadList: (t, fc) => 'The Finnish Data Center Association is the full ecosystem association for Finland\u2019s data center industry, representing ' + t + ' member organisations across ' + fc + ' families.', langLabel: 'FI' },
@@ -410,142 +413,36 @@ class Dash {
     const fmt = this.fmt();
     if (this._layout && this._layoutKey === fmt) return this._layout;
     const target = fmt === 'tall' ? 9 / 16 : 16 / 9;
-    const ASPECT = target * CELL_RATIO;
-    let cats = this.buildCats();
-    this._cats = cats.slice();
-    const opsCat = cats.filter(c => c.slug === PIN)[0] || cats[0];
-    cats = [{ slug: '__title', title: true, meta: { label: '', subcats: [] }, list: [], groups: [], mirror: opsCat }].concat(cats);
+        let cats = this.buildCats();
+            this._cats = cats.slice();
+            const opsCat = cats.filter(c => c.slug === PIN)[0] || cats[0];
+            cats = [{ slug: '__title', title: true, meta: { label: '', subcats: [] }, list: [], groups: [], mirror: opsCat }].concat(cats);
 
-    const tileInt = (items, x0, y0, w0, h0) => {
-      const out = [];
-      const rec = (list, x, y, w, h) => {
-        if (!list.length || w < 1 || h < 1) return;
-        if (list.length === 1) { out.push({ it: list[0], x: x, y: y, w: w, h: h }); return; }
-        const total = list.reduce((s, i) => s + i.cells, 0);
-        let acc = 0, idx = 0;
-        for (let i = 0; i < list.length - 1; i++) { acc += list[i].cells; idx = i; if (acc >= total / 2) break; }
-        const A = list.slice(0, idx + 1), B = list.slice(idx + 1);
-        const sa = A.reduce((s, i) => s + i.cells, 0), sb = total - sa;
-        if (w >= h) {
-          let w1 = Math.max(1, Math.min(w - 1, Math.round(w * sa / total)));
-          while (w1 < w - 1 && w1 * h < sa) w1++;
-          while (w1 > 1 && (w - w1) * h < sb) w1--;
-          rec(A, x, y, w1, h); rec(B, x + w1, y, w - w1, h);
-        } else {
-          let h1 = Math.max(1, Math.min(h - 1, Math.round(h * sa / total)));
-          while (h1 < h - 1 && w * h1 < sa) h1++;
-          while (h1 > 1 && w * (h - h1) < sb) h1--;
-          rec(A, x, y, w, h1); rec(B, x, y + h1, w, h - h1);
-        }
-      };
-      rec(items.slice(), x0, y0, w0, h0);
-      return out;
-    };
-
-    const hrOf = g => (g.label ? 1 : 0);
-
-    const packCat = (cat, wc, hc) => {
-      if (cat.title) return (hc < 2 || wc < 1) ? null : { leaves: [], usedRows: hc };
-      if (hc < 2 || wc < 1) return null;
-      let dem = cat.groups.map(g => g.items.length + (g.label ? 2 : 0));
-      let good = null;
-      for (let it = 0; it < 18; it++) {
-        const leaves = tileInt(cat.groups.map((g, i) => ({ idx: i, cells: dem[i] })), 0, 0, wc, hc);
-        let ok = leaves.length === cat.groups.length;
-        leaves.forEach(L => {
-          const g = cat.groups[L.it.idx], hr = hrOf(g);
-          const cap = L.w * Math.max(0, L.h - hr);
-          if (g.items.length > cap) { ok = false; dem[L.it.idx] = g.items.length + (hr + 1) * L.w; }
-          else if (hr && L.w < MIN_LABEL_WIDTH) {
-            ok = false;
-            dem[L.it.idx] = MIN_LABEL_WIDTH * (1 + Math.ceil(g.items.length / MIN_LABEL_WIDTH));
-          }
-        });
-        if (ok) {
-          good = leaves;
-          const next = dem.slice();
-          leaves.forEach(L => {
-            const g = cat.groups[L.it.idx], hr = hrOf(g);
-            next[L.it.idx] = L.w * (hr + Math.max(1, Math.ceil(g.items.length / L.w)));
-          });
-          if (next.every((v, i) => v === dem[i])) break;
-          dem = next;
-        }
-      }
-      if (!good) return null;
-      // Reject layouts where a labeled subcategory is still too narrow —
-      // the outer layout must retry with a wider category block.
-      if (good.some(L => { const g = cat.groups[L.it.idx]; return g.label && L.w < MIN_LABEL_WIDTH; })) return null;
-      const usedRows = Math.max.apply(null, good.map(L => L.y + L.h));
-      return { leaves: good, usedRows: usedRows };
-    };
-
-    const demOf = c => {
-      const n = c.list.length + c.groups.filter(g => g.label).length;
-      const area = n + Math.max(2, Math.ceil(Math.sqrt(n * ASPECT)));
-      // Ensure demand is enough for minimum subcategory label width
-      const hasLabeled = c.groups.some(g => g.label);
-      return hasLabeled ? Math.max(area, MIN_LABEL_WIDTH * 2) : area;
-    };
-    let cdem = cats.map(c => (c.title ? demOf(c.mirror) : demOf(c)));
-    let plan = null;
-    const TITLE_FRAC = fmt === 'tall' ? 2 / 3 : 1 / 2;
-    const build = () => {
-      const T = cdem.reduce((s, v) => s + v, 0);
-      const W = Math.max(8, Math.round(Math.sqrt(T * ASPECT)));
-      const titleW = Math.max(2, Math.min(W - 3, Math.round(W * TITLE_FRAC)));
-      const rightW = W - titleW;
-      const items = [];
-      for (let i = 1; i < cats.length; i++) items.push({ idx: i, cells: cdem[i] });
-      const hAspect = Math.max(4, Math.round((titleW * PITCH_X) / (2.0 * PITCH_Y)));
-      const A = [], B = [];
-      let acc = 0;
-      items.forEach(it => {
-        // Operators (always items[0], Pinned first) must sit beside the
-        // masthead whenever there is any real column to put it in — a tall
-        // canvas can make the size estimate below reject even the first
-        // item, which would leave the masthead alone with a dead gap beside
-        // it instead of paired with a category, as every other aspect ratio
-        // shows it.
-        const forced = A.length === 0 && rightW >= 1;
-        if (forced || acc + it.cells <= rightW * hAspect) { A.push(it); acc += it.cells; }
-        else B.push(it);
-      });
-      const needA = A.reduce((s, it) => s + cats[it.idx].list.length + cats[it.idx].groups.filter(g => g.label).length * Math.max(1, Math.round(rightW / A.length)), 0);
-      const hLo = Math.ceil((titleW * PITCH_X) / (2.8 * PITCH_Y));
-      const hHi = Math.floor((titleW * PITCH_X) / (1.5 * PITCH_Y));
-      const titleH = Math.max(4, Math.min(Math.max(hLo, Math.ceil(needA / rightW)), Math.max(hLo, hHi)));
-      while (A.length > 1 && A.reduce((s, i) => s + i.cells, 0) > rightW * titleH) B.unshift(A.pop());
-      const sumB = B.reduce((s, i) => s + i.cells, 0);
-      const bottomRows = Math.max(2, Math.ceil(sumB / W));
-      const leaves = [];
-      if (A.length) tileInt(A, titleW, 0, rightW, titleH).forEach(L => leaves.push(L));
-      if (B.length) tileInt(B, 0, titleH, W, bottomRows).forEach(L => leaves.push(L));
-      if (leaves.length !== cats.length - 1) return null;
-      const res = [{ idx: 0, L: { x: 0, y: 0, w: titleW, h: titleH }, p: { leaves: [], usedRows: titleH } }];
-      let ok = true;
-      leaves.forEach(L => {
-        const p = packCat(cats[L.it.idx], L.w, L.h);
-        if (!p) { ok = false; cdem[L.it.idx] += Math.max(2, L.w); return; }
-        res.push({ idx: L.it.idx, L: L, p: p });
-      });
-      return ok ? { res: res, W: W, H: titleH + bottomRows } : null;
-    };
-    for (let iter = 0; iter < 30 && !plan; iter++) plan = build();
-    if (plan) {
-      for (let pass = 0; pass < 5; pass++) {
-        const next = cdem.slice();
-        plan.res.forEach(r => { next[r.idx] = r.L.w * (r.p.usedRows + 0); });
-        next[0] = cdem[0];
-        if (next.every((v, i) => v === cdem[i])) break;
-        const prev = cdem.slice();
-        cdem = next;
-        const p2 = build();
-        if (!p2) { cdem = prev; break; }
-        plan = p2;
-      }
-    }
-    if (!plan) { cdem = cats.map(c => c.list.length * 3 + 6); plan = build(); }
+            // Use pre-computed layout from layout_solver.py (FDCA_LAYOUT_SPEC_v1.1.md \u00a720).
+                // LAYOUT_DATA is { landscape: {...}, portrait: {...} } — pick the format
+                // matching the current viewport (wide → landscape, tall → portrait).
+                const formatKey = fmt === 'tall' ? 'portrait' : 'landscape';
+                const rawLd = LAYOUT_DATA && LAYOUT_DATA[formatKey] ? LAYOUT_DATA[formatKey] : null;
+                // Backward compat: if LAYOUT_DATA has .categories directly (old single-layout), use it.
+                const ld = rawLd || (LAYOUT_DATA && LAYOUT_DATA.categories ? LAYOUT_DATA : null);
+            const plan = ld ? (() => {
+              const p = { res: [], W: ld.canvas.cells_w, H: ld.canvas.cells_h };
+              for (const lc of ld.categories) {
+                if (lc.is_masthead) {
+                  p.res.push({ idx: 0, L: { x: lc.x, y: lc.y, w: lc.w, h: lc.h }, p: { leaves: [], usedRows: lc.h } });
+                } else {
+                  const catIdx = cats.findIndex(c => c.slug === lc.slug);
+                  if (catIdx < 0) continue;
+                  const cat = cats[catIdx];
+                  const leaves = (lc.subcats || []).map(sc => {
+                    const gIdx = cat.groups.findIndex(g => g.slug === sc.slug);
+                    return { it: { idx: gIdx >= 0 ? gIdx : 0 }, x: sc.x - lc.x, y: sc.y - lc.y, w: sc.w, h: sc.h };
+                  });
+                  p.res.push({ idx: catIdx, L: { x: lc.x, y: lc.y, w: lc.w, h: lc.h }, p: { leaves, usedRows: lc.h } });
+                }
+              }
+              return p;
+            })() : null;
 
     const clusters = plan.res.map(r => {
       const cat = cats[r.idx], T = toneOf(cat.slug), L = r.L;
@@ -614,15 +511,14 @@ class Dash {
       };
     });
 
+    // FDCA_LAYOUT_SPEC_v1.1.md §6: all category titles MUST use the same
+    // font size. Take the most constrained label's computed size, apply
+    // to every label so no title is individually shrunk or enlarged.
     const fonts = [];
     clusters.forEach(c => c.slabels.forEach(s => fonts.push(s.font)));
     if (fonts.length) {
-      const floor = Math.max.apply(null, fonts) * 0.7;
-      clusters.forEach(c => c.slabels.forEach(s => {
-        const target = Math.min(floor, s.wordCap);
-        if (s.font >= target) return;
-        s.font = target;
-      }));
+      const uniformFont = Math.min.apply(null, fonts);
+      clusters.forEach(c => c.slabels.forEach(s => { s.font = uniformFont; }));
     }
 
     const rawW = plan.W * PITCH_X, rawH = plan.H * PITCH_Y;
@@ -1211,7 +1107,20 @@ def main():
     if skipped:
         print(f"Skipped {len(skipped)} members with unknown category: {skipped}")
 
-    html = render_html(categories, members, css, colors)
+    # Generate layouts via layout_solver.py (FDCA_LAYOUT_SPEC_v1.1.md §20)
+    try:
+        layout_landscape = solve_layout("landscape")
+        print(f"Landscape layout: {layout_landscape['canvas']['cells_w']}×{layout_landscape['canvas']['cells_h']} cells"
+              f" ({layout_landscape['diagnostics']['unused_area_pct']}% unused)")
+        layout_portrait = solve_layout("portrait")
+        print(f"Portrait layout:  {layout_portrait['canvas']['cells_w']}×{layout_portrait['canvas']['cells_h']} cells"
+              f" ({layout_portrait['diagnostics']['unused_area_pct']}% unused)")
+        layout_json = {"landscape": layout_landscape, "portrait": layout_portrait}
+    except Exception as e:
+        print(f"Layout solver failed: {e}")
+        layout_json = None
+
+    html = render_html(categories, members, css, colors, layout_json)
 
     OUTPUT_DIR.mkdir(exist_ok=True)
     OUTPUT_PATH.write_text(html, encoding="utf-8")

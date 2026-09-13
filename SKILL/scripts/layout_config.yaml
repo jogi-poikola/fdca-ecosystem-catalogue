@@ -1,0 +1,135 @@
+layout_mode:
+  value: rectangular
+  allowed:
+  - rectangular
+  - polyomino
+  - auto
+category_shape_mode:
+  value: rectangular
+  allowed:
+  - rectangular
+  - polyomino
+empty_category_policy:
+  value: show
+  allowed:
+  - show
+  - hide
+  - reserve
+capacity_headroom:
+  mode: percentage
+  allowed_modes:
+  - none
+  - fixed_slots
+  - percentage
+  - adaptive
+  fraction: 0.08
+  minimum_slots: 1
+  maximum_fraction: 0.2
+language_geometry:
+  mode: maximum_across_languages
+  allowed_modes:
+  - active_language
+  - maximum_across_languages
+  - reference_language
+  languages:
+  - en
+  - fi
+category_font:
+  mode: fixed
+  allowed_modes:
+  - fixed
+  - global_adaptive
+  - per_category_adaptive
+  size_px: 14
+category_title_max_lines:
+  value: 2
+category_order:
+  mode: canonical_stable
+  allowed_modes:
+  - taxonomy
+  - count_descending
+  - solver_free
+  - canonical_stable
+  source: taxonomy
+layout_stability:
+  mode: soft
+  allowed_modes:
+  - none
+  - soft
+  - threshold
+  - locked
+  use_previous_layout: true
+  near_optimal_tolerance: 0.02
+reflow:
+  mode: on_constraint_change
+  allowed_modes:
+  - always
+  - on_any_count_change
+  - on_capacity_overflow
+  - on_constraint_change
+  triggers:
+    capacity_overflow: true
+    taxonomy_change: true
+    label_geometry_change: true
+    format_change: true
+short_labels:
+  mode: diagnostics_only
+  allowed_modes:
+  - disabled
+  - diagnostics_only
+  - approved_aliases
+  - automatic
+  automatic_alias_generation_allowed: false
+solver:
+  strategy: recursive_treemap
+  allowed:
+  - recursive_treemap
+  - heuristic
+  - cp_sat
+  - hybrid
+  deterministic: true
+  max_iterations: 30
+  refinement_passes: 5
+responsive_layout:
+  mode: master_layouts
+  allowed_modes:
+  - continuous
+  - single_master
+  - master_layouts
+  masters:
+    landscape:
+      width_ratio: 16
+      height_ratio: 9
+    portrait:
+      width_ratio: 6
+      height_ratio: 19
+layout_selection:
+  mode: configured
+  allowed_modes:
+  - configured
+  - best_efficiency
+  - threshold
+  polyomino_minimum_absolute_gain: 0.025
+  polyomino_minimum_relative_gain: 0.2
+optimization:
+  method: lexicographic
+  priorities:
+    feasibility: mandatory
+    whitespace:
+      priority: 1
+    stability:
+      priority: 2
+    family_compactness:
+      priority: 3
+    category_aspect_ratio:
+      priority: 4
+    ordering:
+      priority: 5
+    spare_capacity:
+      priority: 6
+grid:
+  cell_w: 168
+  cell_h: 190
+  gap: 14
+  tin: 7
+  min_label_width_formula: max(2, ceil((max_label_chars * 0.5 * 11.6 + 26) / pitch_x))

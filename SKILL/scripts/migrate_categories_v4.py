@@ -72,7 +72,6 @@ OVERRIDES = {
     "NYAB": "main_contractors",
     "Skanska": "main_contractors",
     "SRV": "main_contractors",
-    "Tekova Oyj": "main_contractors",
     "YIT": "main_contractors",
 
     # Construction specialisms and explicit exclusions from Main Contractors.

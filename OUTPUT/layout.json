@@ -1,0 +1,578 @@
+{
+  "format": "landscape",
+  "mode": "rectangular",
+  "canvas": {
+    "cells_w": 40,
+    "cells_h": 24
+  },
+  "anchors": {
+    "masthead": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 7
+    },
+    "data_center_operators": {
+      "x": 20,
+      "y": 0,
+      "w": 20,
+      "h": 7
+    }
+  },
+  "categories": [
+    {
+      "slug": "__masthead__",
+      "family": "__masthead__",
+      "label_en": "__masthead__",
+      "label_fi": "__masthead__",
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 7,
+      "is_masthead": true,
+      "subcats": [],
+      "member_count": 0
+    },
+    {
+      "slug": "data_center_operators",
+      "family": "data_center_operators",
+      "label_en": "Data Center Operators",
+      "label_fi": "Datakeskusoperaattorit",
+      "x": 20,
+      "y": 0,
+      "w": 20,
+      "h": 7,
+      "is_masthead": false,
+      "subcats": [
+        {
+          "slug": "data_center_operators",
+          "label_en": "Data Center Operators",
+          "label_fi": "Datakeskusoperaattorit",
+          "x": 20,
+          "y": 0,
+          "w": 20,
+          "h": 7,
+          "dots": {
+            "count": 23,
+            "capacity": 40,
+            "cols": 20,
+            "rows": 2
+          }
+        }
+      ],
+      "member_count": 23
+    },
+    {
+      "slug": "technology_vendors",
+      "family": "technology_vendors",
+      "label_en": "Technology Vendors",
+      "label_fi": "Teknologiatoimittajat",
+      "x": 0,
+      "y": 7,
+      "w": 14,
+      "h": 17,
+      "is_masthead": false,
+      "subcats": [
+        {
+          "slug": "power_equipment",
+          "label_en": "Power Equipment",
+          "label_fi": "Sähkölaitteet",
+          "x": 0,
+          "y": 7,
+          "w": 6,
+          "h": 10,
+          "dots": {
+            "count": 33,
+            "capacity": 36,
+            "cols": 6,
+            "rows": 6
+          }
+        },
+        {
+          "slug": "cooling_heat_recovery",
+          "label_en": "Cooling and Heat Recovery",
+          "label_fi": "Jäähdytys ja lämmöntalteenotto",
+          "x": 6,
+          "y": 7,
+          "w": 4,
+          "h": 10,
+          "dots": {
+            "count": 24,
+            "capacity": 24,
+            "cols": 4,
+            "rows": 6
+          }
+        },
+        {
+          "slug": "computing_network_equipment",
+          "label_en": "Computing and Network Equipment",
+          "label_fi": "Laskenta- ja verkkolaitteet",
+          "x": 10,
+          "y": 7,
+          "w": 4,
+          "h": 10,
+          "dots": {
+            "count": 23,
+            "capacity": 24,
+            "cols": 4,
+            "rows": 6
+          }
+        },
+        {
+          "slug": "automation_software",
+          "label_en": "Automation and Software",
+          "label_fi": "Automaatio ja ohjelmistot",
+          "x": 0,
+          "y": 17,
+          "w": 6,
+          "h": 4,
+          "dots": {
+            "count": 10,
+            "capacity": 12,
+            "cols": 6,
+            "rows": 2
+          }
+        },
+        {
+          "slug": "security_technology",
+          "label_en": "Security Technology",
+          "label_fi": "Turvallisuusteknologia",
+          "x": 0,
+          "y": 21,
+          "w": 6,
+          "h": 3,
+          "dots": {
+            "count": 7,
+            "capacity": 12,
+            "cols": 6,
+            "rows": 2
+          }
+        },
+        {
+          "slug": "building_products",
+          "label_en": "Building Products",
+          "label_fi": "Rakennustuotteet",
+          "x": 6,
+          "y": 17,
+          "w": 6,
+          "h": 7,
+          "dots": {
+            "count": 24,
+            "capacity": 24,
+            "cols": 6,
+            "rows": 4
+          }
+        },
+        {
+          "slug": "other_technology",
+          "label_en": "Other Technology",
+          "label_fi": "Muu teknologia",
+          "x": 12,
+          "y": 17,
+          "w": 2,
+          "h": 7,
+          "dots": {
+            "count": 9,
+            "capacity": 10,
+            "cols": 2,
+            "rows": 5
+          }
+        }
+      ],
+      "member_count": 130
+    },
+    {
+      "slug": "services",
+      "family": "services",
+      "label_en": "Services",
+      "label_fi": "Palvelut",
+      "x": 14,
+      "y": 7,
+      "w": 10,
+      "h": 17,
+      "is_masthead": false,
+      "subcats": [
+        {
+          "slug": "energy",
+          "label_en": "Energy",
+          "label_fi": "Energia",
+          "x": 14,
+          "y": 7,
+          "w": 5,
+          "h": 8,
+          "dots": {
+            "count": 21,
+            "capacity": 25,
+            "cols": 5,
+            "rows": 5
+          }
+        },
+        {
+          "slug": "connectivity",
+          "label_en": "Connectivity",
+          "label_fi": "Tietoliikenneyhteydet",
+          "x": 14,
+          "y": 15,
+          "w": 5,
+          "h": 2,
+          "dots": {
+            "count": 3,
+            "capacity": 5,
+            "cols": 5,
+            "rows": 1
+          }
+        },
+        {
+          "slug": "commissioning_testing",
+          "label_en": "Commissioning and Testing",
+          "label_fi": "Käyttöönotto ja testaus",
+          "x": 19,
+          "y": 7,
+          "w": 2,
+          "h": 2,
+          "dots": {
+            "count": 2,
+            "capacity": 2,
+            "cols": 2,
+            "rows": 1
+          }
+        },
+        {
+          "slug": "facility_management",
+          "label_en": "Facility Management",
+          "label_fi": "Kiinteistöpalvelut",
+          "x": 21,
+          "y": 7,
+          "w": 3,
+          "h": 2,
+          "dots": {
+            "count": 2,
+            "capacity": 3,
+            "cols": 3,
+            "rows": 1
+          }
+        },
+        {
+          "slug": "security_services",
+          "label_en": "Security Services",
+          "label_fi": "Turvallisuuspalvelut",
+          "x": 19,
+          "y": 9,
+          "w": 5,
+          "h": 4,
+          "dots": {
+            "count": 7,
+            "capacity": 10,
+            "cols": 5,
+            "rows": 2
+          }
+        },
+        {
+          "slug": "equipment_maintenance",
+          "label_en": "Equipment Maintenance",
+          "label_fi": "Laitteiden ylläpito",
+          "x": 19,
+          "y": 13,
+          "w": 5,
+          "h": 4,
+          "dots": {
+            "count": 7,
+            "capacity": 10,
+            "cols": 5,
+            "rows": 2
+          }
+        },
+        {
+          "slug": "logistics",
+          "label_en": "Logistics",
+          "label_fi": "Logistiikka",
+          "x": 14,
+          "y": 17,
+          "w": 4,
+          "h": 2,
+          "dots": {
+            "count": 2,
+            "capacity": 4,
+            "cols": 4,
+            "rows": 1
+          }
+        },
+        {
+          "slug": "staffing",
+          "label_en": "Staffing",
+          "label_fi": "Henkilöstöpalvelut",
+          "x": 14,
+          "y": 19,
+          "w": 4,
+          "h": 5,
+          "dots": {
+            "count": 11,
+            "capacity": 12,
+            "cols": 4,
+            "rows": 3
+          }
+        },
+        {
+          "slug": "legal_business_advisory",
+          "label_en": "Legal and Business Advisory",
+          "label_fi": "Laki- ja liiketoimintaneuvonta",
+          "x": 18,
+          "y": 17,
+          "w": 3,
+          "h": 7,
+          "dots": {
+            "count": 11,
+            "capacity": 12,
+            "cols": 3,
+            "rows": 4
+          }
+        },
+        {
+          "slug": "other_services",
+          "label_en": "Other Services",
+          "label_fi": "Muut palvelut",
+          "x": 21,
+          "y": 17,
+          "w": 3,
+          "h": 7,
+          "dots": {
+            "count": 10,
+            "capacity": 12,
+            "cols": 3,
+            "rows": 4
+          }
+        }
+      ],
+      "member_count": 76
+    },
+    {
+      "slug": "construction",
+      "family": "construction",
+      "label_en": "Construction",
+      "label_fi": "Rakentaminen",
+      "x": 24,
+      "y": 7,
+      "w": 16,
+      "h": 9,
+      "is_masthead": false,
+      "subcats": [
+        {
+          "slug": "main_contractors",
+          "label_en": "Main Contractors",
+          "label_fi": "Pääurakoitsijat",
+          "x": 24,
+          "y": 7,
+          "w": 3,
+          "h": 5,
+          "dots": {
+            "count": 7,
+            "capacity": 9,
+            "cols": 3,
+            "rows": 3
+          }
+        },
+        {
+          "slug": "industrial_construction",
+          "label_en": "Industrial Construction",
+          "label_fi": "Teollisuusrakentaminen",
+          "x": 27,
+          "y": 7,
+          "w": 5,
+          "h": 5,
+          "dots": {
+            "count": 11,
+            "capacity": 15,
+            "cols": 5,
+            "rows": 3
+          }
+        },
+        {
+          "slug": "infrastructure_construction",
+          "label_en": "Infrastructure Construction",
+          "label_fi": "Infrarakentaminen",
+          "x": 24,
+          "y": 12,
+          "w": 4,
+          "h": 4,
+          "dots": {
+            "count": 8,
+            "capacity": 8,
+            "cols": 4,
+            "rows": 2
+          }
+        },
+        {
+          "slug": "grid_substation_construction",
+          "label_en": "Grid and Substation Construction",
+          "label_fi": "Sähköverkko- ja sähköasemarakentaminen",
+          "x": 28,
+          "y": 12,
+          "w": 4,
+          "h": 4,
+          "dots": {
+            "count": 6,
+            "capacity": 8,
+            "cols": 4,
+            "rows": 2
+          }
+        },
+        {
+          "slug": "technical_systems_installation",
+          "label_en": "Technical Systems Installation",
+          "label_fi": "Teknisten järjestelmien asennukset",
+          "x": 32,
+          "y": 7,
+          "w": 8,
+          "h": 5,
+          "dots": {
+            "count": 20,
+            "capacity": 24,
+            "cols": 8,
+            "rows": 3
+          }
+        },
+        {
+          "slug": "fire_safety_construction",
+          "label_en": "Fire Safety Construction",
+          "label_fi": "Paloturvallisuusurakointi",
+          "x": 32,
+          "y": 12,
+          "w": 2,
+          "h": 4,
+          "dots": {
+            "count": 3,
+            "capacity": 4,
+            "cols": 2,
+            "rows": 2
+          }
+        },
+        {
+          "slug": "roofing_building_envelope",
+          "label_en": "Roofing and Building Envelope",
+          "label_fi": "Katto- ja julkisivurakentaminen",
+          "x": 34,
+          "y": 12,
+          "w": 4,
+          "h": 4,
+          "dots": {
+            "count": 5,
+            "capacity": 8,
+            "cols": 4,
+            "rows": 2
+          }
+        },
+        {
+          "slug": "other_construction",
+          "label_en": "Other Construction",
+          "label_fi": "Muu rakentaminen",
+          "x": 38,
+          "y": 12,
+          "w": 2,
+          "h": 4,
+          "dots": {
+            "count": 1,
+            "capacity": 2,
+            "cols": 2,
+            "rows": 1
+          }
+        }
+      ],
+      "member_count": 61
+    },
+    {
+      "slug": "planning",
+      "family": "planning",
+      "label_en": "Planning",
+      "label_fi": "Suunnittelu",
+      "x": 24,
+      "y": 16,
+      "w": 16,
+      "h": 8,
+      "is_masthead": false,
+      "subcats": [
+        {
+          "slug": "site_development",
+          "label_en": "Site Development",
+          "label_fi": "Sijaintikehitys",
+          "x": 24,
+          "y": 16,
+          "w": 4,
+          "h": 8,
+          "dots": {
+            "count": 13,
+            "capacity": 16,
+            "cols": 4,
+            "rows": 4
+          }
+        },
+        {
+          "slug": "municipal_regional_development",
+          "label_en": "Municipal and Regional Development",
+          "label_fi": "Kunta- ja aluekehitys",
+          "x": 28,
+          "y": 16,
+          "w": 4,
+          "h": 8,
+          "dots": {
+            "count": 11,
+            "capacity": 12,
+            "cols": 4,
+            "rows": 3
+          }
+        },
+        {
+          "slug": "design_engineering",
+          "label_en": "Design and Engineering",
+          "label_fi": "Suunnittelu ja tekninen konsultointi",
+          "x": 32,
+          "y": 16,
+          "w": 6,
+          "h": 8,
+          "dots": {
+            "count": 20,
+            "capacity": 24,
+            "cols": 6,
+            "rows": 4
+          }
+        },
+        {
+          "slug": "project_management",
+          "label_en": "Project Management",
+          "label_fi": "Projektinjohto",
+          "x": 38,
+          "y": 16,
+          "w": 2,
+          "h": 8,
+          "dots": {
+            "count": 4,
+            "capacity": 4,
+            "cols": 2,
+            "rows": 2
+          }
+        }
+      ],
+      "member_count": 48
+    }
+  ],
+  "diagnostics": {
+    "occupied_area_pct": 100.0,
+    "unused_area_pct": 0.0,
+    "company_count": 338,
+    "total_dot_capacity": 411,
+    "spare_dot_capacity": 73,
+    "max_category_aspect_ratio": 2.9,
+    "mean_category_aspect_ratio": 1.61,
+    "canvas_cells": {
+      "w": 40,
+      "h": 24
+    },
+    "cell_pitch": {
+      "x": 196,
+      "y": 218
+    },
+    "canvas_px": {
+      "w": 7840,
+      "h": 5232
+    }
+  }
+}
