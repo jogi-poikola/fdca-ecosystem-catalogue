@@ -121,6 +121,7 @@ const roleColor = (T, name) => {
 
 const CELL_W = 168, CELL_H = 190, GAP = 14, TIN = 7, PITCH_X = CELL_W + GAP + TIN * 2, PITCH_Y = CELL_H + GAP + TIN * 2, CELL_RATIO = PITCH_Y / PITCH_X, PIN = 'data_center_operators';
 const NARROW = 700;
+const MIN_LABEL_WIDTH = 3;
 const initialsOf = n => n.replace(/\b(oy|ab|ltd|oyj|inc|group|finland|as|plc|corp)\b/gi, ' ').trim().split(/[\s-]+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('');
 function hostOf(u) { if (!u) return ''; try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return u.replace(/^https?:\/\//, '').replace(/\/.*$/, ''); } }
 function clipTo(s, n) { if (!s) return ''; return s.length <= n ? s : s.slice(0, n).replace(/[\s,;:.]+\S*$/, '') + '…'; }
@@ -280,6 +281,10 @@ class Dash {
           const g = cat.groups[L.it.idx], hr = hrOf(g);
           const cap = L.w * Math.max(0, L.h - hr);
           if (g.items.length > cap) { ok = false; dem[L.it.idx] = g.items.length + (hr + 1) * L.w; }
+          else if (hr && L.w < MIN_LABEL_WIDTH) {
+            ok = false;
+            dem[L.it.idx] = MIN_LABEL_WIDTH * (1 + Math.ceil(g.items.length / MIN_LABEL_WIDTH));
+          }
         });
         if (ok) {
           good = leaves;
@@ -293,13 +298,19 @@ class Dash {
         }
       }
       if (!good) return null;
+      // Reject layouts where a labeled subcategory is still too narrow —
+      // the outer layout must retry with a wider category block.
+      if (good.some(L => { const g = cat.groups[L.it.idx]; return g.label && L.w < MIN_LABEL_WIDTH; })) return null;
       const usedRows = Math.max.apply(null, good.map(L => L.y + L.h));
       return { leaves: good, usedRows: usedRows };
     };
 
     const demOf = c => {
       const n = c.list.length + c.groups.filter(g => g.label).length;
-      return n + Math.max(2, Math.ceil(Math.sqrt(n * ASPECT)));
+      const area = n + Math.max(2, Math.ceil(Math.sqrt(n * ASPECT)));
+      // Ensure demand is enough for minimum subcategory label width
+      const hasLabeled = c.groups.some(g => g.label);
+      return hasLabeled ? Math.max(area, MIN_LABEL_WIDTH * 2) : area;
     };
     let cdem = cats.map(c => (c.title ? demOf(c.mirror) : demOf(c)));
     let plan = null;
