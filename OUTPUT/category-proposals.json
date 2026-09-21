@@ -1,0 +1,50 @@
+{
+  "taxonomy_version": "4.0",
+  "rules_version": "1.0",
+  "taxonomy_path": "INPUT/fdca-categories.json",
+  "classification_rules_path": "INPUT/fdca-classification-rules.json",
+  "proposals": [
+    {
+      "official_name": "Onninen Oy",
+      "display_name": "Onninen Oy",
+      "url": "https://onninen.com",
+      "evidence": "Technical wholesaler supplying HEPAC, electrical, refrigeration and energy products to contractors, industry and infrastructure builders in Finland and neighbouring countries.",
+      "category": "power_equipment",
+      "decision_path": [
+        "technology_vendors",
+        "power_equipment"
+      ],
+      "rationale": "Electrical products are a core line of this technical wholesaler; placed with Rexel, the other electrical wholesaler. Changed from other_technology after human review, 2026-09-22.",
+      "confidence": "high",
+      "human_reviewed": true
+    },
+    {
+      "official_name": "One Click LCA",
+      "display_name": "One Click LCA",
+      "url": "https://oneclicklca.com",
+      "evidence": "Finnish software company providing life-cycle assessment and environmental product declaration software for construction and manufacturing.",
+      "category": "automation_software",
+      "decision_path": [
+        "technology_vendors",
+        "automation_software"
+      ],
+      "rationale": "Supplies a software product; the taxonomy's software category is Automation and Software. Changed from other_technology after human review, 2026-09-22.",
+      "confidence": "high",
+      "human_reviewed": true
+    },
+    {
+      "official_name": "Finkova Oy",
+      "display_name": "Finkova Oy",
+      "url": "https://finkova.fi",
+      "evidence": "Finnish supplier of valves and other heavy-industry equipment, with design, installation, maintenance and condition-monitoring services.",
+      "category": "automation_software",
+      "decision_path": [
+        "technology_vendors",
+        "automation_software"
+      ],
+      "rationale": "Supplies instruments (flow meters, gas analysers, level measurement), Bently Nevada machine protection and System 1 condition-monitoring software; sensing and monitoring dominate. Changed from cooling_heat_recovery after human review, 2026-09-22.",
+      "confidence": "high",
+      "human_reviewed": true
+    }
+  ]
+}

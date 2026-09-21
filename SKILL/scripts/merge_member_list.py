@@ -44,8 +44,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 INPUT_DIR = ROOT / "INPUT"
 REGISTRY_PATH = INPUT_DIR / "fdca-member-registry.json"
-LIST_PATH = INPUT_DIR / "fdca-member-list-2026-08-31.txt"
-LIST_DATE = "2026-08-31"
+LIST_PATH = INPUT_DIR / "fdca-member-list-2026-09-21.txt"
+LIST_DATE = "2026-09-21"
 
 # The scraped fields a fold fills in from a secondary entry.
 SCRAPED_FIELDS = (
@@ -101,8 +101,17 @@ ALIASES = {
     # Confirmed by FDCA's office, 2026-09-07.
     "IQSIGHT": "Keenfinity Sweden AB",  # IQSIGHT is Keenfinity's Bosch-branded security-camera brand
     "Liekkiloukku": "Fintekra Oy",  # Liekkiloukku is Fintekra's fire-protection product line
-    "Oomi Oy": "Lumme Energia Oy",  # Oomi is the rebrand; billing still carries the old name
+    "Oomi Oy": "Oomi (Lumme Energia Oy)",  # Oomi is the rebrand; billing still carries the old name
     "KSBR": "Keski-Suomen Betonirakenne Oy",  # KSBR is the roster company's public brand
+    # The 2026-08-31 roster misspelt the name; the 2026-09-21 roster corrects it.
+    "Carslsson RPS Oy": "Carlsson RPS Oy",
+}
+
+# roster line -> the roster line it duplicates. The roster sometimes lists one
+# company twice, under its old and its current name; the old line is skipped.
+ROSTER_DUPLICATES = {
+    # "nyk." is "nykyään", now: Hensei Partners is the former name of FCDC.
+    "Hensei Partners Oy nyk. FCDC": "FCDC Corp Oy",
 }
 
 # roster name -> the registry entry whose name becomes the display name, for
@@ -121,7 +130,7 @@ DISPLAY_PRIMARY = {
     # Both "Lumme Energia Oy" and "Oomi Oy" are scraped fdca.fi pages for the
     # same company; Oomi is the current public brand, confirmed by FDCA's
     # office 2026-09-07, even though billing still carries the old name.
-    "Lumme Energia Oy": "Oomi Oy",
+    "Oomi (Lumme Energia Oy)": "Oomi Oy",
     "Keski-Suomen Betonirakenne Oy": "KSBR",
 }
 
@@ -131,18 +140,8 @@ FORMER_NOTES = {
     "Bergmann": "Confirmed resigned; logo removed from fdca.fi.",
     "Logiservice": "Confirmed no longer a member; logo removed from fdca.fi.",
     "NRT Tietoliikenne": "Confirmed no longer a member; logo removed from fdca.fi.",
-    "L2 Paloturvallisuus Oy, a Jensen Hughes Company": (
-        "Asked FDCA's office whether still a member; was on a previous "
-        "roster, no resignation found. Unresolved as of 2026-09-07."
-    ),
-    "Rentaload": (
-        "Confirmed new member by email; not yet on the roster list because "
-        "billing details are still pending from FDCA's office, 2026-09-07."
-    ),
-    "UTU Group": (
-        "Confirmed new member by email; not yet on the roster list because "
-        "billing details are still pending from FDCA's office, 2026-09-07."
-    ),
+    # L2 Paloturvallisuus, Rentaload and UTU were open here until the
+    # 2026-09-21 roster listed all three.
 }
 
 SUFFIX = (
@@ -184,7 +183,7 @@ def load_list() -> list:
     names, seen = [], set()
     for line in LIST_PATH.read_text(encoding="utf-8").splitlines():
         name = line.strip()
-        if not name:
+        if not name or name in ROSTER_DUPLICATES:
             continue
         key = full_key(name)
         if key in seen:

@@ -44,7 +44,7 @@ bilingual descriptions, publishability and generated-file freshness.
 
 Use the maintenance scripts only when the relevant source changes:
 
-- `merge_member_list.py` reconciles `INPUT/fdca-member-list-2026-08-31.txt`
+- `merge_member_list.py` reconciles `INPUT/fdca-member-list-2026-09-21.txt`
   into `INPUT/fdca-member-registry.json`.
 - `apply_taxonomy.py` validates current primary-category values. Historical
   migrations are explicit scripts and never implicit guesses.
@@ -59,6 +59,10 @@ Use the maintenance scripts only when the relevant source changes:
   FDCA sitemap.
 - `scrape_blog_posts.py` fills or retries article-body text for members with
   an intro-post link.
+- `fetch_logos.py --fdca` writes logos from the fdca.fi members page, which is
+  the master. `--review` queues homepage candidates for members it does not
+  cover, `--confirm` applies the picks a person made, and `--verify` reports
+  every member the dashboard would show as initials.
 
 Do not treat website-only entries as confirmed members. The roster owns
 membership status; fdca.fi owns display names and scraped public details.
