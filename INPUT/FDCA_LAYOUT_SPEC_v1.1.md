@@ -61,16 +61,24 @@ It contains at least:
 - introductory copy;
 - search bar.
 
+Its height MUST be derived from those rendered content requirements plus
+padding. It MUST NOT be enlarged solely to match the tallest family elsewhere
+in the top row. The region below a shorter masthead may be used by another
+family when that preserves the fixed anchors and readability.
+
 ### 3.2 Data Center Operators
 
-The Data Center Operators family is a hard top-right anchor:
+The Data Center Operators family is a coordinated top-row anchor immediately
+beside the masthead:
 
 ```text
 operators.y = 0
-operators.x + operators.width = canvas.width
+operators.x = masthead.x + masthead.width
 ```
 
-Its dimensions may change as counts or labels change, but it MUST remain attached to the top-right corner.
+Its dimensions may change as counts or labels change. Canvas space may remain
+to its right when that produces a more compact or readable overall solution;
+the anchor is its adjacency to the masthead, not the canvas edge.
 
 ---
 
@@ -268,6 +276,11 @@ In polyomino mode:
 
 - individual categories remain rectangular;
 - the union of a family’s category rectangles may form a connected orthogonal shape such as an L, T or staircase.
+- the solver MUST form candidate family shapes by positioning and, where
+  capacity permits, reshaping the category rectangles inside that family
+  before attempting global family placement;
+- merely switching to a looser global family packer without producing a
+  connected category-derived outline is not a polyomino implementation.
 
 This can reduce wasted space by allowing another family to occupy otherwise unused corners.
 
@@ -280,7 +293,20 @@ Polyomino family shapes SHOULD:
 - avoid intricate interlocking;
 - remain visually recognizable as one family.
 
+The outer map silhouette, including the masthead and every family, MUST be one
+solid rectangle. A polyomino candidate is publishable only when all family
+unions together with the masthead exactly cover that rectangle. A lower-area
+candidate with grey notches, interior voids, or a stepped exterior MUST be
+rejected. If no non-rectangular interlock satisfies this invariant, the solver
+MUST explicitly report that polyomino mode is geometrically equivalent to the
+rectangular exact cover for the current inputs.
+
 The solver SHOULD penalize excessive perimeter and fragmentation.
+
+After a feasible family layout is found, the solver SHOULD perform a
+deterministic remove-and-reinsert compaction pass. A category stranded on the
+lowest row MUST be tested in valid notches above before the family height is
+accepted.
 
 ---
 
@@ -363,7 +389,7 @@ A valid layout MUST satisfy all applicable hard constraints:
 - all elements fit inside the artboard;
 - no illegal overlaps;
 - masthead is top-left;
-- Data Center Operators is top-right;
+- Data Center Operators is immediately right of the masthead;
 - all dots fit;
 - all titles fit;
 - all category titles share the configured font treatment;
@@ -487,6 +513,42 @@ The renderer should consume solved coordinates rather than re-deriving layout de
 ---
 
 ## 21. Diagnostics
+
+`unused_area_pct` MUST describe whitespace visible in the rendered map, not
+merely cells left outside the solver's allocated family bounding boxes. For
+unambiguous comparisons, implementations MUST report these quantities
+separately:
+
+- **whole-canvas unused area**: canvas cells covered by neither the masthead
+  nor a rendered family region;
+- **family-internal slack**: cells inside a rendered family region but outside
+  every primary-category rectangle;
+- **dot-slot spare capacity**: unoccupied member positions inside category
+  rectangles, which is capacity rather than geometric whitespace;
+- **family bounding-box voids**: cells inside the bounding box of a family
+  union but outside that union, including quantified enclosed holes and broad
+  empty horizontal or vertical bands.
+- **category growth space**: cells retained inside a primary-category rectangle
+  beyond its title row and currently required dot rows. These cells are visual
+  capacity, not dot-slot capacity.
+
+For a publishable master, whole-canvas unused area and the union of all
+prohibited voids MUST both be zero. Hole diagnostics MUST include unassigned
+grey cells in the outer canvas, not only enclosed voids within an individual
+family bounding box.
+
+In rectangular mode, family-internal slack is rendered as part of the family
+rectangle. In polyomino mode, bounding-box voids are not automatically counted
+as family-internal slack; they count as whole-canvas whitespace unless another
+family actually occupies them. A family rectangle MUST NOT be counted as fully
+occupied merely because it was allocated by an outer treemap.
+
+Interactive and other human-facing diagnostics MUST present the absolute
+number of affected grid slots as their primary value. Percentage fields may
+remain in layout JSON for backwards compatibility, but MUST NOT replace the
+absolute count in the workbench. Each displayed slot metric SHOULD expose its
+exact cell coordinates so selecting the metric can highlight the affected
+areas in both landscape and portrait canvases.
 
 Each generated layout SHOULD include diagnostic information such as:
 
@@ -1763,7 +1825,7 @@ A conforming implementation SHOULD include automated tests for at least:
 2. Every category title fits at the configured font size.
 3. No title exceeds the configured line count.
 4. Masthead remains top-left.
-5. Data Center Operators remains top-right.
+5. Data Center Operators remains immediately right of the masthead.
 6. Every dot fits within its category.
 7. Family clustering is preserved.
 8. No illegal rectangle overlaps occur.

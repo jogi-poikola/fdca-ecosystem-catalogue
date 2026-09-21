@@ -10,13 +10,13 @@ category_shape_mode:
   - rectangular
   - polyomino
 empty_category_policy:
-  value: show
+  value: hide
   allowed:
   - show
   - hide
   - reserve
 capacity_headroom:
-  mode: percentage
+  mode: none
   allowed_modes:
   - none
   - fixed_slots
@@ -40,7 +40,7 @@ category_font:
   - fixed
   - global_adaptive
   - per_category_adaptive
-  size_px: 14
+  size_px: 24
 category_title_max_lines:
   value: 2
 category_order:
