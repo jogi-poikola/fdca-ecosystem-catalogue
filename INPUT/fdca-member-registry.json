@@ -2940,6 +2940,21 @@
     "note": null
   },
   {
+    "official_name": "Kumorion Platforms Oy",
+    "display_name": "Kumorion",
+    "roster_status": "on-roster",
+    "source": "fdca.fi-scrape",
+    "url": "https://kumorion.com/",
+    "category": "automation_software",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": "Nordic technology provider for sovereign cloud. Kumorion provides the cloud platform layer that lets cloud service providers and data centers deliver sovereign, enterprise-grade cloud service to their customers.",
+    "logo_url": "https://www.fdca.fi/wp-content/uploads/2026/09/Kumorion-FDCA.jpg",
+    "researched": "web-2026-09-26",
+    "url_status": "confirmed",
+    "note": null
+  },
+  {
     "official_name": "Kuusakoski Recycling",
     "display_name": "Kuusakoski Recycling",
     "roster_status": "on-roster",

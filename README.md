@@ -10,7 +10,7 @@ read-only mirrors of the important semantic files.
 | File | Role |
 |---|---|
 | `INPUT/fdca-member-registry.json` | Company records. Each company stores one primary category slug. |
-| `INPUT/fdca-member-list-2026-09-21.txt` | Dated FDCA roster and source for official membership names. |
+| `INPUT/fdca-member-list-2026-09-26.txt` | Dated FDCA roster and source for official membership names. It is the 2026-09-21 roster (kept as FDCA sent it) plus Kumorion Platforms Oy. |
 | `INPUT/fdca-categories.json` | Stable family/category slugs and bilingual names and short descriptions. |
 | `INPUT/fdca-classification-rules.json` | Machine-applicable evidence order, decision sequences, exclusions and tie-breaks. |
 | `INPUT/company-category-classification-rules.md` | Generated human-readable guide; never edit by hand. |
@@ -22,11 +22,11 @@ not a second tag.
 
 ## Current data state
 
-As of 2026-09-21, FDCA has **367 members**. That is the number to quote. The
-registry holds 376 records, because it also keeps 9 companies that are on no
+As of 2026-09-26, FDCA has **368 members**. That is the number to quote. The
+registry holds 377 records, because it also keeps 9 companies that are on no
 line of the dated roster:
 
-- 367 records from FDCA's dated roster (`on-roster`): the members;
+- 368 records from FDCA's dated roster (`on-roster`): the members;
 - 9 records marked `roster_status: former`. They stay in the registry with
   their research, but the dashboard, the layout and the member count leave them
   out:
@@ -37,10 +37,16 @@ line of the dated roster:
     roster line and not on fdca.fi's members page. The office has not confirmed
     these six;
 - no `website-only` (pending) records remain;
-- 376 valid primary-category assignments;
+- 377 valid primary-category assignments;
 - zero publish-time `uncategorised` records.
 
-The dashboard therefore lists 367 companies and states 367 members.
+The dashboard therefore lists 368 companies and states 368 members.
+
+The 2026-09-26 roster adds Kumorion Platforms Oy to the 2026-09-21 roster. fdca.fi's
+members page shows its logo, FDCA staff counted 368 members that day, and
+no other company accounts for the difference. Its public brand is `Kumorion`.
+Its category, `automation_software`, is a medium-confidence judgment: it
+supplies a cloud platform software layer and no hardware.
 
 The 2026-09-21 roster adds 37 new members and lists Abloy, Balanus,
 L2 Paloturvallisuus, Rentaload, Usva Energia and UTU, which the 2026-08-31

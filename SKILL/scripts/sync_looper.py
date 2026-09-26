@@ -42,7 +42,11 @@ MIRROR_ENV = "LOOPER_MIRROR_CMD"
 
 def run(command: list[str]) -> None:
     print(f"$ {' '.join(command)}")
-    subprocess.run(command, cwd=ROOT, check=True)
+    try:
+        subprocess.run(command, cwd=ROOT, check=True)
+    except subprocess.CalledProcessError as error:
+        # A failed check is the gate working. Stop with one line, not a traceback.
+        raise SystemExit(f"ERROR: {' '.join(command)} exited {error.returncode}; nothing after it ran")
 
 
 def refresh_and_mirror(build: bool = True, require: bool = False) -> bool:
