@@ -24,20 +24,23 @@ not a second tag.
 
 As of 2026-09-21, FDCA has **367 members**. That is the number to quote. The
 registry holds 376 records, because it also keeps 9 companies that are on no
-line of the dated roster (`roster_status: website-only`):
+line of the dated roster:
 
 - 367 records from FDCA's dated roster (`on-roster`): the members;
-- 6 website-only records awaiting membership confirmation by the FDCA office.
-  The dashboard lists them with a pending notice and does not count them as
-  members;
-- 3 website-only records that FDCA's office confirmed are no longer members
-  (`roster_status: former`): Bergmann, Logiservice and NRT Tietoliikenne. They
-  stay in the registry with their research, but the dashboard, the layout and
-  the member count leave them out;
+- 9 records marked `roster_status: former`. They stay in the registry with
+  their research, but the dashboard, the layout and the member count leave them
+  out:
+  - Bergmann, Logiservice and NRT Tietoliikenne, which FDCA's office confirmed
+    are no longer members;
+  - Auramarine, Gloriosa Finland, GS Yuasa Battery Europe, Uptime Institute,
+    Virtutect and Ynvolve, marked former on 2026-09-26 because they are on no
+    roster line and not on fdca.fi's members page. The office has not confirmed
+    these six;
+- no `website-only` (pending) records remain;
 - 376 valid primary-category assignments;
 - zero publish-time `uncategorised` records.
 
-The dashboard therefore lists 373 companies and states 367 members.
+The dashboard therefore lists 367 companies and states 367 members.
 
 The 2026-09-21 roster adds 37 new members and lists Abloy, Balanus,
 L2 Paloturvallisuus, Rentaload, Usva Energia and UTU, which the 2026-08-31

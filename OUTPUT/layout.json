@@ -4,20 +4,20 @@
   "requested_mode": "rectangular",
   "solver_strategy": "recursive_treemap",
   "canvas": {
-    "cells_w": 36,
+    "cells_w": 35,
     "cells_h": 18
   },
   "anchors": {
     "masthead": {
       "x": 0,
       "y": 0,
-      "w": 13,
+      "w": 14,
       "h": 5
     },
     "data_center_operators": {
-      "x": 13,
+      "x": 14,
       "y": 0,
-      "w": 7,
+      "w": 6,
       "h": 5
     }
   },
@@ -102,14 +102,14 @@
       "label_fi": "",
       "x": 0,
       "y": 0,
-      "w": 13,
+      "w": 14,
       "h": 5,
       "is_masthead": true,
       "shape_rects": [
         {
           "x": 0,
           "y": 0,
-          "w": 13,
+          "w": 14,
           "h": 5
         }
       ],
@@ -121,16 +121,16 @@
       "family": "data_center_operators",
       "label_en": "Data Center Operators",
       "label_fi": "Datakeskusoperaattorit",
-      "x": 13,
+      "x": 14,
       "y": 0,
-      "w": 7,
+      "w": 6,
       "h": 5,
       "is_masthead": false,
       "shape_rects": [
         {
           "x": 0,
           "y": 0,
-          "w": 7,
+          "w": 6,
           "h": 5
         }
       ],
@@ -143,16 +143,16 @@
           "full_label_fi": "Datakeskusoperaattorit",
           "description_en": "Companies that own or operate data-center facilities and computing campuses.",
           "description_fi": "Yritykset, jotka omistavat tai operoivat datakeskuksia ja laskentakampuksia.",
-          "x": 13,
+          "x": 14,
           "y": 0,
-          "w": 7,
+          "w": 6,
           "h": 5,
           "visible": true,
           "reserved": false,
           "dots": {
-            "count": 23,
-            "capacity": 28,
-            "cols": 7,
+            "count": 22,
+            "capacity": 24,
+            "cols": 6,
             "rows": 4,
             "content_rows": 5,
             "requested_headroom": 0
@@ -160,14 +160,14 @@
           "font_size_px": 24.0
         }
       ],
-      "member_count": 23,
+      "member_count": 22,
       "shape_diagnostics": {
-        "area_cells": 35,
-        "bbox_cells": 35,
+        "area_cells": 30,
+        "bbox_cells": 30,
         "bbox_void_cells": 0,
         "hole_cells": 0,
         "empty_band_cells": 0,
-        "perimeter": 24,
+        "perimeter": 22,
         "components": 1,
         "one_cell_tendril_cells": 0,
         "category_padding_cells": 0
@@ -180,14 +180,14 @@
       "label_fi": "Suunnittelu",
       "x": 20,
       "y": 0,
-      "w": 16,
+      "w": 15,
       "h": 5,
       "is_masthead": false,
       "shape_rects": [
         {
           "x": 0,
           "y": 0,
-          "w": 16,
+          "w": 15,
           "h": 5
         }
       ],
@@ -250,14 +250,14 @@
           "description_fi": "Rakennusten, infrastruktuurin, sähkön, jäähdytyksen ja teknisten järjestelmien arkkitehti- ja insinöörisuunnittelu.",
           "x": 28,
           "y": 0,
-          "w": 6,
+          "w": 5,
           "h": 5,
           "visible": true,
           "reserved": false,
           "dots": {
-            "count": 21,
-            "capacity": 24,
-            "cols": 6,
+            "count": 20,
+            "capacity": 20,
+            "cols": 5,
             "rows": 4,
             "content_rows": 5,
             "requested_headroom": 0
@@ -272,7 +272,7 @@
           "full_label_fi": "Projektinjohto",
           "description_en": "Independent management, supervision and coordination of projects, construction, quality and safety.",
           "description_fi": "Hankkeiden, rakentamisen, laadun ja turvallisuuden riippumaton johtaminen, valvonta ja koordinointi.",
-          "x": 34,
+          "x": 33,
           "y": 0,
           "w": 2,
           "h": 5,
@@ -289,14 +289,14 @@
           "font_size_px": 24.0
         }
       ],
-      "member_count": 53,
+      "member_count": 52,
       "shape_diagnostics": {
-        "area_cells": 80,
-        "bbox_cells": 80,
+        "area_cells": 75,
+        "bbox_cells": 75,
         "bbox_void_cells": 0,
         "hole_cells": 0,
         "empty_band_cells": 0,
-        "perimeter": 42,
+        "perimeter": 40,
         "components": 1,
         "one_cell_tendril_cells": 0,
         "category_padding_cells": 2
@@ -309,14 +309,14 @@
       "label_fi": "Teknologiatoimittajat",
       "x": 0,
       "y": 5,
-      "w": 17,
+      "w": 16,
       "h": 13,
       "is_masthead": false,
       "shape_rects": [
         {
           "x": 0,
           "y": 0,
-          "w": 17,
+          "w": 16,
           "h": 13
         }
       ],
@@ -331,16 +331,16 @@
           "description_fi": "Sähkön tuotannon, varastoinnin, muuntamisen, varmistamisen, jakelun ja valvonnan laitteet.",
           "x": 0,
           "y": 5,
-          "w": 6,
+          "w": 5,
           "h": 9,
           "visible": true,
           "reserved": false,
           "dots": {
-            "count": 35,
-            "capacity": 36,
-            "cols": 6,
-            "rows": 6,
-            "content_rows": 7,
+            "count": 34,
+            "capacity": 35,
+            "cols": 5,
+            "rows": 7,
+            "content_rows": 8,
             "requested_headroom": 0
           },
           "font_size_px": 24.0
@@ -353,14 +353,14 @@
           "full_label_fi": "Jäähdytys ja lämmöntalteenotto",
           "description_en": "Equipment for cooling, ventilation, liquid handling and recovering waste heat.",
           "description_fi": "Jäähdytyksen, ilmanvaihdon, nesteenkäsittelyn ja hukkalämmön talteenoton laitteet.",
-          "x": 6,
+          "x": 5,
           "y": 5,
           "w": 4,
           "h": 9,
           "visible": true,
           "reserved": false,
           "dots": {
-            "count": 26,
+            "count": 25,
             "capacity": 28,
             "cols": 4,
             "rows": 7,
@@ -379,14 +379,14 @@
           "description_fi": "Palvelimet, tallennus, laitekaapit, kaapelointi ja sisäisten tietoverkkojen laitteet.",
           "x": 0,
           "y": 14,
-          "w": 10,
+          "w": 9,
           "h": 4,
           "visible": true,
           "reserved": false,
           "dots": {
             "count": 23,
-            "capacity": 30,
-            "cols": 10,
+            "capacity": 27,
+            "cols": 9,
             "rows": 3,
             "content_rows": 4,
             "requested_headroom": 0
@@ -401,7 +401,7 @@
           "full_label_fi": "Rakennustuotteet",
           "description_en": "Materials, components and prefabricated products incorporated into facility buildings.",
           "description_fi": "Datakeskusrakennuksiin asennettavat materiaalit, komponentit ja esivalmistetut tuotteet.",
-          "x": 10,
+          "x": 9,
           "y": 5,
           "w": 7,
           "h": 5,
@@ -425,7 +425,7 @@
           "full_label_fi": "Automaatio ja ohjelmistot",
           "description_en": "Monitoring, control, sensing and software for facility and equipment operation.",
           "description_fi": "Tilojen ja laitteiden käytön valvonta-, ohjaus-, anturi- ja ohjelmistoratkaisut.",
-          "x": 10,
+          "x": 9,
           "y": 10,
           "w": 7,
           "h": 3,
@@ -449,7 +449,7 @@
           "full_label_fi": "Turvallisuusteknologia",
           "description_en": "Physical and digital security products, access control, locks and surveillance systems.",
           "description_fi": "Fyysisen ja digitaalisen turvallisuuden tuotteet, kulunvalvonta, lukitus ja valvontajärjestelmät.",
-          "x": 10,
+          "x": 9,
           "y": 13,
           "w": 3,
           "h": 5,
@@ -473,7 +473,7 @@
           "full_label_fi": "Muu teknologia",
           "description_en": "Technology products that do not fit another technology category.",
           "description_fi": "Teknologiatuotteet, jotka eivät sovi muuhun teknologiakategoriaan.",
-          "x": 13,
+          "x": 12,
           "y": 13,
           "w": 4,
           "h": 5,
@@ -490,17 +490,17 @@
           "font_size_px": 24.0
         }
       ],
-      "member_count": 143,
+      "member_count": 141,
       "shape_diagnostics": {
-        "area_cells": 221,
-        "bbox_cells": 221,
+        "area_cells": 208,
+        "bbox_cells": 208,
         "bbox_void_cells": 0,
         "hole_cells": 0,
         "empty_band_cells": 0,
-        "perimeter": 60,
+        "perimeter": 58,
         "components": 1,
         "one_cell_tendril_cells": 0,
-        "category_padding_cells": 19
+        "category_padding_cells": 12
       }
     },
     {
@@ -508,7 +508,7 @@
       "family": "services",
       "label_en": "Services",
       "label_fi": "Palvelut",
-      "x": 17,
+      "x": 16,
       "y": 5,
       "w": 11,
       "h": 13,
@@ -530,7 +530,7 @@
           "full_label_fi": "Energia",
           "description_en": "Electricity supply, procurement, trading, distribution, fuels and energy advisory services.",
           "description_fi": "Sähkön toimitus, hankinta, kauppa, jakelu, polttoaineet ja energianeuvonta.",
-          "x": 17,
+          "x": 16,
           "y": 5,
           "w": 7,
           "h": 5,
@@ -554,7 +554,7 @@
           "full_label_fi": "Tietoliikenneyhteydet",
           "description_en": "External telecommunications, internet exchange and fibre connectivity services.",
           "description_fi": "Ulkoiset tietoliikenne-, yhdysliikenne- ja valokuituyhteyspalvelut.",
-          "x": 17,
+          "x": 16,
           "y": 10,
           "w": 3,
           "h": 3,
@@ -578,7 +578,7 @@
           "full_label_fi": "Turvallisuuspalvelut",
           "description_en": "Guarding, security operations, risk management and ongoing protection services.",
           "description_fi": "Vartiointi, turvallisuusoperaatiot, riskienhallinta ja jatkuvat suojauspalvelut.",
-          "x": 20,
+          "x": 19,
           "y": 10,
           "w": 4,
           "h": 3,
@@ -602,14 +602,14 @@
           "full_label_fi": "Laitteiden ylläpito",
           "description_en": "Repair, refurbishment, lifecycle management, relocation and responsible retirement of equipment.",
           "description_fi": "Laitteiden korjaus, kunnostus, elinkaarenhallinta, siirrot ja vastuullinen käytöstäpoisto.",
-          "x": 24,
+          "x": 23,
           "y": 5,
           "w": 4,
           "h": 3,
           "visible": true,
           "reserved": false,
           "dots": {
-            "count": 8,
+            "count": 7,
             "capacity": 8,
             "cols": 4,
             "rows": 2,
@@ -626,7 +626,7 @@
           "full_label_fi": "Henkilöstöpalvelut",
           "description_en": "Recruitment, workforce supply and employment services for projects and operations.",
           "description_fi": "Rekrytointi-, työvoimanvuokraus- ja työsuhdepalvelut hankkeisiin ja toimintaan.",
-          "x": 24,
+          "x": 23,
           "y": 8,
           "w": 4,
           "h": 5,
@@ -650,7 +650,7 @@
           "full_label_fi": "Laki- ja liiketoimintaneuvonta",
           "description_en": "Legal, financial, investment, property, insurance, communications and management advisory services.",
           "description_fi": "Oikeudelliset, talous-, sijoitus-, kiinteistö-, vakuutus-, viestintä- ja liikkeenjohdon neuvontapalvelut.",
-          "x": 17,
+          "x": 16,
           "y": 13,
           "w": 3,
           "h": 5,
@@ -674,14 +674,14 @@
           "full_label_fi": "Muut palvelut",
           "description_en": "Industry services that do not fit another service category.",
           "description_fi": "Toimialan palvelut, jotka eivät sovi muuhun palvelukategoriaan.",
-          "x": 20,
+          "x": 19,
           "y": 13,
           "w": 4,
           "h": 5,
           "visible": true,
           "reserved": false,
           "dots": {
-            "count": 15,
+            "count": 14,
             "capacity": 16,
             "cols": 4,
             "rows": 4,
@@ -698,7 +698,7 @@
           "full_label_fi": "Käyttöönotto ja testaus",
           "description_en": "Independent testing and verification that facilities and technical systems perform as intended.",
           "description_fi": "Tilojen ja teknisten järjestelmien toiminnan riippumaton testaus ja todentaminen.",
-          "x": 24,
+          "x": 23,
           "y": 13,
           "w": 2,
           "h": 3,
@@ -722,7 +722,7 @@
           "full_label_fi": "Logistiikka",
           "description_en": "Transport, forwarding, storage, handling and delivery services for projects and equipment.",
           "description_fi": "Hankkeiden ja laitteiden kuljetus-, huolinta-, varastointi-, käsittely- ja toimituspalvelut.",
-          "x": 26,
+          "x": 25,
           "y": 13,
           "w": 2,
           "h": 3,
@@ -746,7 +746,7 @@
           "full_label_fi": "Kiinteistöpalvelut",
           "description_en": "Operation, monitoring, maintenance and support of complete facilities and building systems.",
           "description_fi": "Kokonaisten tilojen ja rakennusjärjestelmien käyttö, valvonta, ylläpito ja tuki.",
-          "x": 24,
+          "x": 23,
           "y": 16,
           "w": 4,
           "h": 2,
@@ -763,7 +763,7 @@
           "font_size_px": 24.0
         }
       ],
-      "member_count": 88,
+      "member_count": 86,
       "shape_diagnostics": {
         "area_cells": 143,
         "bbox_cells": 143,
@@ -781,7 +781,7 @@
       "family": "construction",
       "label_en": "Construction",
       "label_fi": "Rakentaminen",
-      "x": 28,
+      "x": 27,
       "y": 5,
       "w": 8,
       "h": 13,
@@ -803,7 +803,7 @@
           "full_label_fi": "Pääurakoitsijat",
           "description_en": "Companies with confirmed overall responsibility for delivering complete Finnish facility projects.",
           "description_fi": "Yritykset, joilla on vahvistettu kokonaisvastuu datakeskushankkeen toteutuksesta Suomessa.",
-          "x": 28,
+          "x": 27,
           "y": 5,
           "w": 4,
           "h": 3,
@@ -827,7 +827,7 @@
           "full_label_fi": "Teollisuusrakentaminen",
           "description_en": "Industrial builders delivering structures or packages without confirmed overall facility responsibility.",
           "description_fi": "Teollisten rakenteiden tai kokonaisuuksien toteuttajat ilman vahvistettua hankkeen kokonaisvastuuta.",
-          "x": 28,
+          "x": 27,
           "y": 8,
           "w": 4,
           "h": 5,
@@ -851,7 +851,7 @@
           "full_label_fi": "Teknisten järjestelmien asennukset",
           "description_en": "Installation and commissioning of internal electrical, network, cooling, piping and automation systems.",
           "description_fi": "Sisäisten sähkö-, verkko-, jäähdytys-, putkisto- ja automaatiojärjestelmien asennus ja käyttöönotto.",
-          "x": 32,
+          "x": 31,
           "y": 5,
           "w": 4,
           "h": 8,
@@ -875,7 +875,7 @@
           "full_label_fi": "Infrarakentaminen",
           "description_en": "Earthworks, rock works, foundations, roads, drainage and underground site utilities.",
           "description_fi": "Maa- ja kalliorakentaminen, perustukset, tiet, kuivatus ja maanalainen kunnallistekniikka.",
-          "x": 28,
+          "x": 27,
           "y": 13,
           "w": 3,
           "h": 5,
@@ -899,7 +899,7 @@
           "full_label_fi": "Sähköverkko- ja sähköasemarakentaminen",
           "description_en": "External grid connections, high-voltage systems, substations, transformers and switchyards.",
           "description_fi": "Ulkoiset verkkoliitynnät, suurjännitejärjestelmät, sähköasemat, muuntajat ja kytkinkentät.",
-          "x": 31,
+          "x": 30,
           "y": 13,
           "w": 2,
           "h": 5,
@@ -923,7 +923,7 @@
           "full_label_fi": "Paloturvallisuusurakointi",
           "description_en": "Installation and commissioning of fire detection, suppression, smoke control and structural protection.",
           "description_fi": "Palonilmaisu-, sammutus-, savunhallinta- ja rakenteellisen palosuojauksen asennus ja käyttöönotto.",
-          "x": 33,
+          "x": 32,
           "y": 13,
           "w": 3,
           "h": 2,
@@ -947,7 +947,7 @@
           "full_label_fi": "Katto- ja julkisivurakentaminen",
           "description_en": "Installation of roofs, façades, cladding, insulation, waterproofing and weather protection.",
           "description_fi": "Kattojen, julkisivujen, verhousten, eristeiden, vedeneristyksen ja sääsuojauksen asennus.",
-          "x": 33,
+          "x": 32,
           "y": 15,
           "w": 3,
           "h": 3,
@@ -979,18 +979,18 @@
     }
   ],
   "diagnostics": {
-    "occupied_area_pct": 95.8,
-    "unused_area_pct": 4.2,
-    "visual_whitespace_cells": 27,
-    "visual_whitespace_pct": 4.2,
-    "overview_empty_footprint_cells": 86,
-    "overview_empty_footprint_pct": 13.3,
+    "occupied_area_pct": 96.8,
+    "unused_area_pct": 3.2,
+    "visual_whitespace_cells": 20,
+    "visual_whitespace_pct": 3.2,
+    "overview_empty_footprint_cells": 73,
+    "overview_empty_footprint_pct": 11.6,
     "whole_canvas_unused_cells": 0,
     "whole_canvas_unused_pct": 0.0,
     "family_internal_slack_cells": 0,
     "family_internal_slack_pct": 0.0,
     "reserved_empty_category_cells": 0,
-    "category_internal_padding_cells": 27,
+    "category_internal_padding_cells": 20,
     "prohibited_void_cells": 0,
     "family_bbox_void_cells": 0,
     "family_bbox_hole_cells": 0,
@@ -999,17 +999,17 @@
     "one_cell_tendril_cells": 0,
     "polyomino_interlock_cells": 0,
     "layout_mode_explanation": "Rectangular mode uses an exact-cover treemap: masthead and family rectangles cover every canvas cell, while extra category rows are reported as growth space.",
-    "company_count": 373,
-    "total_dot_capacity": 432,
-    "spare_dot_capacity": 59,
+    "company_count": 367,
+    "total_dot_capacity": 420,
+    "spare_dot_capacity": 53,
     "requested_headroom_slots": 0,
-    "grid_rounding_spare_slots": 59,
-    "max_category_aspect_ratio": 2.25,
-    "mean_category_aspect_ratio": 0.93,
+    "grid_rounding_spare_slots": 53,
+    "max_category_aspect_ratio": 2.1,
+    "mean_category_aspect_ratio": 0.91,
     "category_count": 29,
     "visible_category_count": 29,
     "canvas_cells": {
-      "w": 36,
+      "w": 35,
       "h": 18
     },
     "cell_pitch": {
@@ -1017,7 +1017,7 @@
       "y": 218
     },
     "canvas_px": {
-      "w": 7056,
+      "w": 6860,
       "h": 3924
     },
     "masthead_height_cells": 5,
@@ -1031,22 +1031,10 @@
     "short_label_explanation": "No shorter approved or experimental label changed this dataset.",
     "layout_stability_mode": "soft",
     "previous_layout_available": true,
-    "family_movement_cost_cells": 17,
+    "family_movement_cost_cells": 6,
     "unsupported_or_inactive_policies": [],
     "highlight_cells": {
       "overview_empty": [
-        {
-          "x": 15,
-          "y": 4
-        },
-        {
-          "x": 16,
-          "y": 4
-        },
-        {
-          "x": 17,
-          "y": 4
-        },
         {
           "x": 18,
           "y": 4
@@ -1080,14 +1068,6 @@
           "y": 4
         },
         {
-          "x": 31,
-          "y": 4
-        },
-        {
-          "x": 32,
-          "y": 4
-        },
-        {
           "x": 33,
           "y": 4
         },
@@ -1096,15 +1076,19 @@
           "y": 4
         },
         {
-          "x": 35,
-          "y": 4
-        },
-        {
-          "x": 31,
+          "x": 26,
           "y": 7
         },
         {
-          "x": 16,
+          "x": 30,
+          "y": 7
+        },
+        {
+          "x": 15,
+          "y": 9
+        },
+        {
+          "x": 17,
           "y": 9
         },
         {
@@ -1128,11 +1112,7 @@
           "y": 9
         },
         {
-          "x": 23,
-          "y": 9
-        },
-        {
-          "x": 5,
+          "x": 33,
           "y": 11
         },
         {
@@ -1140,31 +1120,15 @@
           "y": 11
         },
         {
-          "x": 35,
-          "y": 11
-        },
-        {
-          "x": 0,
-          "y": 12
-        },
-        {
-          "x": 1,
-          "y": 12
-        },
-        {
-          "x": 2,
-          "y": 12
-        },
-        {
-          "x": 3,
-          "y": 12
-        },
-        {
           "x": 4,
           "y": 12
         },
         {
-          "x": 5,
+          "x": 6,
+          "y": 12
+        },
+        {
+          "x": 7,
           "y": 12
         },
         {
@@ -1172,7 +1136,7 @@
           "y": 12
         },
         {
-          "x": 9,
+          "x": 14,
           "y": 12
         },
         {
@@ -1180,7 +1144,7 @@
           "y": 12
         },
         {
-          "x": 16,
+          "x": 17,
           "y": 12
         },
         {
@@ -1188,11 +1152,11 @@
           "y": 12
         },
         {
-          "x": 19,
+          "x": 22,
           "y": 12
         },
         {
-          "x": 23,
+          "x": 25,
           "y": 12
         },
         {
@@ -1200,7 +1164,7 @@
           "y": 12
         },
         {
-          "x": 27,
+          "x": 28,
           "y": 12
         },
         {
@@ -1225,10 +1189,6 @@
         },
         {
           "x": 34,
-          "y": 12
-        },
-        {
-          "x": 35,
           "y": 12
         },
         {
@@ -1268,32 +1228,20 @@
           "y": 13
         },
         {
-          "x": 9,
-          "y": 13
-        },
-        {
-          "x": 25,
+          "x": 24,
           "y": 15
         },
         {
-          "x": 27,
+          "x": 26,
           "y": 15
+        },
+        {
+          "x": 10,
+          "y": 16
         },
         {
           "x": 11,
           "y": 16
-        },
-        {
-          "x": 12,
-          "y": 16
-        },
-        {
-          "x": 3,
-          "y": 17
-        },
-        {
-          "x": 4,
-          "y": 17
         },
         {
           "x": 5,
@@ -1324,7 +1272,7 @@
           "y": 17
         },
         {
-          "x": 12,
+          "x": 13,
           "y": 17
         },
         {
@@ -1336,15 +1284,19 @@
           "y": 17
         },
         {
-          "x": 16,
+          "x": 18,
           "y": 17
         },
         {
-          "x": 19,
+          "x": 21,
           "y": 17
         },
         {
-          "x": 23,
+          "x": 22,
+          "y": 17
+        },
+        {
+          "x": 24,
           "y": 17
         },
         {
@@ -1356,7 +1308,7 @@
           "y": 17
         },
         {
-          "x": 27,
+          "x": 28,
           "y": 17
         },
         {
@@ -1372,45 +1324,21 @@
           "y": 17
         },
         {
-          "x": 32,
-          "y": 17
-        },
-        {
-          "x": 35,
+          "x": 34,
           "y": 17
         }
       ],
       "geometric_whitespace": [
         {
+          "x": 33,
+          "y": 4
+        },
+        {
           "x": 34,
           "y": 4
         },
         {
-          "x": 35,
-          "y": 4
-        },
-        {
-          "x": 0,
-          "y": 12
-        },
-        {
-          "x": 1,
-          "y": 12
-        },
-        {
-          "x": 2,
-          "y": 12
-        },
-        {
-          "x": 3,
-          "y": 12
-        },
-        {
-          "x": 4,
-          "y": 12
-        },
-        {
-          "x": 5,
+          "x": 31,
           "y": 12
         },
         {
@@ -1423,10 +1351,6 @@
         },
         {
           "x": 34,
-          "y": 12
-        },
-        {
-          "x": 35,
           "y": 12
         },
         {
@@ -1467,7 +1391,7 @@
         },
         {
           "x": 9,
-          "y": 13
+          "y": 17
         },
         {
           "x": 10,
@@ -1478,31 +1402,15 @@
           "y": 17
         },
         {
-          "x": 12,
+          "x": 30,
           "y": 17
         },
         {
           "x": 31,
           "y": 17
-        },
-        {
-          "x": 32,
-          "y": 17
         }
       ],
       "spare_slots": [
-        {
-          "x": 15,
-          "y": 4
-        },
-        {
-          "x": 16,
-          "y": 4
-        },
-        {
-          "x": 17,
-          "y": 4
-        },
         {
           "x": 18,
           "y": 4
@@ -1536,23 +1444,19 @@
           "y": 4
         },
         {
-          "x": 31,
-          "y": 4
-        },
-        {
-          "x": 32,
-          "y": 4
-        },
-        {
-          "x": 33,
-          "y": 4
-        },
-        {
-          "x": 31,
+          "x": 26,
           "y": 7
         },
         {
-          "x": 16,
+          "x": 30,
+          "y": 7
+        },
+        {
+          "x": 15,
+          "y": 9
+        },
+        {
+          "x": 17,
           "y": 9
         },
         {
@@ -1576,11 +1480,7 @@
           "y": 9
         },
         {
-          "x": 23,
-          "y": 9
-        },
-        {
-          "x": 5,
+          "x": 33,
           "y": 11
         },
         {
@@ -1588,15 +1488,23 @@
           "y": 11
         },
         {
-          "x": 35,
-          "y": 11
+          "x": 4,
+          "y": 12
+        },
+        {
+          "x": 6,
+          "y": 12
+        },
+        {
+          "x": 7,
+          "y": 12
         },
         {
           "x": 8,
           "y": 12
         },
         {
-          "x": 9,
+          "x": 14,
           "y": 12
         },
         {
@@ -1604,7 +1512,7 @@
           "y": 12
         },
         {
-          "x": 16,
+          "x": 17,
           "y": 12
         },
         {
@@ -1612,11 +1520,11 @@
           "y": 12
         },
         {
-          "x": 19,
+          "x": 22,
           "y": 12
         },
         {
-          "x": 23,
+          "x": 25,
           "y": 12
         },
         {
@@ -1624,7 +1532,7 @@
           "y": 12
         },
         {
-          "x": 27,
+          "x": 28,
           "y": 12
         },
         {
@@ -1636,32 +1544,20 @@
           "y": 12
         },
         {
-          "x": 31,
-          "y": 12
-        },
-        {
-          "x": 25,
+          "x": 24,
           "y": 15
         },
         {
-          "x": 27,
+          "x": 26,
           "y": 15
+        },
+        {
+          "x": 10,
+          "y": 16
         },
         {
           "x": 11,
           "y": 16
-        },
-        {
-          "x": 12,
-          "y": 16
-        },
-        {
-          "x": 3,
-          "y": 17
-        },
-        {
-          "x": 4,
-          "y": 17
         },
         {
           "x": 5,
@@ -1680,7 +1576,7 @@
           "y": 17
         },
         {
-          "x": 9,
+          "x": 13,
           "y": 17
         },
         {
@@ -1692,15 +1588,19 @@
           "y": 17
         },
         {
-          "x": 16,
+          "x": 18,
           "y": 17
         },
         {
-          "x": 19,
+          "x": 21,
           "y": 17
         },
         {
-          "x": 23,
+          "x": 22,
+          "y": 17
+        },
+        {
+          "x": 24,
           "y": 17
         },
         {
@@ -1712,7 +1612,7 @@
           "y": 17
         },
         {
-          "x": 27,
+          "x": 28,
           "y": 17
         },
         {
@@ -1720,11 +1620,7 @@
           "y": 17
         },
         {
-          "x": 30,
-          "y": 17
-        },
-        {
-          "x": 35,
+          "x": 34,
           "y": 17
         }
       ],
@@ -1732,35 +1628,15 @@
       "canvas_whitespace": [],
       "category_padding": [
         {
+          "x": 33,
+          "y": 4
+        },
+        {
           "x": 34,
           "y": 4
         },
         {
-          "x": 35,
-          "y": 4
-        },
-        {
-          "x": 0,
-          "y": 12
-        },
-        {
-          "x": 1,
-          "y": 12
-        },
-        {
-          "x": 2,
-          "y": 12
-        },
-        {
-          "x": 3,
-          "y": 12
-        },
-        {
-          "x": 4,
-          "y": 12
-        },
-        {
-          "x": 5,
+          "x": 31,
           "y": 12
         },
         {
@@ -1773,10 +1649,6 @@
         },
         {
           "x": 34,
-          "y": 12
-        },
-        {
-          "x": 35,
           "y": 12
         },
         {
@@ -1817,7 +1689,7 @@
         },
         {
           "x": 9,
-          "y": 13
+          "y": 17
         },
         {
           "x": 10,
@@ -1828,15 +1700,11 @@
           "y": 17
         },
         {
-          "x": 12,
+          "x": 30,
           "y": 17
         },
         {
           "x": 31,
-          "y": 17
-        },
-        {
-          "x": 32,
           "y": 17
         }
       ],

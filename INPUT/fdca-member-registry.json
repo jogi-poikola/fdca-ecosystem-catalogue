@@ -5507,7 +5507,7 @@
   {
     "official_name": null,
     "display_name": "Auramarine",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.auramarine.com",
     "category": "cooling_heat_recovery",
@@ -5517,7 +5517,7 @@
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2021/07/Auramarine-logo.jpg",
     "researched": null,
     "url_status": "confirmed",
-    "note": null
+    "note": "Marked former: on no roster line and not on fdca.fi's members page."
   },
   {
     "official_name": null,
@@ -5537,7 +5537,7 @@
   {
     "official_name": null,
     "display_name": "Gloriosa Finland",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://gloriosaenergy.com",
     "category": "data_center_operators",
@@ -5547,12 +5547,12 @@
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2023/09/GES-kopio.jpg",
     "researched": null,
     "url_status": "confirmed",
-    "note": null
+    "note": "Marked former: on no roster line and not on fdca.fi's members page."
   },
   {
     "official_name": null,
     "display_name": "GS Yuasa Battery Europe Ltd",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.yuasa.com",
     "category": "power_equipment",
@@ -5562,7 +5562,7 @@
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2021/08/1200px-Logo_GS_Yuasa..png",
     "researched": null,
     "url_status": "confirmed",
-    "note": null
+    "note": "Marked former: on no roster line and not on fdca.fi's members page."
   },
   {
     "official_name": null,
@@ -5597,7 +5597,7 @@
   {
     "official_name": null,
     "display_name": "Uptime Institute",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.uptimeinstitute.com",
     "category": "other_services",
@@ -5607,12 +5607,12 @@
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2023/05/up-inst-base-corp2.png",
     "researched": null,
     "url_status": "confirmed",
-    "note": null
+    "note": "Marked former: on no roster line and not on fdca.fi's members page."
   },
   {
     "official_name": null,
     "display_name": "Virtutect",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.virtutect.com",
     "category": "design_engineering",
@@ -5622,12 +5622,12 @@
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2021/07/Virtutect-logo.jpg",
     "researched": null,
     "url_status": "confirmed",
-    "note": null
+    "note": "Marked former: on no roster line and not on fdca.fi's members page."
   },
   {
     "official_name": null,
     "display_name": "Ynvolve",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.ynvolve.com",
     "category": "equipment_maintenance",
@@ -5637,6 +5637,6 @@
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2022/02/Ynvolve.jpg",
     "researched": null,
     "url_status": "confirmed",
-    "note": null
+    "note": "Marked former: on no roster line and not on fdca.fi's members page."
   }
 ]

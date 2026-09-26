@@ -151,6 +151,15 @@ FORMER_NOTES = {
     "Bergmann": "Confirmed resigned; logo removed from fdca.fi.",
     "Logiservice": "Confirmed no longer a member; logo removed from fdca.fi.",
     "NRT Tietoliikenne": "Confirmed no longer a member; logo removed from fdca.fi.",
+    # Marked former on Antti's decision, 2026-09-26. Each is on no roster line
+    # and was absent from fdca.fi's members page that day. FDCA's office has
+    # not confirmed these six.
+    "Auramarine": "Marked former: on no roster line and not on fdca.fi's members page.",
+    "Gloriosa Finland": "Marked former: on no roster line and not on fdca.fi's members page.",
+    "GS Yuasa Battery Europe Ltd": "Marked former: on no roster line and not on fdca.fi's members page.",
+    "Uptime Institute": "Marked former: on no roster line and not on fdca.fi's members page.",
+    "Virtutect": "Marked former: on no roster line and not on fdca.fi's members page.",
+    "Ynvolve": "Marked former: on no roster line and not on fdca.fi's members page.",
     # L2 Paloturvallisuus, Rentaload and UTU were open here until the
     # 2026-09-21 roster listed all three.
 }
