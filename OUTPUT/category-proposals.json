@@ -5,46 +5,22 @@
   "classification_rules_path": "INPUT/fdca-classification-rules.json",
   "proposals": [
     {
-      "official_name": "Onninen Oy",
-      "display_name": "Onninen Oy",
-      "url": "https://onninen.com",
-      "evidence": "Technical wholesaler supplying HEPAC, electrical, refrigeration and energy products to contractors, industry and infrastructure builders in Finland and neighbouring countries.",
-      "category": "power_equipment",
-      "decision_path": [
-        "technology_vendors",
-        "power_equipment"
-      ],
-      "rationale": "Electrical products are a core line of this technical wholesaler; placed with Rexel, the other electrical wholesaler. Changed from other_technology after human review, 2026-09-22.",
-      "confidence": "high",
-      "human_reviewed": true
-    },
-    {
-      "official_name": "One Click LCA",
-      "display_name": "One Click LCA",
-      "url": "https://oneclicklca.com",
-      "evidence": "Finnish software company providing life-cycle assessment and environmental product declaration software for construction and manufacturing.",
+      "official_name": "Kumorion Platforms Oy",
+      "display_name": "Kumorion",
+      "url": "https://kumorion.com/",
+      "evidence": "Nordic technology provider for sovereign cloud. Kumorion provides the cloud platform layer that lets cloud service providers and data centers deliver sovereign, enterprise-grade cloud service to their customers.",
       "category": "automation_software",
       "decision_path": [
-        "technology_vendors",
-        "automation_software"
+        "data_center_operators: no, it owns no facility",
+        "construction: no",
+        "planning: no",
+        "technology_vendors: yes, it supplies software",
+        "power_equipment, cooling_heat_recovery, computing_network_equipment: no, it supplies no hardware",
+        "automation_software: yes, operational software (OpenStack, Kubernetes, secrets and AI-workload management platform for cloud providers and data centers)"
       ],
-      "rationale": "Supplies a software product; the taxonomy's software category is Automation and Software. Changed from other_technology after human review, 2026-09-22.",
-      "confidence": "high",
-      "human_reviewed": true
-    },
-    {
-      "official_name": "Finkova Oy",
-      "display_name": "Finkova Oy",
-      "url": "https://finkova.fi",
-      "evidence": "Finnish supplier of valves and other heavy-industry equipment, with design, installation, maintenance and condition-monitoring services.",
-      "category": "automation_software",
-      "decision_path": [
-        "technology_vendors",
-        "automation_software"
-      ],
-      "rationale": "Supplies instruments (flow meters, gas analysers, level measurement), Bently Nevada machine protection and System 1 condition-monitoring software; sensing and monitoring dominate. Changed from cooling_heat_recovery after human review, 2026-09-22.",
-      "confidence": "high",
-      "human_reviewed": true
+      "rationale": "Dominant role is supplying a cloud platform software layer to data centers and cloud providers. No hardware, no facility, no services-only role. Operational software is the closest fit; other_technology is only for products no specific category covers.",
+      "confidence": "medium",
+      "human_reviewed": false
     }
   ]
 }

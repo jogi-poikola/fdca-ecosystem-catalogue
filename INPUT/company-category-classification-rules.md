@@ -71,7 +71,7 @@ Datakeskuksissa käytettävien laitteiden, tuotteiden ja ohjelmistojen valmistaj
    - Excludes: External connectivity services, Equipment maintenance.
    - Description: Servers, storage, racks, cabling and equipment for internal data networks.
    - Kuvaus: Palvelimet, tallennus, laitekaapit, kaapelointi ja sisäisten tietoverkkojen laitteet.
-4. **Automation and Software — Automaatio ja ohjelmistot** (12 companies)
+4. **Automation and Software — Automaatio ja ohjelmistot** (13 companies)
    - Question: Is monitoring, control, sensing or operational software the dominant supplied product?
    - Includes: Building controls, Power monitoring, Environmental sensors, Operational software.
    - Excludes: Security products, Automation installation.

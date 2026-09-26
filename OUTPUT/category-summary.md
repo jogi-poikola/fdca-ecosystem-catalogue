@@ -2,7 +2,7 @@
 # Category summary
 
 Taxonomy version: **4.0**  
-Members on FDCA's roster: **367**  
+Members on FDCA's roster: **368**  
 Website-only, pending confirmation: **0**
 
 | Family | Category | Kategoria | Description | Kuvaus | Companies |
@@ -11,7 +11,7 @@ Website-only, pending confirmation: **0**
 | Technology Vendors | Power Equipment | Sähkölaitteet | Equipment for power generation, storage, conversion, backup, distribution and monitoring. | Sähkön tuotannon, varastoinnin, muuntamisen, varmistamisen, jakelun ja valvonnan laitteet. | 34 |
 | Technology Vendors | Cooling and Heat Recovery | Jäähdytys ja lämmöntalteenotto | Equipment for cooling, ventilation, liquid handling and recovering waste heat. | Jäähdytyksen, ilmanvaihdon, nesteenkäsittelyn ja hukkalämmön talteenoton laitteet. | 25 |
 | Technology Vendors | Computing and Network Equipment | Laskenta- ja verkkolaitteet | Servers, storage, racks, cabling and equipment for internal data networks. | Palvelimet, tallennus, laitekaapit, kaapelointi ja sisäisten tietoverkkojen laitteet. | 23 |
-| Technology Vendors | Automation and Software | Automaatio ja ohjelmistot | Monitoring, control, sensing and software for facility and equipment operation. | Tilojen ja laitteiden käytön valvonta-, ohjaus-, anturi- ja ohjelmistoratkaisut. | 12 |
+| Technology Vendors | Automation and Software | Automaatio ja ohjelmistot | Monitoring, control, sensing and software for facility and equipment operation. | Tilojen ja laitteiden käytön valvonta-, ohjaus-, anturi- ja ohjelmistoratkaisut. | 13 |
 | Technology Vendors | Security Technology | Turvallisuusteknologia | Physical and digital security products, access control, locks and surveillance systems. | Fyysisen ja digitaalisen turvallisuuden tuotteet, kulunvalvonta, lukitus ja valvontajärjestelmät. | 7 |
 | Technology Vendors | Building Products | Rakennustuotteet | Materials, components and prefabricated products incorporated into facility buildings. | Datakeskusrakennuksiin asennettavat materiaalit, komponentit ja esivalmistetut tuotteet. | 27 |
 | Technology Vendors | Other Technology | Muu teknologia | Technology products that do not fit another technology category. | Teknologiatuotteet, jotka eivät sovi muuhun teknologiakategoriaan. | 13 |
@@ -38,4 +38,4 @@ Website-only, pending confirmation: **0**
 | Services | Legal and Business Advisory | Laki- ja liiketoimintaneuvonta | Legal, financial, investment, property, insurance, communications and management advisory services. | Oikeudelliset, talous-, sijoitus-, kiinteistö-, vakuutus-, viestintä- ja liikkeenjohdon neuvontapalvelut. | 11 |
 | Services | Other Services | Muut palvelut | Industry services that do not fit another service category. | Toimialan palvelut, jotka eivät sovi muuhun palvelukategoriaan. | 14 |
 
-**Total listed: 367** (367 members + 0 pending)
+**Total listed: 368** (368 members + 0 pending)

@@ -432,7 +432,7 @@
           "visible": true,
           "reserved": false,
           "dots": {
-            "count": 12,
+            "count": 13,
             "capacity": 14,
             "cols": 7,
             "rows": 2,
@@ -490,7 +490,7 @@
           "font_size_px": 24.0
         }
       ],
-      "member_count": 141,
+      "member_count": 142,
       "shape_diagnostics": {
         "area_cells": 208,
         "bbox_cells": 208,
@@ -983,8 +983,8 @@
     "unused_area_pct": 3.2,
     "visual_whitespace_cells": 20,
     "visual_whitespace_pct": 3.2,
-    "overview_empty_footprint_cells": 73,
-    "overview_empty_footprint_pct": 11.6,
+    "overview_empty_footprint_cells": 72,
+    "overview_empty_footprint_pct": 11.4,
     "whole_canvas_unused_cells": 0,
     "whole_canvas_unused_pct": 0.0,
     "family_internal_slack_cells": 0,
@@ -999,11 +999,11 @@
     "one_cell_tendril_cells": 0,
     "polyomino_interlock_cells": 0,
     "layout_mode_explanation": "Rectangular mode uses an exact-cover treemap: masthead and family rectangles cover every canvas cell, while extra category rows are reported as growth space.",
-    "company_count": 367,
+    "company_count": 368,
     "total_dot_capacity": 420,
-    "spare_dot_capacity": 53,
+    "spare_dot_capacity": 52,
     "requested_headroom_slots": 0,
-    "grid_rounding_spare_slots": 53,
+    "grid_rounding_spare_slots": 52,
     "max_category_aspect_ratio": 2.1,
     "mean_category_aspect_ratio": 0.91,
     "category_count": 29,
@@ -1031,7 +1031,7 @@
     "short_label_explanation": "No shorter approved or experimental label changed this dataset.",
     "layout_stability_mode": "soft",
     "previous_layout_available": true,
-    "family_movement_cost_cells": 6,
+    "family_movement_cost_cells": 0,
     "unsupported_or_inactive_policies": [],
     "highlight_cells": {
       "overview_empty": [
@@ -1133,10 +1133,6 @@
         },
         {
           "x": 8,
-          "y": 12
-        },
-        {
-          "x": 14,
           "y": 12
         },
         {
@@ -1501,10 +1497,6 @@
         },
         {
           "x": 8,
-          "y": 12
-        },
-        {
-          "x": 14,
           "y": 12
         },
         {
