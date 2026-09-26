@@ -38,6 +38,11 @@ Usage:
     python3 SKILL/scripts/merge_member_list.py [--check]
 
 --check reports what would change and writes nothing.
+--no-publish writes the registry but skips the rebuild and the Looper mirror.
+
+When the registry changes, the merge also regenerates the guide and summary,
+rebuilds the dashboard and runs Looper's mirror script (see sync_looper.py).
+When the registry is unchanged, it does none of that.
 """
 
 import argparse
@@ -345,6 +350,7 @@ def website_only(entry: dict) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true", help="report, write nothing")
+    parser.add_argument("--no-publish", action="store_true", help="skip the rebuild and the Looper mirror")
     args = parser.parse_args()
 
     registry = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
@@ -389,10 +395,19 @@ def main() -> None:
     if args.check:
         print("\n--check: nothing written")
         return
-    REGISTRY_PATH.write_text(
-        json.dumps(members + extras, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
-    )
+    before = REGISTRY_PATH.read_text(encoding="utf-8")
+    after = json.dumps(members + extras, indent=2, ensure_ascii=False) + "\n"
+    REGISTRY_PATH.write_text(after, encoding="utf-8")
     print(f"\nwrote {REGISTRY_PATH.name} — {len(members)} members + {len(extras)} not on the roster")
+    if before == after:
+        print("registry unchanged: nothing to rebuild or mirror")
+    elif args.no_publish:
+        print("--no-publish: rebuild and Looper mirror skipped")
+    else:
+        from sync_looper import refresh_and_mirror
+
+        refresh_and_mirror()
+    print("\nNext: python3 SKILL/scripts/audit_roster.py  (checks each entry the roster does not name)")
 
 
 if __name__ == "__main__":

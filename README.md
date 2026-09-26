@@ -110,9 +110,15 @@ python3 SKILL/scripts/layout_tool.py --compare layout_mode rectangular polyomino
 ## Maintenance workflows
 
 ```bash
-# Reconcile a new dated roster.
+# Reconcile a new dated roster. A merge that changes the registry also
+# validates, rebuilds the dashboard and runs the Looper mirror command in
+# LOOPER_MIRROR_CMD. Set it once, e.g. in your shell profile.
 python3 SKILL/scripts/merge_member_list.py --check
 python3 SKILL/scripts/merge_member_list.py
+
+# Then decide each entry the roster does not name: alias, former or member.
+# Add the printed line to ALIASES or FORMER_NOTES and merge again.
+python3 SKILL/scripts/audit_roster.py
 
 # Research and classify new intake records.
 python3 SKILL/scripts/enrich_members.py --research
