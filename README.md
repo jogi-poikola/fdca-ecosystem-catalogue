@@ -22,17 +22,32 @@ not a second tag.
 
 ## Current data state
 
-As of 2026-09-21, the registry contains 377 distinct companies:
+As of 2026-09-21, FDCA has **367 members**. That is the number to quote. The
+registry holds 376 records, because it also keeps 9 companies that are on no
+line of the dated roster:
 
-- 367 records from FDCA's dated roster;
-- 10 website-only records awaiting or carrying membership reconciliation;
-- 377 valid primary-category assignments;
+- 367 records from FDCA's dated roster (`on-roster`): the members;
+- 9 records marked `roster_status: former`. They stay in the registry with
+  their research, but the dashboard, the layout and the member count leave them
+  out:
+  - Bergmann, Logiservice and NRT Tietoliikenne, which FDCA's office confirmed
+    are no longer members;
+  - Auramarine, Gloriosa Finland, GS Yuasa Battery Europe, Uptime Institute,
+    Virtutect and Ynvolve, marked former on 2026-09-26 because they are on no
+    roster line and not on fdca.fi's members page. The office has not confirmed
+    these six;
+- no `website-only` (pending) records remain;
+- 376 valid primary-category assignments;
 - zero publish-time `uncategorised` records.
+
+The dashboard therefore lists 367 companies and states 367 members.
 
 The 2026-09-21 roster adds 37 new members and lists Abloy, Balanus,
 L2 Paloturvallisuus, Rentaload, Usva Energia and UTU, which the 2026-08-31
 roster did not. Its line `Hensei Partners Oy nyk. FCDC` is the former name of
-`FCDC Corp Oy` and is folded into that record.
+`FCDC Corp Oy` and is folded into that record. The website entry
+`Glesys Finland Oy` is the brand of the roster's `Oulun DataCenter Oy` and is
+folded into that record under the public name `Glesys Finland Oy`.
 
 The former total of 339 counted `KSBR` and
 `Keski-Suomen Betonirakenne Oy` separately. They are now folded into one
@@ -95,9 +110,15 @@ python3 SKILL/scripts/layout_tool.py --compare layout_mode rectangular polyomino
 ## Maintenance workflows
 
 ```bash
-# Reconcile a new dated roster.
+# Reconcile a new dated roster. A merge that changes the registry also
+# validates, rebuilds the dashboard and runs the Looper mirror command in
+# LOOPER_MIRROR_CMD. Set it once, e.g. in your shell profile.
 python3 SKILL/scripts/merge_member_list.py --check
 python3 SKILL/scripts/merge_member_list.py
+
+# Then decide each entry the roster does not name: alias, former or member.
+# Add the printed line to ALIASES or FORMER_NOTES and merge again.
+python3 SKILL/scripts/audit_roster.py
 
 # Research and classify new intake records.
 python3 SKILL/scripts/enrich_members.py --research

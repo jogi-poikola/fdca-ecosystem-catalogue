@@ -25,7 +25,7 @@ from pathlib import Path
 
 import yaml
 
-from catalogue_config import taxonomy_index
+from catalogue_config import is_confirmed, is_published, taxonomy_index
 from layout_solver import run as solve_layout
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -115,6 +115,8 @@ def load_members(index):
     members = []
     skipped = []
     for m in members_raw:
+        if not is_published(m):
+            continue
         category = m.get("category", "")
         if category not in index["category_slugs"]:
             skipped.append(m.get("display_name", "?"))
@@ -138,6 +140,7 @@ def load_members(index):
             "logo": m["logo_url"],
             "desc": desc,
             "rosterStatus": m.get("roster_status") or "",
+            "confirmed": is_confirmed(m),
         })
     members.sort(key=lambda m: m["name"].lower())
     return members, skipped
@@ -451,8 +454,8 @@ class Dash {
       const wpx = L.w * PITCH_X - GAP;
       if (cat.title) {
         const hpx = L.h * PITCH_Y - GAP;
-        const ops = cat.mirror.list.length;
-        const body = this.txt('mastheadBody', members.length, ops);
+        const ops = cat.mirror.list.filter(m => m.confirmed).length;
+        const body = this.txt('mastheadBody', members.filter(m => m.confirmed).length, ops);
         const pad = Math.round(Math.min(wpx, hpx) * 0.085);
         const gap = Math.round(pad * 0.4);
         const mark = Math.min(hpx * 0.21, wpx * 0.48);
@@ -807,7 +810,7 @@ class Dash {
     const pane = document.getElementById('listPane');
     const narrow = this.isNarrow();
     const gridCols = narrow ? '1fr' : 'repeat(auto-fill, minmax(330px, 1fr))';
-    const total = members.length;
+    const total = members.filter(m => m.confirmed).length;
     const masthead = '<div style="display:flex; flex-direction:column; gap:10px; max-width:640px; margin:20px auto 14px; padding:22px; background:#FFFFFF; border:1.5px solid var(--panel-border); border-radius:14px;">'
       + '<img src="' + FDCA_LOGO + '" alt="FDCA" style="height:32px; width:auto; object-fit:contain; object-position:left top;">'
       + '<span style="font-size:14px; line-height:1.5; color:' + COLORS.blueDark + ';">' + this.txt('mastheadList', total, categories.length) + '</span>'
@@ -1142,7 +1145,8 @@ def main():
     html = render_html(categories, members, css, colors, layout_json)
 
     OUTPUT_PATH.write_text(html, encoding="utf-8")
-    print(f"Wrote {OUTPUT_PATH} ({len(members)} members, {len(categories)} families)")
+    confirmed = sum(m["confirmed"] for m in members)
+    print(f"Wrote {OUTPUT_PATH} ({confirmed} members + {len(members) - confirmed} pending, {len(categories)} families)")
 
 
 if __name__ == "__main__":

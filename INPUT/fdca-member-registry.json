@@ -2085,6 +2085,21 @@
     "note": null
   },
   {
+    "official_name": "Oulun DataCenter Oy",
+    "display_name": "Glesys Finland Oy",
+    "roster_status": "on-roster",
+    "source": "fdca.fi-scrape",
+    "url": "https://www.glesys.fi",
+    "category": "data_center_operators",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": "Swedish-origin cloud and hosting provider operating in Finland. Offers virtual servers, managed hosting, and colocation services.",
+    "logo_url": "https://www.fdca.fi/wp-content/uploads/2021/04/Glesys-FDCA.png",
+    "researched": "firecrawl-2026-08-30",
+    "url_status": "confirmed",
+    "note": null
+  },
+  {
     "official_name": "Tuike Finland Oy (Google)",
     "display_name": "Google",
     "roster_status": "on-roster",
@@ -3776,21 +3791,6 @@
     "web_search_content": "Finnish infrastructure construction company building bridges, roads and other civil engineering structures.",
     "logo_url": "https://oteran.fi/wp-content/uploads/oteran-logo-2026.png",
     "researched": "antti-2026-09-21",
-    "url_status": "confirmed",
-    "note": null
-  },
-  {
-    "official_name": "Oulun DataCenter Oy",
-    "display_name": "Oulun DataCenter Oy",
-    "roster_status": "on-roster",
-    "source": "member-list-2026-08-29",
-    "url": "https://www.datacentermap.com/finland/oulu/glesys-oulu/",
-    "category": "data_center_operators",
-    "blog_link": null,
-    "blog_content": null,
-    "web_search_content": "Glesys Oulu Data Center | Elektroniikkatie 13-15 (0.7 MW) May 31, 2020 - M&A - Oulun DataCenter. Company name: Oulun DataCenter Oy (ODC). GleSYS signed the acquisition of Oulun DataCenter Oy (ODC). Pricing & Services.",
-    "logo_url": "https://oulu.com/ictoulu/wp-content/uploads/2022/06/oulu-datacenter.jpg",
-    "researched": "firecrawl-2026-08-30",
     "url_status": "confirmed",
     "note": null
   },
@@ -5507,7 +5507,7 @@
   {
     "official_name": null,
     "display_name": "Auramarine",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.auramarine.com",
     "category": "cooling_heat_recovery",
@@ -5517,12 +5517,12 @@
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2021/07/Auramarine-logo.jpg",
     "researched": null,
     "url_status": "confirmed",
-    "note": null
+    "note": "Marked former: on no roster line and not on fdca.fi's members page."
   },
   {
     "official_name": null,
     "display_name": "Bergmann",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.bergmann.fi",
     "category": "legal_business_advisory",
@@ -5536,23 +5536,8 @@
   },
   {
     "official_name": null,
-    "display_name": "Glesys Finland Oy",
-    "roster_status": "website-only",
-    "source": "fdca.fi-scrape",
-    "url": "https://www.glesys.fi",
-    "category": "data_center_operators",
-    "blog_link": null,
-    "blog_content": null,
-    "web_search_content": "Swedish-origin cloud and hosting provider operating in Finland. Offers virtual servers, managed hosting, and colocation services.",
-    "logo_url": "https://www.fdca.fi/wp-content/uploads/2021/04/Glesys-FDCA.png",
-    "researched": null,
-    "url_status": "confirmed",
-    "note": null
-  },
-  {
-    "official_name": null,
     "display_name": "Gloriosa Finland",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://gloriosaenergy.com",
     "category": "data_center_operators",
@@ -5562,12 +5547,12 @@
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2023/09/GES-kopio.jpg",
     "researched": null,
     "url_status": "confirmed",
-    "note": null
+    "note": "Marked former: on no roster line and not on fdca.fi's members page."
   },
   {
     "official_name": null,
     "display_name": "GS Yuasa Battery Europe Ltd",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.yuasa.com",
     "category": "power_equipment",
@@ -5577,12 +5562,12 @@
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2021/08/1200px-Logo_GS_Yuasa..png",
     "researched": null,
     "url_status": "confirmed",
-    "note": null
+    "note": "Marked former: on no roster line and not on fdca.fi's members page."
   },
   {
     "official_name": null,
     "display_name": "Logiservice",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.logiservice.fi",
     "category": "facility_management",
@@ -5597,7 +5582,7 @@
   {
     "official_name": null,
     "display_name": "NRT Tietoliikenne",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.nrt.fi",
     "category": "computing_network_equipment",
@@ -5612,7 +5597,7 @@
   {
     "official_name": null,
     "display_name": "Uptime Institute",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.uptimeinstitute.com",
     "category": "other_services",
@@ -5622,12 +5607,12 @@
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2023/05/up-inst-base-corp2.png",
     "researched": null,
     "url_status": "confirmed",
-    "note": null
+    "note": "Marked former: on no roster line and not on fdca.fi's members page."
   },
   {
     "official_name": null,
     "display_name": "Virtutect",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.virtutect.com",
     "category": "design_engineering",
@@ -5637,12 +5622,12 @@
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2021/07/Virtutect-logo.jpg",
     "researched": null,
     "url_status": "confirmed",
-    "note": null
+    "note": "Marked former: on no roster line and not on fdca.fi's members page."
   },
   {
     "official_name": null,
     "display_name": "Ynvolve",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.ynvolve.com",
     "category": "equipment_maintenance",
@@ -5652,6 +5637,6 @@
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2022/02/Ynvolve.jpg",
     "researched": null,
     "url_status": "confirmed",
-    "note": null
+    "note": "Marked former: on no roster line and not on fdca.fi's members page."
   }
 ]

@@ -2,14 +2,15 @@
 # Category summary
 
 Taxonomy version: **4.0**  
-Companies: **377**
+Members on FDCA's roster: **367**  
+Website-only, pending confirmation: **0**
 
 | Family | Category | Kategoria | Description | Kuvaus | Companies |
 |---|---|---|---|---|---:|
-| Data Center Operators | Data Center Operators | Datakeskusoperaattorit | Companies that own or operate data-center facilities and computing campuses. | Yritykset, jotka omistavat tai operoivat datakeskuksia ja laskentakampuksia. | 24 |
-| Technology Vendors | Power Equipment | Sähkölaitteet | Equipment for power generation, storage, conversion, backup, distribution and monitoring. | Sähkön tuotannon, varastoinnin, muuntamisen, varmistamisen, jakelun ja valvonnan laitteet. | 35 |
-| Technology Vendors | Cooling and Heat Recovery | Jäähdytys ja lämmöntalteenotto | Equipment for cooling, ventilation, liquid handling and recovering waste heat. | Jäähdytyksen, ilmanvaihdon, nesteenkäsittelyn ja hukkalämmön talteenoton laitteet. | 26 |
-| Technology Vendors | Computing and Network Equipment | Laskenta- ja verkkolaitteet | Servers, storage, racks, cabling and equipment for internal data networks. | Palvelimet, tallennus, laitekaapit, kaapelointi ja sisäisten tietoverkkojen laitteet. | 24 |
+| Data Center Operators | Data Center Operators | Datakeskusoperaattorit | Companies that own or operate data-center facilities and computing campuses. | Yritykset, jotka omistavat tai operoivat datakeskuksia ja laskentakampuksia. | 22 |
+| Technology Vendors | Power Equipment | Sähkölaitteet | Equipment for power generation, storage, conversion, backup, distribution and monitoring. | Sähkön tuotannon, varastoinnin, muuntamisen, varmistamisen, jakelun ja valvonnan laitteet. | 34 |
+| Technology Vendors | Cooling and Heat Recovery | Jäähdytys ja lämmöntalteenotto | Equipment for cooling, ventilation, liquid handling and recovering waste heat. | Jäähdytyksen, ilmanvaihdon, nesteenkäsittelyn ja hukkalämmön talteenoton laitteet. | 25 |
+| Technology Vendors | Computing and Network Equipment | Laskenta- ja verkkolaitteet | Servers, storage, racks, cabling and equipment for internal data networks. | Palvelimet, tallennus, laitekaapit, kaapelointi ja sisäisten tietoverkkojen laitteet. | 23 |
 | Technology Vendors | Automation and Software | Automaatio ja ohjelmistot | Monitoring, control, sensing and software for facility and equipment operation. | Tilojen ja laitteiden käytön valvonta-, ohjaus-, anturi- ja ohjelmistoratkaisut. | 12 |
 | Technology Vendors | Security Technology | Turvallisuusteknologia | Physical and digital security products, access control, locks and surveillance systems. | Fyysisen ja digitaalisen turvallisuuden tuotteet, kulunvalvonta, lukitus ja valvontajärjestelmät. | 7 |
 | Technology Vendors | Building Products | Rakennustuotteet | Materials, components and prefabricated products incorporated into facility buildings. | Datakeskusrakennuksiin asennettavat materiaalit, komponentit ja esivalmistetut tuotteet. | 27 |
@@ -24,17 +25,17 @@ Companies: **377**
 | Construction | Other Construction | Muu rakentaminen | Construction work that does not fit another construction category. | Rakennustyöt, jotka eivät sovi muuhun rakentamisen kategoriaan. | 0 |
 | Planning | Site Development | Sijaintikehitys | Development of sites, land, power access and permits for future facilities. | Datakeskussijaintien, maa-alueiden, sähköliittymien ja lupien kehittäminen tulevia hankkeita varten. | 13 |
 | Planning | Municipal and Regional Development | Kunta- ja aluekehitys | Public and regional organizations enabling investment, sites and local business development. | Julkiset ja alueelliset organisaatiot, jotka edistävät investointeja, sijainteja ja yritystoimintaa. | 13 |
-| Planning | Design and Engineering | Suunnittelu ja tekninen konsultointi | Architecture and engineering for buildings, infrastructure, power, cooling and technical systems. | Rakennusten, infrastruktuurin, sähkön, jäähdytyksen ja teknisten järjestelmien arkkitehti- ja insinöörisuunnittelu. | 21 |
+| Planning | Design and Engineering | Suunnittelu ja tekninen konsultointi | Architecture and engineering for buildings, infrastructure, power, cooling and technical systems. | Rakennusten, infrastruktuurin, sähkön, jäähdytyksen ja teknisten järjestelmien arkkitehti- ja insinöörisuunnittelu. | 20 |
 | Planning | Project Management | Projektinjohto | Independent management, supervision and coordination of projects, construction, quality and safety. | Hankkeiden, rakentamisen, laadun ja turvallisuuden riippumaton johtaminen, valvonta ja koordinointi. | 6 |
 | Services | Energy | Energia | Electricity supply, procurement, trading, distribution, fuels and energy advisory services. | Sähkön toimitus, hankinta, kauppa, jakelu, polttoaineet ja energianeuvonta. | 22 |
 | Services | Connectivity | Tietoliikenneyhteydet | External telecommunications, internet exchange and fibre connectivity services. | Ulkoiset tietoliikenne-, yhdysliikenne- ja valokuituyhteyspalvelut. | 4 |
 | Services | Commissioning and Testing | Käyttöönotto ja testaus | Independent testing and verification that facilities and technical systems perform as intended. | Tilojen ja teknisten järjestelmien toiminnan riippumaton testaus ja todentaminen. | 3 |
-| Services | Facility Management | Kiinteistöpalvelut | Operation, monitoring, maintenance and support of complete facilities and building systems. | Kokonaisten tilojen ja rakennusjärjestelmien käyttö, valvonta, ylläpito ja tuki. | 2 |
+| Services | Facility Management | Kiinteistöpalvelut | Operation, monitoring, maintenance and support of complete facilities and building systems. | Kokonaisten tilojen ja rakennusjärjestelmien käyttö, valvonta, ylläpito ja tuki. | 1 |
 | Services | Security Services | Turvallisuuspalvelut | Guarding, security operations, risk management and ongoing protection services. | Vartiointi, turvallisuusoperaatiot, riskienhallinta ja jatkuvat suojauspalvelut. | 7 |
-| Services | Equipment Maintenance | Laitteiden ylläpito | Repair, refurbishment, lifecycle management, relocation and responsible retirement of equipment. | Laitteiden korjaus, kunnostus, elinkaarenhallinta, siirrot ja vastuullinen käytöstäpoisto. | 8 |
+| Services | Equipment Maintenance | Laitteiden ylläpito | Repair, refurbishment, lifecycle management, relocation and responsible retirement of equipment. | Laitteiden korjaus, kunnostus, elinkaarenhallinta, siirrot ja vastuullinen käytöstäpoisto. | 7 |
 | Services | Logistics | Logistiikka | Transport, forwarding, storage, handling and delivery services for projects and equipment. | Hankkeiden ja laitteiden kuljetus-, huolinta-, varastointi-, käsittely- ja toimituspalvelut. | 3 |
 | Services | Staffing | Henkilöstöpalvelut | Recruitment, workforce supply and employment services for projects and operations. | Rekrytointi-, työvoimanvuokraus- ja työsuhdepalvelut hankkeisiin ja toimintaan. | 14 |
-| Services | Legal and Business Advisory | Laki- ja liiketoimintaneuvonta | Legal, financial, investment, property, insurance, communications and management advisory services. | Oikeudelliset, talous-, sijoitus-, kiinteistö-, vakuutus-, viestintä- ja liikkeenjohdon neuvontapalvelut. | 12 |
-| Services | Other Services | Muut palvelut | Industry services that do not fit another service category. | Toimialan palvelut, jotka eivät sovi muuhun palvelukategoriaan. | 15 |
+| Services | Legal and Business Advisory | Laki- ja liiketoimintaneuvonta | Legal, financial, investment, property, insurance, communications and management advisory services. | Oikeudelliset, talous-, sijoitus-, kiinteistö-, vakuutus-, viestintä- ja liikkeenjohdon neuvontapalvelut. | 11 |
+| Services | Other Services | Muut palvelut | Industry services that do not fit another service category. | Toimialan palvelut, jotka eivät sovi muuhun palvelukategoriaan. | 14 |
 
-**Total: 377**
+**Total listed: 367** (367 members + 0 pending)

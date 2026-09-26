@@ -26,6 +26,10 @@ stays in the registry with its scraped research intact, marked
 `roster_status: website-only`, and is counted separately from the roster's own
 members. Nothing is ever deleted.
 
+When FDCA's office confirms that such a company is no longer a member, it goes
+into FORMER_NOTES and is marked `roster_status: former`. It stays in the
+registry, but the dashboard, the layout and the member count leave it out.
+
 Matching is by normalised name (case, punctuation, and company-form suffixes
 removed), plus the alternate brands a roster line carries after a `/` or
 inside parentheses. ALIASES below carries the pairs no rule can reach.
@@ -34,12 +38,19 @@ Usage:
     python3 SKILL/scripts/merge_member_list.py [--check]
 
 --check reports what would change and writes nothing.
+--no-publish writes the registry but skips the rebuild and the Looper mirror.
+
+When the registry changes, the merge also regenerates the guide and summary,
+rebuilds the dashboard and runs Looper's mirror script (see sync_looper.py).
+When the registry is unchanged, it does none of that.
 """
 
 import argparse
 import json
 import re
 from pathlib import Path
+
+from catalogue_config import FORMER_STATUS, PENDING_STATUS
 
 ROOT = Path(__file__).resolve().parents[2]
 INPUT_DIR = ROOT / "INPUT"
@@ -103,6 +114,9 @@ ALIASES = {
     "Liekkiloukku": "Fintekra Oy",  # Liekkiloukku is Fintekra's fire-protection product line
     "Oomi Oy": "Oomi (Lumme Energia Oy)",  # Oomi is the rebrand; billing still carries the old name
     "KSBR": "Keski-Suomen Betonirakenne Oy",  # KSBR is the roster company's public brand
+    # Approved 2026-09-26. The roster names the subsidiary that owns the Oulu
+    # data centres; fdca.fi shows the Glesys brand of its parent, GleSYS Group.
+    "Glesys Finland Oy": "Oulun DataCenter Oy",
     # The 2026-08-31 roster misspelt the name; the 2026-09-21 roster corrects it.
     "Carslsson RPS Oy": "Carlsson RPS Oy",
 }
@@ -132,6 +146,8 @@ DISPLAY_PRIMARY = {
     # office 2026-09-07, even though billing still carries the old name.
     "Oomi (Lumme Energia Oy)": "Oomi Oy",
     "Keski-Suomen Betonirakenne Oy": "KSBR",
+    # The member appears under its brand on fdca.fi, so that page's logo wins.
+    "Oulun DataCenter Oy": "Glesys Finland Oy",
 }
 
 # Why a registry entry is not on the roster, where the reason is known.
@@ -140,6 +156,15 @@ FORMER_NOTES = {
     "Bergmann": "Confirmed resigned; logo removed from fdca.fi.",
     "Logiservice": "Confirmed no longer a member; logo removed from fdca.fi.",
     "NRT Tietoliikenne": "Confirmed no longer a member; logo removed from fdca.fi.",
+    # Marked former on Antti's decision, 2026-09-26. Each is on no roster line
+    # and was absent from fdca.fi's members page that day. FDCA's office has
+    # not confirmed these six.
+    "Auramarine": "Marked former: on no roster line and not on fdca.fi's members page.",
+    "Gloriosa Finland": "Marked former: on no roster line and not on fdca.fi's members page.",
+    "GS Yuasa Battery Europe Ltd": "Marked former: on no roster line and not on fdca.fi's members page.",
+    "Uptime Institute": "Marked former: on no roster line and not on fdca.fi's members page.",
+    "Virtutect": "Marked former: on no roster line and not on fdca.fi's members page.",
+    "Ynvolve": "Marked former: on no roster line and not on fdca.fi's members page.",
     # L2 Paloturvallisuus, Rentaload and UTU were open here until the
     # 2026-09-21 roster listed all three.
 }
@@ -310,13 +335,14 @@ def website_only(entry: dict) -> dict:
     out = {
         "official_name": None,
         "display_name": registry_name(entry),
-        "roster_status": "website-only",
+        "roster_status": PENDING_STATUS,
         "source": entry.get("source") or SCRAPE_SOURCE,
     }
     for field in SCRAPED_FIELDS:
         out[field] = entry.get(field)
     note = FORMER_NOTES.get(out["display_name"])
     if note:
+        out["roster_status"] = FORMER_STATUS
         out["note"] = note
     return out
 
@@ -324,6 +350,7 @@ def website_only(entry: dict) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true", help="report, write nothing")
+    parser.add_argument("--no-publish", action="store_true", help="skip the rebuild and the Looper mirror")
     args = parser.parse_args()
 
     registry = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
@@ -352,6 +379,7 @@ def main() -> None:
     print(f"registry entries before:     {len(registry)}")
     print(f"  merged into another entry: {absorbed}")
     print(f"  on the website only:       {len(extras)}")
+    print(f"    of which confirmed former: {sum(e['roster_status'] == FORMER_STATUS for e in extras)}")
     print(f"added from the roster:       {len(missing)}")
     print(f"members after:               {len(members)}")
     print()
@@ -362,15 +390,24 @@ def main() -> None:
     print()
     print("Website-only entries — on no roster line:")
     for member in extras:
-        print(f"  {member['display_name']}")
+        print(f"  {member['display_name']}  [{member['roster_status']}]")
 
     if args.check:
         print("\n--check: nothing written")
         return
-    REGISTRY_PATH.write_text(
-        json.dumps(members + extras, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
-    )
-    print(f"\nwrote {REGISTRY_PATH.name} — {len(members)} members + {len(extras)} website-only")
+    before = REGISTRY_PATH.read_text(encoding="utf-8")
+    after = json.dumps(members + extras, indent=2, ensure_ascii=False) + "\n"
+    REGISTRY_PATH.write_text(after, encoding="utf-8")
+    print(f"\nwrote {REGISTRY_PATH.name} — {len(members)} members + {len(extras)} not on the roster")
+    if before == after:
+        print("registry unchanged: nothing to rebuild or mirror")
+    elif args.no_publish:
+        print("--no-publish: rebuild and Looper mirror skipped")
+    else:
+        from sync_looper import refresh_and_mirror
+
+        refresh_and_mirror()
+    print("\nNext: python3 SKILL/scripts/audit_roster.py  (checks each entry the roster does not name)")
 
 
 if __name__ == "__main__":

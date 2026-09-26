@@ -55,6 +55,16 @@ Use the maintenance scripts only when the relevant source changes:
   `uncategorised`, pointing to the live taxonomy and rules.
 - `enrich_members.py --apply` rejects stale, unknown or unreviewed
   low-confidence proposals before applying one primary category.
+- `audit_roster.py` checks every registry entry that no roster line names,
+  against the live fdca.fi members page and the roster's own companies. It
+  gives each entry one verdict (`alias-candidate`, `still-listed`,
+  `likely-former`, `unknown`, `reinstate?`), prints the `ALIASES` or
+  `FORMER_NOTES` line to add, and lists members-page logos no entry claims. It
+  edits nothing; a person decides and edits `merge_member_list.py`. Run it
+  after every roster merge. `--strict` exits 1 while anything is undecided.
+- `sync_looper.py` validates, rebuilds the dashboard and runs Looper's mirror
+  script, named in `LOOPER_MIRROR_CMD`. `merge_member_list.py` calls it
+  whenever the registry changes; `--no-publish` skips it.
 - `probe_missing.py` tries to find missing FDCA intro-post links from the
   FDCA sitemap.
 - `scrape_blog_posts.py` fills or retries article-body text for members with
@@ -66,6 +76,12 @@ Use the maintenance scripts only when the relevant source changes:
 
 Do not treat website-only entries as confirmed members. The roster owns
 membership status; fdca.fi owns display names and scraped public details.
+
+The member count is the number of `on-roster` records (367 on 2026-09-21), not
+the number of registry rows (376). `website-only` records are pending and are
+counted separately. Once FDCA's office confirms that one is no longer a member,
+add it to `FORMER_NOTES` in `merge_member_list.py`. That marks it
+`roster_status: former`, and publication drops it. Never delete the record.
 
 ## Classification sources
 
