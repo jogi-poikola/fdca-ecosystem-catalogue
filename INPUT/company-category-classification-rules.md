@@ -41,7 +41,7 @@ A company receives one primary category. Its high-level family is derived from t
 Companies that own or operate data-center facilities and computing campuses.  
 Yritykset, jotka omistavat tai operoivat datakeskuksia ja laskentakampuksia.
 
-1. **Data Center Operators — Datakeskusoperaattorit** (24 companies)
+1. **Data Center Operators — Datakeskusoperaattorit** (23 companies)
    - Question: Does the company own or operate facilities providing data-center or dedicated computing capacity?
    - Includes: Commercial operators, Public computing centres, Owner-operated computing campuses.
    - Excludes: Site developers without operating facilities, Facility management suppliers.

@@ -2085,6 +2085,21 @@
     "note": null
   },
   {
+    "official_name": "Oulun DataCenter Oy",
+    "display_name": "Glesys Finland Oy",
+    "roster_status": "on-roster",
+    "source": "fdca.fi-scrape",
+    "url": "https://www.glesys.fi",
+    "category": "data_center_operators",
+    "blog_link": null,
+    "blog_content": null,
+    "web_search_content": "Swedish-origin cloud and hosting provider operating in Finland. Offers virtual servers, managed hosting, and colocation services.",
+    "logo_url": "https://www.fdca.fi/wp-content/uploads/2021/04/Glesys-FDCA.png",
+    "researched": "firecrawl-2026-08-30",
+    "url_status": "confirmed",
+    "note": null
+  },
+  {
     "official_name": "Tuike Finland Oy (Google)",
     "display_name": "Google",
     "roster_status": "on-roster",
@@ -3776,21 +3791,6 @@
     "web_search_content": "Finnish infrastructure construction company building bridges, roads and other civil engineering structures.",
     "logo_url": "https://oteran.fi/wp-content/uploads/oteran-logo-2026.png",
     "researched": "antti-2026-09-21",
-    "url_status": "confirmed",
-    "note": null
-  },
-  {
-    "official_name": "Oulun DataCenter Oy",
-    "display_name": "Oulun DataCenter Oy",
-    "roster_status": "on-roster",
-    "source": "member-list-2026-08-29",
-    "url": "https://www.datacentermap.com/finland/oulu/glesys-oulu/",
-    "category": "data_center_operators",
-    "blog_link": null,
-    "blog_content": null,
-    "web_search_content": "Glesys Oulu Data Center | Elektroniikkatie 13-15 (0.7 MW) May 31, 2020 - M&A - Oulun DataCenter. Company name: Oulun DataCenter Oy (ODC). GleSYS signed the acquisition of Oulun DataCenter Oy (ODC). Pricing & Services.",
-    "logo_url": "https://oulu.com/ictoulu/wp-content/uploads/2022/06/oulu-datacenter.jpg",
-    "researched": "firecrawl-2026-08-30",
     "url_status": "confirmed",
     "note": null
   },
@@ -5533,21 +5533,6 @@
     "researched": null,
     "url_status": "confirmed",
     "note": "Confirmed resigned; logo removed from fdca.fi."
-  },
-  {
-    "official_name": null,
-    "display_name": "Glesys Finland Oy",
-    "roster_status": "website-only",
-    "source": "fdca.fi-scrape",
-    "url": "https://www.glesys.fi",
-    "category": "data_center_operators",
-    "blog_link": null,
-    "blog_content": null,
-    "web_search_content": "Swedish-origin cloud and hosting provider operating in Finland. Offers virtual servers, managed hosting, and colocation services.",
-    "logo_url": "https://www.fdca.fi/wp-content/uploads/2021/04/Glesys-FDCA.png",
-    "researched": null,
-    "url_status": "confirmed",
-    "note": null
   },
   {
     "official_name": null,

@@ -3,11 +3,11 @@
 
 Taxonomy version: **4.0**  
 Members on FDCA's roster: **367**  
-Website-only, pending confirmation: **7**
+Website-only, pending confirmation: **6**
 
 | Family | Category | Kategoria | Description | Kuvaus | Companies |
 |---|---|---|---|---|---:|
-| Data Center Operators | Data Center Operators | Datakeskusoperaattorit | Companies that own or operate data-center facilities and computing campuses. | Yritykset, jotka omistavat tai operoivat datakeskuksia ja laskentakampuksia. | 24 |
+| Data Center Operators | Data Center Operators | Datakeskusoperaattorit | Companies that own or operate data-center facilities and computing campuses. | Yritykset, jotka omistavat tai operoivat datakeskuksia ja laskentakampuksia. | 23 |
 | Technology Vendors | Power Equipment | Sähkölaitteet | Equipment for power generation, storage, conversion, backup, distribution and monitoring. | Sähkön tuotannon, varastoinnin, muuntamisen, varmistamisen, jakelun ja valvonnan laitteet. | 35 |
 | Technology Vendors | Cooling and Heat Recovery | Jäähdytys ja lämmöntalteenotto | Equipment for cooling, ventilation, liquid handling and recovering waste heat. | Jäähdytyksen, ilmanvaihdon, nesteenkäsittelyn ja hukkalämmön talteenoton laitteet. | 26 |
 | Technology Vendors | Computing and Network Equipment | Laskenta- ja verkkolaitteet | Servers, storage, racks, cabling and equipment for internal data networks. | Palvelimet, tallennus, laitekaapit, kaapelointi ja sisäisten tietoverkkojen laitteet. | 23 |
@@ -38,4 +38,4 @@ Website-only, pending confirmation: **7**
 | Services | Legal and Business Advisory | Laki- ja liiketoimintaneuvonta | Legal, financial, investment, property, insurance, communications and management advisory services. | Oikeudelliset, talous-, sijoitus-, kiinteistö-, vakuutus-, viestintä- ja liikkeenjohdon neuvontapalvelut. | 11 |
 | Services | Other Services | Muut palvelut | Industry services that do not fit another service category. | Toimialan palvelut, jotka eivät sovi muuhun palvelukategoriaan. | 15 |
 
-**Total listed: 374** (367 members + 7 pending)
+**Total listed: 373** (367 members + 6 pending)

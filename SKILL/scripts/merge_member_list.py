@@ -109,6 +109,9 @@ ALIASES = {
     "Liekkiloukku": "Fintekra Oy",  # Liekkiloukku is Fintekra's fire-protection product line
     "Oomi Oy": "Oomi (Lumme Energia Oy)",  # Oomi is the rebrand; billing still carries the old name
     "KSBR": "Keski-Suomen Betonirakenne Oy",  # KSBR is the roster company's public brand
+    # Approved 2026-09-26. The roster names the subsidiary that owns the Oulu
+    # data centres; fdca.fi shows the Glesys brand of its parent, GleSYS Group.
+    "Glesys Finland Oy": "Oulun DataCenter Oy",
     # The 2026-08-31 roster misspelt the name; the 2026-09-21 roster corrects it.
     "Carslsson RPS Oy": "Carlsson RPS Oy",
 }
@@ -138,6 +141,8 @@ DISPLAY_PRIMARY = {
     # office 2026-09-07, even though billing still carries the old name.
     "Oomi (Lumme Energia Oy)": "Oomi Oy",
     "Keski-Suomen Betonirakenne Oy": "KSBR",
+    # The member appears under its brand on fdca.fi, so that page's logo wins.
+    "Oulun DataCenter Oy": "Glesys Finland Oy",
 }
 
 # Why a registry entry is not on the roster, where the reason is known.

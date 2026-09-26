@@ -150,7 +150,7 @@
           "visible": true,
           "reserved": false,
           "dots": {
-            "count": 24,
+            "count": 23,
             "capacity": 24,
             "cols": 6,
             "rows": 4,
@@ -160,7 +160,7 @@
           "font_size_px": 24.0
         }
       ],
-      "member_count": 24,
+      "member_count": 23,
       "shape_diagnostics": {
         "area_cells": 30,
         "bbox_cells": 30,
@@ -983,8 +983,8 @@
     "unused_area_pct": 5.1,
     "visual_whitespace_cells": 32,
     "visual_whitespace_pct": 5.1,
-    "overview_empty_footprint_cells": 76,
-    "overview_empty_footprint_pct": 12.1,
+    "overview_empty_footprint_cells": 77,
+    "overview_empty_footprint_pct": 12.2,
     "whole_canvas_unused_cells": 0,
     "whole_canvas_unused_pct": 0.0,
     "family_internal_slack_cells": 0,
@@ -999,11 +999,11 @@
     "one_cell_tendril_cells": 0,
     "polyomino_interlock_cells": 0,
     "layout_mode_explanation": "Rectangular mode uses an exact-cover treemap: masthead and family rectangles cover every canvas cell, while extra category rows are reported as growth space.",
-    "company_count": 374,
+    "company_count": 373,
     "total_dot_capacity": 418,
-    "spare_dot_capacity": 44,
+    "spare_dot_capacity": 45,
     "requested_headroom_slots": 0,
-    "grid_rounding_spare_slots": 44,
+    "grid_rounding_spare_slots": 45,
     "max_category_aspect_ratio": 3.15,
     "mean_category_aspect_ratio": 1.08,
     "category_count": 29,
@@ -1035,6 +1035,10 @@
     "unsupported_or_inactive_policies": [],
     "highlight_cells": {
       "overview_empty": [
+        {
+          "x": 14,
+          "y": 4
+        },
         {
           "x": 8,
           "y": 9
@@ -1471,6 +1475,10 @@
         }
       ],
       "spare_slots": [
+        {
+          "x": 14,
+          "y": 4
+        },
         {
           "x": 8,
           "y": 9
