@@ -255,7 +255,7 @@
           "visible": true,
           "reserved": false,
           "dots": {
-            "count": 24,
+            "count": 23,
             "capacity": 27,
             "cols": 9,
             "rows": 3,
@@ -361,7 +361,7 @@
           "font_size_px": 24.0
         }
       ],
-      "member_count": 144,
+      "member_count": 143,
       "shape_diagnostics": {
         "area_cells": 210,
         "bbox_cells": 210,
@@ -528,7 +528,7 @@
           "visible": true,
           "reserved": false,
           "dots": {
-            "count": 12,
+            "count": 11,
             "capacity": 12,
             "cols": 6,
             "rows": 2,
@@ -586,30 +586,6 @@
           "font_size_px": 24.0
         },
         {
-          "slug": "facility_management",
-          "label_en": "Facility Management",
-          "label_fi": "Kiinteistöpalvelut",
-          "full_label_en": "Facility Management",
-          "full_label_fi": "Kiinteistöpalvelut",
-          "description_en": "Operation, monitoring, maintenance and support of complete facilities and building systems.",
-          "description_fi": "Kokonaisten tilojen ja rakennusjärjestelmien käyttö, valvonta, ylläpito ja tuki.",
-          "x": 11,
-          "y": 26,
-          "w": 2,
-          "h": 3,
-          "visible": true,
-          "reserved": false,
-          "dots": {
-            "count": 2,
-            "capacity": 2,
-            "cols": 2,
-            "rows": 1,
-            "content_rows": 2,
-            "requested_headroom": 0
-          },
-          "font_size_px": 24.0
-        },
-        {
           "slug": "logistics",
           "label_en": "Logistics",
           "label_fi": "Logistiikka",
@@ -617,7 +593,7 @@
           "full_label_fi": "Logistiikka",
           "description_en": "Transport, forwarding, storage, handling and delivery services for projects and equipment.",
           "description_fi": "Hankkeiden ja laitteiden kuljetus-, huolinta-, varastointi-, käsittely- ja toimituspalvelut.",
-          "x": 13,
+          "x": 11,
           "y": 26,
           "w": 2,
           "h": 3,
@@ -632,9 +608,33 @@
             "requested_headroom": 0
           },
           "font_size_px": 24.0
+        },
+        {
+          "slug": "facility_management",
+          "label_en": "Facility Management",
+          "label_fi": "Kiinteistöpalvelut",
+          "full_label_en": "Facility Management",
+          "full_label_fi": "Kiinteistöpalvelut",
+          "description_en": "Operation, monitoring, maintenance and support of complete facilities and building systems.",
+          "description_fi": "Kokonaisten tilojen ja rakennusjärjestelmien käyttö, valvonta, ylläpito ja tuki.",
+          "x": 13,
+          "y": 26,
+          "w": 2,
+          "h": 3,
+          "visible": true,
+          "reserved": false,
+          "dots": {
+            "count": 1,
+            "capacity": 2,
+            "cols": 2,
+            "rows": 1,
+            "content_rows": 2,
+            "requested_headroom": 0
+          },
+          "font_size_px": 24.0
         }
       ],
-      "member_count": 90,
+      "member_count": 88,
       "shape_diagnostics": {
         "area_cells": 150,
         "bbox_cells": 150,
@@ -983,8 +983,8 @@
     "unused_area_pct": 5.1,
     "visual_whitespace_cells": 32,
     "visual_whitespace_pct": 5.1,
-    "overview_empty_footprint_cells": 73,
-    "overview_empty_footprint_pct": 11.6,
+    "overview_empty_footprint_cells": 76,
+    "overview_empty_footprint_pct": 12.1,
     "whole_canvas_unused_cells": 0,
     "whole_canvas_unused_pct": 0.0,
     "family_internal_slack_cells": 0,
@@ -999,11 +999,11 @@
     "one_cell_tendril_cells": 0,
     "polyomino_interlock_cells": 0,
     "layout_mode_explanation": "Rectangular mode uses an exact-cover treemap: masthead and family rectangles cover every canvas cell, while extra category rows are reported as growth space.",
-    "company_count": 377,
+    "company_count": 374,
     "total_dot_capacity": 418,
-    "spare_dot_capacity": 41,
+    "spare_dot_capacity": 44,
     "requested_headroom_slots": 0,
-    "grid_rounding_spare_slots": 41,
+    "grid_rounding_spare_slots": 44,
     "max_category_aspect_ratio": 3.15,
     "mean_category_aspect_ratio": 1.08,
     "category_count": 29,
@@ -1092,6 +1092,10 @@
           "y": 14
         },
         {
+          "x": 5,
+          "y": 18
+        },
+        {
           "x": 6,
           "y": 18
         },
@@ -1133,6 +1137,10 @@
         },
         {
           "x": 8,
+          "y": 21
+        },
+        {
+          "x": 14,
           "y": 21
         },
         {
@@ -1164,6 +1172,10 @@
           "y": 25
         },
         {
+          "x": 14,
+          "y": 27
+        },
+        {
           "x": 2,
           "y": 28
         },
@@ -1188,11 +1200,11 @@
           "y": 28
         },
         {
-          "x": 11,
+          "x": 12,
           "y": 28
         },
         {
-          "x": 12,
+          "x": 13,
           "y": 28
         },
         {
@@ -1382,11 +1394,11 @@
           "y": 21
         },
         {
-          "x": 11,
+          "x": 13,
           "y": 28
         },
         {
-          "x": 12,
+          "x": 14,
           "y": 28
         },
         {
@@ -1480,6 +1492,10 @@
           "y": 14
         },
         {
+          "x": 5,
+          "y": 18
+        },
+        {
           "x": 6,
           "y": 18
         },
@@ -1506,6 +1522,10 @@
         {
           "x": 14,
           "y": 18
+        },
+        {
+          "x": 14,
+          "y": 21
         },
         {
           "x": 2,
@@ -1536,6 +1556,10 @@
           "y": 25
         },
         {
+          "x": 14,
+          "y": 27
+        },
+        {
           "x": 2,
           "y": 28
         },
@@ -1560,7 +1584,7 @@
           "y": 28
         },
         {
-          "x": 14,
+          "x": 12,
           "y": 28
         },
         {
@@ -1680,11 +1704,11 @@
           "y": 21
         },
         {
-          "x": 11,
+          "x": 13,
           "y": 28
         },
         {
-          "x": 12,
+          "x": 14,
           "y": 28
         },
         {

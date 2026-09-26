@@ -67,6 +67,12 @@ Use the maintenance scripts only when the relevant source changes:
 Do not treat website-only entries as confirmed members. The roster owns
 membership status; fdca.fi owns display names and scraped public details.
 
+The member count is the number of `on-roster` records (367 on 2026-09-21), not
+the number of registry rows (377). `website-only` records are pending and are
+counted separately. Once FDCA's office confirms that one is no longer a member,
+add it to `FORMER_NOTES` in `merge_member_list.py`. That marks it
+`roster_status: former`, and publication drops it. Never delete the record.
+
 ## Classification sources
 
 - `INPUT/fdca-categories.json` owns stable slugs, bilingual names and short

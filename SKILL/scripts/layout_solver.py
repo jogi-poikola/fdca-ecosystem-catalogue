@@ -17,7 +17,7 @@ from pathlib import Path
 
 import yaml
 
-from catalogue_config import load_json, taxonomy_index
+from catalogue_config import is_published, load_json, taxonomy_index
 
 ROOT = Path(__file__).resolve().parents[2]
 INPUT_DIR = ROOT / "INPUT"
@@ -1705,7 +1705,10 @@ def run(format_name: str = "landscape", config_override: dict | None = None) -> 
     indexes = taxonomy_index(taxonomy)
     indexes["taxonomy"] = taxonomy
     registry = load_json(REGISTRY_PATH)
-    members = [member for member in registry if member.get("category") in indexes["category_slugs"]]
+    members = [
+        member for member in registry
+        if is_published(member) and member.get("category") in indexes["category_slugs"]
+    ]
     families = _build_families(indexes, members, config)
     masters = config.get("responsive_layout", {}).get("masters", {})
     master = masters.get(format_name, masters.get("landscape", {}))

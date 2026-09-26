@@ -42,6 +42,25 @@ def load_registry() -> list[dict]:
     return load_json(REGISTRY_PATH)
 
 
+# roster_status values. "on-roster" is a confirmed member. "website-only" is on
+# fdca.fi but on no roster line, so it is pending. "former" is a confirmed
+# non-member: it stays in the registry but is never published.
+PENDING_STATUS = "website-only"
+FORMER_STATUS = "former"
+
+
+def is_published(member: dict) -> bool:
+    return member.get("roster_status") != FORMER_STATUS
+
+
+def is_confirmed(member: dict) -> bool:
+    return member.get("roster_status") not in (PENDING_STATUS, FORMER_STATUS)
+
+
+def published_members(members: list[dict]) -> list[dict]:
+    return [member for member in members if is_published(member)]
+
+
 def taxonomy_index(taxonomy: dict | None = None) -> dict:
     taxonomy = taxonomy or load_taxonomy()
     families = taxonomy["families"]

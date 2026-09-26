@@ -22,12 +22,22 @@ not a second tag.
 
 ## Current data state
 
-As of 2026-09-21, the registry contains 377 distinct companies:
+As of 2026-09-21, FDCA has **367 members**. That is the number to quote. The
+registry holds 377 records, because it also keeps 10 companies that are on no
+line of the dated roster (`roster_status: website-only`):
 
-- 367 records from FDCA's dated roster;
-- 10 website-only records awaiting or carrying membership reconciliation;
+- 367 records from FDCA's dated roster (`on-roster`): the members;
+- 7 website-only records awaiting membership confirmation by the FDCA office.
+  The dashboard lists them with a pending notice and does not count them as
+  members;
+- 3 website-only records that FDCA's office confirmed are no longer members
+  (`roster_status: former`): Bergmann, Logiservice and NRT Tietoliikenne. They
+  stay in the registry with their research, but the dashboard, the layout and
+  the member count leave them out;
 - 377 valid primary-category assignments;
 - zero publish-time `uncategorised` records.
+
+The dashboard therefore lists 374 companies and states 367 members.
 
 The 2026-09-21 roster adds 37 new members and lists Abloy, Balanus,
 L2 Paloturvallisuus, Rentaload, Usva Energia and UTU, which the 2026-08-31

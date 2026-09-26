@@ -384,7 +384,7 @@
           "visible": true,
           "reserved": false,
           "dots": {
-            "count": 24,
+            "count": 23,
             "capacity": 27,
             "cols": 9,
             "rows": 3,
@@ -490,7 +490,7 @@
           "font_size_px": 24.0
         }
       ],
-      "member_count": 144,
+      "member_count": 143,
       "shape_diagnostics": {
         "area_cells": 208,
         "bbox_cells": 208,
@@ -657,7 +657,7 @@
           "visible": true,
           "reserved": false,
           "dots": {
-            "count": 12,
+            "count": 11,
             "capacity": 12,
             "cols": 3,
             "rows": 4,
@@ -715,30 +715,6 @@
           "font_size_px": 24.0
         },
         {
-          "slug": "facility_management",
-          "label_en": "Facility Management",
-          "label_fi": "Kiinteistöpalvelut",
-          "full_label_en": "Facility Management",
-          "full_label_fi": "Kiinteistöpalvelut",
-          "description_en": "Operation, monitoring, maintenance and support of complete facilities and building systems.",
-          "description_fi": "Kokonaisten tilojen ja rakennusjärjestelmien käyttö, valvonta, ylläpito ja tuki.",
-          "x": 25,
-          "y": 14,
-          "w": 2,
-          "h": 3,
-          "visible": true,
-          "reserved": false,
-          "dots": {
-            "count": 2,
-            "capacity": 2,
-            "cols": 2,
-            "rows": 1,
-            "content_rows": 2,
-            "requested_headroom": 0
-          },
-          "font_size_px": 24.0
-        },
-        {
           "slug": "logistics",
           "label_en": "Logistics",
           "label_fi": "Logistiikka",
@@ -746,6 +722,30 @@
           "full_label_fi": "Logistiikka",
           "description_en": "Transport, forwarding, storage, handling and delivery services for projects and equipment.",
           "description_fi": "Hankkeiden ja laitteiden kuljetus-, huolinta-, varastointi-, käsittely- ja toimituspalvelut.",
+          "x": 25,
+          "y": 14,
+          "w": 2,
+          "h": 3,
+          "visible": true,
+          "reserved": false,
+          "dots": {
+            "count": 3,
+            "capacity": 4,
+            "cols": 2,
+            "rows": 2,
+            "content_rows": 3,
+            "requested_headroom": 0
+          },
+          "font_size_px": 24.0
+        },
+        {
+          "slug": "facility_management",
+          "label_en": "Facility Management",
+          "label_fi": "Kiinteistöpalvelut",
+          "full_label_en": "Facility Management",
+          "full_label_fi": "Kiinteistöpalvelut",
+          "description_en": "Operation, monitoring, maintenance and support of complete facilities and building systems.",
+          "description_fi": "Kokonaisten tilojen ja rakennusjärjestelmien käyttö, valvonta, ylläpito ja tuki.",
           "x": 23,
           "y": 17,
           "w": 4,
@@ -753,7 +753,7 @@
           "visible": true,
           "reserved": false,
           "dots": {
-            "count": 3,
+            "count": 1,
             "capacity": 4,
             "cols": 4,
             "rows": 1,
@@ -763,7 +763,7 @@
           "font_size_px": 24.0
         }
       ],
-      "member_count": 90,
+      "member_count": 88,
       "shape_diagnostics": {
         "area_cells": 143,
         "bbox_cells": 143,
@@ -773,7 +773,7 @@
         "perimeter": 48,
         "components": 1,
         "one_cell_tendril_cells": 0,
-        "category_padding_cells": 2
+        "category_padding_cells": 0
       }
     },
     {
@@ -979,18 +979,18 @@
     }
   ],
   "diagnostics": {
-    "occupied_area_pct": 95.5,
-    "unused_area_pct": 4.5,
-    "visual_whitespace_cells": 30,
-    "visual_whitespace_pct": 4.5,
-    "overview_empty_footprint_cells": 74,
-    "overview_empty_footprint_pct": 11.1,
+    "occupied_area_pct": 95.8,
+    "unused_area_pct": 4.2,
+    "visual_whitespace_cells": 28,
+    "visual_whitespace_pct": 4.2,
+    "overview_empty_footprint_cells": 77,
+    "overview_empty_footprint_pct": 11.6,
     "whole_canvas_unused_cells": 0,
     "whole_canvas_unused_pct": 0.0,
     "family_internal_slack_cells": 0,
     "family_internal_slack_pct": 0.0,
     "reserved_empty_category_cells": 0,
-    "category_internal_padding_cells": 30,
+    "category_internal_padding_cells": 28,
     "prohibited_void_cells": 0,
     "family_bbox_void_cells": 0,
     "family_bbox_hole_cells": 0,
@@ -999,11 +999,11 @@
     "one_cell_tendril_cells": 0,
     "polyomino_interlock_cells": 0,
     "layout_mode_explanation": "Rectangular mode uses an exact-cover treemap: masthead and family rectangles cover every canvas cell, while extra category rows are reported as growth space.",
-    "company_count": 377,
-    "total_dot_capacity": 421,
-    "spare_dot_capacity": 44,
+    "company_count": 374,
+    "total_dot_capacity": 423,
+    "spare_dot_capacity": 49,
     "requested_headroom_slots": 0,
-    "grid_rounding_spare_slots": 44,
+    "grid_rounding_spare_slots": 49,
     "max_category_aspect_ratio": 2.1,
     "mean_category_aspect_ratio": 0.88,
     "category_count": 29,
@@ -1031,7 +1031,7 @@
     "short_label_explanation": "No shorter approved or experimental label changed this dataset.",
     "layout_stability_mode": "soft",
     "previous_layout_available": true,
-    "family_movement_cost_cells": 5,
+    "family_movement_cost_cells": 0,
     "unsupported_or_inactive_policies": [],
     "highlight_cells": {
       "overview_empty": [
@@ -1252,10 +1252,6 @@
           "y": 16
         },
         {
-          "x": 25,
-          "y": 16
-        },
-        {
           "x": 26,
           "y": 16
         },
@@ -1266,6 +1262,10 @@
         {
           "x": 11,
           "y": 17
+        },
+        {
+          "x": 5,
+          "y": 18
         },
         {
           "x": 6,
@@ -1304,7 +1304,19 @@
           "y": 18
         },
         {
+          "x": 18,
+          "y": 18
+        },
+        {
           "x": 22,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 25,
           "y": 18
         },
         {
@@ -1424,14 +1436,6 @@
         {
           "x": 8,
           "y": 14
-        },
-        {
-          "x": 25,
-          "y": 16
-        },
-        {
-          "x": 26,
-          "y": 16
         },
         {
           "x": 9,
@@ -1580,12 +1584,20 @@
           "y": 16
         },
         {
+          "x": 26,
+          "y": 16
+        },
+        {
           "x": 10,
           "y": 17
         },
         {
           "x": 11,
           "y": 17
+        },
+        {
+          "x": 5,
+          "y": 18
         },
         {
           "x": 6,
@@ -1612,7 +1624,19 @@
           "y": 18
         },
         {
+          "x": 18,
+          "y": 18
+        },
+        {
           "x": 22,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 18
+        },
+        {
+          "x": 25,
           "y": 18
         },
         {
@@ -1726,14 +1750,6 @@
         {
           "x": 8,
           "y": 14
-        },
-        {
-          "x": 25,
-          "y": 16
-        },
-        {
-          "x": 26,
-          "y": 16
         },
         {
           "x": 9,

@@ -4,6 +4,8 @@
 import unittest
 
 from catalogue_config import (
+    is_confirmed,
+    is_published,
     load_registry,
     load_rules,
     load_taxonomy,
@@ -44,6 +46,19 @@ class CatalogueContractTest(unittest.TestCase):
 
         self.assertEqual(guide_text(self.taxonomy, self.rules, self.members), GUIDE_PATH.read_text(encoding="utf-8"))
         self.assertEqual(summary_text(self.taxonomy, self.members), SUMMARY_PATH.read_text(encoding="utf-8"))
+
+    def test_member_count_matches_the_dated_roster(self):
+        from merge_member_list import load_list
+
+        roster = load_list()
+        confirmed = [member for member in self.members if is_confirmed(member)]
+        self.assertEqual(len(roster), len(confirmed))
+        self.assertTrue(all(member["roster_status"] == "on-roster" for member in confirmed))
+
+    def test_former_members_are_kept_but_not_published(self):
+        former = [member for member in self.members if member.get("roster_status") == "former"]
+        self.assertTrue(former)
+        self.assertTrue(all(member.get("note") and not is_published(member) for member in former))
 
 
 if __name__ == "__main__":

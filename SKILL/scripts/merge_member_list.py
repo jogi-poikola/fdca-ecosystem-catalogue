@@ -26,6 +26,10 @@ stays in the registry with its scraped research intact, marked
 `roster_status: website-only`, and is counted separately from the roster's own
 members. Nothing is ever deleted.
 
+When FDCA's office confirms that such a company is no longer a member, it goes
+into FORMER_NOTES and is marked `roster_status: former`. It stays in the
+registry, but the dashboard, the layout and the member count leave it out.
+
 Matching is by normalised name (case, punctuation, and company-form suffixes
 removed), plus the alternate brands a roster line carries after a `/` or
 inside parentheses. ALIASES below carries the pairs no rule can reach.
@@ -40,6 +44,8 @@ import argparse
 import json
 import re
 from pathlib import Path
+
+from catalogue_config import FORMER_STATUS, PENDING_STATUS
 
 ROOT = Path(__file__).resolve().parents[2]
 INPUT_DIR = ROOT / "INPUT"
@@ -310,13 +316,14 @@ def website_only(entry: dict) -> dict:
     out = {
         "official_name": None,
         "display_name": registry_name(entry),
-        "roster_status": "website-only",
+        "roster_status": PENDING_STATUS,
         "source": entry.get("source") or SCRAPE_SOURCE,
     }
     for field in SCRAPED_FIELDS:
         out[field] = entry.get(field)
     note = FORMER_NOTES.get(out["display_name"])
     if note:
+        out["roster_status"] = FORMER_STATUS
         out["note"] = note
     return out
 
@@ -352,6 +359,7 @@ def main() -> None:
     print(f"registry entries before:     {len(registry)}")
     print(f"  merged into another entry: {absorbed}")
     print(f"  on the website only:       {len(extras)}")
+    print(f"    of which confirmed former: {sum(e['roster_status'] == FORMER_STATUS for e in extras)}")
     print(f"added from the roster:       {len(missing)}")
     print(f"members after:               {len(members)}")
     print()
@@ -362,7 +370,7 @@ def main() -> None:
     print()
     print("Website-only entries — on no roster line:")
     for member in extras:
-        print(f"  {member['display_name']}")
+        print(f"  {member['display_name']}  [{member['roster_status']}]")
 
     if args.check:
         print("\n--check: nothing written")
@@ -370,7 +378,7 @@ def main() -> None:
     REGISTRY_PATH.write_text(
         json.dumps(members + extras, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
-    print(f"\nwrote {REGISTRY_PATH.name} — {len(members)} members + {len(extras)} website-only")
+    print(f"\nwrote {REGISTRY_PATH.name} — {len(members)} members + {len(extras)} not on the roster")
 
 
 if __name__ == "__main__":

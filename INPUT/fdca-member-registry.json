@@ -5522,7 +5522,7 @@
   {
     "official_name": null,
     "display_name": "Bergmann",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.bergmann.fi",
     "category": "legal_business_advisory",
@@ -5582,7 +5582,7 @@
   {
     "official_name": null,
     "display_name": "Logiservice",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.logiservice.fi",
     "category": "facility_management",
@@ -5597,7 +5597,7 @@
   {
     "official_name": null,
     "display_name": "NRT Tietoliikenne",
-    "roster_status": "website-only",
+    "roster_status": "former",
     "source": "fdca.fi-scrape",
     "url": "https://www.nrt.fi",
     "category": "computing_network_equipment",
