@@ -122,6 +122,11 @@ ALIASES = {
     # Approved 2026-09-26. Kumorion is the brand on fdca.fi and its own site;
     # the registered company is Kumorion Platforms Oy (business ID 3368928-9).
     "Kumorion": "Kumorion Platforms Oy",
+    # Approved 2026-10-06. fdca.fi introduces both under their brands; the
+    # roster names the legal entities. Moi Food Solutions is an auxiliary name
+    # of Name Company Oy (business ID 2673679-6) since 2026-09-22.
+    "BAC": "Baltimore Aircoil International NV",
+    "Moi Food Solutions": "NAME COMPANY OY",
     # The 2026-08-31 roster misspelt the name; the 2026-09-21 roster corrects it.
     "Carslsson RPS Oy": "Carlsson RPS Oy",
 }

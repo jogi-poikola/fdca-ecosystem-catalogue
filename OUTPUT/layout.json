@@ -1055,7 +1055,7 @@
     "short_label_explanation": "No shorter approved or experimental label changed this dataset.",
     "layout_stability_mode": "soft",
     "previous_layout_available": true,
-    "family_movement_cost_cells": 71,
+    "family_movement_cost_cells": 0,
     "unsupported_or_inactive_policies": [],
     "highlight_cells": {
       "overview_empty": [

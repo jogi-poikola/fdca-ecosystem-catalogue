@@ -60,6 +60,11 @@ Four records carry a `note` with an open question:
 - `Daniel Raks Oy`: business ID 3123046-6, a renovation contractor and the first member in
   `other_construction`. Since then no category is empty.
 
+fdca.fi introduced BAC and Moi Food Solutions in October 2026. They are not new
+members: they are the brands of the roster's `Baltimore Aircoil International NV`
+and `NAME COMPANY OY` (Moi Food Solutions is its auxiliary name since
+2026-09-22). `ALIASES` maps each brand to its roster line.
+
 The 2026-09-26 roster adds Kumorion Platforms Oy to the 2026-09-21 roster. fdca.fi's
 members page shows its logo, FDCA staff counted 368 members that day, and
 no other company accounts for the difference. Its public brand is `Kumorion`.
