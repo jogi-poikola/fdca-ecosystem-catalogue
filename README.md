@@ -47,15 +47,17 @@ The 2026-10-06 roster adds 19 members from membership applications to the
 homepages, descriptions and categories come from web research on 2026-10-06.
 Four records carry a `note` with an open question:
 
-- `BIS Coatings OY`: no Finnish company of that name was found, and the
-  applicant's site did not load. Its category, `fire_safety_construction`, is
-  low confidence. Confirm the business ID with the applicant.
-- `Solkei Electronics Oy`: its domain is parked and no public record names it.
-  Its description and category, `power_equipment`, come from the application
-  only.
-- `Nordic Kosovo Contractors LLC`: `technical_systems_installation`, with
-  `staffing` as the alternative.
-- `Daniel Raks Oy`: a renovation contractor and the first member in
+- `BIS Coatings OY`: business ID 3524268-3. It is very likely part of the
+  Irish BIS Coatings Ltd. Its category, `other_construction`, is medium
+  confidence, because industrial coatings fit no specific category.
+- `Solkei Electronics Oy`: business ID 2558326-5, formerly Celerin Oy. It has
+  almost no revenue, no working website and no public product evidence. Its
+  category, `power_equipment`, comes from its registered line of business and
+  the application.
+- `Nordic Kosovo Contractors LLC`: not in the Finnish trade register. Its
+  domain is from 2026-09-01, and no third party mentions it. Its category is
+  `staffing`. Check its Kosovo registration before you rely on the record.
+- `Daniel Raks Oy`: business ID 3123046-6, a renovation contractor and the first member in
   `other_construction`. Since then no category is empty.
 
 The 2026-09-26 roster adds Kumorion Platforms Oy to the 2026-09-21 roster. fdca.fi's

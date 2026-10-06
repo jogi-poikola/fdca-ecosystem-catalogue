@@ -125,13 +125,13 @@ Yritykset, jotka rakentavat tiloja, infrastruktuuria ja kiinteitä teknisiä jä
    - Excludes: Internal facility power distribution, Power-equipment manufacturing.
    - Description: External grid connections, high-voltage systems, substations, transformers and switchyards.
    - Kuvaus: Ulkoiset verkkoliitynnät, suurjännitejärjestelmät, sähköasemat, muuntajat ja kytkinkentät.
-5. **Technical Systems Installation — Teknisten järjestelmien asennukset** (25 companies)
+5. **Technical Systems Installation — Teknisten järjestelmien asennukset** (24 companies)
    - Question: Does the company primarily install, integrate or commission technical systems inside or directly serving facilities?
    - Includes: Internal electrical distribution, Backup power installation, Equipment cabling, Internal networks, Cooling, Ventilation, Plumbing, Process piping, Automation, Controls.
    - Excludes: External grids and substations, General building construction, Earthworks, Fire-specific packages, Roofs and façades.
    - Description: Installation and commissioning of internal electrical, network, cooling, piping and automation systems.
    - Kuvaus: Sisäisten sähkö-, verkko-, jäähdytys-, putkisto- ja automaatiojärjestelmien asennus ja käyttöönotto.
-6. **Fire Safety Construction — Paloturvallisuusurakointi** (4 companies)
+6. **Fire Safety Construction — Paloturvallisuusurakointi** (3 companies)
    - Question: Is fire protection clearly the company's dominant construction activity?
    - Includes: Fire detection, Fire alarms, Suppression, Sprinklers, Smoke control, Structural fire protection.
    - Excludes: Fire-safety design without installation, Security products.
@@ -143,7 +143,7 @@ Yritykset, jotka rakentavat tiloja, infrastruktuuria ja kiinteitä teknisiä jä
    - Excludes: Supply of building products without installation.
    - Description: Installation of roofs, façades, cladding, insulation, waterproofing and weather protection.
    - Kuvaus: Kattojen, julkisivujen, verhousten, eristeiden, vedeneristyksen ja sääsuojauksen asennus.
-8. **Other Construction — Muu rakentaminen** (1 companies)
+8. **Other Construction — Muu rakentaminen** (2 companies)
    - Question: Does the company perform construction work not covered by another construction category?
    - Includes: Other verified construction roles.
    - Excludes: Any role matching a more specific construction category.
@@ -227,7 +227,7 @@ Yritykset, jotka tarjoavat toimialalle operatiivista, kaupallista ja asiantuntij
    - Excludes: Equipment rental without logistics responsibility.
    - Description: Transport, forwarding, storage, handling and delivery services for projects and equipment.
    - Kuvaus: Hankkeiden ja laitteiden kuljetus-, huolinta-, varastointi-, käsittely- ja toimituspalvelut.
-8. **Staffing — Henkilöstöpalvelut** (15 companies)
+8. **Staffing — Henkilöstöpalvelut** (16 companies)
    - Question: Are recruitment, workforce supply or employment services dominant?
    - Includes: Recruitment, Temporary labour, Direct hiring, Employment administration.
    - Excludes: Project management consultants.

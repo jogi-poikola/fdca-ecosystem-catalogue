@@ -529,15 +529,15 @@
     "display_name": "BIS Coatings OY",
     "roster_status": "on-roster",
     "source": "member-list-2026-10-06",
-    "url": "https://bisgroup.ie/",
-    "category": "fire_safety_construction",
+    "url": "https://biscoatings.ie/",
+    "category": "other_construction",
     "blog_link": null,
     "blog_content": null,
-    "web_search_content": "Finnish entity of Ireland's BIS group, an industrial services contractor for intumescent fireproofing, protective coatings, thermal insulation and cladding.",
-    "logo_url": null,
+    "web_search_content": "Finnish company of the Irish industrial-services contractor BIS Coatings Ltd, which provides protective coatings, intumescent fire protection, insulation and steel erection.",
+    "logo_url": "https://biscoatings.ie/wp-content/uploads/2022/10/logo-1.png",
     "researched": "web-2026-10-06",
-    "url_status": "unverified",
-    "note": "No Finnish BIS Coatings Oy found on 2026-10-06; the applicant's site bisgroup.ie did not load. Category is low confidence. Confirm the business ID with the applicant."
+    "url_status": "confirmed",
+    "note": "Business ID 3524268-3 (registered 2025-04-03, Helsinki). Link to Irish BIS Coatings Ltd rests on the shared name and the applicant's bisgroup.ie domain, which BIS Coatings Ltd registered. Medium confidence: industrial coatings fit no specific construction category; fire_safety_construction if the Finnish work proves to be intumescent fire protection only."
   },
   {
     "official_name": "BMI Suomi Oy",
@@ -1073,11 +1073,11 @@
     "category": "other_construction",
     "blog_link": null,
     "blog_content": null,
-    "web_search_content": "Pirkkala building contractor for interior and exterior renovation work.",
+    "web_search_content": "Pirkkala construction subcontractor for renovation, concrete, masonry, drilling and interior finishing work in Pirkanmaa and Uusimaa.",
     "logo_url": "https://danielraks.fi/wp-content/uploads/2020/09/daniel-raks-logo.png",
     "researched": "web-2026-10-06",
     "url_status": "confirmed",
-    "note": "Low confidence: residential renovation contractor; no specific construction category fits."
+    "note": "Business ID 3123046-6. Website shows renovation and interior work only, no commercial or industrial projects. Medium-low confidence: industrial_construction if it shows structural work packages."
   },
   {
     "official_name": "Digitalland Services FI",
@@ -3770,14 +3770,14 @@
     "roster_status": "on-roster",
     "source": "member-list-2026-10-06",
     "url": "https://nordickosovocontractors.com/",
-    "category": "technical_systems_installation",
+    "category": "staffing",
     "blog_link": null,
     "blog_content": null,
-    "web_search_content": "Technical subcontractor with offices in Kosovo and Finland. It supplies teams for electrical installation, cable routing and containment, machinery installation and PLC work in data-centre, industrial and energy projects.",
+    "web_search_content": "Kosovo-based supplier of electrical and industrial technical workforce, installation support and posting administration for European projects, including data centres.",
     "logo_url": null,
     "researched": "web-2026-10-06",
     "url_status": "confirmed",
-    "note": "Medium confidence: half installer, half labour supplier; staffing is the alternative."
+    "note": "Unverified on 2026-10-06: not in the Finnish trade register; domain registered 2026-09-01; website has placeholders and no references or registration number; no third-party mentions. Kosovo registration (ARBK) not checked. Medium confidence: technical_systems_installation if it takes installation contracts itself."
   },
   {
     "official_name": "Nordpel Oy",
@@ -4928,11 +4928,11 @@
     "category": "power_equipment",
     "blog_link": null,
     "blog_content": null,
-    "web_search_content": "Kouvola company that wires and assembles electrical components for data centres, with a focus on tap-off connections.",
+    "web_search_content": "Kouvola company that assembles and wires electrical distribution components, including busbar tap-off connections, for data centres.",
     "logo_url": null,
     "researched": "application-2026-10-06",
     "url_status": null,
-    "note": "Unverified on 2026-10-06: solkei.fi is a parked domain and no public record names the company. The description and category come from the membership application only."
+    "note": "Business ID 2558326-5, former name Celerin Oy (registered 2013, line of business 27120, electricity distribution and control apparatus). Revenue about 1,000 EUR in 2024; no working website and no public product evidence on 2026-10-06. Low confidence: technical_systems_installation if the work is on-site wiring."
   },
   {
     "official_name": "SPTR-Asennus Oy",
