@@ -10,7 +10,7 @@ read-only mirrors of the important semantic files.
 | File | Role |
 |---|---|
 | `INPUT/fdca-member-registry.json` | Company records. Each company stores one primary category slug. |
-| `INPUT/fdca-member-list-2026-09-26.txt` | Dated FDCA roster and source for official membership names. It is the 2026-09-21 roster (kept as FDCA sent it) plus Kumorion Platforms Oy. |
+| `INPUT/fdca-member-list-2026-10-06.txt` | Dated FDCA roster and source for official membership names. It is the 2026-09-21 roster (kept as FDCA sent it) plus Kumorion Platforms Oy and the 19 members that joined by 2026-10-06. |
 | `INPUT/fdca-categories.json` | Stable family/category slugs and bilingual names and short descriptions. |
 | `INPUT/fdca-classification-rules.json` | Machine-applicable evidence order, decision sequences, exclusions and tie-breaks. |
 | `INPUT/company-category-classification-rules.md` | Generated human-readable guide; never edit by hand. |
@@ -22,11 +22,11 @@ not a second tag.
 
 ## Current data state
 
-As of 2026-09-26, FDCA has **368 members**. That is the number to quote. The
-registry holds 377 records, because it also keeps 9 companies that are on no
+As of 2026-10-06, FDCA has **387 members**. That is the number to quote. The
+registry holds 396 records, because it also keeps 9 companies that are on no
 line of the dated roster:
 
-- 368 records from FDCA's dated roster (`on-roster`): the members;
+- 387 records from FDCA's dated roster (`on-roster`): the members;
 - 9 records marked `roster_status: former`. They stay in the registry with
   their research, but the dashboard, the layout and the member count leave them
   out:
@@ -37,10 +37,33 @@ line of the dated roster:
     roster line and not on fdca.fi's members page. The office has not confirmed
     these six;
 - no `website-only` (pending) records remain;
-- 377 valid primary-category assignments;
+- 396 valid primary-category assignments;
 - zero publish-time `uncategorised` records.
 
-The dashboard therefore lists 368 companies and states 368 members.
+The dashboard therefore lists 387 companies and states 387 members.
+
+The 2026-10-06 roster adds 19 members from membership applications to the
+2026-09-26 roster. They use the company names from the applications. Their
+homepages, descriptions and categories come from web research on 2026-10-06.
+Four records carry a `note` with an open question:
+
+- `BIS Coatings OY`: business ID 3524268-3. It is very likely part of the
+  Irish BIS Coatings Ltd. Its category, `other_construction`, is medium
+  confidence, because industrial coatings fit no specific category.
+- `Solkei Electronics Oy`: business ID 2558326-5, formerly Celerin Oy. It has
+  almost no revenue, no working website and no public product evidence. Its
+  category, `power_equipment`, comes from its registered line of business and
+  the application.
+- `Nordic Kosovo Contractors LLC`: not in the Finnish trade register. Its
+  domain is from 2026-09-01, and no third party mentions it. Its category is
+  `staffing`. Check its Kosovo registration before you rely on the record.
+- `Daniel Raks Oy`: business ID 3123046-6, a renovation contractor and the first member in
+  `other_construction`. Since then no category is empty.
+
+fdca.fi introduced BAC and Moi Food Solutions in October 2026. They are not new
+members: they are the brands of the roster's `Baltimore Aircoil International NV`
+and `NAME COMPANY OY` (Moi Food Solutions is its auxiliary name since
+2026-09-22). `ALIASES` maps each brand to its roster line.
 
 The 2026-09-26 roster adds Kumorion Platforms Oy to the 2026-09-21 roster. fdca.fi's
 members page shows its logo, FDCA staff counted 368 members that day, and
