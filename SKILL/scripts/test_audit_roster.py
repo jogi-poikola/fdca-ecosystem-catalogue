@@ -92,7 +92,9 @@ class SyncTest(unittest.TestCase):
     def test_mirror_runs_last_and_only_after_the_validation_gate(self):
         ran, calls = self.run_sync({"LOOPER_MIRROR_CMD": "mirror-it --now"})
         self.assertTrue(ran)
-        self.assertEqual(["mirror-it", "--now"], calls[-1])
+        self.assertEqual(
+            ["mirror-it", "--now", "--source-dir", str(sync_looper.ROOT / "INPUT")], calls[-1]
+        )
         self.assertIn("--check", calls[-2])
         self.assertIn("build_dashboard.py", calls[1][1])
 

@@ -55,11 +55,10 @@ from catalogue_config import FORMER_STATUS, PENDING_STATUS
 ROOT = Path(__file__).resolve().parents[2]
 INPUT_DIR = ROOT / "INPUT"
 REGISTRY_PATH = INPUT_DIR / "fdca-member-registry.json"
-# The 2026-09-26 list is the 2026-09-21 roster plus Kumorion Platforms Oy, which
-# fdca.fi's members page shows and FDCA staff counted (368) on 2026-09-26. The
-# 2026-09-21 file stays as FDCA sent it. Replace this list when FDCA sends a new one.
-LIST_PATH = INPUT_DIR / "fdca-member-list-2026-09-26.txt"
-LIST_DATE = "2026-09-26"
+# The 2026-10-06 list is the 2026-09-26 roster plus 19 new members, named as in
+# their membership applications. The 2026-09-21 file stays as FDCA sent it. Replace this list when FDCA sends a new one.
+LIST_PATH = INPUT_DIR / "fdca-member-list-2026-10-06.txt"
+LIST_DATE = "2026-10-06"
 
 # The scraped fields a fold fills in from a secondary entry.
 SCRAPED_FIELDS = (

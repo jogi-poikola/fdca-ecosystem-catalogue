@@ -14,7 +14,9 @@ full command that runs the mirror, for example:
 
     export LOOPER_MIRROR_CMD="python3 /path/to/looper/mirror_catalogue.py"
 
-The command runs from the repository root. It runs only after validation
+The command runs from the repository root, and this module appends
+`--source-dir <this checkout>/INPUT`, so the mirror copies the files that were
+just checked, also from a worktree. It runs only after validation
 passes, so the vault never receives a file that failed the checks. When the
 variable is not set, this module says so and mirrors nothing; it never guesses
 a target, because the vault copies must not be edited by hand.
@@ -64,7 +66,9 @@ def refresh_and_mirror(build: bool = True, require: bool = False) -> bool:
             raise SystemExit(f"ERROR: {message}")
         print(f"WARNING: {message}")
         return False
-    run(shlex.split(command))
+    # Name this checkout's INPUT. Without it the mirror reads its default, the
+    # main checkout, so a run from a worktree mirrors files it never checked.
+    run(shlex.split(command) + ["--source-dir", str(ROOT / "INPUT")])
     return True
 
 

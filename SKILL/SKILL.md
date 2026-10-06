@@ -44,7 +44,7 @@ bilingual descriptions, publishability and generated-file freshness.
 
 Use the maintenance scripts only when the relevant source changes:
 
-- `merge_member_list.py` reconciles `INPUT/fdca-member-list-2026-09-26.txt`
+- `merge_member_list.py` reconciles `INPUT/fdca-member-list-2026-10-06.txt`
   into `INPUT/fdca-member-registry.json`.
 - `apply_taxonomy.py` validates current primary-category values. Historical
   migrations are explicit scripts and never implicit guesses.
@@ -77,8 +77,8 @@ Use the maintenance scripts only when the relevant source changes:
 Do not treat website-only entries as confirmed members. The roster owns
 membership status; fdca.fi owns display names and scraped public details.
 
-The member count is the number of `on-roster` records (368 on 2026-09-26), not
-the number of registry rows (377). `website-only` records are pending and are
+The member count is the number of `on-roster` records (387 on 2026-10-06), not
+the number of registry rows (396). `website-only` records are pending and are
 counted separately. Once FDCA's office confirms that one is no longer a member,
 add it to `FORMER_NOTES` in `merge_member_list.py`. That marks it
 `roster_status: former`, and publication drops it. Never delete the record.

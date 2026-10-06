@@ -53,7 +53,7 @@ Yritykset, jotka omistavat tai operoivat datakeskuksia ja laskentakampuksia.
 Manufacturers and suppliers of equipment, products and software used in facilities.  
 Datakeskuksissa käytettävien laitteiden, tuotteiden ja ohjelmistojen valmistajat ja toimittajat.
 
-1. **Power Equipment — Sähkölaitteet** (35 companies)
+1. **Power Equipment — Sähkölaitteet** (37 companies)
    - Question: Is power equipment the company's dominant supplied product?
    - Includes: Generation equipment, Batteries, Backup power, Switchgear, Power distribution equipment, Transformers.
    - Excludes: External grid construction, Internal electrical installation, Electricity supply.
@@ -83,7 +83,7 @@ Datakeskuksissa käytettävien laitteiden, tuotteiden ja ohjelmistojen valmistaj
    - Excludes: Guarding, Ongoing security operations, Fire-protection installation.
    - Description: Physical and digital security products, access control, locks and surveillance systems.
    - Kuvaus: Fyysisen ja digitaalisen turvallisuuden tuotteet, kulunvalvonta, lukitus ja valvontajärjestelmät.
-6. **Building Products — Rakennustuotteet** (27 companies)
+6. **Building Products — Rakennustuotteet** (29 companies)
    - Question: Are building materials, components or prefabricated products the dominant supplied offering?
    - Includes: Concrete, Steel structures, Panels, Insulation, Cable supports, Seals.
    - Excludes: On-site construction as the dominant role.
@@ -125,25 +125,25 @@ Yritykset, jotka rakentavat tiloja, infrastruktuuria ja kiinteitä teknisiä jä
    - Excludes: Internal facility power distribution, Power-equipment manufacturing.
    - Description: External grid connections, high-voltage systems, substations, transformers and switchyards.
    - Kuvaus: Ulkoiset verkkoliitynnät, suurjännitejärjestelmät, sähköasemat, muuntajat ja kytkinkentät.
-5. **Technical Systems Installation — Teknisten järjestelmien asennukset** (22 companies)
+5. **Technical Systems Installation — Teknisten järjestelmien asennukset** (25 companies)
    - Question: Does the company primarily install, integrate or commission technical systems inside or directly serving facilities?
    - Includes: Internal electrical distribution, Backup power installation, Equipment cabling, Internal networks, Cooling, Ventilation, Plumbing, Process piping, Automation, Controls.
    - Excludes: External grids and substations, General building construction, Earthworks, Fire-specific packages, Roofs and façades.
    - Description: Installation and commissioning of internal electrical, network, cooling, piping and automation systems.
    - Kuvaus: Sisäisten sähkö-, verkko-, jäähdytys-, putkisto- ja automaatiojärjestelmien asennus ja käyttöönotto.
-6. **Fire Safety Construction — Paloturvallisuusurakointi** (3 companies)
+6. **Fire Safety Construction — Paloturvallisuusurakointi** (4 companies)
    - Question: Is fire protection clearly the company's dominant construction activity?
    - Includes: Fire detection, Fire alarms, Suppression, Sprinklers, Smoke control, Structural fire protection.
    - Excludes: Fire-safety design without installation, Security products.
    - Description: Installation and commissioning of fire detection, suppression, smoke control and structural protection.
    - Kuvaus: Palonilmaisu-, sammutus-, savunhallinta- ja rakenteellisen palosuojauksen asennus ja käyttöönotto.
-7. **Roofing and Building Envelope — Katto- ja julkisivurakentaminen** (5 companies)
+7. **Roofing and Building Envelope — Katto- ja julkisivurakentaminen** (6 companies)
    - Question: Are roofing, façades, cladding, insulation, waterproofing or weather protection dominant?
    - Includes: Roofs, Façades, Cladding, Insulation, Waterproofing.
    - Excludes: Supply of building products without installation.
    - Description: Installation of roofs, façades, cladding, insulation, waterproofing and weather protection.
    - Kuvaus: Kattojen, julkisivujen, verhousten, eristeiden, vedeneristyksen ja sääsuojauksen asennus.
-8. **Other Construction — Muu rakentaminen** (0 companies)
+8. **Other Construction — Muu rakentaminen** (1 companies)
    - Question: Does the company perform construction work not covered by another construction category?
    - Includes: Other verified construction roles.
    - Excludes: Any role matching a more specific construction category.
@@ -155,19 +155,19 @@ Yritykset, jotka rakentavat tiloja, infrastruktuuria ja kiinteitä teknisiä jä
 Companies that develop sites, design facilities or manage projects.  
 Yritykset, jotka kehittävät sijainteja, suunnittelevat tiloja tai johtavat hankkeita.
 
-1. **Site Development — Sijaintikehitys** (13 companies)
+1. **Site Development — Sijaintikehitys** (15 companies)
    - Question: Is developing land, sites, power access or permits for future facilities the dominant role?
    - Includes: Site ownership and development, Land assembly, Power-access development, Permitting.
    - Excludes: Municipal investment promotion, Operating completed facilities.
    - Description: Development of sites, land, power access and permits for future facilities.
    - Kuvaus: Datakeskussijaintien, maa-alueiden, sähköliittymien ja lupien kehittäminen tulevia hankkeita varten.
-2. **Municipal and Regional Development — Kunta- ja aluekehitys** (13 companies)
+2. **Municipal and Regional Development — Kunta- ja aluekehitys** (14 companies)
    - Question: Is a public or regional organization enabling investment and local business development?
    - Includes: Municipalities, Municipal development companies, Regional development organizations.
    - Excludes: Commercial site developers, Private property advisers.
    - Description: Public and regional organizations enabling investment, sites and local business development.
    - Kuvaus: Julkiset ja alueelliset organisaatiot, jotka edistävät investointeja, sijainteja ja yritystoimintaa.
-3. **Design and Engineering — Suunnittelu ja tekninen konsultointi** (21 companies)
+3. **Design and Engineering — Suunnittelu ja tekninen konsultointi** (22 companies)
    - Question: Is independent architecture, engineering or technical design the dominant role?
    - Includes: Architecture, Structural design, Electrical design, Cooling design, Infrastructure design, Technical consultancy.
    - Excludes: Physical installation, Independent project management as the dominant role.
@@ -185,13 +185,13 @@ Yritykset, jotka kehittävät sijainteja, suunnittelevat tiloja tai johtavat han
 Companies providing operational, commercial and professional support to the industry.  
 Yritykset, jotka tarjoavat toimialalle operatiivista, kaupallista ja asiantuntijatukea.
 
-1. **Energy — Energia** (22 companies)
+1. **Energy — Energia** (23 companies)
    - Question: Is electricity, fuel or energy-market service the dominant offering?
    - Includes: Electricity supply, Procurement, Trading, Distribution, Fuels, Energy advice.
    - Excludes: Power equipment, External grid construction, Energy-site development.
    - Description: Electricity supply, procurement, trading, distribution, fuels and energy advisory services.
    - Kuvaus: Sähkön toimitus, hankinta, kauppa, jakelu, polttoaineet ja energianeuvonta.
-2. **Connectivity — Tietoliikenneyhteydet** (4 companies)
+2. **Connectivity — Tietoliikenneyhteydet** (5 companies)
    - Question: Are external telecommunications or fibre connectivity services the dominant offering?
    - Includes: Carrier services, Internet exchange, External fibre connections, Interconnection.
    - Excludes: Internal network equipment, Internal cabling installation.
@@ -215,7 +215,7 @@ Yritykset, jotka tarjoavat toimialalle operatiivista, kaupallista ja asiantuntij
    - Excludes: Security-product manufacturing, Fire-protection installation.
    - Description: Guarding, security operations, risk management and ongoing protection services.
    - Kuvaus: Vartiointi, turvallisuusoperaatiot, riskienhallinta ja jatkuvat suojauspalvelut.
-6. **Equipment Maintenance — Laitteiden ylläpito** (8 companies)
+6. **Equipment Maintenance — Laitteiden ylläpito** (9 companies)
    - Question: Are equipment repair, refurbishment, relocation or retirement services dominant?
    - Includes: Repair, Refurbishment, Lifecycle management, Relocation, Secure retirement, Recycling.
    - Excludes: Supplying new equipment, Operating complete facilities.
@@ -227,7 +227,7 @@ Yritykset, jotka tarjoavat toimialalle operatiivista, kaupallista ja asiantuntij
    - Excludes: Equipment rental without logistics responsibility.
    - Description: Transport, forwarding, storage, handling and delivery services for projects and equipment.
    - Kuvaus: Hankkeiden ja laitteiden kuljetus-, huolinta-, varastointi-, käsittely- ja toimituspalvelut.
-8. **Staffing — Henkilöstöpalvelut** (14 companies)
+8. **Staffing — Henkilöstöpalvelut** (15 companies)
    - Question: Are recruitment, workforce supply or employment services dominant?
    - Includes: Recruitment, Temporary labour, Direct hiring, Employment administration.
    - Excludes: Project management consultants.
@@ -239,7 +239,7 @@ Yritykset, jotka tarjoavat toimialalle operatiivista, kaupallista ja asiantuntij
    - Excludes: Technical engineering, Site development, Construction project management.
    - Description: Legal, financial, investment, property, insurance, communications and management advisory services.
    - Kuvaus: Oikeudelliset, talous-, sijoitus-, kiinteistö-, vakuutus-, viestintä- ja liikkeenjohdon neuvontapalvelut.
-10. **Other Services — Muut palvelut** (15 companies)
+10. **Other Services — Muut palvelut** (16 companies)
    - Question: Is the company primarily a service provider not covered by another service category?
    - Includes: Training, Certification, Associations, Temporary accommodation, Equipment rental, Property leasing.
    - Excludes: Any service matching a more specific category.

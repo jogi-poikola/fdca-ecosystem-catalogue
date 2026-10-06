@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import unittest
 
+from catalogue_config import load_registry, load_taxonomy, published_members
 from layout_solver import PINNED_FAMILY, UnsupportedPolicyError, run
 from layout_tool import TOOL_HTML, _reflow_decision, meta_payload, options_to_override
 
@@ -89,7 +90,13 @@ class LayoutSolverTests(unittest.TestCase):
     def test_empty_category_policy_changes_visible_taxonomy(self) -> None:
         show = run("landscape", {**FAST, "empty_category_policy": {"value": "show"}})
         hide = run("landscape", {**FAST, "empty_category_policy": {"value": "hide"}})
-        self.assertGreater(show["diagnostics"]["category_count"], hide["diagnostics"]["category_count"])
+        # The live registry decides how many categories are empty, so compare
+        # against it. Since 2026-10-06 every category has a member.
+        taxonomy = load_taxonomy()
+        filled = {m["category"] for m in published_members(load_registry())}
+        all_slugs = [c["slug"] for f in taxonomy["families"] for c in f["categories"]]
+        self.assertEqual(len(all_slugs), show["diagnostics"]["category_count"])
+        self.assertEqual(len(filled & set(all_slugs)), hide["diagnostics"]["category_count"])
 
     def test_category_order_is_honored(self) -> None:
         taxonomy = run("landscape", {**FAST, "category_order": {"mode": "taxonomy"}})
