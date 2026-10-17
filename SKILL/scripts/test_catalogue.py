@@ -55,6 +55,14 @@ class CatalogueContractTest(unittest.TestCase):
         self.assertEqual(len(roster), len(confirmed))
         self.assertTrue(all(member["roster_status"] == "on-roster" for member in confirmed))
 
+    def test_applicants_are_kept_but_not_published_or_counted(self):
+        applicants = [member for member in self.members if member.get("roster_status") == "applicant"]
+        self.assertTrue(applicants)
+        for member in applicants:
+            self.assertTrue(member.get("note"))
+            self.assertFalse(is_published(member))
+            self.assertFalse(is_confirmed(member))
+
     def test_former_members_are_kept_but_not_published(self):
         former = [member for member in self.members if member.get("roster_status") == "former"]
         self.assertTrue(former)

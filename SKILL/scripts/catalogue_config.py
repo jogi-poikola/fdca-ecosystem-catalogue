@@ -43,18 +43,22 @@ def load_registry() -> list[dict]:
 
 
 # roster_status values. "on-roster" is a confirmed member. "website-only" is on
-# fdca.fi but on no roster line, so it is pending. "former" is a confirmed
-# non-member: it stays in the registry but is never published.
+# fdca.fi but on no roster line, so it is pending. "applicant" has applied for
+# membership, but the board has not approved it: it keeps its research in the
+# registry and is never published. "former" is a confirmed non-member: it
+# stays in the registry but is never published.
 PENDING_STATUS = "website-only"
+APPLICANT_STATUS = "applicant"
 FORMER_STATUS = "former"
+UNPUBLISHED_STATUSES = (APPLICANT_STATUS, FORMER_STATUS)
 
 
 def is_published(member: dict) -> bool:
-    return member.get("roster_status") != FORMER_STATUS
+    return member.get("roster_status") not in UNPUBLISHED_STATUSES
 
 
 def is_confirmed(member: dict) -> bool:
-    return member.get("roster_status") not in (PENDING_STATUS, FORMER_STATUS)
+    return member.get("roster_status") not in (PENDING_STATUS, *UNPUBLISHED_STATUSES)
 
 
 def published_members(members: list[dict]) -> list[dict]:

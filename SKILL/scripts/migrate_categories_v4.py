@@ -65,7 +65,7 @@ OVERRIDES = {
     "Prysmian Group Finland Oy": "power_equipment",
     "Salto Systems Oy": "security_technology",
     "Stoa Technologies Oy": "automation_software",
-    "U-Cont": "cooling_heat_recovery",
+    "U-Cont": "power_equipment",  # fuel tanks and dispensing stations for backup generators; moved 2026-10-17
 
     # Main contractor requires a confirmed Finnish role. NYAB is confirmed for Nordic Compute, Mikkeli.
     "Fira": "main_contractors",
@@ -87,6 +87,9 @@ OVERRIDES = {
     "GRK": "infrastructure_construction",
     "H&MV Engineering": "grid_substation_construction",
     "Hartela Oy": "industrial_construction",
+    # Antti's decision, 2026-10-17: Infra ry is the association of the infrastructure
+    # construction companies and stays with them. Two reviews have tried to move it
+    # to other_services as "an association"; do not do that again.
     "Infra ry": "infrastructure_construction",
     "KattoHoiva": "roofing_building_envelope",
     "Kerabit": "roofing_building_envelope",
@@ -96,7 +99,7 @@ OVERRIDES = {
     "Omexom": "grid_substation_construction",
     "Paloff Sammutusjärjestelmät Oy": "fire_safety_construction",
     "Peswin Oy": "technical_systems_installation",
-    "Pylon": "infrastructure_construction",
+    "Pylon": "other_construction",  # a renovation contractor; moved 2026-10-17
     "Salboheds": "infrastructure_construction",
     "Suomen Teollisuuskatot Oy": "roofing_building_envelope",
     "TEP Roof Oy": "roofing_building_envelope",
