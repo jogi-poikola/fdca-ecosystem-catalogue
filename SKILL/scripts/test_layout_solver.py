@@ -11,7 +11,9 @@ from layout_solver import PINNED_FAMILY, UnsupportedPolicyError, run
 from layout_tool import TOOL_HTML, _reflow_decision, meta_payload, options_to_override
 
 
-FAST = {"solver": {"strategy": "recursive_treemap", "max_iterations": 16, "refinement_passes": 2}}
+# 24 iterations keep the fast landscape solve within 20 rows for the 2026-10-17
+# roster; 16 gave 21 rows. The run still takes under a second.
+FAST = {"solver": {"strategy": "recursive_treemap", "max_iterations": 24, "refinement_passes": 2}}
 
 
 def cells(rect: dict) -> set[tuple[int, int]]:

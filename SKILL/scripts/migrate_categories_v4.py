@@ -87,7 +87,10 @@ OVERRIDES = {
     "GRK": "infrastructure_construction",
     "H&MV Engineering": "grid_substation_construction",
     "Hartela Oy": "industrial_construction",
-    "Infra ry": "other_services",  # an association, not a contractor; moved 2026-10-17
+    # Antti's decision, 2026-10-17: Infra ry is the association of the infrastructure
+    # construction companies and stays with them. Two reviews have tried to move it
+    # to other_services as "an association"; do not do that again.
+    "Infra ry": "infrastructure_construction",
     "KattoHoiva": "roofing_building_envelope",
     "Kerabit": "roofing_building_envelope",
     "Kreate": "infrastructure_construction",

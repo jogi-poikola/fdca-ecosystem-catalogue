@@ -113,7 +113,7 @@ Yritykset, jotka rakentavat tiloja, infrastruktuuria ja kiinteitä teknisiä jä
    - Excludes: Dominant earthworks, External power infrastructure, Technical building-system installation.
    - Description: Industrial builders delivering structures or packages without confirmed overall facility responsibility.
    - Kuvaus: Teollisten rakenteiden tai kokonaisuuksien toteuttajat ilman vahvistettua hankkeen kokonaisvastuuta.
-3. **Infrastructure Construction — Infrarakentaminen** (8 companies)
+3. **Infrastructure Construction — Infrarakentaminen** (9 companies)
    - Question: Are earthworks, rock works, foundations, roads, drainage or underground site utilities dominant?
    - Includes: Excavation, Rock works, Ground improvement, Foundations, Roads, Drainage, Site utilities.
    - Excludes: External electrical grid work, Complete building responsibility.
@@ -155,7 +155,7 @@ Yritykset, jotka rakentavat tiloja, infrastruktuuria ja kiinteitä teknisiä jä
 Companies that develop sites, design facilities or manage projects.  
 Yritykset, jotka kehittävät sijainteja, suunnittelevat tiloja tai johtavat hankkeita.
 
-1. **Site Development — Sijaintikehitys** (11 companies)
+1. **Site Development — Sijaintikehitys** (12 companies)
    - Question: Is developing land, sites, power access or permits for future facilities the dominant role?
    - Includes: Site ownership and development, Land assembly, Power-access development, Permitting.
    - Excludes: Municipal investment promotion, Operating completed facilities.
@@ -185,7 +185,7 @@ Yritykset, jotka kehittävät sijainteja, suunnittelevat tiloja tai johtavat han
 Companies providing operational, commercial and professional support to the industry.  
 Yritykset, jotka tarjoavat toimialalle operatiivista, kaupallista ja asiantuntijatukea.
 
-1. **Energy — Energia** (25 companies)
+1. **Energy — Energia** (24 companies)
    - Question: Is electricity, fuel or energy-market service the dominant offering?
    - Includes: Electricity supply, Procurement, Trading, Distribution, Fuels, Energy advice.
    - Excludes: Power equipment, External grid construction, Energy-site development.
@@ -239,7 +239,7 @@ Yritykset, jotka tarjoavat toimialalle operatiivista, kaupallista ja asiantuntij
    - Excludes: Technical engineering, Site development, Construction project management.
    - Description: Legal, financial, investment, property, insurance, communications and management advisory services.
    - Kuvaus: Oikeudelliset, talous-, sijoitus-, kiinteistö-, vakuutus-, viestintä- ja liikkeenjohdon neuvontapalvelut.
-10. **Other Services — Muut palvelut** (17 companies)
+10. **Other Services — Muut palvelut** (16 companies)
    - Question: Is the company primarily a service provider not covered by another service category?
    - Includes: Training, Certification, Associations, Temporary accommodation, Equipment rental, Property leasing.
    - Excludes: Any service matching a more specific category.

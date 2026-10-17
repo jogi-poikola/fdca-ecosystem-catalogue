@@ -56,16 +56,26 @@ research on 2026-10-06. One record carries a `note` with an open question:
   Irish BIS Coatings Ltd. Its category, `other_construction`, is medium
   confidence, because industrial coatings fit no specific category.
 
-A category review on 2026-10-17 moved 14 companies, each to the category its
-own website supports: Fortum and Etha to `energy`; EKE-Rakennus to
+A category review on 2026-10-17 moved 12 companies, each to the category its
+own website supports: Fortum to `energy`; EKE-Rakennus to
 `industrial_construction`; Nova Complex to `data_center_operators` (it builds
 its own campuses in Loviisa and Kouvola, like Pure DC and Hyperco); Finkova and
 Zauner to `technical_systems_installation`; Pylon to `other_construction`;
-Infra ry to `other_services` (an association); Hytrade to
-`automation_software`; Axians to `computing_network_equipment`; U-Cont to
-`power_equipment`; and Heras, Pur-ait and Vepe to `security_technology`, with
-Nordpel. Finsbury Infrastructure stays in `site_development`: it develops
-data-centre campuses and may transfer or lease them, and it operates none.
+Hytrade to `automation_software`; Axians to `computing_network_equipment`;
+U-Cont to `power_equipment`; and Heras, Pur-ait and Vepe to
+`security_technology`, with Nordpel. Finsbury Infrastructure stays in
+`site_development`: it develops data-centre campuses and may transfer or lease
+them, and it operates none.
+
+Two records carry a standing decision in their `note`, so a later review does
+not move them again:
+
+- `Infra ry` stays in `infrastructure_construction`. It is the association of
+  the infrastructure construction companies and belongs with them, although
+  the rules list associations under `other_services`. Reviews have tried to
+  move it twice; do not.
+- `Etha Oy` stays in `site_development`: it develops energy and data-centre
+  projects for clients.
 
 fdca.fi introduced BAC and Moi Food Solutions in October 2026. They are not new
 members: they are the brands of the roster's `Baltimore Aircoil International NV`

@@ -1685,14 +1685,14 @@
     "roster_status": "on-roster",
     "source": "fdca.fi-scrape",
     "url": "https://www.etha.fi",
-    "category": "energy",
+    "category": "site_development",
     "blog_link": "https://www.fdca.fi/introducing-our-new-member-etha/",
     "blog_content": "Etha Oy\nis a Finland based sustainable energy consultancy that leverages its pioneering experience in renewable energy projects to help clients capture the opportunities of the green transition. Founded in 2002, the company offers full-scale project development and stand-alone services — from due diligence and permitting to transaction advisory. With more than 40 consultants and key figures such as 19,400 MW of due diligence and 2,300 MW of wind development services, Etha delivers robust support across renewable energy projects such as wind, solar and energy storage.\nTheir transparent, data-driven approach equips investors, developers and operators to navigate regulatory, technical and commercial challenges with confidence.\n​​​​​​​\nPartnering with Etha means access to deep domain expertise, proven track-record and a tailored pathway into the renewable energy future.",
     "web_search_content": "Finnish technical installation and construction company providing HVAC and other building services for industrial and commercial facilities including data centers.",
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2025/11/Etha-FDCA-400x400.jpg",
     "researched": null,
     "url_status": "confirmed",
-    "note": null
+    "note": "Keep in site_development. Antti's decision, 2026-10-17: Etha develops energy and data-centre projects for clients."
   },
   {
     "official_name": "Eurolaite Oy",
@@ -2630,14 +2630,14 @@
     "roster_status": "on-roster",
     "source": "fdca.fi-scrape",
     "url": "https://www.infra.fi",
-    "category": "other_services",
+    "category": "infrastructure_construction",
     "blog_link": "https://www.fdca.fi/introducing-our-new-member-infra/",
     "blog_content": "The association for civil engineering and infrastructure contractors in Finland.",
     "web_search_content": "Finnish industry association representing civil engineering and infrastructure contractors. Membership reflects importance of civil construction in data center development.",
     "logo_url": "https://www.fdca.fi/wp-content/uploads/2026/03/Infra-FDCA.jpg",
     "researched": null,
     "url_status": "confirmed",
-    "note": null
+    "note": "Keep in infrastructure_construction. Antti's decision, 2026-10-17: the association represents the infrastructure construction companies, so it belongs with them, not in other_services. Do not move it in a category review."
   },
   {
     "official_name": "Infuel Oy",
