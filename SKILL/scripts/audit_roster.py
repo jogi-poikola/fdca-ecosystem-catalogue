@@ -13,7 +13,8 @@ For each entry that matches no roster line it checks:
 - the roster's own companies: does one of them look like the same company?
   A strong hint is a shared homepage word or a similar name. A weak hint is
   only a mention in a description; the report leaves it out, the JSON keeps it.
-- the entry's current status: already marked `former`, or still pending?
+- the entry's current status: already marked `former`, an applicant the board
+  has not approved (settled, so no verdict), or still pending?
 
 Each entry then gets one verdict:
 
@@ -55,8 +56,8 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from urllib.parse import urlparse
 
-from catalogue_config import FORMER_STATUS, PENDING_STATUS, load_registry
-from merge_member_list import FORMER_NOTES, full_key, load_list, match, registry_name
+from catalogue_config import APPLICANT_STATUS, FORMER_STATUS, PENDING_STATUS, load_registry
+from merge_member_list import APPLICANT_NOTES, FORMER_NOTES, full_key, load_list, match, registry_name
 from probe_missing import NOISE, claims, norm
 
 SIMILAR = 0.8  # name similarity that counts as a strong hint
@@ -135,8 +136,9 @@ def verdict_for(entry: dict, hints: list, on_page: bool | None, matched: bool) -
     former = entry.get("roster_status") == FORMER_STATUS or registry_name(entry) in FORMER_NOTES
     if former and (matched or on_page):
         return REINSTATE
-    if matched or former:
-        return ""  # on the roster, or a settled former entry
+    applicant = entry.get("roster_status") == APPLICANT_STATUS or registry_name(entry) in APPLICANT_NOTES
+    if matched or former or applicant:
+        return ""  # on the roster, a settled former entry, or an applicant awaiting the board
     if any(strength >= 2 for _, strength, _ in hints):
         return ALIAS_CANDIDATE
     if on_page:

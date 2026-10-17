@@ -30,6 +30,12 @@ When FDCA's office confirms that such a company is no longer a member, it goes
 into FORMER_NOTES and is marked `roster_status: former`. It stays in the
 registry, but the dashboard, the layout and the member count leave it out.
 
+A company that applied for membership but that the board has not approved goes
+into APPLICANT_NOTES and is marked `roster_status: applicant`. Its research
+stays in the registry; the dashboard, the layout and the member count leave it
+out. When the board approves it, FDCA's next roster names it, and the merge
+makes it a member; then remove its line from APPLICANT_NOTES.
+
 Matching is by normalised name (case, punctuation, and company-form suffixes
 removed), plus the alternate brands a roster line carries after a `/` or
 inside parentheses. ALIASES below carries the pairs no rule can reach.
@@ -50,15 +56,17 @@ import json
 import re
 from pathlib import Path
 
-from catalogue_config import FORMER_STATUS, PENDING_STATUS
+from catalogue_config import APPLICANT_STATUS, FORMER_STATUS, PENDING_STATUS
 
 ROOT = Path(__file__).resolve().parents[2]
 INPUT_DIR = ROOT / "INPUT"
 REGISTRY_PATH = INPUT_DIR / "fdca-member-registry.json"
-# The 2026-10-06 list is the 2026-09-26 roster plus 19 new members, named as in
-# their membership applications. The 2026-09-21 file stays as FDCA sent it. Replace this list when FDCA sends a new one.
-LIST_PATH = INPUT_DIR / "fdca-member-list-2026-10-06.txt"
-LIST_DATE = "2026-10-06"
+# The 2026-10-17 list is the 2026-09-26 roster plus the 16 applicants the board
+# approved on 2026-10-17, named as in their membership applications. The three
+# applicants the board deferred are in APPLICANT_NOTES. The 2026-09-21 file
+# stays as FDCA sent it. Replace this list when FDCA sends a new one.
+LIST_PATH = INPUT_DIR / "fdca-member-list-2026-10-17.txt"
+LIST_DATE = "2026-10-17"
 
 # The scraped fields a fold fills in from a secondary entry.
 SCRAPED_FIELDS = (
@@ -177,6 +185,15 @@ FORMER_NOTES = {
     "Ynvolve": "Marked former: on no roster line and not on fdca.fi's members page.",
     # L2 Paloturvallisuus, Rentaload and UTU were open here until the
     # 2026-09-21 roster listed all three.
+}
+
+# Why a registry entry that applied for membership is on no roster line.
+APPLICANT_NOTES = {
+    # The board deferred these three applications on 2026-10-17 and will ask
+    # the applicants questions. Each record keeps its 2026-10-06 research.
+    "Daniel Raks Oy": "Application deferred by the board on 2026-10-17; FDCA will ask the applicant questions.",
+    "Nordic Kosovo Contractors LLC": "Application deferred by the board on 2026-10-17; FDCA will ask the applicant questions.",
+    "Solkei Electronics Oy": "Application deferred by the board on 2026-10-17; FDCA will ask the applicant questions.",
 }
 
 SUFFIX = (
@@ -354,6 +371,10 @@ def website_only(entry: dict) -> dict:
     if note:
         out["roster_status"] = FORMER_STATUS
         out["note"] = note
+    note = APPLICANT_NOTES.get(out["display_name"])
+    if note:
+        out["roster_status"] = APPLICANT_STATUS
+        out["note"] = note
     return out
 
 
@@ -390,6 +411,10 @@ def main() -> None:
     print(f"  merged into another entry: {absorbed}")
     print(f"  on the website only:       {len(extras)}")
     print(f"    of which confirmed former: {sum(e['roster_status'] == FORMER_STATUS for e in extras)}")
+    print(f"    of which applicants:       {sum(e['roster_status'] == APPLICANT_STATUS for e in extras)}")
+    approved = sorted(name for name in APPLICANT_NOTES if resolved.get(name))
+    if approved:
+        print(f"  now on the roster, remove from APPLICANT_NOTES: {', '.join(approved)}")
     print(f"added from the roster:       {len(missing)}")
     print(f"members after:               {len(members)}")
     print()

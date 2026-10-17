@@ -10,7 +10,7 @@ read-only mirrors of the important semantic files.
 | File | Role |
 |---|---|
 | `INPUT/fdca-member-registry.json` | Company records. Each company stores one primary category slug. |
-| `INPUT/fdca-member-list-2026-10-06.txt` | Dated FDCA roster and source for official membership names. It is the 2026-09-21 roster (kept as FDCA sent it) plus Kumorion Platforms Oy and the 19 members that joined by 2026-10-06. |
+| `INPUT/fdca-member-list-2026-10-17.txt` | Dated FDCA roster and source for official membership names. It is the 2026-09-21 roster (kept as FDCA sent it) plus Kumorion Platforms Oy and the 16 applicants the board approved on 2026-10-17. |
 | `INPUT/fdca-categories.json` | Stable family/category slugs and bilingual names and short descriptions. |
 | `INPUT/fdca-classification-rules.json` | Machine-applicable evidence order, decision sequences, exclusions and tie-breaks. |
 | `INPUT/company-category-classification-rules.md` | Generated human-readable guide; never edit by hand. |
@@ -22,11 +22,16 @@ not a second tag.
 
 ## Current data state
 
-As of 2026-10-06, FDCA has **387 members**. That is the number to quote. The
-registry holds 396 records, because it also keeps 9 companies that are on no
+As of 2026-10-17, FDCA has **384 members**. That is the number to quote. The
+registry holds 396 records, because it also keeps 12 companies that are on no
 line of the dated roster:
 
-- 387 records from FDCA's dated roster (`on-roster`): the members;
+- 384 records from FDCA's dated roster (`on-roster`): the members;
+- 3 records marked `roster_status: applicant`: Daniel Raks Oy, Nordic Kosovo
+  Contractors LLC and Solkei Electronics Oy. They applied for membership, and
+  the board deferred their applications on 2026-10-17 to ask them questions.
+  Their 2026-10-06 research stays in the registry, but the dashboard, the
+  layout and the member count leave them out;
 - 9 records marked `roster_status: former`. They stay in the registry with
   their research, but the dashboard, the layout and the member count leave them
   out:
@@ -40,25 +45,27 @@ line of the dated roster:
 - 396 valid primary-category assignments;
 - zero publish-time `uncategorised` records.
 
-The dashboard therefore lists 387 companies and states 387 members.
+The dashboard therefore lists 384 companies and states 384 members.
 
-The 2026-10-06 roster adds 19 members from membership applications to the
-2026-09-26 roster. They use the company names from the applications. Their
-homepages, descriptions and categories come from web research on 2026-10-06.
-Four records carry a `note` with an open question:
+The 2026-10-17 roster adds to the 2026-09-26 roster the 16 applicants the
+board approved on 2026-10-17. They use the company names from the
+applications. Their homepages, descriptions and categories come from web
+research on 2026-10-06. One record carries a `note` with an open question:
 
 - `BIS Coatings OY`: business ID 3524268-3. It is very likely part of the
   Irish BIS Coatings Ltd. Its category, `other_construction`, is medium
   confidence, because industrial coatings fit no specific category.
-- `Solkei Electronics Oy`: business ID 2558326-5, formerly Celerin Oy. It has
-  almost no revenue, no working website and no public product evidence. Its
-  category, `power_equipment`, comes from its registered line of business and
-  the application.
-- `Nordic Kosovo Contractors LLC`: not in the Finnish trade register. Its
-  domain is from 2026-09-01, and no third party mentions it. Its category is
-  `staffing`. Check its Kosovo registration before you rely on the record.
-- `Daniel Raks Oy`: business ID 3123046-6, a renovation contractor and the first member in
-  `other_construction`. Since then no category is empty.
+
+A category review on 2026-10-17 moved 14 companies, each to the category its
+own website supports: Fortum and Etha to `energy`; EKE-Rakennus to
+`industrial_construction`; Nova Complex to `data_center_operators` (it builds
+its own campuses in Loviisa and Kouvola, like Pure DC and Hyperco); Finkova and
+Zauner to `technical_systems_installation`; Pylon to `other_construction`;
+Infra ry to `other_services` (an association); Hytrade to
+`automation_software`; Axians to `computing_network_equipment`; U-Cont to
+`power_equipment`; and Heras, Pur-ait and Vepe to `security_technology`, with
+Nordpel. Finsbury Infrastructure stays in `site_development`: it develops
+data-centre campuses and may transfer or lease them, and it operates none.
 
 fdca.fi introduced BAC and Moi Food Solutions in October 2026. They are not new
 members: they are the brands of the roster's `Baltimore Aircoil International NV`

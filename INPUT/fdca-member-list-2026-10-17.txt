@@ -70,7 +70,6 @@ CTS Nordics Oy
 Cursor Oy
 Cushman & Wakefield Finland Oy
 Danfoss Oy Ab
-Daniel Raks Oy
 DC Works Finland Oy
 DCI-Ratkaisut Oy
 DE-CIX
@@ -250,7 +249,6 @@ NOKIA SOLUTIONS AND NETWORKS OY
 Nordec Oy
 Nordecon Oy
 Nordic Energy Transition
-Nordic Kosovo Contractors LLC
 Nordpel Oy
 NordTech Energy
 Nova Complex (Finland) Holdco Oy
@@ -328,7 +326,6 @@ Skanska Oy
 Snep Lighting Oy
 Solarigo Systems Oy
 Solarwind Finland Oy
-Solkei Electronics Oy
 SPTR-Asennus Oy
 SR-Kiinteistöt Oy
 SRV Rakennus Oy

@@ -41,7 +41,7 @@ A company receives one primary category. Its high-level family is derived from t
 Companies that own or operate data-center facilities and computing campuses.  
 Yritykset, jotka omistavat tai operoivat datakeskuksia ja laskentakampuksia.
 
-1. **Data Center Operators — Datakeskusoperaattorit** (23 companies)
+1. **Data Center Operators — Datakeskusoperaattorit** (24 companies)
    - Question: Does the company own or operate facilities providing data-center or dedicated computing capacity?
    - Includes: Commercial operators, Public computing centres, Owner-operated computing campuses.
    - Excludes: Site developers without operating facilities, Facility management suppliers.
@@ -59,13 +59,13 @@ Datakeskuksissa käytettävien laitteiden, tuotteiden ja ohjelmistojen valmistaj
    - Excludes: External grid construction, Internal electrical installation, Electricity supply.
    - Description: Equipment for power generation, storage, conversion, backup, distribution and monitoring.
    - Kuvaus: Sähkön tuotannon, varastoinnin, muuntamisen, varmistamisen, jakelun ja valvonnan laitteet.
-2. **Cooling and Heat Recovery — Jäähdytys ja lämmöntalteenotto** (26 companies)
+2. **Cooling and Heat Recovery — Jäähdytys ja lämmöntalteenotto** (25 companies)
    - Question: Is cooling, ventilation, liquid handling or heat-recovery equipment the dominant supplied product?
    - Includes: Cooling units, Fans, Pumps, Valves, Heat exchangers, Water-treatment equipment.
    - Excludes: Cooling-system installation, Ongoing facility operation.
    - Description: Equipment for cooling, ventilation, liquid handling and recovering waste heat.
    - Kuvaus: Jäähdytyksen, ilmanvaihdon, nesteenkäsittelyn ja hukkalämmön talteenoton laitteet.
-3. **Computing and Network Equipment — Laskenta- ja verkkolaitteet** (24 companies)
+3. **Computing and Network Equipment — Laskenta- ja verkkolaitteet** (25 companies)
    - Question: Is computing, storage, rack, cabling or internal network equipment the dominant supplied product?
    - Includes: Servers, Storage, Racks, Internal cabling, Network hardware.
    - Excludes: External connectivity services, Equipment maintenance.
@@ -77,7 +77,7 @@ Datakeskuksissa käytettävien laitteiden, tuotteiden ja ohjelmistojen valmistaj
    - Excludes: Security products, Automation installation.
    - Description: Monitoring, control, sensing and software for facility and equipment operation.
    - Kuvaus: Tilojen ja laitteiden käytön valvonta-, ohjaus-, anturi- ja ohjelmistoratkaisut.
-5. **Security Technology — Turvallisuusteknologia** (7 companies)
+5. **Security Technology — Turvallisuusteknologia** (10 companies)
    - Question: Are physical or digital security products the dominant supplied offering?
    - Includes: Access control, Locks, Surveillance equipment, Security software, Perimeter products.
    - Excludes: Guarding, Ongoing security operations, Fire-protection installation.
@@ -113,7 +113,7 @@ Yritykset, jotka rakentavat tiloja, infrastruktuuria ja kiinteitä teknisiä jä
    - Excludes: Dominant earthworks, External power infrastructure, Technical building-system installation.
    - Description: Industrial builders delivering structures or packages without confirmed overall facility responsibility.
    - Kuvaus: Teollisten rakenteiden tai kokonaisuuksien toteuttajat ilman vahvistettua hankkeen kokonaisvastuuta.
-3. **Infrastructure Construction — Infrarakentaminen** (10 companies)
+3. **Infrastructure Construction — Infrarakentaminen** (8 companies)
    - Question: Are earthworks, rock works, foundations, roads, drainage or underground site utilities dominant?
    - Includes: Excavation, Rock works, Ground improvement, Foundations, Roads, Drainage, Site utilities.
    - Excludes: External electrical grid work, Complete building responsibility.
@@ -125,7 +125,7 @@ Yritykset, jotka rakentavat tiloja, infrastruktuuria ja kiinteitä teknisiä jä
    - Excludes: Internal facility power distribution, Power-equipment manufacturing.
    - Description: External grid connections, high-voltage systems, substations, transformers and switchyards.
    - Kuvaus: Ulkoiset verkkoliitynnät, suurjännitejärjestelmät, sähköasemat, muuntajat ja kytkinkentät.
-5. **Technical Systems Installation — Teknisten järjestelmien asennukset** (24 companies)
+5. **Technical Systems Installation — Teknisten järjestelmien asennukset** (26 companies)
    - Question: Does the company primarily install, integrate or commission technical systems inside or directly serving facilities?
    - Includes: Internal electrical distribution, Backup power installation, Equipment cabling, Internal networks, Cooling, Ventilation, Plumbing, Process piping, Automation, Controls.
    - Excludes: External grids and substations, General building construction, Earthworks, Fire-specific packages, Roofs and façades.
@@ -143,7 +143,7 @@ Yritykset, jotka rakentavat tiloja, infrastruktuuria ja kiinteitä teknisiä jä
    - Excludes: Supply of building products without installation.
    - Description: Installation of roofs, façades, cladding, insulation, waterproofing and weather protection.
    - Kuvaus: Kattojen, julkisivujen, verhousten, eristeiden, vedeneristyksen ja sääsuojauksen asennus.
-8. **Other Construction — Muu rakentaminen** (2 companies)
+8. **Other Construction — Muu rakentaminen** (3 companies)
    - Question: Does the company perform construction work not covered by another construction category?
    - Includes: Other verified construction roles.
    - Excludes: Any role matching a more specific construction category.
@@ -155,7 +155,7 @@ Yritykset, jotka rakentavat tiloja, infrastruktuuria ja kiinteitä teknisiä jä
 Companies that develop sites, design facilities or manage projects.  
 Yritykset, jotka kehittävät sijainteja, suunnittelevat tiloja tai johtavat hankkeita.
 
-1. **Site Development — Sijaintikehitys** (15 companies)
+1. **Site Development — Sijaintikehitys** (11 companies)
    - Question: Is developing land, sites, power access or permits for future facilities the dominant role?
    - Includes: Site ownership and development, Land assembly, Power-access development, Permitting.
    - Excludes: Municipal investment promotion, Operating completed facilities.
@@ -185,7 +185,7 @@ Yritykset, jotka kehittävät sijainteja, suunnittelevat tiloja tai johtavat han
 Companies providing operational, commercial and professional support to the industry.  
 Yritykset, jotka tarjoavat toimialalle operatiivista, kaupallista ja asiantuntijatukea.
 
-1. **Energy — Energia** (23 companies)
+1. **Energy — Energia** (25 companies)
    - Question: Is electricity, fuel or energy-market service the dominant offering?
    - Includes: Electricity supply, Procurement, Trading, Distribution, Fuels, Energy advice.
    - Excludes: Power equipment, External grid construction, Energy-site development.
@@ -209,13 +209,13 @@ Yritykset, jotka tarjoavat toimialalle operatiivista, kaupallista ja asiantuntij
    - Excludes: Maintenance focused on individual equipment, Physical installation.
    - Description: Operation, monitoring, maintenance and support of complete facilities and building systems.
    - Kuvaus: Kokonaisten tilojen ja rakennusjärjestelmien käyttö, valvonta, ylläpito ja tuki.
-5. **Security Services — Turvallisuuspalvelut** (7 companies)
+5. **Security Services — Turvallisuuspalvelut** (4 companies)
    - Question: Are guarding, security operations or ongoing protection services the dominant offering?
    - Includes: Guarding, Security operations, Risk management, Ongoing protection.
    - Excludes: Security-product manufacturing, Fire-protection installation.
    - Description: Guarding, security operations, risk management and ongoing protection services.
    - Kuvaus: Vartiointi, turvallisuusoperaatiot, riskienhallinta ja jatkuvat suojauspalvelut.
-6. **Equipment Maintenance — Laitteiden ylläpito** (9 companies)
+6. **Equipment Maintenance — Laitteiden ylläpito** (8 companies)
    - Question: Are equipment repair, refurbishment, relocation or retirement services dominant?
    - Includes: Repair, Refurbishment, Lifecycle management, Relocation, Secure retirement, Recycling.
    - Excludes: Supplying new equipment, Operating complete facilities.
@@ -239,7 +239,7 @@ Yritykset, jotka tarjoavat toimialalle operatiivista, kaupallista ja asiantuntij
    - Excludes: Technical engineering, Site development, Construction project management.
    - Description: Legal, financial, investment, property, insurance, communications and management advisory services.
    - Kuvaus: Oikeudelliset, talous-, sijoitus-, kiinteistö-, vakuutus-, viestintä- ja liikkeenjohdon neuvontapalvelut.
-10. **Other Services — Muut palvelut** (16 companies)
+10. **Other Services — Muut palvelut** (17 companies)
    - Question: Is the company primarily a service provider not covered by another service category?
    - Includes: Training, Certification, Associations, Temporary accommodation, Equipment rental, Property leasing.
    - Excludes: Any service matching a more specific category.
