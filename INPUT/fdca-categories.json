@@ -1,6 +1,6 @@
 {
-  "version": "4.0",
-  "updated": "2026-09-13",
+  "version": "4.1",
+  "updated": "2026-10-17",
   "families": [
     {
       "slug": "data_center_operators",
@@ -207,13 +207,6 @@
           "description_fi": "Tilojen ja teknisten järjestelmien toiminnan riippumaton testaus ja todentaminen."
         },
         {
-          "slug": "facility_management",
-          "en": "Facility Management",
-          "fi": "Kiinteistöpalvelut",
-          "description_en": "Operation, monitoring, maintenance and support of complete facilities and building systems.",
-          "description_fi": "Kokonaisten tilojen ja rakennusjärjestelmien käyttö, valvonta, ylläpito ja tuki."
-        },
-        {
           "slug": "security_services",
           "en": "Security Services",
           "fi": "Turvallisuuspalvelut",
@@ -222,10 +215,10 @@
         },
         {
           "slug": "equipment_maintenance",
-          "en": "Equipment Maintenance",
-          "fi": "Laitteiden ylläpito",
-          "description_en": "Repair, refurbishment, lifecycle management, relocation and responsible retirement of equipment.",
-          "description_fi": "Laitteiden korjaus, kunnostus, elinkaarenhallinta, siirrot ja vastuullinen käytöstäpoisto."
+          "en": "Maintenance and Facility Services",
+          "fi": "Huolto- ja kiinteistöpalvelut",
+          "description_en": "Repair, lifecycle management and retirement of equipment, and operation and maintenance of facilities.",
+          "description_fi": "Laitteiden korjaus, elinkaarenhallinta ja käytöstäpoisto sekä tilojen käyttö ja ylläpito."
         },
         {
           "slug": "logistics",
@@ -242,11 +235,18 @@
           "description_fi": "Rekrytointi-, työvoimanvuokraus- ja työsuhdepalvelut hankkeisiin ja toimintaan."
         },
         {
-          "slug": "legal_business_advisory",
-          "en": "Legal and Business Advisory",
-          "fi": "Laki- ja liiketoimintaneuvonta",
-          "description_en": "Legal, financial, investment, property, insurance, communications and management advisory services.",
-          "description_fi": "Oikeudelliset, talous-, sijoitus-, kiinteistö-, vakuutus-, viestintä- ja liikkeenjohdon neuvontapalvelut."
+          "slug": "legal_services",
+          "en": "Legal Services",
+          "fi": "Lakipalvelut",
+          "description_en": "Law firms advising on contracts, permits, property, energy, financing and disputes.",
+          "description_fi": "Asianajotoimistot, jotka neuvovat sopimus-, lupa-, kiinteistö-, energia- ja rahoitusasioissa sekä riidoissa."
+        },
+        {
+          "slug": "business_advisory",
+          "en": "Business Advisory",
+          "fi": "Liiketoimintaneuvonta",
+          "description_en": "Financial, investment, property, insurance, accounting, communications and management advisory services.",
+          "description_fi": "Talous-, sijoitus-, kiinteistö-, vakuutus-, kirjanpito-, viestintä- ja liikkeenjohdon neuvontapalvelut."
         },
         {
           "slug": "other_services",

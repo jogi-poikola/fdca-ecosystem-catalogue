@@ -1,0 +1,100 @@
+[
+  {
+    "display_name": "Borenius Attorneys Ltd",
+    "roster_status": "on-roster",
+    "from": "legal_business_advisory",
+    "to": "legal_services",
+    "taxonomy_version": "4.1"
+  },
+  {
+    "display_name": "DLA Piper Finland",
+    "roster_status": "on-roster",
+    "from": "legal_business_advisory",
+    "to": "legal_services",
+    "taxonomy_version": "4.1"
+  },
+  {
+    "display_name": "Hannes Snellman",
+    "roster_status": "on-roster",
+    "from": "legal_business_advisory",
+    "to": "legal_services",
+    "taxonomy_version": "4.1"
+  },
+  {
+    "display_name": "Lieke Attorneys",
+    "roster_status": "on-roster",
+    "from": "legal_business_advisory",
+    "to": "legal_services",
+    "taxonomy_version": "4.1"
+  },
+  {
+    "display_name": "Roschier",
+    "roster_status": "on-roster",
+    "from": "legal_business_advisory",
+    "to": "legal_services",
+    "taxonomy_version": "4.1"
+  },
+  {
+    "display_name": "Amesto AccountHouse Oy",
+    "roster_status": "on-roster",
+    "from": "legal_business_advisory",
+    "to": "business_advisory",
+    "taxonomy_version": "4.1"
+  },
+  {
+    "display_name": "APL Europe (UK) LTD",
+    "roster_status": "on-roster",
+    "from": "legal_business_advisory",
+    "to": "business_advisory",
+    "taxonomy_version": "4.1"
+  },
+  {
+    "display_name": "Bergmann",
+    "roster_status": "former",
+    "from": "legal_business_advisory",
+    "to": "business_advisory",
+    "taxonomy_version": "4.1"
+  },
+  {
+    "display_name": "CBRE",
+    "roster_status": "on-roster",
+    "from": "legal_business_advisory",
+    "to": "business_advisory",
+    "taxonomy_version": "4.1"
+  },
+  {
+    "display_name": "Costiom OY",
+    "roster_status": "on-roster",
+    "from": "legal_business_advisory",
+    "to": "business_advisory",
+    "taxonomy_version": "4.1"
+  },
+  {
+    "display_name": "Cushman & Wakefield",
+    "roster_status": "on-roster",
+    "from": "legal_business_advisory",
+    "to": "business_advisory",
+    "taxonomy_version": "4.1"
+  },
+  {
+    "display_name": "Miltton",
+    "roster_status": "on-roster",
+    "from": "legal_business_advisory",
+    "to": "business_advisory",
+    "taxonomy_version": "4.1"
+  },
+  {
+    "display_name": "ISS Palvelut",
+    "roster_status": "on-roster",
+    "from": "facility_management",
+    "to": "equipment_maintenance",
+    "taxonomy_version": "4.1"
+  },
+  {
+    "display_name": "Logiservice",
+    "roster_status": "former",
+    "from": "facility_management",
+    "to": "equipment_maintenance",
+    "taxonomy_version": "4.1"
+  }
+]
