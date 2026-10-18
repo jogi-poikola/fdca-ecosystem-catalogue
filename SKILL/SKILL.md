@@ -47,7 +47,8 @@ Use the maintenance scripts only when the relevant source changes:
 - `merge_member_list.py` reconciles `INPUT/fdca-member-list-2026-10-17.txt`
   into `INPUT/fdca-member-registry.json`.
 - `apply_taxonomy.py` validates current primary-category values. Historical
-  migrations are explicit scripts and never implicit guesses.
+  migrations are explicit scripts and never implicit guesses
+  (`migrate_categories_v4.py`, `migrate_categories_v4_1.py`).
 - `enrich_members.py --research` fills missing homepages/descriptions using
   Firecrawl and simple domain checks.
 - `enrich_members.py --propose` writes
