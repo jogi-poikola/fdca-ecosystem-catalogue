@@ -1,5 +1,11 @@
 # FDCA Ecosystem Catalogue
 
+> [!IMPORTANT]
+> **This repository is retired and archived (read-only) since 2026-11-06.**
+> The FDCA Ecosystem Catalogue now lives in
+> [Finnish-Data-Center-Association/fdca-ecosystem-catalogue](https://github.com/Finnish-Data-Center-Association/fdca-ecosystem-catalogue).
+> Make every change there. Nothing syncs from this repository any more.
+
 This repository is the source of truth for the FDCA Ecosystem Catalogue. It
 contains the member roster, category taxonomy, classification rules,
 maintenance scripts and generated dashboard. The Looper vault contains only

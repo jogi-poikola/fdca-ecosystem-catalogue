@@ -1,5 +1,11 @@
 # FDCA Ecosystem Catalogue Agent Instructions
 
+> [!IMPORTANT]
+> **This repository is retired and archived (read-only) since 2026-11-06.**
+> The FDCA Ecosystem Catalogue now lives in
+> [Finnish-Data-Center-Association/fdca-ecosystem-catalogue](https://github.com/Finnish-Data-Center-Association/fdca-ecosystem-catalogue).
+> Make every change there. Nothing syncs from this repository any more.
+
 This repository is the source of truth for the FDCA ecosystem catalogue.
 The copies under the Looper vault are read-only mirrors and must never be
 edited as an alternative source.
